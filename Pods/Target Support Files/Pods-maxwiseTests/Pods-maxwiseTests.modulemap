@@ -1,0 +1,6 @@
+framework module Pods_maxwiseTests {
+  umbrella header "Pods-maxwiseTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

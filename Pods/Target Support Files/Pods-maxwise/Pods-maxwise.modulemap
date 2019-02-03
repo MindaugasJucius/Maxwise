@@ -1,0 +1,6 @@
+framework module Pods_maxwise {
+  umbrella header "Pods-maxwise-umbrella.h"
+
+  export *
+  module * { export * }
+}

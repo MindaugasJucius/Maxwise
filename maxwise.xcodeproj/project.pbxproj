@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24128F3758533D81B8C252A7 /* Pods_maxwise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */; };
 		5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B6B220720870016BCC9 /* AppDelegate.swift */; };
 		5F4A3B6E220720870016BCC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B6D220720870016BCC9 /* ViewController.swift */; };
 		5F4A3B71220720870016BCC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B6F220720870016BCC9 /* Main.storyboard */; };
 		5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B72220720880016BCC9 /* Assets.xcassets */; };
 		5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B74220720880016BCC9 /* LaunchScreen.storyboard */; };
 		5F4A3B81220720880016BCC9 /* maxwiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B80220720880016BCC9 /* maxwiseTests.swift */; };
+		5F68787022073D8800F4FE7C /* TesseractOCR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F68786F22073D8800F4FE7C /* TesseractOCR.framework */; };
+		5F6878752207419600F4FE7C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6878742207419600F4FE7C /* libz.tbd */; };
+		5F6878772207425400F4FE7C /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 5F6878762207425400F4FE7C /* tessdata */; };
+		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
+		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
+		5FFD2C232207376A00DDFBE5 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFD2C222207376A00DDFBE5 /* UIImage+Extension.swift */; };
+		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maxwise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maxwiseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4A3B68220720870016BCC9 /* maxwise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maxwise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4A3B6B220720870016BCC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F4A3B6D220720870016BCC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +46,18 @@
 		5F4A3B7C220720880016BCC9 /* maxwiseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = maxwiseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4A3B80220720880016BCC9 /* maxwiseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maxwiseTests.swift; sourceTree = "<group>"; };
 		5F4A3B82220720880016BCC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F68786F22073D8800F4FE7C /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F6878742207419600F4FE7C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		5F6878762207425400F4FE7C /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
+		5FFD2C182207321800DDFBE5 /* TesseractOCR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TesseractOCR.framework; path = Carthage/Build/iOS/Static/TesseractOCR.framework; sourceTree = "<group>"; };
+		5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		5FFD2C1E2207342100DDFBE5 /* TesseractOCRiOS.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = TesseractOCRiOS.podspec; path = "Carthage/Checkouts/Tesseract-OCR-iOS/TesseractOCRiOS.podspec"; sourceTree = "<group>"; };
+		5FFD2C202207353B00DDFBE5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		5FFD2C222207376A00DDFBE5 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		89CE2E999663A6CE2DA3855D /* Pods-maxwise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxwise/Pods-maxwise.debug.xcconfig"; sourceTree = "<group>"; };
+		AE8AA537479DCA59B808B9D1 /* Pods-maxwise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwise.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwise/Pods-maxwise.release.xcconfig"; sourceTree = "<group>"; };
+		BFE3CBB719654DA4B77BCD30 /* Pods-maxwiseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F739ED49C2038FB2BE827A0C /* Pods-maxwiseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +65,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F6878752207419600F4FE7C /* libz.tbd in Frameworks */,
+				5F68787022073D8800F4FE7C /* TesseractOCR.framework in Frameworks */,
+				5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */,
+				5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */,
+				24128F3758533D81B8C252A7 /* Pods_maxwise.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +90,8 @@
 				5F4A3B6A220720870016BCC9 /* maxwise */,
 				5F4A3B7F220720880016BCC9 /* maxwiseTests */,
 				5F4A3B69220720870016BCC9 /* Products */,
+				5FFD2C172207321700DDFBE5 /* Frameworks */,
+				82867976399200E00ACBCD6C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,12 +107,14 @@
 		5F4A3B6A220720870016BCC9 /* maxwise */ = {
 			isa = PBXGroup;
 			children = (
+				5F6878762207425400F4FE7C /* tessdata */,
 				5F4A3B6B220720870016BCC9 /* AppDelegate.swift */,
 				5F4A3B6D220720870016BCC9 /* ViewController.swift */,
 				5F4A3B6F220720870016BCC9 /* Main.storyboard */,
 				5F4A3B72220720880016BCC9 /* Assets.xcassets */,
 				5F4A3B74220720880016BCC9 /* LaunchScreen.storyboard */,
 				5F4A3B77220720880016BCC9 /* Info.plist */,
+				5FFD2C222207376A00DDFBE5 /* UIImage+Extension.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -96,6 +128,32 @@
 			path = maxwiseTests;
 			sourceTree = "<group>";
 		};
+		5FFD2C172207321700DDFBE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F6878742207419600F4FE7C /* libz.tbd */,
+				5F68786F22073D8800F4FE7C /* TesseractOCR.framework */,
+				5FFD2C202207353B00DDFBE5 /* libc++.tbd */,
+				5FFD2C1E2207342100DDFBE5 /* TesseractOCRiOS.podspec */,
+				5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */,
+				5FFD2C182207321800DDFBE5 /* TesseractOCR.framework */,
+				1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */,
+				3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		82867976399200E00ACBCD6C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				89CE2E999663A6CE2DA3855D /* Pods-maxwise.debug.xcconfig */,
+				AE8AA537479DCA59B808B9D1 /* Pods-maxwise.release.xcconfig */,
+				BFE3CBB719654DA4B77BCD30 /* Pods-maxwiseTests.debug.xcconfig */,
+				F739ED49C2038FB2BE827A0C /* Pods-maxwiseTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +161,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F4A3B85220720880016BCC9 /* Build configuration list for PBXNativeTarget "maxwise" */;
 			buildPhases = (
+				C44BF7B71AA5AC9A68C83A93 /* [CP] Check Pods Manifest.lock */,
 				5F4A3B64220720870016BCC9 /* Sources */,
 				5F4A3B65220720870016BCC9 /* Frameworks */,
 				5F4A3B66220720870016BCC9 /* Resources */,
+				C053B3759255C07B2D3C502B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -120,6 +180,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F4A3B88220720880016BCC9 /* Build configuration list for PBXNativeTarget "maxwiseTests" */;
 			buildPhases = (
+				3F0A058842427E97CC28592D /* [CP] Check Pods Manifest.lock */,
 				5F4A3B78220720880016BCC9 /* Sources */,
 				5F4A3B79220720880016BCC9 /* Frameworks */,
 				5F4A3B7A220720880016BCC9 /* Resources */,
@@ -178,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */,
+				5F6878772207425400F4FE7C /* tessdata in Resources */,
 				5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */,
 				5F4A3B71220720870016BCC9 /* Main.storyboard in Resources */,
 			);
@@ -192,11 +254,81 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3F0A058842427E97CC28592D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-maxwiseTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C053B3759255C07B2D3C502B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C44BF7B71AA5AC9A68C83A93 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-maxwise-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5F4A3B64220720870016BCC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FFD2C232207376A00DDFBE5 /* UIImage+Extension.swift in Sources */,
 				5F4A3B6E220720870016BCC9 /* ViewController.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
 			);
@@ -358,11 +490,17 @@
 		};
 		5F4A3B86220720880016BCC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89CE2E999663A6CE2DA3855D /* Pods-maxwise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
+				);
 				INFOPLIST_FILE = maxwise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -370,17 +508,23 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojam.maxwise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		5F4A3B87220720880016BCC9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE8AA537479DCA59B808B9D1 /* Pods-maxwise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
+				);
 				INFOPLIST_FILE = maxwise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -388,12 +532,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojam.maxwise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		5F4A3B89220720880016BCC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFE3CBB719654DA4B77BCD30 /* Pods-maxwiseTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -415,6 +560,7 @@
 		};
 		5F4A3B8A220720880016BCC9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F739ED49C2038FB2BE827A0C /* Pods-maxwiseTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
