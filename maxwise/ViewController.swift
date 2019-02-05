@@ -7,48 +7,56 @@
 //
 
 import UIKit
-import TesseractOCR
+import AVKit
 
 class ViewController: UIViewController {
-
-    let operationQueue = OperationQueue()
     
-//    lazy var tesseract: G8Tesseract? = {
-//        let tesseract = G8Tesseract(language: "eng")
-//        tesseract?.engineMode = .tesseractCubeCombined
-//        tesseract?.pageSegmentationMode = .auto
-//        return tesseract
-//    }()
+    private let digitRecognizer = DigitRecognizer()
+    private let cameraController = CameraController()
+    private var cameraLayer: AVCaptureVideoPreviewLayer?
+    
+    private var trackingLayers = [CALayer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let image = UIImage.init(named: "ReceiptSwiss")
-        recognize(image: image)
+        //let image = UIImage.init(named: "ReceiptSwiss")
+        //digitRecognizer.recognize(image: image)
+        addCameraLayer()
     }
+    
+    func addCameraLayer() {
 
-    private func recognize(image: UIImage?) {
-        guard let image = image else {
-            fatalError("No image")
-        }
-        guard let operation = G8RecognitionOperation(language: "eng",
-                                                configDictionary: nil,
-                                                configFileNames: nil,
-                                                absoluteDataPath: Bundle.main.bundlePath,
-                                                engineMode: .tesseractCubeCombined) else {
-            return
-        }
-        operation.tesseract.image = image
-        operation.tesseract.pageSegmentationMode = .auto
-        operation.recognitionCompleteBlock = { tesseract in
-            print(tesseract?.recognizedText)
-            
-        }
-        operationQueue.addOperation(operation)
-//        operation?.tesseract.re
-//        tesseract?.image = image//.g8_blackAndWhite()
-//        tesseract?.recognize()
-//        print(tesseract?.recognizedText)
+        let cameraLayer = AVCaptureVideoPreviewLayer(session: cameraController.captureSession)
+        cameraLayer.frame = view.bounds
+        cameraLayer.videoGravity = .resizeAspectFill
+        self.cameraLayer = cameraLayer
+        view.layer.addSublayer(cameraLayer)
+        cameraController.captureSession.startRunning()
+        cameraController.delegate = self
+
     }
-
+    
 }
 
+extension ViewController: TextDetectionDelegate {
+    
+    func detected(boundingBoxes: [CGRect]) {
+        trackingLayers.forEach { $0.removeFromSuperlayer() }
+        let layers: [CALayer] = boundingBoxes.compactMap { box in
+            guard let converted = cameraLayer?.layerRectConverted(fromMetadataOutputRect: box) else {
+                return nil
+            }
+            
+            let layer = CALayer()
+            layer.frame = converted
+            layer.borderWidth = 2
+            layer.borderColor = UIColor.green.cgColor
+            return layer
+        }
+        trackingLayers = layers
+        layers.forEach {
+            view.layer.addSublayer($0)
+        }
+    }
+    
+}

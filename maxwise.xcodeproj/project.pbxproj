@@ -17,6 +17,8 @@
 		5F68787022073D8800F4FE7C /* TesseractOCR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F68786F22073D8800F4FE7C /* TesseractOCR.framework */; };
 		5F6878752207419600F4FE7C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6878742207419600F4FE7C /* libz.tbd */; };
 		5F6878772207425400F4FE7C /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 5F6878762207425400F4FE7C /* tessdata */; };
+		5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6878782207728C00F4FE7C /* DigitRecognizer.swift */; };
+		5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F68787A2207744D00F4FE7C /* CameraController.swift */; };
 		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
 		5FFD2C232207376A00DDFBE5 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFD2C222207376A00DDFBE5 /* UIImage+Extension.swift */; };
@@ -49,6 +51,8 @@
 		5F68786F22073D8800F4FE7C /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6878742207419600F4FE7C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5F6878762207425400F4FE7C /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
+		5F6878782207728C00F4FE7C /* DigitRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitRecognizer.swift; sourceTree = "<group>"; };
+		5F68787A2207744D00F4FE7C /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		5FFD2C182207321800DDFBE5 /* TesseractOCR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TesseractOCR.framework; path = Carthage/Build/iOS/Static/TesseractOCR.framework; sourceTree = "<group>"; };
 		5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		5FFD2C1E2207342100DDFBE5 /* TesseractOCRiOS.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = TesseractOCRiOS.podspec; path = "Carthage/Checkouts/Tesseract-OCR-iOS/TesseractOCRiOS.podspec"; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				5F4A3B74220720880016BCC9 /* LaunchScreen.storyboard */,
 				5F4A3B77220720880016BCC9 /* Info.plist */,
 				5FFD2C222207376A00DDFBE5 /* UIImage+Extension.swift */,
+				5F6878782207728C00F4FE7C /* DigitRecognizer.swift */,
+				5F68787A2207744D00F4FE7C /* CameraController.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -329,8 +335,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FFD2C232207376A00DDFBE5 /* UIImage+Extension.swift in Sources */,
+				5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */,
 				5F4A3B6E220720870016BCC9 /* ViewController.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
+				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
