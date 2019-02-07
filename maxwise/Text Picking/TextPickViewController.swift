@@ -37,10 +37,30 @@ class TextPickViewController: UIViewController {
                               scale: 1,
                               orientation: UIImage.Orientation(orientation))
         imageView.contentMode = .scaleAspectFit
+        imageView.isUserInteractionEnabled = true
         imageView.image = uiImage
-
+        addTapRecognizer()
+        
         let ciImage = CIImage(cgImage: cgImage)
         textDetectionController.handle(ciImage: ciImage, orientation: orientation)
+    }
+    
+    private func addTapRecognizer() {
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapOccured(gesture:)))
+        imageView.addGestureRecognizer(recognizer)
+    }
+    
+    @objc private func tapOccured(gesture: UITapGestureRecognizer) {
+        let tapLocation = gesture.location(in: imageView)
+        let containingLayers = trackingLayers.filter { layer in
+            layer.frame.contains(tapLocation)
+        }
+        
+        guard let partToCrop = containingLayers.first?.frame else {
+            return
+        }
+        
+        print(partToCrop)
     }
 
     @IBAction private func closeTapped(_ sender: Any) {
