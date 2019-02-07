@@ -52,22 +52,26 @@ class TextPickViewController: UIViewController {
     
     @objc private func tapOccured(gesture: UITapGestureRecognizer) {
         let tapLocation = gesture.location(in: imageView)
-        let containingLayers = trackingLayers.filter { layer in
+        let containingLayer = trackingLayers.filter { layer in
             layer.frame.contains(tapLocation)
-        }
+        }.first
         
-        guard let partToCrop = containingLayers.first?.frame else {
+        guard let frame = containingLayer?.frame else {
             return
         }
-    
+        
+        let insetFactor = CGFloat(0.1)
+        let insetCroppingFrame = frame.insetBy(dx: -frame.width * insetFactor,
+                                               dy: -frame.height * insetFactor)
+        
         UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, 0);
         imageView.drawHierarchy(in: imageView.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
     
-        UIGraphicsBeginImageContext(partToCrop.size)
-        let origin = CGPoint(x: -partToCrop.origin.x, y: -partToCrop.origin.y)
+        UIGraphicsBeginImageContext(insetCroppingFrame.size)
+        let origin = CGPoint(x: -insetCroppingFrame.origin.x, y: -insetCroppingFrame.origin.y)
         image?.draw(at: origin)
         let tmpImg = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
