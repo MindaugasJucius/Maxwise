@@ -18,16 +18,27 @@ class ViewController: UIViewController {
     private var cameraLayer: AVCaptureVideoPreviewLayer?
     
     private var trackingLayers = [CALayer]()
+    private let imageView = UIImageView(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addCameraLayer()
+        view.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            imageView.topAnchor.constraint(equalTo: view.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        imageView.contentMode = .scaleAspectFill
     }
     
     func addCameraLayer() {
         let cameraLayer = AVCaptureVideoPreviewLayer(session: cameraController.captureSession)
         cameraLayer.frame = view.bounds
-        cameraLayer.videoGravity = .resizeAspect
+        cameraLayer.videoGravity = .resizeAspectFill
         self.cameraLayer = cameraLayer
         view.layer.insertSublayer(cameraLayer, at: 0)
         cameraController.captureSession.startRunning()
@@ -67,11 +78,9 @@ extension ViewController: TextDetectionDelegate {
 extension ViewController: PictureRetrievalDelegate {
     
     func captured(image: UIImage) {
-        let imageView = UIImageView(image: image)
-        
-        view.insertSubview(imageView, belowSubview: captureButton)
-        imageView.contentMode = .scaleAspectFit
-        imageView.frame = view.bounds
+        imageView.image = image
     }
     
 }
+
+
