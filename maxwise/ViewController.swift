@@ -15,27 +15,11 @@ class ViewController: UIViewController {
     
     private let digitRecognizer = DigitRecognizer()
     private let cameraController = CameraController()
-    private let textDetectionController = TextDetectionController()
     private var cameraLayer: AVCaptureVideoPreviewLayer?
-    
-    private var trackingLayers = [CALayer]()
-    private let imageView = UIImageView(frame: .zero)
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         addCameraLayer()
-        view.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            imageView.topAnchor.constraint(equalTo: view.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
-        imageView.contentMode = .scaleAspectFit
-        
-        textDetectionController.delegate = self
     }
     
     func addCameraLayer() {
@@ -55,48 +39,12 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: TextDetectionDelegate {
-    
-    func detected(boundingBoxes: [CGRect]) {
-        guard let image = imageView.image else {
-            return
-        }
-        
-        let imageRect = AVMakeRect(aspectRatio: image.size,
-                                   insideRect: imageView.bounds)
-        
-        trackingLayers.forEach { $0.removeFromSuperlayer() }
-        let layers: [CALayer] = boundingBoxes.compactMap { boundingBox in
-            let size = CGSize(width: boundingBox.width * imageRect.width,
-                              height: boundingBox.height * imageRect.height)
-            let origin = CGPoint(x: boundingBox.minX * imageRect.width,
-                                 y: (1 - boundingBox.maxY) * imageRect.height + imageRect.origin.y)
-            
-            
-            let layer = CALayer()
-            layer.frame = CGRect(origin: origin, size: size)
-            layer.borderWidth = 2
-            layer.borderColor = UIColor.green.cgColor
-            return layer
-        }
-        trackingLayers = layers
-        layers.forEach {
-            view.layer.addSublayer($0)
-        }
-    }
-    
-}
-
 extension ViewController: PictureRetrievalDelegate {
     
     func captured(image: CGImage, orientation: CGImagePropertyOrientation) {
-        let uiImage = UIImage(cgImage: image,
-                              scale: 1,
-                              orientation: UIImage.Orientation(orientation))
-        imageView.image = uiImage
-        
-        let ciImage = CIImage(cgImage: image)
-        textDetectionController.handle(ciImage: ciImage, orientation: orientation)
+        let textDetectionController = TextPickViewController.init(cgImage: image,
+                                                                  orientation: orientation)
+        present(textDetectionController, animated: true, completion: nil)
     }
 }
 
