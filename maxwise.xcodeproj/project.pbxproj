@@ -500,9 +500,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89CE2E999663A6CE2DA3855D /* Pods-maxwise.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				DEVELOPMENT_TEAM = A72F8YLPQR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
@@ -513,7 +514,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojam.maxwise;
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojame.maxwise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -524,9 +525,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE8AA537479DCA59B808B9D1 /* Pods-maxwise.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				DEVELOPMENT_TEAM = A72F8YLPQR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
@@ -537,7 +539,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojam.maxwise;
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojame.maxwise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

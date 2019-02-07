@@ -11,6 +11,8 @@ import AVKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet private weak var captureButton: UIButton!
+    
     private let digitRecognizer = DigitRecognizer()
     private let cameraController = CameraController()
     private var cameraLayer: AVCaptureVideoPreviewLayer?
@@ -19,21 +21,22 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let image = UIImage.init(named: "ReceiptSwiss")
-        //digitRecognizer.recognize(image: image)
         addCameraLayer()
     }
     
     func addCameraLayer() {
-
         let cameraLayer = AVCaptureVideoPreviewLayer(session: cameraController.captureSession)
         cameraLayer.frame = view.bounds
-        cameraLayer.videoGravity = .resizeAspectFill
+        cameraLayer.videoGravity = .resizeAspect
         self.cameraLayer = cameraLayer
-        view.layer.addSublayer(cameraLayer)
+        view.layer.insertSublayer(cameraLayer, at: 0)
         cameraController.captureSession.startRunning()
         cameraController.delegate = self
-
+        cameraController.pictureDelegate = self
+    }
+    
+    @IBAction func takePhoto(_ sender: Any) {
+        cameraController.takePhoto()
     }
     
 }
@@ -57,6 +60,18 @@ extension ViewController: TextDetectionDelegate {
         layers.forEach {
             view.layer.addSublayer($0)
         }
+    }
+    
+}
+
+extension ViewController: PictureRetrievalDelegate {
+    
+    func captured(image: UIImage) {
+        let imageView = UIImageView(image: image)
+        
+        view.insertSubview(imageView, belowSubview: captureButton)
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame = view.bounds
     }
     
 }
