@@ -98,7 +98,7 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
         pictureDelegate?.captured(image: uiImage)
         
         let ciImage = CIImage(cgImage: cgImage)
-        handle(ciImage: ciImage.oriented(forExifOrientation: orientation.int32Value), orientation: cgImageEXIFOrientation)
+        handle(ciImage: ciImage, orientation: cgImageEXIFOrientation)
     }
     
 }

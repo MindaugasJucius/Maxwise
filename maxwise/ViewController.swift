@@ -32,13 +32,13 @@ class ViewController: UIViewController {
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
     }
     
     func addCameraLayer() {
         let cameraLayer = AVCaptureVideoPreviewLayer(session: cameraController.captureSession)
         cameraLayer.frame = view.bounds
-        cameraLayer.videoGravity = .resizeAspectFill
+        cameraLayer.videoGravity = .resizeAspect
         self.cameraLayer = cameraLayer
         view.layer.insertSublayer(cameraLayer, at: 0)
         cameraController.captureSession.startRunning()
@@ -55,14 +55,24 @@ class ViewController: UIViewController {
 extension ViewController: TextDetectionDelegate {
     
     func detected(boundingBoxes: [CGRect]) {
+        guard let image = self.imageView.image else {
+            return
+        }
+        
+        let imageRect = AVMakeRect(aspectRatio: image.size,
+                                   insideRect: imageView.bounds)
+
+        
         trackingLayers.forEach { $0.removeFromSuperlayer() }
-        let layers: [CALayer] = boundingBoxes.compactMap { box in
-            guard let converted = cameraLayer?.layerRectConverted(fromMetadataOutputRect: box) else {
-                return nil
-            }
+        let layers: [CALayer] = boundingBoxes.compactMap { boundingBox in
+            let size = CGSize(width: boundingBox.width * imageRect.width,
+                              height: boundingBox.height * imageRect.height)
+            let origin = CGPoint(x: boundingBox.minX * imageRect.width,
+                                 y: (1 - boundingBox.maxY) * imageRect.height + imageRect.origin.y)
+            
             
             let layer = CALayer()
-            layer.frame = converted
+            layer.frame = CGRect(origin: origin, size: size)
             layer.borderWidth = 2
             layer.borderColor = UIColor.green.cgColor
             return layer
