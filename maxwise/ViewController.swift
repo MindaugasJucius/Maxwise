@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     private let digitRecognizer = DigitRecognizer()
     private let cameraController = CameraController()
+    private let textDetectionController = TextDetectionController()
     private var cameraLayer: AVCaptureVideoPreviewLayer?
     
     private var trackingLayers = [CALayer]()
@@ -33,17 +34,19 @@ class ViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
         imageView.contentMode = .scaleAspectFit
+        
+        textDetectionController.delegate = self
     }
     
     func addCameraLayer() {
         let cameraLayer = AVCaptureVideoPreviewLayer(session: cameraController.captureSession)
         cameraLayer.frame = view.bounds
-        cameraLayer.videoGravity = .resizeAspect
+        cameraLayer.videoGravity = .resizeAspectFill
         self.cameraLayer = cameraLayer
         view.layer.insertSublayer(cameraLayer, at: 0)
+        
         cameraController.captureSession.startRunning()
         cameraController.delegate = self
-        cameraController.pictureDelegate = self
     }
     
     @IBAction func takePhoto(_ sender: Any) {
@@ -55,13 +58,12 @@ class ViewController: UIViewController {
 extension ViewController: TextDetectionDelegate {
     
     func detected(boundingBoxes: [CGRect]) {
-        guard let image = self.imageView.image else {
+        guard let image = imageView.image else {
             return
         }
         
         let imageRect = AVMakeRect(aspectRatio: image.size,
                                    insideRect: imageView.bounds)
-
         
         trackingLayers.forEach { $0.removeFromSuperlayer() }
         let layers: [CALayer] = boundingBoxes.compactMap { boundingBox in
@@ -87,10 +89,29 @@ extension ViewController: TextDetectionDelegate {
 
 extension ViewController: PictureRetrievalDelegate {
     
-    func captured(image: UIImage) {
-        imageView.image = image
+    func captured(image: CGImage, orientation: CGImagePropertyOrientation) {
+        let uiImage = UIImage(cgImage: image,
+                              scale: 1,
+                              orientation: UIImage.Orientation(orientation))
+        imageView.image = uiImage
+        
+        let ciImage = CIImage(cgImage: image)
+        textDetectionController.handle(ciImage: ciImage, orientation: orientation)
     }
-    
 }
 
+extension UIImage.Orientation {
+    init(_ cgOrientation: CGImagePropertyOrientation) {
+        switch cgOrientation {
+            case .up: self = .up
+            case .upMirrored: self = .upMirrored
+            case .down: self = .down
+            case .downMirrored: self = .downMirrored
+            case .left: self = .left
+            case .leftMirrored: self = .leftMirrored
+            case .right: self = .right
+            case .rightMirrored: self = .rightMirrored
+        }
+    }
+}
 
