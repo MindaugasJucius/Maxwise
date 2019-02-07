@@ -59,8 +59,20 @@ class TextPickViewController: UIViewController {
         guard let partToCrop = containingLayers.first?.frame else {
             return
         }
+    
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, 0);
+        imageView.drawHierarchy(in: imageView.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+    
+        UIGraphicsBeginImageContext(partToCrop.size)
+        let origin = CGPoint(x: -partToCrop.origin.x, y: -partToCrop.origin.y)
+        image?.draw(at: origin)
+        let tmpImg = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
         
-        print(partToCrop)
+        imageView.image = tmpImg
     }
 
     @IBAction private func closeTapped(_ sender: Any) {
