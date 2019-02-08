@@ -13,7 +13,7 @@ class DigitRecognizer {
 
     let operationQueue = OperationQueue()
     
-    func recognize(image: UIImage?) {
+    func recognize(image: UIImage?, completion: @escaping (String?) -> ()) {
         guard let image = image else {
             fatalError("No image")
         }
@@ -25,10 +25,10 @@ class DigitRecognizer {
                                                         return
         }
         operation.tesseract.image = image
-        operation.tesseract.pageSegmentationMode = .auto
+        operation.tesseract.pageSegmentationMode = .singleBlock
+        operation.tesseract.charWhitelist = "01234567890.,"
         operation.recognitionCompleteBlock = { tesseract in
-            print(tesseract?.recognizedText)
-            
+            completion(tesseract?.recognizedText)
         }
         operationQueue.addOperation(operation)
     }

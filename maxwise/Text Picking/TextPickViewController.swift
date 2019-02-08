@@ -12,6 +12,7 @@ import AVKit
 class TextPickViewController: UIViewController {
 
     private let textDetectionController = TextDetectionController()
+    private let digitRecognizer = DigitRecognizer()
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var closeButton: UIButton!
@@ -77,6 +78,23 @@ class TextPickViewController: UIViewController {
         UIGraphicsEndImageContext()
         
         imageView.image = tmpImg
+        digitRecognizer.recognize(image: tmpImg) { [weak self] result in
+            let userVisibleString = result ?? "Failed to recognize 😬"
+            self?.addResultView(text: userVisibleString)
+        }
+    }
+    
+    private func addResultView(text: String) {
+        let blurView = BlurLabelView(text: text)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(blurView)
+        let constraints = [
+            blurView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: blurView.trailingAnchor, multiplier: 1),
+            closeButton.topAnchor.constraint(equalTo: blurView.bottomAnchor, constant: 120),
+            blurView.heightAnchor.constraint(equalToConstant: 50),
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
 
     @IBAction private func closeTapped(_ sender: Any) {
