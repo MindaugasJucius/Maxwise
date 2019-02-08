@@ -41,10 +41,10 @@
             <constraints>
                 <constraint firstItem="aYH-Yw-7yC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="32y-eq-hnY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="aYH-Yw-7yC" secondAttribute="bottom" constant="10" id="5VE-YB-WWi"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Mv5-Z5-YDg" secondAttribute="trailing" id="TDs-il-lWw"/>
+                <constraint firstAttribute="trailing" secondItem="Mv5-Z5-YDg" secondAttribute="trailing" id="TDs-il-lWw"/>
                 <constraint firstItem="Mv5-Z5-YDg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VA9-uu-TXF"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Mv5-Z5-YDg" secondAttribute="bottom" id="Z6m-vV-9Oe"/>
-                <constraint firstItem="Mv5-Z5-YDg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jWE-Pe-KTM"/>
+                <constraint firstAttribute="bottom" secondItem="Mv5-Z5-YDg" secondAttribute="bottom" id="Z6m-vV-9Oe"/>
+                <constraint firstItem="Mv5-Z5-YDg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jWE-Pe-KTM"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

@@ -37,13 +37,23 @@ class TextPickViewController: UIViewController {
         let uiImage = UIImage(cgImage: cgImage,
                               scale: 1,
                               orientation: UIImage.Orientation(orientation))
+
+        let screenBounds = UIScreen.main.bounds
+        let adjustedWidth = uiImage.size.height * (screenBounds.width / screenBounds.height)
+        let screenFitSize = CGSize(width: adjustedWidth, height: uiImage.size.height)
+
+        UIGraphicsBeginImageContextWithOptions(screenFitSize, false, 0)
+        let xCoord = (uiImage.size.width - adjustedWidth) / 2
+        uiImage.draw(at: CGPoint.init(x: -xCoord, y: 0))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
-        imageView.image = uiImage
+        imageView.image = scaledImage
         addTapRecognizer()
-        
-        let ciImage = CIImage(cgImage: cgImage)
-        textDetectionController.handle(ciImage: ciImage, orientation: orientation)
+
+        textDetectionController.handle(cgImage: cgImage, orientation: orientation)
     }
     
     private func addTapRecognizer() {
