@@ -16,6 +16,7 @@ class TextPickViewController: UIViewController {
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var cropImageView: UIImageView!
     @IBOutlet private weak var closeButton: UIButton!
     
     private var trackingImageRect = CGRect.zero
@@ -43,6 +44,10 @@ class TextPickViewController: UIViewController {
 
         let screenBounds = UIScreen.main.bounds
 
+        cropImageView.contentMode = .scaleAspectFit
+        cropImageView.image = uiImage
+        cropImageView.isHidden = true
+        
         trackingImageRect = AVMakeRect(aspectRatio: uiImage.size, insideRect: screenBounds)
         
         imageView.contentMode = .scaleAspectFit
@@ -74,20 +79,12 @@ class TextPickViewController: UIViewController {
         guard let frame = containingFrame else {
             return
         }
-        
-        UIView.animate(withDuration: 0.35,
-                       delay: 0.0,
-                       usingSpringWithDamping: 1.0,
-                       initialSpringVelocity: 0.6,
-                       animations: {
-            self.scrollView.setZoomScale(1.0, animated: false)
-        }, completion: { completed in
-            self.handleRecognition(in: frame)
-        })
+
+        handleRecognition(in: frame)
     }
     
     private func handleRecognition(in frame: CGRect) {
-        guard let image = imageView.image else {
+        guard let image = cropImageView.image else {
             return
         }
         
@@ -104,7 +101,7 @@ class TextPickViewController: UIViewController {
         let tmpImg = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        imageView.image = tmpImg
+        //imageView.image = tmpImg
         digitRecognizer.recognize(image: tmpImg) { [weak self] result in
             let userVisibleString = result ?? "Failed to recognize 😬"
             self?.addResultView(text: userVisibleString)
