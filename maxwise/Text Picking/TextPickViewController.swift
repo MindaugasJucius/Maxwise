@@ -20,7 +20,6 @@ class TextPickViewController: UIViewController {
     
     private let trackingContainer = UIView()
     private var trackingImageRect = CGRect.zero
-    private var trackingImageToRepresentationImageScaleRatio = CGFloat(0)
     
     private let cgImage: CGImage
     private let orientation: CGImagePropertyOrientation
@@ -46,24 +45,14 @@ class TextPickViewController: UIViewController {
         let screenBounds = UIScreen.main.bounds
 
         trackingImageRect = AVMakeRect(aspectRatio: uiImage.size, insideRect: screenBounds)
-        trackingImageToRepresentationImageScaleRatio = screenBounds.height / trackingImageRect.size.height
 
         view.addSubview(trackingContainer)
         trackingContainer.isUserInteractionEnabled = false
         trackingContainer.frame = trackingImageRect
-
-        let adjustedWidth = uiImage.size.height * (screenBounds.width / screenBounds.height)
-        let screenFitSize = CGSize(width: adjustedWidth, height: uiImage.size.height)
-
-        UIGraphicsBeginImageContextWithOptions(screenFitSize, false, 0)
-        let xCoord = (uiImage.size.width - adjustedWidth) / 2
-        uiImage.draw(at: CGPoint.init(x: -xCoord, y: 0))
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
         
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
-        imageView.image = scaledImage
+        imageView.image = uiImage
         addTapRecognizer()
         
         let ciImage = CIImage(cgImage: cgImage)
@@ -77,15 +66,10 @@ class TextPickViewController: UIViewController {
     }
     
     @objc private func tapOccured(gesture: UITapGestureRecognizer) {
-        let scaleRatio = trackingImageToRepresentationImageScaleRatio
-        let scaleTransform = CGAffineTransform.init(scaleX: scaleRatio, y: scaleRatio)
-        let tapLocation = gesture.location(in: imageView)
+        let tapLocation = gesture.location(in: trackingContainer)
         
         let containingScaledFrame = trackingContainer.subviews
-            .map { view -> CGRect in
-                let scaledFrame = view.frame.applying(scaleTransform)
-                return CGRect.init(origin: view.frame.origin, size: scaledFrame.size)
-            }
+            .map { $0.frame }
             .filter { $0.contains(tapLocation) }
             .first
 
@@ -138,7 +122,6 @@ extension TextPickViewController: TextDetectionDelegate {
     
     func detected(boundingBoxes: [CGRect]) {
         let imageRect = trackingImageRect
-        let scaleRatio = imageView.frame.height / trackingImageRect.size.height
 
         let layers: [UIView] = boundingBoxes.compactMap { boundingBox in
             let size = CGSize(width: boundingBox.width * imageRect.width,
@@ -157,7 +140,7 @@ extension TextPickViewController: TextDetectionDelegate {
             trackingContainer.addSubview($0)
         }
 
-        trackingContainer.transform = CGAffineTransform.init(scaleX: scaleRatio, y: scaleRatio)
+        //trackingContainer.transform = CGAffineTransform.init(scaleX: scaleRatio, y: scaleRatio)
     }
     
 }
