@@ -18,7 +18,6 @@ class TextPickViewController: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var closeButton: UIButton!
     
-    private let trackingContainer = UIView()
     private var trackingImageRect = CGRect.zero
     
     private let cgImage: CGImage
@@ -45,10 +44,6 @@ class TextPickViewController: UIViewController {
         let screenBounds = UIScreen.main.bounds
 
         trackingImageRect = AVMakeRect(aspectRatio: uiImage.size, insideRect: screenBounds)
-
-        view.insertSubview(trackingContainer, belowSubview: closeButton)
-        trackingContainer.frame = trackingImageRect
-        trackingContainer.isUserInteractionEnabled = false
         
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
@@ -69,9 +64,9 @@ class TextPickViewController: UIViewController {
     }
     
     @objc private func tapOccured(gesture: UITapGestureRecognizer) {
-        let tapLocation = gesture.location(in: trackingContainer)
+        let tapLocation = gesture.location(in: imageView)
 
-        let containingFrame = trackingContainer.subviews
+        let containingFrame = imageView.subviews
             .map { $0.frame }
             .filter { $0.contains(tapLocation) }
             .first
@@ -80,9 +75,9 @@ class TextPickViewController: UIViewController {
             let image = imageView.image else {
             return
         }
-        
-        let imageScaleMatchingContainerRect = CGRect.init(x: frame.minX * (image.size.width / trackingImageRect.width),
-                                                          y: frame.minY * (image.size.height / trackingImageRect.height),
+        let rectangleOriginInTrackingImageRect = frame.origin.y - trackingImageRect.origin.y
+        let imageScaleMatchingContainerRect = CGRect.init(x: frame.origin.x * (image.size.width / trackingImageRect.width),
+                                                          y: rectangleOriginInTrackingImageRect * (image.size.height / trackingImageRect.height),
                                                           width: (frame.width / trackingImageRect.width) * image.size.width,
                                                           height: (frame.height / trackingImageRect.height) * image.size.height)
         
@@ -135,7 +130,7 @@ extension TextPickViewController: TextDetectionDelegate {
             let size = CGSize(width: boundingBox.width * imageRect.width,
                               height: boundingBox.height * imageRect.height)
             let origin = CGPoint(x: boundingBox.minX * imageRect.width,
-                                 y: (1 - boundingBox.maxY) * imageRect.height)
+                                 y: (1 - boundingBox.maxY) * imageRect.height + imageRect.origin.y)
             
             let trackingView = UIView(frame: .zero)
             trackingView.frame = CGRect(origin: origin, size: size)
@@ -145,7 +140,7 @@ extension TextPickViewController: TextDetectionDelegate {
         }
         
         layers.forEach {
-            trackingContainer.addSubview($0)
+            imageView.addSubview($0)
         }
     }
     
