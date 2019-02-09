@@ -16,7 +16,11 @@ class TextPickViewController: UIViewController {
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var closeButton: UIButton!
-    private var trackingLayers = [CALayer]()
+    @IBOutlet private weak var heightConstraint: NSLayoutConstraint!
+    
+    private let trackingContainer = UIView()
+    private var trackingImageRect = CGRect.zero
+    private var trackingImageToRepresentationImageScaleRatio = CGFloat(0)
     
     private let cgImage: CGImage
     private let orientation: CGImagePropertyOrientation
@@ -34,11 +38,20 @@ class TextPickViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let uiImage = UIImage(cgImage: cgImage,
                               scale: 1,
                               orientation: UIImage.Orientation(orientation))
 
         let screenBounds = UIScreen.main.bounds
+
+        trackingImageRect = AVMakeRect(aspectRatio: uiImage.size, insideRect: screenBounds)
+        trackingImageToRepresentationImageScaleRatio = screenBounds.height / trackingImageRect.size.height
+
+        view.addSubview(trackingContainer)
+        trackingContainer.isUserInteractionEnabled = false
+        trackingContainer.frame = trackingImageRect
+
         let adjustedWidth = uiImage.size.height * (screenBounds.width / screenBounds.height)
         let screenFitSize = CGSize(width: adjustedWidth, height: uiImage.size.height)
 
@@ -52,9 +65,11 @@ class TextPickViewController: UIViewController {
         imageView.isUserInteractionEnabled = true
         imageView.image = scaledImage
         addTapRecognizer()
-
-        textDetectionController.handle(cgImage: cgImage, orientation: orientation)
+        
+        let ciImage = CIImage(cgImage: cgImage)
+        textDetectionController.handle(ciImage: ciImage, orientation: orientation)
     }
+    
     
     private func addTapRecognizer() {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapOccured(gesture:)))
@@ -62,12 +77,19 @@ class TextPickViewController: UIViewController {
     }
     
     @objc private func tapOccured(gesture: UITapGestureRecognizer) {
+        let scaleRatio = trackingImageToRepresentationImageScaleRatio
+        let scaleTransform = CGAffineTransform.init(scaleX: scaleRatio, y: scaleRatio)
         let tapLocation = gesture.location(in: imageView)
-        let containingLayer = trackingLayers.filter { layer in
-            layer.frame.contains(tapLocation)
-        }.first
         
-        guard let frame = containingLayer?.frame else {
+        let containingScaledFrame = trackingContainer.subviews
+            .map { view -> CGRect in
+                let scaledFrame = view.frame.applying(scaleTransform)
+                return CGRect.init(origin: view.frame.origin, size: scaledFrame.size)
+            }
+            .filter { $0.contains(tapLocation) }
+            .first
+
+        guard let frame = containingScaledFrame else {
             return
         }
         
@@ -115,31 +137,27 @@ class TextPickViewController: UIViewController {
 extension TextPickViewController: TextDetectionDelegate {
     
     func detected(boundingBoxes: [CGRect]) {
-        guard let image = imageView.image else {
-            return
-        }
-        
-        let imageRect = AVMakeRect(aspectRatio: image.size,
-                                   insideRect: imageView.bounds)
-        
-        trackingLayers.forEach { $0.removeFromSuperlayer() }
-        let layers: [CALayer] = boundingBoxes.compactMap { boundingBox in
+        let imageRect = trackingImageRect
+        let scaleRatio = imageView.frame.height / trackingImageRect.size.height
+
+        let layers: [UIView] = boundingBoxes.compactMap { boundingBox in
             let size = CGSize(width: boundingBox.width * imageRect.width,
                               height: boundingBox.height * imageRect.height)
             let origin = CGPoint(x: boundingBox.minX * imageRect.width,
-                                 y: (1 - boundingBox.maxY) * imageRect.height + imageRect.origin.y)
+                                 y: (1 - boundingBox.maxY) * imageRect.height)
             
-            
-            let layer = CALayer()
-            layer.frame = CGRect(origin: origin, size: size)
-            layer.borderWidth = 2
-            layer.borderColor = UIColor.green.cgColor
-            return layer
+            let trackingView = UIView(frame: .zero)
+            trackingView.frame = CGRect(origin: origin, size: size)
+            trackingView.layer.borderWidth = 2
+            trackingView.layer.borderColor = UIColor.green.cgColor
+            return trackingView
         }
-        trackingLayers = layers
+        
         layers.forEach {
-            view.layer.addSublayer($0)
+            trackingContainer.addSubview($0)
         }
+
+        trackingContainer.transform = CGAffineTransform.init(scaleX: scaleRatio, y: scaleRatio)
     }
     
 }
