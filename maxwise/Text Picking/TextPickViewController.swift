@@ -16,7 +16,6 @@ class TextPickViewController: UIViewController {
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var closeButton: UIButton!
-    @IBOutlet private weak var heightConstraint: NSLayoutConstraint!
     
     private let trackingContainer = UIView()
     private var trackingImageRect = CGRect.zero
@@ -46,14 +45,13 @@ class TextPickViewController: UIViewController {
 
         trackingImageRect = AVMakeRect(aspectRatio: uiImage.size, insideRect: screenBounds)
 
-        view.addSubview(trackingContainer)
-        trackingContainer.isUserInteractionEnabled = false
+        view.insertSubview(trackingContainer, belowSubview: closeButton)
         trackingContainer.frame = trackingImageRect
+        addTapRecognizer()
         
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
         imageView.image = uiImage
-        addTapRecognizer()
         
         let ciImage = CIImage(cgImage: cgImage)
         textDetectionController.handle(ciImage: ciImage, orientation: orientation)
@@ -62,12 +60,12 @@ class TextPickViewController: UIViewController {
     
     private func addTapRecognizer() {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapOccured(gesture:)))
-        imageView.addGestureRecognizer(recognizer)
+        trackingContainer.addGestureRecognizer(recognizer)
     }
     
     @objc private func tapOccured(gesture: UITapGestureRecognizer) {
         let tapLocation = gesture.location(in: trackingContainer)
-        
+
         let containingFrame = trackingContainer.subviews
             .map { $0.frame }
             .filter { $0.contains(tapLocation) }

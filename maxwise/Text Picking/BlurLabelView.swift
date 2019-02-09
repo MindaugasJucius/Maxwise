@@ -31,6 +31,7 @@ class BlurLabelView: UIVisualEffectView {
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.black.withAlphaComponent(0.7)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         contentView.addSubview(label)
         label.fill(in: contentView)
     }

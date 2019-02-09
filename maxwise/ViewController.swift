@@ -20,11 +20,15 @@ class ViewController: UIViewController {
     let minimumZoom: CGFloat = 1.0
     let maximumZoom: CGFloat = 3.0
     var lastZoomFactor: CGFloat = 1.0
-        
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addCameraLayer()
-        
+        view.backgroundColor = .black
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinch(_:)))
         view.addGestureRecognizer(pinch)
     }
