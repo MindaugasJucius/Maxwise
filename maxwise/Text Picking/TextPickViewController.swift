@@ -71,10 +71,26 @@ class TextPickViewController: UIViewController {
             .filter { $0.contains(tapLocation) }
             .first
 
-        guard let frame = containingFrame,
-            let image = imageView.image else {
+        guard let frame = containingFrame else {
             return
         }
+        
+        UIView.animate(withDuration: 0.35,
+                       delay: 0.0,
+                       usingSpringWithDamping: 1.0,
+                       initialSpringVelocity: 0.6,
+                       animations: {
+            self.scrollView.setZoomScale(1.0, animated: false)
+        }, completion: { completed in
+            self.handleRecognition(in: frame)
+        })
+    }
+    
+    private func handleRecognition(in frame: CGRect) {
+        guard let image = imageView.image else {
+            return
+        }
+        
         let rectangleOriginInTrackingImageRect = frame.origin.y - trackingImageRect.origin.y
         let imageScaleMatchingContainerRect = CGRect.init(x: frame.origin.x * (image.size.width / trackingImageRect.width),
                                                           y: rectangleOriginInTrackingImageRect * (image.size.height / trackingImageRect.height),
