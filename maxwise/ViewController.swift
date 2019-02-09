@@ -43,6 +43,14 @@ class ViewController: UIViewController {
     @IBAction func takePhoto(_ sender: Any) {
         cameraController.takePhoto()
     }
+
+    @IBAction func presentImagePicker(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true, completion: nil)
+    }
     
     @objc private func pinch(_ pinch: UIPinchGestureRecognizer) {
         guard let device = cameraController.backCamera else { return }
@@ -84,6 +92,32 @@ extension ViewController: PictureRetrievalDelegate {
     }
 }
 
+extension ViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage,
+            let cgImage = image.cgImage else {
+            return
+        }
+
+        let orientation = CGImagePropertyOrientation.init(image.imageOrientation)
+        let textDetectionController = TextPickViewController.init(cgImage: cgImage,
+                                                                  orientation: orientation)
+        dismiss(animated: true) { [weak self] in
+            self?.present(textDetectionController,
+                          animated: true,
+                          completion: nil)
+        }
+
+    }
+    
+}
+
 extension UIImage.Orientation {
     init(_ cgOrientation: CGImagePropertyOrientation) {
         switch cgOrientation {
@@ -99,3 +133,17 @@ extension UIImage.Orientation {
     }
 }
 
+extension CGImagePropertyOrientation {
+    init(_ uiOrientation: UIImage.Orientation) {
+        switch uiOrientation {
+        case .up: self = .up
+        case .upMirrored: self = .upMirrored
+        case .down: self = .down
+        case .downMirrored: self = .downMirrored
+        case .left: self = .left
+        case .leftMirrored: self = .leftMirrored
+        case .right: self = .right
+        case .rightMirrored: self = .rightMirrored
+        }
+    }
+}

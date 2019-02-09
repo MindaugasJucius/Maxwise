@@ -18,17 +18,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1H-3B-mKn">
-                                <rect key="frame" x="164.5" y="617" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="167" y="617" width="41" height="30"/>
+                                <state key="normal" title="Shoot"/>
                                 <connections>
                                     <action selector="takePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZJ5-WH-RR1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dd7-7S-F6E">
+                                <rect key="frame" x="16" y="617" width="48" height="30"/>
+                                <state key="normal" title="Gallery"/>
+                                <connections>
+                                    <action selector="presentImagePicker:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mIT-Mb-We9"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Dd7-7S-F6E" secondAttribute="bottom" constant="20" id="5CS-YZ-c67"/>
                             <constraint firstItem="S1H-3B-mKn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="71h-zR-8yM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="S1H-3B-mKn" secondAttribute="bottom" constant="20" id="hLE-ZJ-N9Y"/>
+                            <constraint firstItem="Dd7-7S-F6E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="rPo-5j-KmD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
