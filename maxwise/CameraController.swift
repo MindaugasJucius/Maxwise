@@ -55,12 +55,14 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
             return
         }
         
-        guard let orientation = photo.metadata[kCGImagePropertyOrientation as String] as? NSNumber, let cgImageEXIFOrientation = CGImagePropertyOrientation(rawValue: orientation.uint32Value) else {
-            fatalError("failed to retrieve CGImagePropertyOrientation")
-        }
-        
+//        guard let orientation = photo.metadata[kCGImagePropertyOrientation as String] as? NSNumber,
+//            let cgImageEXIFOrientation = CGImagePropertyOrientation(rawValue: orientation.uint32Value) else {
+//            fatalError("failed to retrieve CGImagePropertyOrientation")
+//        }
+
+        let deviceOrientation = UIDevice.current.orientation.exifOrientation()
         delegate?.captured(image: cgImage,
-                                  orientation: cgImageEXIFOrientation)
+                                  orientation: deviceOrientation)
     }
     
 }

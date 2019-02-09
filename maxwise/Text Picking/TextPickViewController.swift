@@ -150,8 +150,9 @@ extension TextPickViewController: TextDetectionDelegate {
             
             let trackingView = UIView(frame: .zero)
             trackingView.frame = CGRect(origin: origin, size: size)
-            trackingView.layer.borderWidth = 2
+            trackingView.layer.borderWidth = 1.5
             trackingView.layer.borderColor = UIColor.green.cgColor
+            trackingView.layer.cornerRadius = 2
             return trackingView
         }
         

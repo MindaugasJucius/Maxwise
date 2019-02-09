@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		24128F3758533D81B8C252A7 /* Pods_maxwise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */; };
+		5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */; };
 		5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD5220C6011002CD12D /* TextDetectionController.swift */; };
 		5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD7220C62E0002CD12D /* TextPickViewController.swift */; };
 		5F470BDA220C62E0002CD12D /* TextPickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F470BD8220C62E0002CD12D /* TextPickViewController.xib */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maxwise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maxwiseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Orientation+Extensions.swift"; sourceTree = "<group>"; };
 		5F470BD5220C6011002CD12D /* TextDetectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetectionController.swift; sourceTree = "<group>"; };
 		5F470BD7220C62E0002CD12D /* TextPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPickViewController.swift; sourceTree = "<group>"; };
 		5F470BD8220C62E0002CD12D /* TextPickViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPickViewController.xib; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				5F6878782207728C00F4FE7C /* DigitRecognizer.swift */,
 				5F68787A2207744D00F4FE7C /* CameraController.swift */,
 				5F470BDB220C6715002CD12D /* Text Picking */,
+				5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
+				5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
