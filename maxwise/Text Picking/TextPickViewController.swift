@@ -68,28 +68,25 @@ class TextPickViewController: UIViewController {
     @objc private func tapOccured(gesture: UITapGestureRecognizer) {
         let tapLocation = gesture.location(in: trackingContainer)
         
-        let containingScaledFrame = trackingContainer.subviews
+        let containingFrame = trackingContainer.subviews
             .map { $0.frame }
             .filter { $0.contains(tapLocation) }
             .first
 
-        guard let frame = containingScaledFrame else {
+        guard let frame = containingFrame,
+            let image = imageView.image else {
             return
         }
         
-        let insetFactor = CGFloat(0.1)
-        let insetCroppingFrame = frame.insetBy(dx: -frame.width * insetFactor,
-                                               dy: -frame.height * insetFactor)
+        let imageScaleMatchingContainerRect = CGRect.init(x: frame.minX * (image.size.width / trackingImageRect.width),
+                                                          y: frame.minY * (image.size.height / trackingImageRect.height),
+                                                          width: (frame.width / trackingImageRect.width) * image.size.width,
+                                                          height: (frame.height / trackingImageRect.height) * image.size.height)
         
-        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, 0);
-        imageView.drawHierarchy(in: imageView.bounds, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-    
-        UIGraphicsBeginImageContext(insetCroppingFrame.size)
-        let origin = CGPoint(x: -insetCroppingFrame.origin.x, y: -insetCroppingFrame.origin.y)
-        image?.draw(at: origin)
+        UIGraphicsBeginImageContext(imageScaleMatchingContainerRect.size)
+        let origin = CGPoint(x: -imageScaleMatchingContainerRect.origin.x,
+                             y: -imageScaleMatchingContainerRect.origin.y)
+        image.draw(at: origin)
         let tmpImg = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -139,8 +136,6 @@ extension TextPickViewController: TextDetectionDelegate {
         layers.forEach {
             trackingContainer.addSubview($0)
         }
-
-        //trackingContainer.transform = CGAffineTransform.init(scaleX: scaleRatio, y: scaleRatio)
     }
     
 }
