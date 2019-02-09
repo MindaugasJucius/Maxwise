@@ -12,7 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextPickViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
                 <outlet property="closeButton" destination="X0u-Ku-pWY" id="9ev-vh-yua"/>
-                <outlet property="imageView" destination="Mv5-Z5-YDg" id="8lq-Bu-ab9"/>
+                <outlet property="imageView" destination="UPj-Vx-dEc" id="yE5-ZE-EuG"/>
+                <outlet property="scrollView" destination="tPt-b0-dS8" id="QdG-1W-4Gl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,9 +22,22 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mv5-Z5-YDg">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPt-b0-dS8">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                </imageView>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UPj-Vx-dEc">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="UPj-Vx-dEc" firstAttribute="leading" secondItem="tPt-b0-dS8" secondAttribute="leading" id="4qm-yB-e8e"/>
+                        <constraint firstAttribute="trailing" secondItem="UPj-Vx-dEc" secondAttribute="trailing" id="Und-2L-cWu"/>
+                        <constraint firstItem="UPj-Vx-dEc" firstAttribute="top" secondItem="tPt-b0-dS8" secondAttribute="top" id="Zn0-at-KVC"/>
+                        <constraint firstItem="UPj-Vx-dEc" firstAttribute="centerX" secondItem="tPt-b0-dS8" secondAttribute="centerX" id="lEa-On-8JF"/>
+                        <constraint firstItem="UPj-Vx-dEc" firstAttribute="centerY" secondItem="tPt-b0-dS8" secondAttribute="centerY" id="uN8-zM-yXm"/>
+                        <constraint firstAttribute="bottom" secondItem="UPj-Vx-dEc" secondAttribute="bottom" id="xBE-VQ-TvM"/>
+                    </constraints>
+                </scrollView>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYH-Yw-7yC">
                     <rect key="frame" x="164.5" y="627" width="46" height="30"/>
                     <subviews>
@@ -39,14 +53,15 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="tPt-b0-dS8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="29l-UY-STR"/>
                 <constraint firstItem="aYH-Yw-7yC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="32y-eq-hnY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="aYH-Yw-7yC" secondAttribute="bottom" constant="10" id="5VE-YB-WWi"/>
-                <constraint firstAttribute="trailing" secondItem="Mv5-Z5-YDg" secondAttribute="trailing" id="TDs-il-lWw"/>
-                <constraint firstItem="Mv5-Z5-YDg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VA9-uu-TXF"/>
-                <constraint firstAttribute="bottom" secondItem="Mv5-Z5-YDg" secondAttribute="bottom" id="Z6m-vV-9Oe"/>
-                <constraint firstItem="Mv5-Z5-YDg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jWE-Pe-KTM"/>
+                <constraint firstItem="tPt-b0-dS8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GMq-fx-03B"/>
+                <constraint firstItem="tPt-b0-dS8" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="Vcu-eJ-fhZ"/>
+                <constraint firstItem="tPt-b0-dS8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Wen-DC-XIq"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="117.59999999999999" y="48.125937031484263"/>
         </view>
     </objects>
 </document>

@@ -14,6 +14,7 @@ class TextPickViewController: UIViewController {
     private let textDetectionController = TextDetectionController()
     private let digitRecognizer = DigitRecognizer()
     
+    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var closeButton: UIButton!
     
@@ -47,11 +48,15 @@ class TextPickViewController: UIViewController {
 
         view.insertSubview(trackingContainer, belowSubview: closeButton)
         trackingContainer.frame = trackingImageRect
-        addTapRecognizer()
+        trackingContainer.isUserInteractionEnabled = false
         
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
         imageView.image = uiImage
+        addTapRecognizer()
+        
+        scrollView.maximumZoomScale = 3
+        scrollView.delegate = self
         
         let ciImage = CIImage(cgImage: cgImage)
         textDetectionController.handle(ciImage: ciImage, orientation: orientation)
@@ -60,7 +65,7 @@ class TextPickViewController: UIViewController {
     
     private func addTapRecognizer() {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapOccured(gesture:)))
-        trackingContainer.addGestureRecognizer(recognizer)
+        imageView.addGestureRecognizer(recognizer)
     }
     
     @objc private func tapOccured(gesture: UITapGestureRecognizer) {
@@ -111,6 +116,14 @@ class TextPickViewController: UIViewController {
     @IBAction private func closeTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+}
+
+extension TextPickViewController: UIScrollViewDelegate {
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+    
 }
 
 extension TextPickViewController: TextDetectionDelegate {
