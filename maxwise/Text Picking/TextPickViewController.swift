@@ -12,7 +12,7 @@ import AVKit
 class TextPickViewController: UIViewController {
 
     private let textDetectionController = TextDetectionController()
-    private let digitRecognizer = DigitRecognizer()
+    private let viewModel = TextPickViewModel()
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!
@@ -100,11 +100,18 @@ class TextPickViewController: UIViewController {
         image.draw(at: origin)
         let tmpImg = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
-        digitRecognizer.recognize(image: tmpImg) { [weak self] result in
-            let userVisibleString = result ?? "Failed to recognize 😬"
-            self?.addResultView(text: userVisibleString)
+
+        viewModel.performRecognition(in: tmpImg) { [weak self] result in
+            let resultText: String
+            switch result {
+            case .success(let value):
+                resultText = String(value)
+            case .error:
+                resultText = "Failed to recognize 😬"
+            }
+            self?.addResultView(text: resultText)
         }
+
     }
     
     private func addResultView(text: String) {

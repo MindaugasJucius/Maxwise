@@ -22,7 +22,7 @@ class DigitRecognizer {
                                                      configFileNames: nil,
                                                      absoluteDataPath: Bundle.main.bundlePath,
                                                      engineMode: .tesseractCubeCombined) else {
-                                                        return
+            return
         }
         operation.tesseract.image = image
         operation.tesseract.pageSegmentationMode = .singleBlock
