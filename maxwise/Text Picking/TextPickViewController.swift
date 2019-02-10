@@ -101,7 +101,6 @@ class TextPickViewController: UIViewController {
         let tmpImg = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        //imageView.image = tmpImg
         digitRecognizer.recognize(image: tmpImg) { [weak self] result in
             let userVisibleString = result ?? "Failed to recognize 😬"
             self?.addResultView(text: userVisibleString)
@@ -115,8 +114,8 @@ class TextPickViewController: UIViewController {
         let constraints = [
             blurView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: blurView.trailingAnchor, multiplier: 1),
-            closeButton.topAnchor.constraint(equalTo: blurView.bottomAnchor, constant: 120),
-            blurView.heightAnchor.constraint(equalToConstant: 50),
+            closeButton.topAnchor.constraint(equalToSystemSpacingBelow: blurView.bottomAnchor, multiplier: 3),
+            blurView.heightAnchor.constraint(equalToConstant: 50)
         ]
         NSLayoutConstraint.activate(constraints)
     }

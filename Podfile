@@ -2,15 +2,15 @@
 # platform :ios, '9.0'
 
 target 'maxwise' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+
   use_frameworks!
 
   pod 'TesseractOCRiOS'
-  # Pods for maxwise
+  pod 'RealmSwift'
 
   target 'maxwiseTests' do
     inherit! :search_paths
-    # Pods for testing
+
   end
 
 end
