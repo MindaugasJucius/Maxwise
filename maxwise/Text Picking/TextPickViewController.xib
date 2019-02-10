@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextPickViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
                 <outlet property="closeButton" destination="X0u-Ku-pWY" id="9ev-vh-yua"/>
+                <outlet property="createEntryButton" destination="Dvd-U7-HFu" id="60E-hh-Gp5"/>
                 <outlet property="cropImageView" destination="I7P-GD-dQ3" id="wqr-qM-GL0"/>
                 <outlet property="imageView" destination="UPj-Vx-dEc" id="yE5-ZE-EuG"/>
                 <outlet property="scrollView" destination="tPt-b0-dS8" id="QdG-1W-4Gl"/>
@@ -42,14 +43,21 @@
                         <constraint firstAttribute="bottom" secondItem="UPj-Vx-dEc" secondAttribute="bottom" id="xBE-VQ-TvM"/>
                     </constraints>
                 </scrollView>
-                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYH-Yw-7yC">
-                    <rect key="frame" x="164.5" y="627" width="46" height="30"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="mgE-mb-HvV">
+                    <rect key="frame" x="0.0" y="617" width="375" height="30"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0u-Ku-pWY">
-                            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                            <state key="normal" title="Button"/>
+                            <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
+                            <state key="normal" title="Close"/>
                             <connections>
                                 <action selector="closeTapped:" destination="-1" eventType="touchUpInside" id="e4H-Ur-4Se"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvd-U7-HFu">
+                            <rect key="frame" x="138" y="0.0" width="237" height="30"/>
+                            <state key="normal" title="Add entry"/>
+                            <connections>
+                                <action selector="addEntryTapped:" destination="-1" eventType="touchUpInside" id="PF5-ZH-cLZ"/>
                             </connections>
                         </button>
                     </subviews>
@@ -58,15 +66,17 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="tPt-b0-dS8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="29l-UY-STR"/>
-                <constraint firstItem="aYH-Yw-7yC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="32y-eq-hnY"/>
                 <constraint firstAttribute="bottom" secondItem="I7P-GD-dQ3" secondAttribute="bottom" id="53x-KZ-EIU"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="aYH-Yw-7yC" secondAttribute="bottom" constant="10" id="5VE-YB-WWi"/>
+                <constraint firstItem="mgE-mb-HvV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="F7b-3Q-iAg"/>
                 <constraint firstItem="tPt-b0-dS8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GMq-fx-03B"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="I7P-GD-dQ3" secondAttribute="trailing" id="Oar-Q8-Pja"/>
                 <constraint firstItem="I7P-GD-dQ3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="OuT-Yt-n00"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mgE-mb-HvV" secondAttribute="trailing" id="PCx-w6-DhA"/>
                 <constraint firstItem="tPt-b0-dS8" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="Vcu-eJ-fhZ"/>
                 <constraint firstItem="tPt-b0-dS8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Wen-DC-XIq"/>
                 <constraint firstItem="I7P-GD-dQ3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="caY-wi-aYt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mgE-mb-HvV" secondAttribute="bottom" constant="20" id="psS-QU-PNg"/>
+                <constraint firstItem="mgE-mb-HvV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yzk-sY-FK2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="117.59999999999999" y="48.125937031484263"/>

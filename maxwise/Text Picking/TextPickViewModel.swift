@@ -8,6 +8,8 @@ enum RecognitionResult {
 class TextPickViewModel {
     
     private let digitRecognizer = DigitRecognizer()
+    private let expenseEntryModelController = ExpenseEntryModelController()
+    private var lastRecognizedFormattedValue: Double = 0
     
     private lazy var formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -31,6 +33,11 @@ class TextPickViewModel {
         }
     }
     
+    func performModelCreation(image: UIImage) {
+        expenseEntryModelController.create(image: image,
+                                           recognizedDouble: lastRecognizedFormattedValue)
+    }
+    
     private func convertRecognizedString(value: String?) -> RecognitionResult {
         guard let value = value else {
             return .error
@@ -42,6 +49,8 @@ class TextPickViewModel {
         guard let doubleValue = formatter.number(from: trimmedResult)?.doubleValue else {
             return .error
         }
+        
+        lastRecognizedFormattedValue = doubleValue
         
         return .success(doubleValue)
     }

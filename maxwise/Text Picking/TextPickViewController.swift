@@ -18,6 +18,7 @@ class TextPickViewController: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var cropImageView: UIImageView!
     @IBOutlet private weak var closeButton: UIButton!
+    @IBOutlet private weak var createEntryButton: UIButton!
     
     private var trackingImageRect = CGRect.zero
     
@@ -129,6 +130,13 @@ class TextPickViewController: UIViewController {
 
     @IBAction private func closeTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func addEntryTapped(_ sender: Any) {
+        guard let image = imageView.image else {
+            return
+        }
+        viewModel.performModelCreation(image: image)
     }
 }
 
