@@ -48,6 +48,11 @@ class ViewController: UIViewController {
         cameraController.takePhoto()
     }
 
+    @IBAction func statsTapped(_ sender: Any) {
+        let expensesViewController = ExpensesViewController()
+        present(expensesViewController, animated: true, completion: nil)
+    }
+    
     @IBAction func presentImagePicker(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.delegate = self
