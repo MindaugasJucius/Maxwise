@@ -23,6 +23,10 @@ class ExpensesViewController: UIViewController {
         tableView.dataSource = self
         tableView.estimatedRowHeight = 105
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+
+        view.backgroundColor = UIColor.init(named: "background")
     }
 
     @IBAction func closeTapped(_ sender: Any) {

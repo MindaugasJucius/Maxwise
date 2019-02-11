@@ -17,6 +17,11 @@ class ExpenseTableViewCell: UITableViewCell {
         
     override func awakeFromNib() {
         super.awakeFromNib()
+        amountLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        titleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        dateLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        dateLabel.textColor = .darkGray
+        backgroundColor = .clear
         
     }
 

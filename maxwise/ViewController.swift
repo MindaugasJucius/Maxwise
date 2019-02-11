@@ -33,6 +33,11 @@ class ViewController: UIViewController {
         view.addGestureRecognizer(pinch)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        statsTapped(self)
+    }
+    
     func addCameraLayer() {
         let cameraLayer = AVCaptureVideoPreviewLayer(session: cameraController.captureSession)
         cameraLayer.frame = view.bounds

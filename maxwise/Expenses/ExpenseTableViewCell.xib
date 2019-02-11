@@ -18,23 +18,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="104.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Iwp-xD-Tz1">
-                        <rect key="frame" x="16" y="21.5" width="42" height="61.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFP-U7-bud">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="104.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Iwp-xD-Tz1">
+                        <rect key="frame" x="24" y="21.5" width="42" height="61.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crh-0s-oQu">
-                                <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="42" height="17.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ql0-Gb-2PR">
-                                <rect key="frame" x="0.0" y="20.5" width="42" height="20.5"/>
+                                <rect key="frame" x="0.0" y="22.5" width="42" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4o-bh-EhT">
-                                <rect key="frame" x="0.0" y="41" width="42" height="20.5"/>
+                                <rect key="frame" x="0.0" y="45.5" width="42" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -50,11 +54,15 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="leadingMargin" secondItem="Iwp-xD-Tz1" secondAttribute="leading" id="44Y-yN-Ey0"/>
+                    <constraint firstItem="Iwp-xD-Tz1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" multiplier="1.5" id="44Y-yN-Ey0"/>
                     <constraint firstItem="TTZ-3O-VTr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AFW-rl-pOv"/>
                     <constraint firstItem="Iwp-xD-Tz1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10.5" id="FIO-tV-cl1"/>
-                    <constraint firstAttribute="trailing" secondItem="TTZ-3O-VTr" secondAttribute="trailing" constant="16" id="Gdz-1y-z4q"/>
+                    <constraint firstItem="TTZ-3O-VTr" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Gdz-1y-z4q"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Iwp-xD-Tz1" secondAttribute="bottom" constant="11" id="K3J-5Q-lqe"/>
+                    <constraint firstItem="OFP-U7-bud" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-11" id="MYU-uu-Dqn"/>
+                    <constraint firstItem="OFP-U7-bud" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="Ybz-GK-AIe"/>
+                    <constraint firstAttribute="trailing" secondItem="OFP-U7-bud" secondAttribute="trailingMargin" constant="8" id="mf4-ja-ZAu"/>
+                    <constraint firstAttribute="bottom" secondItem="OFP-U7-bud" secondAttribute="bottomMargin" constant="8" id="zN6-2X-Lrq"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
