@@ -17,13 +17,13 @@ class ExpenseTableViewCell: UITableViewCell {
         
     override func awakeFromNib() {
         super.awakeFromNib()
-        expenseImageView.contentMode = .scaleToFill
+        
     }
 
-    func configure(expenseDTO: ExpenseEntryDTO) {
-        amountLabel.text = String(expenseDTO.amount)
+    func configure(expenseDTO: ExpensePresentationDTO) {
+        amountLabel.text = expenseDTO.currencyAmount
         titleLabel.text = expenseDTO.title
-        dateLabel.text = expenseDTO.date
+        dateLabel.text = expenseDTO.formattedDate
         expenseImageView.image = expenseDTO.image
     }
     

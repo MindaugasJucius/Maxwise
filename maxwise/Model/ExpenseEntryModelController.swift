@@ -1,23 +1,17 @@
 import RealmSwift
 
 struct ExpenseEntryDTO {
+    let id: String
     let amount: Double
     let title: String
-    let date: String
+    let date: Date
     let image: UIImage?
 }
 
 class ExpenseEntryModelController {
     
-    private lazy var formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.locale = Locale.current
-        formatter.dateFormat = "yyyy-MM-dd hh:mm"
-        return formatter
-    }()
-    
     func create(image: UIImage, recognizedDouble: Double) {
-        guard let imageData = image.jpegData(compressionQuality: 1) else {
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             return
         }
         
@@ -52,11 +46,11 @@ class ExpenseEntryModelController {
                 let deserializedImage = UIImage(data: imageData)
                 image = deserializedImage
             }
-            let formattedDate = formatter.string(from: entry.creationDate)
             
-            let dto = ExpenseEntryDTO(amount: entry.amount,
+            let dto = ExpenseEntryDTO(id: entry.id,
+                                      amount: entry.amount,
                                       title: entry.title,
-                                      date: formattedDate,
+                                      date: entry.creationDate,
                                       image: image)
             return dto
         }

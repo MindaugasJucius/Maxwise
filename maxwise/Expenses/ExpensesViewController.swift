@@ -3,7 +3,7 @@ import UIKit
 class ExpensesViewController: UIViewController {
 
     private let viewModel = ExpensesViewModel()
-    var expenses = [ExpenseEntryDTO]()
+    var expenses = [ExpensePresentationDTO]()
     
     @IBOutlet private weak var tableView: UITableView!
 
@@ -21,20 +21,12 @@ class ExpensesViewController: UIViewController {
         let nib = UINib.init(nibName: "ExpenseTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ExpenseTableViewCell")
         tableView.dataSource = self
-        //tableView.estimatedRowHeight = 105
-        tableView.delegate = self
+        tableView.estimatedRowHeight = 105
+        tableView.rowHeight = UITableView.automaticDimension
     }
 
     @IBAction func closeTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-    }
-    
-}
-
-extension ExpensesViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 105
     }
     
 }

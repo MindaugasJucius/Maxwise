@@ -44,21 +44,19 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TTZ-3O-VTr">
                         <rect key="frame" x="242.5" y="21.5" width="61.5" height="61.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="TTZ-3O-VTr" secondAttribute="height" multiplier="1:1" id="QNP-yc-UuP"/>
+                            <constraint firstAttribute="height" constant="61.5" id="EAx-j6-X88"/>
+                            <constraint firstAttribute="width" secondItem="TTZ-3O-VTr" secondAttribute="height" multiplier="1:1" id="bxQ-rh-LM4"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="leadingMargin" secondItem="Iwp-xD-Tz1" secondAttribute="leading" id="44Y-yN-Ey0"/>
                     <constraint firstItem="TTZ-3O-VTr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AFW-rl-pOv"/>
+                    <constraint firstItem="Iwp-xD-Tz1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10.5" id="FIO-tV-cl1"/>
                     <constraint firstAttribute="trailing" secondItem="TTZ-3O-VTr" secondAttribute="trailing" constant="16" id="Gdz-1y-z4q"/>
-                    <constraint firstItem="TTZ-3O-VTr" firstAttribute="height" secondItem="Iwp-xD-Tz1" secondAttribute="height" id="KHd-3M-XiB"/>
-                    <constraint firstItem="Iwp-xD-Tz1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="kr3-tV-QWH"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Iwp-xD-Tz1" secondAttribute="bottom" constant="11" id="K3J-5Q-lqe"/>
                 </constraints>
             </tableViewCellContentView>
-            <constraints>
-                <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="Iwp-xD-Tz1" secondAttribute="bottom" constant="22" id="fbu-5w-f8n"/>
-                <constraint firstItem="Iwp-xD-Tz1" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" constant="21.5" id="lWV-ZG-Ctw"/>
-            </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="amountLabel" destination="crh-0s-oQu" id="KRA-dp-mhG"/>
