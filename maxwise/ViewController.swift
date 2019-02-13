@@ -33,11 +33,6 @@ class ViewController: UIViewController {
         view.addGestureRecognizer(pinch)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        statsTapped(self)
-    }
-    
     func addCameraLayer() {
         let cameraLayer = AVCaptureVideoPreviewLayer(session: cameraController.captureSession)
         cameraLayer.frame = view.bounds
@@ -50,7 +45,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func takePhoto(_ sender: Any) {
+        #if targetEnvironment(simulator)
+        let testImage = UIImage(named: "testImage")
+        guard let cgImage = testImage?.cgImage else {
+            return
+        }
+        captured(image: cgImage, orientation: .up)
+        #else
         cameraController.takePhoto()
+        #endif
     }
 
     @IBAction func statsTapped(_ sender: Any) {
