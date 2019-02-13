@@ -14,6 +14,13 @@ class ExpenseTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var expenseImageView: UIImageView!
+    private lazy var roundedView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .lightGray
+        view.layer.cornerRadius = 6
+        return view
+    }()
         
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +29,9 @@ class ExpenseTableViewCell: UITableViewCell {
         dateLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         dateLabel.textColor = .darkGray
         backgroundColor = .clear
-        
+        print(contentView.layoutMarginsGuide)
+        print(contentView.readableContentGuide)
+        configureRoundedView()
     }
 
     func configure(expenseDTO: ExpensePresentationDTO) {
@@ -30,6 +39,18 @@ class ExpenseTableViewCell: UITableViewCell {
         titleLabel.text = expenseDTO.title
         dateLabel.text = expenseDTO.formattedDate
         expenseImageView.image = expenseDTO.image
+    }
+    
+    private func configureRoundedView() {
+        contentView.insertSubview(roundedView, at: 0)
+        let multiplier = CGFloat(0.5)
+        let constraints = [
+            roundedView.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.readableContentGuide.leadingAnchor, multiplier: multiplier),
+            contentView.readableContentGuide.trailingAnchor.constraint(equalToSystemSpacingAfter: roundedView.trailingAnchor, multiplier: multiplier),
+            contentView.readableContentGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: roundedView.bottomAnchor, multiplier: multiplier),
+            roundedView.topAnchor.constraint(equalToSystemSpacingBelow: contentView.readableContentGuide.topAnchor, multiplier: multiplier)
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
     
 }

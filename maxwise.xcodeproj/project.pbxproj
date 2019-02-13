@@ -35,6 +35,7 @@
 		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
 		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
+		F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		89CE2E999663A6CE2DA3855D /* Pods-maxwise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxwise/Pods-maxwise.debug.xcconfig"; sourceTree = "<group>"; };
 		AE8AA537479DCA59B808B9D1 /* Pods-maxwise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwise.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwise/Pods-maxwise.release.xcconfig"; sourceTree = "<group>"; };
 		BFE3CBB719654DA4B77BCD30 /* Pods-maxwiseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		F739ED49C2038FB2BE827A0C /* Pods-maxwiseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 				5F470BDB220C6715002CD12D /* Text Picking */,
 				5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */,
 				5F20E0BA2210350000BAECF6 /* Expenses */,
+				F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -354,7 +357,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
@@ -369,7 +372,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C44BF7B71AA5AC9A68C83A93 /* [CP] Check Pods Manifest.lock */ = {
@@ -413,6 +416,7 @@
 				5F20E0B12210247C00BAECF6 /* ExpenseEntry.swift in Sources */,
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 				5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */,
+				F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */,
 				5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */,
 				5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */,
 			);
