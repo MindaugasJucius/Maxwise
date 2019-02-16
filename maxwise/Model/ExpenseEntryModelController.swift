@@ -10,29 +10,29 @@ struct ExpenseEntryDTO {
 
 class ExpenseEntryModelController {
     
-    func create(image: UIImage, recognizedDouble: Double) {
-        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-            return
-        }
+    @discardableResult
+    func create(user: User,
+                image: UIImage?,
+                recognizedDouble: Double,
+                title: String) -> ExpenseEntry {
         
         let expenseEntry = ExpenseEntry.init()
         expenseEntry.amount = recognizedDouble
-        expenseEntry.imageData = imageData
-        expenseEntry.title = "Groceries"
+        expenseEntry.imageData = image?.jpegData(compressionQuality: 0.5)
+        expenseEntry.title = title
         expenseEntry.id = UUID.init().uuidString
-        
+
         guard let realm = try? Realm() else {
-            return
+            print("expense not persisted")
+            return expenseEntry
         }
 
         try? realm.write {
             realm.add(expenseEntry)
+            user.entries.append(expenseEntry)
         }
-    
-        print("all expenses")
-        realm.objects(ExpenseEntry.self).forEach { entry in
-            print(entry.id, entry.amount)
-        }
+        
+        return expenseEntry
     }
     
     func retrieveAllExpenseEntries() -> [ExpenseEntryDTO] {

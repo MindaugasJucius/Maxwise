@@ -34,5 +34,34 @@ class UserModelControllerTests: XCTestCase {
             XCTFail("\(error)")
         }
     }
+    
+    func testCreatingExpenseCurrentUserExpensesIncreases() {
+        let userModelController = UserModelController()
+        do {
+            let currentUser = try userModelController.currentUserOrCreate()
+            let expensesToCreateCount = 3
+            for amount in 0..<expensesToCreateCount {
+                _ = createExpense(user: currentUser,
+                                  amount: Double(amount),
+                                  title: "test expense")
+            }
+            XCTAssert(currentUser.entries.count == expensesToCreateCount)
+        } catch let error {
+            XCTFail("\(error)")
+        }
 
+    }
+
+}
+
+extension UserModelControllerTests {
+    
+    private func createExpense(user: User, amount: Double, title: String) -> ExpenseEntry {
+        let expenseModelController = ExpenseEntryModelController()
+        return expenseModelController.create(user: user,
+                                             image: nil,
+                                             recognizedDouble: amount,
+                                             title: title)
+    }
+    
 }

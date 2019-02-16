@@ -9,6 +9,7 @@ class TextPickViewModel {
     
     private let digitRecognizer = DigitRecognizer()
     private let expenseEntryModelController = ExpenseEntryModelController()
+    private let userModelController = UserModelController()
     private var lastRecognizedFormattedValue: Double = 0
     
     private lazy var formatter: NumberFormatter = {
@@ -34,8 +35,13 @@ class TextPickViewModel {
     }
     
     func performModelCreation(image: UIImage) {
-        expenseEntryModelController.create(image: image,
-                                           recognizedDouble: lastRecognizedFormattedValue)
+        guard let user = try? userModelController.currentUserOrCreate() else {
+            return
+        }
+        expenseEntryModelController.create(user: user,
+                                           image: image,
+                                           recognizedDouble: lastRecognizedFormattedValue,
+                                           title: "Groceries")
     }
     
     private func convertRecognizedString(value: String?) -> RecognitionResult {
