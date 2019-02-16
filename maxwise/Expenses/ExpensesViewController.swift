@@ -21,7 +21,7 @@ class ExpensesViewController: UIViewController {
         let nib = UINib.init(nibName: "ExpenseTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ExpenseTableViewCell")
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 105
+        tableView.estimatedRowHeight = 85
         tableView.rowHeight = UITableView.automaticDimension
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
