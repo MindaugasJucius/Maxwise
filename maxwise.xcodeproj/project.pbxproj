@@ -25,7 +25,7 @@
 		5F4A3B71220720870016BCC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B6F220720870016BCC9 /* Main.storyboard */; };
 		5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B72220720880016BCC9 /* Assets.xcassets */; };
 		5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B74220720880016BCC9 /* LaunchScreen.storyboard */; };
-		5F4A3B81220720880016BCC9 /* maxwiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B80220720880016BCC9 /* maxwiseTests.swift */; };
+		5F4A3B81220720880016BCC9 /* UserModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B80220720880016BCC9 /* UserModelControllerTests.swift */; };
 		5F68787022073D8800F4FE7C /* TesseractOCR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F68786F22073D8800F4FE7C /* TesseractOCR.framework */; };
 		5F6878752207419600F4FE7C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6878742207419600F4FE7C /* libz.tbd */; };
 		5F6878772207425400F4FE7C /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 5F6878762207425400F4FE7C /* tessdata */; };
@@ -33,6 +33,7 @@
 		5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F68787A2207744D00F4FE7C /* CameraController.swift */; };
 		5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F86C57122108C9B005CFF9E /* ExpensesViewModel.swift */; };
 		5F9DE3782217FF0E008CCB94 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE3772217FF0E008CCB94 /* User.swift */; };
+		5F9DE37A22188984008CCB94 /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE37922188984008CCB94 /* UserModelController.swift */; };
 		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
 		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
@@ -72,7 +73,7 @@
 		5F4A3B75220720880016BCC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F4A3B77220720880016BCC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F4A3B7C220720880016BCC9 /* maxwiseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = maxwiseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F4A3B80220720880016BCC9 /* maxwiseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maxwiseTests.swift; sourceTree = "<group>"; };
+		5F4A3B80220720880016BCC9 /* UserModelControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelControllerTests.swift; sourceTree = "<group>"; };
 		5F4A3B82220720880016BCC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F68786F22073D8800F4FE7C /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6878742207419600F4FE7C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -81,6 +82,7 @@
 		5F68787A2207744D00F4FE7C /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		5F86C57122108C9B005CFF9E /* ExpensesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesViewModel.swift; sourceTree = "<group>"; };
 		5F9DE3772217FF0E008CCB94 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5F9DE37922188984008CCB94 /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
 		5FFD2C182207321800DDFBE5 /* TesseractOCR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TesseractOCR.framework; path = Carthage/Build/iOS/Static/TesseractOCR.framework; sourceTree = "<group>"; };
 		5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		5FFD2C1E2207342100DDFBE5 /* TesseractOCRiOS.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = TesseractOCRiOS.podspec; path = "Carthage/Checkouts/Tesseract-OCR-iOS/TesseractOCRiOS.podspec"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				5F20E0B02210247C00BAECF6 /* ExpenseEntry.swift */,
 				5F20E0B22210265200BAECF6 /* ExpenseEntryModelController.swift */,
 				5F9DE3772217FF0E008CCB94 /* User.swift */,
+				5F9DE37922188984008CCB94 /* UserModelController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,7 +197,7 @@
 		5F4A3B7F220720880016BCC9 /* maxwiseTests */ = {
 			isa = PBXGroup;
 			children = (
-				5F4A3B80220720880016BCC9 /* maxwiseTests.swift */,
+				5F4A3B80220720880016BCC9 /* UserModelControllerTests.swift */,
 				5F4A3B82220720880016BCC9 /* Info.plist */,
 			);
 			path = maxwiseTests;
@@ -418,6 +421,7 @@
 				5F20E0B32210265200BAECF6 /* ExpenseEntryModelController.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
 				5F20E0B12210247C00BAECF6 /* ExpenseEntry.swift in Sources */,
+				5F9DE37A22188984008CCB94 /* UserModelController.swift in Sources */,
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 				5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */,
 				F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */,
@@ -430,7 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F4A3B81220720880016BCC9 /* maxwiseTests.swift in Sources */,
+				5F4A3B81220720880016BCC9 /* UserModelControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
