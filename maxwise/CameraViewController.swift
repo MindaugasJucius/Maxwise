@@ -9,7 +9,7 @@
 import UIKit
 import AVKit
 
-class ViewController: UIViewController {
+class CameraViewController: UIViewController {
         
     private let digitRecognizer = DigitRecognizer()
     private let cameraController = CameraController()
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         view.addGestureRecognizer(pinch)
     }
     
-    func addCameraLayer() {
+    private func addCameraLayer() {
         let cameraLayer = AVCaptureVideoPreviewLayer(session: cameraController.captureSession)
         cameraLayer.frame = view.bounds
         cameraLayer.videoGravity = .resizeAspect
@@ -98,7 +98,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: PictureRetrievalDelegate {
+extension CameraViewController: PictureRetrievalDelegate {
     
     func captured(image: CGImage, orientation: CGImagePropertyOrientation) {
         let textDetectionController = TextPickViewController.init(cgImage: image,
@@ -107,7 +107,7 @@ extension ViewController: PictureRetrievalDelegate {
     }
 }
 
-extension ViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+extension CameraViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)

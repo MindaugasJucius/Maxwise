@@ -7,6 +7,7 @@ target 'maxwise' do
 
   pod 'TesseractOCRiOS'
   pod 'RealmSwift'
+  pod 'Tabman', '~> 2.1'
 
   target 'maxwiseTests' do
     inherit! :search_paths
