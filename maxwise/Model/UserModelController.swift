@@ -17,6 +17,12 @@ class UserModelController {
         
         return user
     }
+    
+    func amountSpent(forUser user: User) -> Double {
+        return user.entries.reduce(0.0) { (current, expenseEntry) -> Double in
+            return current + expenseEntry.amount
+        }
+    }
 
     private func createUser(realm: Realm) -> User {
         let user = User()

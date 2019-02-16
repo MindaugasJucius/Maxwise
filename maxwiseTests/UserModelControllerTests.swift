@@ -64,6 +64,27 @@ class UserModelControllerTests: XCTestCase {
             XCTFail("\(error)")
         }
     }
+    
+    func testCreatingExpensesForUsersIncreasesAmountSpent() {
+        let userModelController = UserModelController()
+        do {
+            let currentUser = try userModelController.currentUserOrCreate()
+            let amounts = [0.5, 10.6, 9.7]
+            let expensesToCreateCount = 3
+            for index in 0..<expensesToCreateCount {
+                _ = createExpense(user: currentUser,
+                                  amount: amounts[index],
+                                  title: "test expense")
+            }
+            
+            let amountSum = amounts.reduce(0.0, { return $0 + $1 })
+            let amountSpent = userModelController.amountSpent(forUser: currentUser)
+            XCTAssert(amountSum == amountSpent)
+        } catch let error {
+            XCTFail("\(error)")
+        }
+
+    }
 
 }
 
