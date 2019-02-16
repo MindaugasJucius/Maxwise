@@ -49,7 +49,20 @@ class UserModelControllerTests: XCTestCase {
         } catch let error {
             XCTFail("\(error)")
         }
-
+    }
+    
+    func testCreatingExpenseForUserOwnerIsUser() {
+        let userModelController = UserModelController()
+        do {
+            let currentUser = try userModelController.currentUserOrCreate()
+            let amount = 1.9
+            let expense = createExpense(user: currentUser,
+                                        amount: amount,
+                                        title: "test expense")
+            XCTAssert(expense.owners.first?.id == currentUser.id)
+        } catch let error {
+            XCTFail("\(error)")
+        }
     }
 
 }
