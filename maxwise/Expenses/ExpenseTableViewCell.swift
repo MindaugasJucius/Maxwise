@@ -16,6 +16,20 @@ class ExpenseTableViewCell: UITableViewCell {
     @IBOutlet private weak var expenseImageView: UIImageView!
     @IBOutlet private weak var roundedView: UIView!
     
+    private lazy var roundedLayer: CALayer = {
+        let layer = CALayer.init()
+        layer.backgroundColor = UIColor.white.cgColor
+        layer.cornerRadius = 6
+        return layer
+    }()
+    
+    override var frame: CGRect {
+        didSet {
+            roundedLayer.frame = bounds.inset(by: layoutMargins)
+        }
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         amountLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
@@ -23,8 +37,10 @@ class ExpenseTableViewCell: UITableViewCell {
         titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         dateLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         dateLabel.textColor = .lightGray
-        roundedView.layer.cornerRadius = 6
+        
         backgroundColor = .clear
+        accessoryType = .disclosureIndicator
+        layer.insertSublayer(roundedLayer, at: 0)
     }
 
     func configure(expenseDTO: ExpensePresentationDTO) {
