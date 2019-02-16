@@ -10,9 +10,7 @@ import UIKit
 import AVKit
 
 class ViewController: UIViewController {
-    
-    @IBOutlet private weak var captureButton: UIButton!
-    
+        
     private let digitRecognizer = DigitRecognizer()
     private let cameraController = CameraController()
     private var cameraLayer: AVCaptureVideoPreviewLayer?

@@ -22,7 +22,6 @@
 		5F470BDF220CA765002CD12D /* BlurLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BDE220CA765002CD12D /* BlurLabelView.swift */; };
 		5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B6B220720870016BCC9 /* AppDelegate.swift */; };
 		5F4A3B6E220720870016BCC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B6D220720870016BCC9 /* ViewController.swift */; };
-		5F4A3B71220720870016BCC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B6F220720870016BCC9 /* Main.storyboard */; };
 		5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B72220720880016BCC9 /* Assets.xcassets */; };
 		5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B74220720880016BCC9 /* LaunchScreen.storyboard */; };
 		5F4A3B81220720880016BCC9 /* UserModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B80220720880016BCC9 /* UserModelControllerTests.swift */; };
@@ -35,6 +34,7 @@
 		5F9DE3782217FF0E008CCB94 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE3772217FF0E008CCB94 /* User.swift */; };
 		5F9DE37A22188984008CCB94 /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE37922188984008CCB94 /* UserModelController.swift */; };
 		5F9DE37C22189582008CCB94 /* ExpenseEntryModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE37B22189582008CCB94 /* ExpenseEntryModelControllerTests.swift */; };
+		5F9DE37E2218A135008CCB94 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9DE37D2218A135008CCB94 /* ViewController.xib */; };
 		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
 		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
@@ -69,7 +69,6 @@
 		5F4A3B68220720870016BCC9 /* maxwise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maxwise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4A3B6B220720870016BCC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F4A3B6D220720870016BCC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5F4A3B70220720870016BCC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5F4A3B72220720880016BCC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F4A3B75220720880016BCC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F4A3B77220720880016BCC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		5F9DE3772217FF0E008CCB94 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5F9DE37922188984008CCB94 /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
 		5F9DE37B22189582008CCB94 /* ExpenseEntryModelControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryModelControllerTests.swift; sourceTree = "<group>"; };
+		5F9DE37D2218A135008CCB94 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		5FFD2C182207321800DDFBE5 /* TesseractOCR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TesseractOCR.framework; path = Carthage/Build/iOS/Static/TesseractOCR.framework; sourceTree = "<group>"; };
 		5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		5FFD2C1E2207342100DDFBE5 /* TesseractOCRiOS.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = TesseractOCRiOS.podspec; path = "Carthage/Checkouts/Tesseract-OCR-iOS/TesseractOCRiOS.podspec"; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 				5F6878762207425400F4FE7C /* tessdata */,
 				5F4A3B6B220720870016BCC9 /* AppDelegate.swift */,
 				5F4A3B6D220720870016BCC9 /* ViewController.swift */,
-				5F4A3B6F220720870016BCC9 /* Main.storyboard */,
+				5F9DE37D2218A135008CCB94 /* ViewController.xib */,
 				5F4A3B72220720880016BCC9 /* Assets.xcassets */,
 				5F4A3B74220720880016BCC9 /* LaunchScreen.storyboard */,
 				5F4A3B77220720880016BCC9 /* Info.plist */,
@@ -318,10 +318,10 @@
 			files = (
 				5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */,
 				5F20E0B9221034F300BAECF6 /* ExpensesViewController.xib in Resources */,
+				5F9DE37E2218A135008CCB94 /* ViewController.xib in Resources */,
 				5F6878772207425400F4FE7C /* tessdata in Resources */,
 				5F20E0BE2210352F00BAECF6 /* ExpenseTableViewCell.xib in Resources */,
 				5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */,
-				5F4A3B71220720870016BCC9 /* Main.storyboard in Resources */,
 				5F470BDA220C62E0002CD12D /* TextPickViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,22 +366,28 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AutoInsetter/AutoInsetter.framework",
+				"${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Tabman/Tabman.framework",
 				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AutoInsetter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pageboy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tabman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C44BF7B71AA5AC9A68C83A93 /* [CP] Check Pods Manifest.lock */ = {
@@ -453,14 +459,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5F4A3B6F220720870016BCC9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5F4A3B70220720870016BCC9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5F4A3B74220720880016BCC9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
