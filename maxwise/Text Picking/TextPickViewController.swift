@@ -132,7 +132,7 @@ class TextPickViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func addEntryTapped(_ sender: Any) {
+    @IBAction private func addEntryTapped(_ sender: Any) {
         guard let image = imageView.image else {
             return
         }
