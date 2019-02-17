@@ -10,9 +10,9 @@ import UIKit
 
 class ExpensesStatsViewController: UIViewController {
 
-    var amount: Double = 0.0 {
+    var amount: String = "" {
         didSet {
-            amountLabel.text = String(amount)
+            amountLabel.text = "Total amount spent: \(amount)"
         }
     }
     
@@ -23,7 +23,7 @@ class ExpensesStatsViewController: UIViewController {
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.black.withAlphaComponent(0.7)
-        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 23, weight: .bold)
         return label
     }()
     

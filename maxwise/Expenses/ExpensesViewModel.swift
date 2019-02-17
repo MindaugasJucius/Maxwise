@@ -27,7 +27,7 @@ class ExpensesViewModel {
         return formatter
     }()
     
-    var amountSpentChanged: ((Double) -> ())? {
+    var amountSpentChanged: ((String) -> ())? {
         didSet {
             beginObservingAmountChanges()
         }
@@ -35,13 +35,11 @@ class ExpensesViewModel {
         
     func expenseEntries() -> [ExpensePresentationDTO] {
         return modelController.retrieveAllExpenseEntries().map { dto in
-            let amountNumber = NSNumber(value: dto.amount)
-            let amount = currencyFormatter.string(from: amountNumber) ?? "😬"
             return ExpensePresentationDTO(id: dto.id,
-                                          currencyAmount: amount,
-                                          title: dto.title,
-                                          formattedDate: dateFormatter.string(from: dto.date),
-                                          image: dto.image)
+                                  currencyAmount: formatted(amount: dto.amount),
+                                  title: dto.title,
+                                  formattedDate: dateFormatter.string(from: dto.date),
+                                  image: dto.image)
         }
     }
     
@@ -50,9 +48,18 @@ class ExpensesViewModel {
             let observationBlock = amountSpentChanged else {
             return
         }
-        
-        userModelController.observeAmountSpent(forUser: currentUser,
-                                               amountChanged: observationBlock)
+        userModelController.observeAmountSpent(forUser: currentUser) { [weak self] amount in
+            guard let self = self else {
+                return
+            }
+            observationBlock(self.formatted(amount: amount))
+        }
+    }
+    
+    private func formatted(amount: Double) -> String {
+        let amountNumber = NSNumber(value: amount)
+        let formattedAmount = currencyFormatter.string(from: amountNumber) ?? "😬"
+        return formattedAmount
     }
     
 }
