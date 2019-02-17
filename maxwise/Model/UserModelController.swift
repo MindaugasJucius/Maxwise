@@ -21,20 +21,18 @@ class UserModelController {
         return user
     }
     
-    func amountSpent(forUser user: User) -> Double {
-        return user.entries.reduce(0.0) { (current, expenseEntry) -> Double in
-            return current + expenseEntry.amount
-        }
-    }
-    
     func observeAmountSpent(forUser user: User, amountChanged: @escaping (Double) -> ()) {
-        amountObservationToken = user.observe { change in
+        amountObservationToken = user.observe { [weak self] change in
+            guard let self = self else {
+                return
+            }
+            
             switch change {
             case .change(let properties):
                 for property in properties {
-                    if property.name == "entries" {
-                        
-                        //amonutChanged()
+                    if property.name == "entries",
+                        let entries = property.newValue as? List<ExpenseEntry> {
+                        amountChanged(self.amountSpent(entries: entries))
                     }
                 }
             case .error(let error):
@@ -45,6 +43,13 @@ class UserModelController {
         }
     }
 
+    
+    private func amountSpent(entries: List<ExpenseEntry>) -> Double {
+        return entries.reduce(0.0) { (current, expenseEntry) -> Double in
+            return current + expenseEntry.amount
+        }
+    }
+    
     private func createUser(realm: Realm) -> User {
         let user = User()
         user.id = UUID.init().uuidString
