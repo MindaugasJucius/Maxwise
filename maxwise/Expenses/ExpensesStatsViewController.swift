@@ -10,12 +10,27 @@ import UIKit
 
 class ExpensesStatsViewController: UIViewController {
 
+    var amount: Double = 0.0 {
+        didSet {
+            amountLabel.text = String(amount)
+        }
+    }
     
+    @IBOutlet private weak var blurView: BlurView!
+    
+    private lazy var amountLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.black.withAlphaComponent(0.7)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        blurView.contentView.addSubview(amountLabel)
+        amountLabel.fill(in: blurView.contentView)
     }
 
 }

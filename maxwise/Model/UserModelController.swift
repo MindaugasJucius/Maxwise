@@ -6,7 +6,6 @@ enum UserModelError: Error {
 
 class UserModelController {
     
-    var amountChanged: ((Double) -> ())?
     private var amountObservationToken: NotificationToken?
     
     func currentUserOrCreate() throws -> User {
@@ -22,6 +21,9 @@ class UserModelController {
     }
     
     func observeAmountSpent(forUser user: User, amountChanged: @escaping (Double) -> ()) {
+        // Initial value notification
+        amountChanged(amountSpent(entries: user.entries))
+        
         amountObservationToken = user.observe { [weak self] change in
             guard let self = self else {
                 return

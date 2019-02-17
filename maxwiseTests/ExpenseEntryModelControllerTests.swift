@@ -10,7 +10,5 @@ class ExpenseEntryModelControllerTests: XCTestCase {
             realm.deleteAll()
         }
     }
-    
 
-    
 }

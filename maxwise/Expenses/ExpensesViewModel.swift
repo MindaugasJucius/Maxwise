@@ -9,7 +9,10 @@ struct ExpensePresentationDTO {
 }
 
 class ExpensesViewModel {
-
+    
+    private let modelController = ExpenseEntryModelController()
+    private let userModelController = UserModelController()
+    
     private lazy var currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
@@ -24,8 +27,12 @@ class ExpensesViewModel {
         return formatter
     }()
     
-    private let modelController = ExpenseEntryModelController()
-    
+    var amountSpentChanged: ((Double) -> ())? {
+        didSet {
+            beginObservingAmountChanges()
+        }
+    }
+        
     func expenseEntries() -> [ExpensePresentationDTO] {
         return modelController.retrieveAllExpenseEntries().map { dto in
             let amountNumber = NSNumber(value: dto.amount)
@@ -36,6 +43,16 @@ class ExpensesViewModel {
                                           formattedDate: dateFormatter.string(from: dto.date),
                                           image: dto.image)
         }
+    }
+    
+    private func beginObservingAmountChanges() {
+        guard let currentUser = try? userModelController.currentUserOrCreate(),
+            let observationBlock = amountSpentChanged else {
+            return
+        }
+        
+        userModelController.observeAmountSpent(forUser: currentUser,
+                                               amountChanged: observationBlock)
     }
     
 }

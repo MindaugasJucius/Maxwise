@@ -27,6 +27,13 @@ class ExpensesViewController: UIViewController {
         addChild(expensesStatsViewController)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.amountSpentChanged = { [weak self] amount in
+            self?.expensesStatsViewController.amount = amount
+        }
+    }
+    
     private func configureTableView() {
         let cellNib = UINib.init(nibName: ExpenseTableViewCell.nibName, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: ExpenseTableViewCell.nibName)
