@@ -8,13 +8,12 @@
 
 import UIKit
 
-class BlurLabelView: UIVisualEffectView {
-
-    init(text: String) {
+class BlurView: UIVisualEffectView {
+    
+    init() {
         let blurEffect = UIBlurEffect(style: .light)
         super.init(effect: blurEffect)
         configure()
-        addLabel(text: text)
     }
     
     private func configure() {
@@ -24,18 +23,7 @@ class BlurLabelView: UIVisualEffectView {
         layer.borderWidth = 1
         layer.cornerRadius = 6
     }
-    
-    private func addLabel(text: String) {
-        let label = UILabel()
-        label.text = text
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.black.withAlphaComponent(0.7)
-        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-        contentView.addSubview(label)
-        label.fill(in: contentView)
-    }
-    
+        
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

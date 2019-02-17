@@ -19,7 +19,7 @@
 		5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD5220C6011002CD12D /* TextDetectionController.swift */; };
 		5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD7220C62E0002CD12D /* TextPickViewController.swift */; };
 		5F470BDA220C62E0002CD12D /* TextPickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F470BD8220C62E0002CD12D /* TextPickViewController.xib */; };
-		5F470BDF220CA765002CD12D /* BlurLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BDE220CA765002CD12D /* BlurLabelView.swift */; };
+		5F470BDF220CA765002CD12D /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BDE220CA765002CD12D /* BlurView.swift */; };
 		5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B6B220720870016BCC9 /* AppDelegate.swift */; };
 		5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B6D220720870016BCC9 /* CameraViewController.swift */; };
 		5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B72220720880016BCC9 /* Assets.xcassets */; };
@@ -66,7 +66,7 @@
 		5F470BD5220C6011002CD12D /* TextDetectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetectionController.swift; sourceTree = "<group>"; };
 		5F470BD7220C62E0002CD12D /* TextPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPickViewController.swift; sourceTree = "<group>"; };
 		5F470BD8220C62E0002CD12D /* TextPickViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPickViewController.xib; sourceTree = "<group>"; };
-		5F470BDE220CA765002CD12D /* BlurLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurLabelView.swift; sourceTree = "<group>"; };
+		5F470BDE220CA765002CD12D /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		5F4A3B68220720870016BCC9 /* maxwise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maxwise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4A3B6B220720870016BCC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F4A3B6D220720870016BCC9 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 				5F470BD7220C62E0002CD12D /* TextPickViewController.swift */,
 				5F20E0B42210281B00BAECF6 /* TextPickViewModel.swift */,
 				5F470BD8220C62E0002CD12D /* TextPickViewController.xib */,
-				5F470BDE220CA765002CD12D /* BlurLabelView.swift */,
+				5F470BDE220CA765002CD12D /* BlurView.swift */,
 			);
 			path = "Text Picking";
 			sourceTree = "<group>";
@@ -417,7 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */,
-				5F470BDF220CA765002CD12D /* BlurLabelView.swift in Sources */,
+				5F470BDF220CA765002CD12D /* BlurView.swift in Sources */,
 				5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */,
 				5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */,
 				5F9DE3782217FF0E008CCB94 /* User.swift in Sources */,

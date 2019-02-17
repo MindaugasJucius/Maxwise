@@ -24,10 +24,12 @@ class ExpensesViewController: UIViewController {
     }
     
     private func configureTableView() {
-        let nib = UINib.init(nibName: ExpenseTableViewCell.nibName, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: ExpenseTableViewCell.nibName)
+        let cellNib = UINib.init(nibName: ExpenseTableViewCell.nibName, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: ExpenseTableViewCell.nibName)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.estimatedRowHeight = 85
+        tableView.estimatedSectionHeaderHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
@@ -36,6 +38,11 @@ class ExpensesViewController: UIViewController {
     @IBAction func closeTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+}
+
+extension ExpensesViewController: UITableViewDelegate {
+    
     
 }
 

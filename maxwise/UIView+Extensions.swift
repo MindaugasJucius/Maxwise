@@ -17,7 +17,7 @@ extension UIView {
         }
         let constraints = [
             leadingAnchor.constraint(equalToSystemSpacingAfter: superview.leadingAnchor, multiplier: 1),
-            trailingAnchor.constraint(equalToSystemSpacingAfter: superview.trailingAnchor, multiplier: 1),
+            superview.trailingAnchor.constraint(equalToSystemSpacingAfter: trailingAnchor, multiplier: 1),
             topAnchor.constraint(equalTo: superview.topAnchor),
             bottomAnchor.constraint(equalTo: superview.bottomAnchor)
         ]

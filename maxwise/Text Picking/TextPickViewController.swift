@@ -14,6 +14,17 @@ class TextPickViewController: UIViewController {
     private let textDetectionController = TextDetectionController()
     private let viewModel = TextPickViewModel()
     
+    private let blurView = BlurView()
+    
+    lazy var recognizedTextLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.black.withAlphaComponent(0.7)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        return label
+    }()
+    
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var cropImageView: UIImageView!
@@ -61,8 +72,9 @@ class TextPickViewController: UIViewController {
         
         let ciImage = CIImage(cgImage: cgImage)
         textDetectionController.handle(ciImage: ciImage, orientation: orientation)
+        
+        configureResultView()
     }
-    
     
     private func addTapRecognizer() {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapOccured(gesture:)))
@@ -110,13 +122,18 @@ class TextPickViewController: UIViewController {
             case .error:
                 resultText = "Failed to recognize 😬"
             }
-            self?.addResultView(text: resultText)
+            self?.recognizedTextLabel.text = resultText
         }
 
     }
     
-    private func addResultView(text: String) {
-        let blurView = BlurLabelView(text: text)
+    private func configureResultView() {
+        addResultView()
+        blurView.contentView.addSubview(recognizedTextLabel)
+        recognizedTextLabel.fill(in: blurView.contentView)
+    }
+    
+    private func addResultView() {
         blurView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(blurView)
         let constraints = [
@@ -127,6 +144,7 @@ class TextPickViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
     }
+
 
     @IBAction private func closeTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
