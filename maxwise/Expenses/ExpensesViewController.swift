@@ -18,15 +18,19 @@ class ExpensesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib.init(nibName: "ExpenseTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "ExpenseTableViewCell")
+        configureTableView()
+        title = "Expenses"
+        view.backgroundColor = UIColor.init(named: "background")
+    }
+    
+    private func configureTableView() {
+        let nib = UINib.init(nibName: ExpenseTableViewCell.nibName, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: ExpenseTableViewCell.nibName)
         tableView.dataSource = self
         tableView.estimatedRowHeight = 85
         tableView.rowHeight = UITableView.automaticDimension
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
-
-        view.backgroundColor = UIColor.init(named: "background")
     }
 
     @IBAction func closeTapped(_ sender: Any) {
@@ -42,7 +46,7 @@ extension ExpensesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ExpenseTableViewCell.nibName, for: indexPath)
         guard let expenseCell = cell as? ExpenseTableViewCell else {
             return cell
         }

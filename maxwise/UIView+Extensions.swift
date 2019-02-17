@@ -24,4 +24,8 @@ extension UIView {
         NSLayoutConstraint.activate(constraints)
     }
     
+    static var nibName: String {
+        return String(describing: self)
+    }
+    
 }

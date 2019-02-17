@@ -55,7 +55,7 @@ class CameraViewController: UIViewController {
     }
 
     @IBAction func statsTapped(_ sender: Any) {
-        let expensesViewController = ExpensesViewController()
+        let expensesViewController = ExpensesParentViewController()
         present(expensesViewController, animated: true, completion: nil)
     }
     
