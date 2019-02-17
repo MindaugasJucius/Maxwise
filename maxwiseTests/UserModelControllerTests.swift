@@ -35,7 +35,7 @@ class UserModelControllerTests: XCTestCase {
         }
     }
     
-    func testCreatingExpenseCurrentUserExpensesIncreases() {
+    func testCreatingExpenseCurrentUserExpensesCountIncreases() {
         let userModelController = UserModelController()
         do {
             let currentUser = try userModelController.currentUserOrCreate()

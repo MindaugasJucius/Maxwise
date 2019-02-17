@@ -16,16 +16,18 @@ class BlurView: UIVisualEffectView {
         configure()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        effect = UIBlurEffect(style: .light)
+        configure()
+    }
+    
     private func configure() {
         backgroundColor = UIColor.white.withAlphaComponent(0.6)
         clipsToBounds = true
         layer.borderColor = UIColor.black.withAlphaComponent(0.4).cgColor
         layer.borderWidth = 1
         layer.cornerRadius = 6
-    }
-        
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
 }
