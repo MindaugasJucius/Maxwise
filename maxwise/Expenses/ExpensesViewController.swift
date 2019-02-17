@@ -2,12 +2,15 @@ import UIKit
 
 class ExpensesViewController: UIViewController {
 
-    private let viewModel = ExpensesViewModel()
-    var expenses = [ExpensePresentationDTO]()
+    private let expensesStatsViewController = ExpensesStatsViewController()
     
+    private let viewModel: ExpensesViewModel
+    private var expenses = [ExpensePresentationDTO]()
+
     @IBOutlet private weak var tableView: UITableView!
 
-    init() {
+    init(viewModel: ExpensesViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         expenses = viewModel.expenseEntries()
     }
@@ -21,6 +24,7 @@ class ExpensesViewController: UIViewController {
         configureTableView()
         title = "Expenses"
         view.backgroundColor = UIColor.init(named: "background")
+        addChild(expensesStatsViewController)
     }
     
     private func configureTableView() {
@@ -31,6 +35,7 @@ class ExpensesViewController: UIViewController {
         tableView.estimatedRowHeight = 85
         tableView.estimatedSectionHeaderHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
     }
@@ -43,6 +48,9 @@ class ExpensesViewController: UIViewController {
 
 extension ExpensesViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return expensesStatsViewController.view
+    }
     
 }
 

@@ -10,10 +10,12 @@ import UIKit
 
 class ExpensesParentViewController: UINavigationController {
 
+    private let expensesViewModel = ExpensesViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.prefersLargeTitles = true
-        viewControllers = [ExpensesViewController()]
+        viewControllers = [ExpensesViewController(viewModel: expensesViewModel)]
     }
 
 }

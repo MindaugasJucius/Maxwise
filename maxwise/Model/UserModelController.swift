@@ -5,7 +5,10 @@ enum UserModelError: Error {
 }
 
 class UserModelController {
-
+    
+    var amountChanged: ((Double) -> ())?
+    private var amountObservationToken: NotificationToken?
+    
     func currentUserOrCreate() throws -> User {
         guard let realm = try? Realm() else {
             throw UserModelError.failedToCreateRealm
@@ -21,6 +24,24 @@ class UserModelController {
     func amountSpent(forUser user: User) -> Double {
         return user.entries.reduce(0.0) { (current, expenseEntry) -> Double in
             return current + expenseEntry.amount
+        }
+    }
+    
+    func observeAmountSpent(forUser user: User, amountChanged: @escaping (Double) -> ()) {
+        amountObservationToken = user.observe { change in
+            switch change {
+            case .change(let properties):
+                for property in properties {
+                    if property.name == "entries" {
+                        
+                        //amonutChanged()
+                    }
+                }
+            case .error(let error):
+                print("An error occurred: \(error)")
+            case .deleted:
+                print("The object was deleted.")
+            }
         }
     }
 
