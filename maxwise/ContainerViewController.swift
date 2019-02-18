@@ -1,9 +1,23 @@
 import UIKit
 
+enum Screen {
+    case stats
+}
+
+protocol PresentationViewControllerDelegate {
+    func show(screen: Screen)
+}
+
 class ContainerViewController: UIPageViewController {
 
-    private let initialViewControllers = [CameraViewController(),
-                                          ExpensesParentViewController()]
+    private lazy var cameraViewController: CameraViewController = {
+        let cameraViewController = CameraViewController()
+        cameraViewController.presentationDelegate = self
+        return cameraViewController
+    }()
+    
+    private lazy var initialViewControllers = [cameraViewController,
+                                               ExpensesParentViewController()]
     
     init() {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -18,7 +32,18 @@ class ContainerViewController: UIPageViewController {
         dataSource = self
         setViewControllers([initialViewControllers[0]], direction: .forward, animated: false, completion: nil)
     }
+    
+}
 
+extension ContainerViewController: PresentationViewControllerDelegate {
+    
+    func show(screen: Screen) {
+        setViewControllers([initialViewControllers[1]],
+                           direction: .forward,
+                           animated: true,
+                           completion: nil)
+    }
+    
 }
 
 extension ContainerViewController: UIPageViewControllerDataSource {

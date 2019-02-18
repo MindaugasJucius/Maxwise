@@ -47,10 +47,6 @@ class ExpensesViewController: UIViewController {
         tableView.separatorStyle = .none
     }
 
-    @IBAction func closeTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
 }
 
 extension ExpensesViewController: UITableViewDelegate {

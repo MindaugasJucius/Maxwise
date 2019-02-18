@@ -15,6 +15,8 @@ class CameraViewController: UIViewController {
     private let cameraController = CameraController()
     private var cameraLayer: AVCaptureVideoPreviewLayer?
     
+    var presentationDelegate: PresentationViewControllerDelegate?
+    
     let minimumZoom: CGFloat = 1.0
     let maximumZoom: CGFloat = 3.0
     var lastZoomFactor: CGFloat = 1.0
@@ -55,8 +57,7 @@ class CameraViewController: UIViewController {
     }
 
     @IBAction func statsTapped(_ sender: Any) {
-        let expensesViewController = ExpensesParentViewController()
-        present(expensesViewController, animated: true, completion: nil)
+        presentationDelegate?.show(screen: .stats)
     }
     
     @IBAction func presentImagePicker(_ sender: Any) {
