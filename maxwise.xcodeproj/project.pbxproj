@@ -41,6 +41,7 @@
 		5F9DE38E2219BF89008CCB94 /* UserModelControllerObservationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38D2219BF88008CCB94 /* UserModelControllerObservationTests.swift */; };
 		5F9DE3902219C282008CCB94 /* TestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38F2219C282008CCB94 /* TestsHelper.swift */; };
 		5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */; };
+		5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */; };
 		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
 		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
@@ -97,6 +98,7 @@
 		5F9DE38D2219BF88008CCB94 /* UserModelControllerObservationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelControllerObservationTests.swift; sourceTree = "<group>"; };
 		5F9DE38F2219C282008CCB94 /* TestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
 		5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlacesProvider.swift; sourceTree = "<group>"; };
 		5FFD2C182207321800DDFBE5 /* TesseractOCR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TesseractOCR.framework; path = Carthage/Build/iOS/Static/TesseractOCR.framework; sourceTree = "<group>"; };
 		5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		5FFD2C1E2207342100DDFBE5 /* TesseractOCRiOS.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = TesseractOCRiOS.podspec; path = "Carthage/Checkouts/Tesseract-OCR-iOS/TesseractOCRiOS.podspec"; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				5F470BDE220CA765002CD12D /* BlurView.swift */,
 				F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */,
 				5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */,
+				5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FoursquareAPIClient/FoursquareAPIClient.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
@@ -402,6 +406,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoursquareAPIClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
@@ -456,6 +461,7 @@
 				5F9DE38B22198CA0008CCB94 /* ExpensesStatsViewController.swift in Sources */,
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 				5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */,
+				5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */,
 				F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */,
 				5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */,
 				5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */,

@@ -7,6 +7,7 @@ target 'maxwise' do
 
   pod 'TesseractOCRiOS'
   pod 'RealmSwift'
+  pod 'FoursquareAPIClient'
 
   target 'maxwiseTests' do
     inherit! :search_paths
