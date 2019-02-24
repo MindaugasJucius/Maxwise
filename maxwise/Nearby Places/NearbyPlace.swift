@@ -52,13 +52,13 @@ struct Icon: Codable {
 }
 
 struct Location: Codable {
-    let address: String
-    let lat, lng: Double
-    let labeledLatLngs: [LabeledLatLng]
-    let distance: Int
-    let postalCode, cc, city, state: String
-    let country: String
-    let formattedAddress: [String]
+    let address: String?
+    let lat, lng: Double?
+    let labeledLatLngs: [LabeledLatLng]?
+    let distance: Int?
+    let postalCode, cc, city, state: String?
+    let country: String?
+    let formattedAddress: [String]?
 }
 
 struct LabeledLatLng: Codable {

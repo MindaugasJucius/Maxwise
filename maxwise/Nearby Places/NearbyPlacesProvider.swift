@@ -27,7 +27,7 @@ class NearbyPlacesProvider: NSObject {
     
     func places(for query: String) {
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        locationManager.requestLocation()
         currentQuery = query
     }
     
@@ -39,20 +39,14 @@ class NearbyPlacesProvider: NSObject {
         request.naturalLanguageQuery = currentQuery
         let localSearch = MKLocalSearch(request: request)
         localSearch.start { (response, error) in
-            response?.mapItems.forEach { print("\($0.name) \($0.placemark.title)") }
+            response?.mapItems.forEach {
+                print("\(String(describing: $0.name)) \(String(describing: $0.placemark.title))")
+            }
             print("--------------DONE--------------DONE")
         }
     }
     
-}
-
-extension NearbyPlacesProvider: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else {
-            return
-        }
-
+    private func foursquareParameters(location: CLLocation) -> [String:String] {
         /// Arts & Entertainment
         /// Food
         /// Nightlife Spot
@@ -66,8 +60,8 @@ extension NearbyPlacesProvider: CLLocationManagerDelegate {
             4d4b7105d754a06378d81259,
             4d4b7105d754a06379d81259
         """
-        .components(separatedBy: .whitespacesAndNewlines)
-        .joined(separator: "")
+            .components(separatedBy: .whitespacesAndNewlines)
+            .joined(separator: "")
         
         let parameters = [
             "ll":"\(location.coordinate.latitude),\(location.coordinate.longitude)",
@@ -75,16 +69,31 @@ extension NearbyPlacesProvider: CLLocationManagerDelegate {
             "limit":"1",
             "categoryId":categoryIds
         ]
+        return parameters
+    }
+
+    
+}
+
+extension NearbyPlacesProvider: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else {
+            return
+        }
+
+        let parameters = foursquareParameters(location: location)
         
         foursquareClient.request(path: "venues/search", parameter: parameters) { result in
             switch result {
             case let .success(data):
                 let requestResult = String.init(data: data, encoding: .utf8)
-                print(requestResult?.removingPercentEncoding)
+                print(result)
                 let decoder = JSONDecoder.init()
                 do {
-                    let welcome = try? decoder.decode(VenuesSearch.self, from: data)
+                    let welcome = try decoder.decode(VenuesSearch.self, from: data)
                     print(welcome)
+
                 } catch let error {
                     print(error.localizedDescription)
                 }
