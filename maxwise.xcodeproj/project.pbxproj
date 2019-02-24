@@ -42,6 +42,7 @@
 		5F9DE3902219C282008CCB94 /* TestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38F2219C282008CCB94 /* TestsHelper.swift */; };
 		5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */; };
 		5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */; };
+		5FFACEC12221889A00F087E4 /* NearbyPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEC02221889A00F087E4 /* NearbyPlace.swift */; };
 		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
 		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
@@ -99,6 +100,7 @@
 		5F9DE38F2219C282008CCB94 /* TestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
 		5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlacesProvider.swift; sourceTree = "<group>"; };
+		5FFACEC02221889A00F087E4 /* NearbyPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlace.swift; sourceTree = "<group>"; };
 		5FFD2C182207321800DDFBE5 /* TesseractOCR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TesseractOCR.framework; path = Carthage/Build/iOS/Static/TesseractOCR.framework; sourceTree = "<group>"; };
 		5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		5FFD2C1E2207342100DDFBE5 /* TesseractOCRiOS.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = TesseractOCRiOS.podspec; path = "Carthage/Checkouts/Tesseract-OCR-iOS/TesseractOCRiOS.podspec"; sourceTree = "<group>"; };
@@ -208,7 +210,7 @@
 				5F470BDE220CA765002CD12D /* BlurView.swift */,
 				F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */,
 				5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */,
-				5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */,
+				5FFACEBF2221888500F087E4 /* Nearby Places */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -233,6 +235,15 @@
 				5F9DE37D2218A135008CCB94 /* CameraViewController.xib */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		5FFACEBF2221888500F087E4 /* Nearby Places */ = {
+			isa = PBXGroup;
+			children = (
+				5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */,
+				5FFACEC02221889A00F087E4 /* NearbyPlace.swift */,
+			);
+			path = "Nearby Places";
 			sourceTree = "<group>";
 		};
 		5FFD2C172207321700DDFBE5 /* Frameworks */ = {
@@ -451,6 +462,7 @@
 				5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */,
 				5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */,
 				5F9DE3782217FF0E008CCB94 /* User.swift in Sources */,
+				5FFACEC12221889A00F087E4 /* NearbyPlace.swift in Sources */,
 				5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */,
 				5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */,
 				5F20E0BD2210352F00BAECF6 /* ExpenseTableViewCell.swift in Sources */,

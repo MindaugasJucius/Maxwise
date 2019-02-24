@@ -68,17 +68,26 @@ extension NearbyPlacesProvider: CLLocationManagerDelegate {
         """
         .components(separatedBy: .whitespacesAndNewlines)
         .joined(separator: "")
+        
         let parameters = [
             "ll":"\(location.coordinate.latitude),\(location.coordinate.longitude)",
             "radius":"100",
-            "limit":"10",
+            "limit":"1",
             "categoryId":categoryIds
         ]
         
         foursquareClient.request(path: "venues/search", parameter: parameters) { result in
             switch result {
             case let .success(data):
-                print(String.init(data: data, encoding: .utf8))
+                let requestResult = String.init(data: data, encoding: .utf8)
+                print(requestResult?.removingPercentEncoding)
+                let decoder = JSONDecoder.init()
+                do {
+                    let welcome = try? decoder.decode(VenuesSearch.self, from: data)
+                    print(welcome)
+                } catch let error {
+                    print(error.localizedDescription)
+                }
             case let .failure(error):
                 // Error handling
                 switch error {
