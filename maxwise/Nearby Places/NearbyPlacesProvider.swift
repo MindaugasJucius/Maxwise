@@ -13,6 +13,8 @@ import FoursquareAPIClient
 class NearbyPlacesProvider: NSObject {
 
     private let locationManager = CLLocationManager()
+    private var currentLocation: ((CLLocation) -> ())?
+    
     private var currentQuery: String = ""
     private let foursquareClient = FoursquareAPIClient(
         clientId: "V5FOXP35PN2Q30XB22P4OEF1YQPEEZIBHGJM1QHEG0HDORGA",
@@ -25,10 +27,58 @@ class NearbyPlacesProvider: NSObject {
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
     }
     
+    func performFoursquareNearbyPlaceSearch(completion: @escaping ([Venue]) -> ()) {
+        requestLocationAccessIfNeeded { [weak self] in
+            self?.locationManager.requestLocation()
+            self?.currentLocation = { location in
+                self?.foursquareSearch(location: location, completion: completion)
+            }
+        }
+    }
+    
+    private func foursquareSearch(location: CLLocation,
+                                  completion: @escaping ([Venue]) -> ()) {
+        let parameters = foursquareParameters(location: location)
+        
+        foursquareClient.request(path: "venues/search", parameter: parameters) { result in
+            switch result {
+            case let .success(data):
+                let decoder = JSONDecoder.init()
+                do {
+                    let parsedVenuesSearch = try decoder.decode(VenuesSearch.self, from: data)
+                    completion(parsedVenuesSearch.response.venues)
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            case let .failure(error):
+                // Error handling
+                switch error {
+                case let .connectionError(connectionError):
+                    print(connectionError)
+                case let .responseParseError(responseParseError):
+                    print(responseParseError)   // e.g. JSON text did not start with array or object and option to allow fragments not set.
+                case let .apiError(apiError):
+                    print(apiError.errorType)   // e.g. endpoint_error
+                    print(apiError.errorDetail) // e.g. The requested path does not exist.
+                }
+            }
+        }
+    }
+    
     func places(for query: String) {
-        locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         currentQuery = query
+    }
+    
+    private func requestLocationAccessIfNeeded(granted: () -> ()) {
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .authorizedWhenInUse, .authorizedAlways:
+            granted()
+        case .denied, .restricted:
+            print("can't perform location search")
+        }
     }
     
     private func performSearch(location: CLLocation) {
@@ -71,7 +121,6 @@ class NearbyPlacesProvider: NSObject {
         ]
         return parameters
     }
-
     
 }
 
@@ -82,41 +131,16 @@ extension NearbyPlacesProvider: CLLocationManagerDelegate {
             return
         }
 
-        let parameters = foursquareParameters(location: location)
-        
-        foursquareClient.request(path: "venues/search", parameter: parameters) { result in
-            switch result {
-            case let .success(data):
-                let requestResult = String.init(data: data, encoding: .utf8)
-                print(result)
-                let decoder = JSONDecoder.init()
-                do {
-                    let welcome = try decoder.decode(VenuesSearch.self, from: data)
-                    print(welcome)
-
-                } catch let error {
-                    print(error.localizedDescription)
-                }
-            case let .failure(error):
-                // Error handling
-                switch error {
-                case let .connectionError(connectionError):
-                    print(connectionError)
-                case let .responseParseError(responseParseError):
-                    print(responseParseError)   // e.g. JSON text did not start with array or object and option to allow fragments not set.
-                case let .apiError(apiError):
-                    print(apiError.errorType)   // e.g. endpoint_error
-                    print(apiError.errorDetail) // e.g. The requested path does not exist.
-                }
-            }
-        }
+        currentLocation?(location)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
+        case .notDetermined:
+             print("addd")
         case .authorizedWhenInUse, .authorizedAlways:
             print("hurrah")
-        case .denied, .notDetermined, .restricted:
+        case .denied, .restricted:
             print("oh no")
         }
     }
