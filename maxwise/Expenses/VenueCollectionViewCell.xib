@@ -22,16 +22,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="250" height="80"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iKk-D7-aMt">
-                                <rect key="frame" x="72" y="19.5" width="178" height="41"/>
+                                <rect key="frame" x="64" y="19.5" width="170" height="41"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="799-ka-KGb">
-                                        <rect key="frame" x="0.0" y="0.0" width="178" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="799-ka-KGb">
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdO-1W-8QM">
-                                        <rect key="frame" x="0.0" y="20.5" width="178" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdO-1W-8QM">
+                                        <rect key="frame" x="0.0" y="20.5" width="170" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -53,9 +53,9 @@
                             <constraint firstItem="1Rr-k3-3w8" firstAttribute="centerY" secondItem="9ch-km-xFm" secondAttribute="centerY" id="Ob7-eu-IXV"/>
                             <constraint firstItem="1Rr-k3-3w8" firstAttribute="leading" secondItem="9ch-km-xFm" secondAttribute="leadingMargin" constant="8" id="T9o-8J-8XV"/>
                             <constraint firstAttribute="bottom" secondItem="1Rr-k3-3w8" secondAttribute="bottom" constant="20" id="YYx-89-lfU"/>
-                            <constraint firstItem="iKk-D7-aMt" firstAttribute="leading" secondItem="1Rr-k3-3w8" secondAttribute="trailing" constant="16" id="fhw-Ii-jjZ"/>
+                            <constraint firstItem="iKk-D7-aMt" firstAttribute="leading" secondItem="1Rr-k3-3w8" secondAttribute="trailing" constant="8" id="fhw-Ii-jjZ"/>
                             <constraint firstItem="iKk-D7-aMt" firstAttribute="centerY" secondItem="1Rr-k3-3w8" secondAttribute="centerY" id="n8g-Y4-T1X"/>
-                            <constraint firstAttribute="trailing" secondItem="iKk-D7-aMt" secondAttribute="trailing" id="rh6-y2-jkp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iKk-D7-aMt" secondAttribute="trailing" constant="8" id="rh6-y2-jkp"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -69,6 +69,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="248" height="82"/>
             <connections>
+                <outlet property="labelStackView" destination="iKk-D7-aMt" id="QMe-Qc-FZY"/>
                 <outlet property="venueCategoryImageVIew" destination="1Rr-k3-3w8" id="QqC-ya-S0l"/>
                 <outlet property="venueInfoLabel" destination="DdO-1W-8QM" id="I3G-E6-ejT"/>
                 <outlet property="venueNameLabel" destination="799-ka-KGb" id="l4r-ZX-9zl"/>

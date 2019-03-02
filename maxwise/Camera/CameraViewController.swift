@@ -13,7 +13,6 @@ class CameraViewController: UIViewController {
         
     private let digitRecognizer = DigitRecognizer()
     private let cameraController = CameraController()
-    private let nearbyPlacesProvider = NearbyPlacesProvider()
     private var cameraLayer: AVCaptureVideoPreviewLayer?
     
     var presentationDelegate: PresentationViewControllerDelegate?
@@ -45,20 +44,21 @@ class CameraViewController: UIViewController {
         cameraController.delegate = self
     }
     
-    @IBAction func takePhoto(_ sender: Any) {
-
-        nearbyPlacesProvider.performFoursquareNearbyPlaceSearch { venues in
-            print(venues)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        #if targetEnvironment(simulator)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+            let testImage = UIImage(named: "testImage")
+            guard let cgImage = testImage?.cgImage else {
+                return
+            }
+            self.captured(image: cgImage, orientation: .up)
         }
-//        #if targetEnvironment(simulator)
-//        let testImage = UIImage(named: "testImage")
-//        guard let cgImage = testImage?.cgImage else {
-//            return
-//        }
-//        captured(image: cgImage, orientation: .up)
-//        #else
-//        cameraController.takePhoto()
-//        #endif
+        #endif
+    }
+    
+    @IBAction func takePhoto(_ sender: Any) {
+        cameraController.takePhoto()
     }
 
     @IBAction func statsTapped(_ sender: Any) {

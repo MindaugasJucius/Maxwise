@@ -14,6 +14,9 @@ class TextPickViewController: UIViewController {
     private let textDetectionController = TextDetectionController()
     private let viewModel = TextPickViewModel()
     
+    private let nearbyPlacesProvider = NearbyPlacesProvider()
+    private var venues: [Venue] = []
+    
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var cropImageView: UIImageView!
@@ -61,6 +64,10 @@ class TextPickViewController: UIViewController {
         
         let ciImage = CIImage(cgImage: cgImage)
         textDetectionController.handle(ciImage: ciImage, orientation: orientation)
+        
+        nearbyPlacesProvider.performFoursquareNearbyPlaceSearch { [weak self] venues in
+            self?.venues = venues
+        }
     }
     
     private func addTapRecognizer() {
@@ -116,16 +123,9 @@ class TextPickViewController: UIViewController {
     }
     
     private func addResultView(text: String) {
-        let location = Location.init(address: nil, lat: nil, lng: nil, labeledLatLngs: nil, distance: nil, postalCode: nil, cc: nil, city: nil, state: nil, country: nil, formattedAddress: nil)
-
-        let rimi = Venue(id: "4", name: "Rimex", location: location, categories: [], verified: true, referralID: "", hasPerk: false)
-        let iki = Venue(id: "3", name: "Ikex", location: location, categories: [], verified: true, referralID: "", hasPerk: false)
-        let norf = Venue(id: "3", name: "Norf norf", location: location, categories: [], verified: true, referralID: "", hasPerk: false)
-        
-        let venues = [rimi, iki, norf]
-
         let expenseCreationViewController = ExpenseCreationViewController(recognizedText: text,
                                                                           venues: venues)
+        
         let expenseCreationView: UIView! = expenseCreationViewController.view
         addChild(expenseCreationViewController)
         view.addSubview(expenseCreationView)

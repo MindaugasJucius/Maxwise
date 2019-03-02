@@ -21,6 +21,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="278"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5I-kZ-cgF" customClass="BlurView" customModule="maxwise" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="278"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-GV-xNW">
                     <rect key="frame" x="16" y="16" width="343" height="246"/>
                     <subviews>
@@ -81,9 +85,13 @@
             </subviews>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vx1-GV-xNW" secondAttribute="trailing" constant="16" id="AzD-7x-2eo"/>
+                <constraint firstItem="a5I-kZ-cgF" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KB7-qO-9EC"/>
+                <constraint firstItem="a5I-kZ-cgF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OKv-wv-Aun"/>
                 <constraint firstItem="Vx1-GV-xNW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="SZi-9t-Gff"/>
                 <constraint firstItem="Vx1-GV-xNW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ZFU-iB-Cli"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="a5I-kZ-cgF" secondAttribute="bottom" id="eYv-Bm-nYv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vx1-GV-xNW" secondAttribute="bottom" constant="16" id="rio-Sc-gpn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="a5I-kZ-cgF" secondAttribute="trailing" id="ybp-hM-n3z"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

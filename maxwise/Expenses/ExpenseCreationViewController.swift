@@ -20,9 +20,11 @@ class ExpenseCreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textField.text = recognizedText
+        
         let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         flowLayout?.scrollDirection = .horizontal
-        flowLayout?.itemSize = CGSize(width: 150, height: 80)
+        flowLayout?.estimatedItemSize = CGSize(width: 150, height: 80)
         collectionView.backgroundColor = .clear
         collectionView.dataSource = self
         let venueCellNib = UINib(nibName: VenueCollectionViewCell.nibName, bundle: nil)
@@ -43,7 +45,11 @@ extension ExpenseCreationViewController: UICollectionViewDataSource {
             withReuseIdentifier: VenueCollectionViewCell.nibName,
             for: indexPath
         )
-        return cell
+        guard let venueCell = cell as? VenueCollectionViewCell else {
+            return cell
+        }
+        venueCell.update(venue: venues[indexPath.row])
+        return venueCell
     }
     
 }
