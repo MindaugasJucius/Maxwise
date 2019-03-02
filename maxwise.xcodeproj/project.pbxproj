@@ -16,6 +16,8 @@
 		5F20E0B9221034F300BAECF6 /* ExpensesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F20E0B7221034F300BAECF6 /* ExpensesViewController.xib */; };
 		5F20E0BD2210352F00BAECF6 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0BB2210352F00BAECF6 /* ExpenseTableViewCell.swift */; };
 		5F20E0BE2210352F00BAECF6 /* ExpenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F20E0BC2210352F00BAECF6 /* ExpenseTableViewCell.xib */; };
+		5F240CA1222721A3009A41AE /* ExpenseCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F240C9F222721A3009A41AE /* ExpenseCreationViewController.swift */; };
+		5F240CA2222721A3009A41AE /* ExpenseCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F240CA0222721A3009A41AE /* ExpenseCreationViewController.xib */; };
 		5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD5220C6011002CD12D /* TextDetectionController.swift */; };
 		5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD7220C62E0002CD12D /* TextPickViewController.swift */; };
 		5F470BDA220C62E0002CD12D /* TextPickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F470BD8220C62E0002CD12D /* TextPickViewController.xib */; };
@@ -25,6 +27,8 @@
 		5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B72220720880016BCC9 /* Assets.xcassets */; };
 		5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B74220720880016BCC9 /* LaunchScreen.storyboard */; };
 		5F4A3B81220720880016BCC9 /* UserModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B80220720880016BCC9 /* UserModelControllerTests.swift */; };
+		5F65C345222A6DAF00E10F92 /* VenueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65C343222A6DAF00E10F92 /* VenueCollectionViewCell.swift */; };
+		5F65C346222A6DAF00E10F92 /* VenueCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F65C344222A6DAF00E10F92 /* VenueCollectionViewCell.xib */; };
 		5F68787022073D8800F4FE7C /* TesseractOCR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F68786F22073D8800F4FE7C /* TesseractOCR.framework */; };
 		5F6878752207419600F4FE7C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6878742207419600F4FE7C /* libz.tbd */; };
 		5F6878772207425400F4FE7C /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 5F6878762207425400F4FE7C /* tessdata */; };
@@ -71,6 +75,8 @@
 		5F20E0B7221034F300BAECF6 /* ExpensesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpensesViewController.xib; sourceTree = "<group>"; };
 		5F20E0BB2210352F00BAECF6 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		5F20E0BC2210352F00BAECF6 /* ExpenseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseTableViewCell.xib; sourceTree = "<group>"; };
+		5F240C9F222721A3009A41AE /* ExpenseCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationViewController.swift; sourceTree = "<group>"; };
+		5F240CA0222721A3009A41AE /* ExpenseCreationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseCreationViewController.xib; sourceTree = "<group>"; };
 		5F470BD5220C6011002CD12D /* TextDetectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetectionController.swift; sourceTree = "<group>"; };
 		5F470BD7220C62E0002CD12D /* TextPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPickViewController.swift; sourceTree = "<group>"; };
 		5F470BD8220C62E0002CD12D /* TextPickViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPickViewController.xib; sourceTree = "<group>"; };
@@ -84,6 +90,8 @@
 		5F4A3B7C220720880016BCC9 /* maxwiseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = maxwiseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4A3B80220720880016BCC9 /* UserModelControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelControllerTests.swift; sourceTree = "<group>"; };
 		5F4A3B82220720880016BCC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F65C343222A6DAF00E10F92 /* VenueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCollectionViewCell.swift; sourceTree = "<group>"; };
+		5F65C344222A6DAF00E10F92 /* VenueCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VenueCollectionViewCell.xib; sourceTree = "<group>"; };
 		5F68786F22073D8800F4FE7C /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6878742207419600F4FE7C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5F6878762207425400F4FE7C /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
@@ -160,6 +168,10 @@
 				5F20E0BC2210352F00BAECF6 /* ExpenseTableViewCell.xib */,
 				5F9DE38922198CA0008CCB94 /* ExpensesStatsViewController.swift */,
 				5F9DE38A22198CA0008CCB94 /* ExpensesStatsViewController.xib */,
+				5F240C9F222721A3009A41AE /* ExpenseCreationViewController.swift */,
+				5F240CA0222721A3009A41AE /* ExpenseCreationViewController.xib */,
+				5F65C343222A6DAF00E10F92 /* VenueCollectionViewCell.swift */,
+				5F65C344222A6DAF00E10F92 /* VenueCollectionViewCell.xib */,
 			);
 			path = Expenses;
 			sourceTree = "<group>";
@@ -202,6 +214,7 @@
 				5F20E0AF2210239400BAECF6 /* Model */,
 				5FFACEB82219CF8500F087E4 /* Camera */,
 				5F470BDB220C6715002CD12D /* Text Picking */,
+				5FFACEBF2221888500F087E4 /* Nearby Places */,
 				5F20E0BA2210350000BAECF6 /* Expenses */,
 				5F6878762207425400F4FE7C /* tessdata */,
 				5F4A3B6B220720870016BCC9 /* AppDelegate.swift */,
@@ -212,7 +225,6 @@
 				5F470BDE220CA765002CD12D /* BlurView.swift */,
 				F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */,
 				5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */,
-				5FFACEBF2221888500F087E4 /* Nearby Places */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -362,8 +374,10 @@
 				5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */,
 				5F9DE38C22198CA0008CCB94 /* ExpensesStatsViewController.xib in Resources */,
 				5F20E0B9221034F300BAECF6 /* ExpensesViewController.xib in Resources */,
+				5F240CA2222721A3009A41AE /* ExpenseCreationViewController.xib in Resources */,
 				5F9DE37E2218A135008CCB94 /* CameraViewController.xib in Resources */,
 				5F6878772207425400F4FE7C /* tessdata in Resources */,
+				5F65C346222A6DAF00E10F92 /* VenueCollectionViewCell.xib in Resources */,
 				5F20E0BE2210352F00BAECF6 /* ExpenseTableViewCell.xib in Resources */,
 				5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */,
 				5F470BDA220C62E0002CD12D /* TextPickViewController.xib in Resources */,
@@ -412,6 +426,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FoursquareAPIClient/FoursquareAPIClient.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
@@ -421,6 +436,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoursquareAPIClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
@@ -469,6 +485,7 @@
 				5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */,
 				5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */,
 				5F20E0BD2210352F00BAECF6 /* ExpenseTableViewCell.swift in Sources */,
+				5F65C345222A6DAF00E10F92 /* VenueCollectionViewCell.swift in Sources */,
 				5F20E0B32210265200BAECF6 /* ExpenseEntryModelController.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
 				5F20E0B12210247C00BAECF6 /* ExpenseEntry.swift in Sources */,
@@ -479,6 +496,7 @@
 				5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */,
 				F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */,
 				5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */,
+				5F240CA1222721A3009A41AE /* ExpenseCreationViewController.swift in Sources */,
 				5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */,
 				5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */,
 			);
