@@ -5,12 +5,12 @@ class ExpenseCreationViewController: UIViewController {
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private let venues: [NearbyPlace]
-    private var recognizedText: String
+    private let nearbyPlaces: [NearbyPlace]
+    private let viewModel: ExpenseCreationViewModel
     
-    init(recognizedText: String, venues: [NearbyPlace]) {
-        self.venues = venues
-        self.recognizedText = recognizedText
+    init(viewModel: ExpenseCreationViewModel) {
+        self.nearbyPlaces = viewModel.nearbyPlaces
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -20,7 +20,7 @@ class ExpenseCreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.text = recognizedText
+        textField.text = viewModel.formattedValue
         
         let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         flowLayout?.scrollDirection = .horizontal
@@ -33,13 +33,22 @@ class ExpenseCreationViewController: UIViewController {
                                 forCellWithReuseIdentifier: VenueCollectionViewCell.nibName)
         collectionView.alwaysBounceHorizontal = true
     }
+    
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
+    @IBAction func addExpenseTapped(_ sender: Any) {
+        viewModel.performModelCreation(selectedPlace: nearbyPlaces[0])
+    }
+    
+    
 }
 
 extension ExpenseCreationViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return venues.count
+        return nearbyPlaces.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -50,7 +59,7 @@ extension ExpenseCreationViewController: UICollectionViewDataSource {
         guard let venueCell = cell as? VenueCollectionViewCell else {
             return cell
         }
-        venueCell.update(venue: venues[indexPath.row])
+        venueCell.update(venue: nearbyPlaces[indexPath.row])
         return venueCell
     }
     

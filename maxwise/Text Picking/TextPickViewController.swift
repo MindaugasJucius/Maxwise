@@ -15,7 +15,7 @@ class TextPickViewController: UIViewController {
     private let viewModel = TextPickViewModel()
     
     private let nearbyPlacesProvider = NearbyPlacesProvider()
-    private var venues: [NearbyPlace] = []
+    private var nearbyPlaces: [NearbyPlace] = []
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!
@@ -66,7 +66,8 @@ class TextPickViewController: UIViewController {
         textDetectionController.handle(ciImage: ciImage, orientation: orientation)
         
         nearbyPlacesProvider.performFoursquareNearbyPlaceSearch { [weak self] venues in
-            self?.venues = venues
+            let nearbyPlaces = venues.map(NearbyPlace.init)
+            self?.nearbyPlaces = nearbyPlaces
         }
     }
     
@@ -109,23 +110,41 @@ class TextPickViewController: UIViewController {
         UIGraphicsEndImageContext()
 
         viewModel.performRecognition(in: tmpImg) { [weak self] result in
-            let resultText: String
             switch result {
             case .success(let value):
-                resultText = String(value)
+                self?.addResultView(recognizedDouble: value)
             case .error:
-                resultText = "Failed to recognize 😬"
+                print("Failed to recognize 😬")
             }
             
-            self?.addResultView(text: resultText)
+
         }
 
     }
     
-    private func addResultView(text: String) {
-        let expenseCreationViewController = ExpenseCreationViewController(recognizedText: text,
-                                                                          venues: venues)
+    private func addResultView(recognizedDouble: Double) {
+//        let icon = Icon.init(iconPrefix: "d", suffix: "d")
+//        let category = Category.init(id: "sd",
+//                                     name: "weu",
+//                                     pluralName: "weus",
+//                                     shortName: "w",
+//                                     icon: icon,
+//                                     primary: true)
+//        let venue1 = Venue(id: "1", name: "Donky donk", categories: [category], verified: true, referralID: "d", hasPerk: false)
+//        let venue2 = Venue(id: "2", name: "Donky donkdonk", categories: [category], verified: true, referralID: "d", hasPerk: false)
+//        let venue3 = Venue(id: "2", name: "Donky donkdonkdonkdonk", categories: [category], verified: true, referralID: "d", hasPerk: false)
+//        let testVenues: [Venue] = [venue1, venue2, venue3]
+
+        let place = NearbyPlace.init()
+        place.title = "WEEEEU"
+        place.categoryTitle = "dddd"
         
+        let viewModel = ExpenseCreationViewModel(recognizedDouble: recognizedDouble,
+                                                 image: imageView.image,
+                                                 nearbyPlaces: [place])
+
+        let expenseCreationViewController = ExpenseCreationViewController(viewModel: viewModel)
+
         let expenseCreationView: UIView! = expenseCreationViewController.view
         addChild(expenseCreationViewController)
         view.addSubview(expenseCreationView)
@@ -145,12 +164,6 @@ class TextPickViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction private func addEntryTapped(_ sender: Any) {
-        guard let image = imageView.image else {
-            return
-        }
-        viewModel.performModelCreation(image: image)
-    }
 }
 
 extension TextPickViewController: UIScrollViewDelegate {

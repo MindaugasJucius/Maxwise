@@ -67,11 +67,17 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atR-Uy-of2">
                                     <rect key="frame" x="0.0" y="0.0" width="171.5" height="50"/>
-                                    <state key="normal" title="Button"/>
+                                    <state key="normal" title="Close"/>
+                                    <connections>
+                                        <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="kvb-bd-ddT"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rin-np-F0y">
                                     <rect key="frame" x="171.5" y="0.0" width="171.5" height="50"/>
-                                    <state key="normal" title="Button"/>
+                                    <state key="normal" title="Add"/>
+                                    <connections>
+                                        <action selector="addExpenseTapped:" destination="-1" eventType="touchUpInside" id="RAy-pw-QFl"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>

@@ -38,9 +38,9 @@ class VenueCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func update(venue: Venue) {
-        venueNameLabel.text = venue.name
-        venueInfoLabel.text = venue.categories.first?.name
+    func update(venue: NearbyPlace) {
+        venueNameLabel.text = venue.title
+        venueInfoLabel.text = venue.categoryTitle
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
