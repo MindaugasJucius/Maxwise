@@ -13,7 +13,7 @@ class VenueCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var venueNameLabel: UILabel!
     @IBOutlet private weak var venueInfoLabel: UILabel!
     @IBOutlet private weak var venueCategoryImageVIew: UIImageView!
-    //@IBOutlet weak var containerBlurView: BlurView!
+    @IBOutlet private weak var blurView: BlurView!
     @IBOutlet private weak var labelStackView: UIStackView!
     
     override func awakeFromNib() {
@@ -21,6 +21,21 @@ class VenueCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .clear
         venueInfoLabel.lineBreakMode = .byWordWrapping
         venueNameLabel.lineBreakMode = .byWordWrapping
+        blurView.borderColor = .white
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
+                if self.isSelected {
+                    self.transform = CGAffineTransform.init(scaleX: 1.05, y: 1.05)
+                    self.blurView.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+                } else {
+                    self.transform = CGAffineTransform.identity
+                    self.blurView.backgroundColor = BlurView.defaultBackgroundColor
+                }
+            })
+        }
     }
     
     func update(venue: Venue) {

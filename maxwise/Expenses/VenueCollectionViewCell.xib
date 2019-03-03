@@ -76,6 +76,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="248" height="82"/>
             <connections>
+                <outlet property="blurView" destination="vLg-dD-PDt" id="7lf-RZ-Gru"/>
                 <outlet property="labelStackView" destination="iKk-D7-aMt" id="QMe-Qc-FZY"/>
                 <outlet property="venueCategoryImageVIew" destination="1Rr-k3-3w8" id="QqC-ya-S0l"/>
                 <outlet property="venueInfoLabel" destination="DdO-1W-8QM" id="I3G-E6-ejT"/>
