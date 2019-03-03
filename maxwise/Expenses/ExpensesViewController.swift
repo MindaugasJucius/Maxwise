@@ -12,7 +12,6 @@ class ExpensesViewController: UIViewController {
     init(viewModel: ExpensesViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        expenses = viewModel.expenseEntries()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,9 +28,11 @@ class ExpensesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        expenses = viewModel.expenseEntries()
         viewModel.amountSpentChanged = { [weak self] amount in
             self?.expensesStatsViewController.amount = amount
         }
+        tableView.reloadData()
     }
     
     private func configureTableView() {

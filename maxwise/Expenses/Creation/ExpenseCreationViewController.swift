@@ -39,7 +39,11 @@ class ExpenseCreationViewController: UIViewController {
     }
 
     @IBAction func addExpenseTapped(_ sender: Any) {
-        viewModel.performModelCreation(selectedPlace: nearbyPlaces[0])
+        var selectedPlace: NearbyPlace? = nil
+        if let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first {
+            selectedPlace = nearbyPlaces[selectedIndexPath.row]
+        }
+        viewModel.performModelCreation(selectedPlace: selectedPlace)
     }
     
     

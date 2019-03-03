@@ -34,12 +34,20 @@ class ExpensesViewModel {
     }
         
     func expenseEntries() -> [ExpensePresentationDTO] {
-        return modelController.retrieveAllExpenseEntries().map { dto in
-            return ExpensePresentationDTO(id: dto.id,
-                                  currencyAmount: formatted(amount: dto.amount),
-                                  title: dto.title,
-                                  formattedDate: dateFormatter.string(from: dto.date),
-                                  image: dto.image)
+        return modelController.retrieveAllExpenseEntries().map { expenseEntry in
+            var image: UIImage? = nil
+            if let imageData = expenseEntry.imageData {
+                let deserializedImage = UIImage(data: imageData)
+                image = deserializedImage
+            }
+            
+            print(expenseEntry.place?.title)
+            
+            return ExpensePresentationDTO(id: expenseEntry.id,
+                                  currencyAmount: formatted(amount: expenseEntry.amount),
+                                  title: expenseEntry.title,
+                                  formattedDate: dateFormatter.string(from: expenseEntry.creationDate),
+                                  image: image)
         }
     }
     

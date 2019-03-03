@@ -31,7 +31,7 @@ class ExpenseCreationViewModel {
         return formattedAmount
     }
     
-    func performModelCreation(selectedPlace: NearbyPlace) {
+    func performModelCreation(selectedPlace: NearbyPlace?) {
         guard let user = try? userModelController.currentUserOrCreate() else {
             return
         }
