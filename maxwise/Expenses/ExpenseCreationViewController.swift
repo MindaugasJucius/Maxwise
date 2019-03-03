@@ -5,10 +5,10 @@ class ExpenseCreationViewController: UIViewController {
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private let venues: [Venue]
+    private let venues: [NearbyPlace]
     private var recognizedText: String
     
-    init(recognizedText: String, venues: [Venue]) {
+    init(recognizedText: String, venues: [NearbyPlace]) {
         self.venues = venues
         self.recognizedText = recognizedText
         super.init(nibName: nil, bundle: nil)
@@ -27,9 +27,11 @@ class ExpenseCreationViewController: UIViewController {
         flowLayout?.estimatedItemSize = CGSize(width: 150, height: 80)
         collectionView.backgroundColor = .clear
         collectionView.dataSource = self
+        collectionView.allowsSelection = true
         let venueCellNib = UINib(nibName: VenueCollectionViewCell.nibName, bundle: nil)
         collectionView.register(venueCellNib,
                                 forCellWithReuseIdentifier: VenueCollectionViewCell.nibName)
+        collectionView.alwaysBounceHorizontal = true
     }
 
 }

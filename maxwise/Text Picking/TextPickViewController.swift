@@ -15,7 +15,7 @@ class TextPickViewController: UIViewController {
     private let viewModel = TextPickViewModel()
     
     private let nearbyPlacesProvider = NearbyPlacesProvider()
-    private var venues: [Venue] = []
+    private var venues: [NearbyPlace] = []
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!

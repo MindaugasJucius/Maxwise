@@ -10,6 +10,19 @@ import UIKit
 
 class BlurView: UIVisualEffectView {
     
+    static var defaultBackgroundColor = UIColor.white.withAlphaComponent(0.6)
+
+    var borderColor: UIColor? {
+        didSet {
+            guard let color = borderColor else {
+                return
+            }
+            layer.borderWidth = 1
+            layer.borderColor = color.cgColor
+        }
+    }
+    
+    
     init() {
         let blurEffect = UIBlurEffect(style: .light)
         super.init(effect: blurEffect)
@@ -23,10 +36,8 @@ class BlurView: UIVisualEffectView {
     }
     
     private func configure() {
-        backgroundColor = UIColor.white.withAlphaComponent(0.6)
+        backgroundColor = BlurView.defaultBackgroundColor
         clipsToBounds = true
-        layer.borderColor = UIColor.black.withAlphaComponent(0.4).cgColor
-        layer.borderWidth = 1
         layer.cornerRadius = 6
     }
     
