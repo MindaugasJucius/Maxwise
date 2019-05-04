@@ -26,29 +26,11 @@
                         <action selector="takePhoto:" destination="-1" eventType="touchUpInside" id="LBT-WK-ON7"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ErB-d1-0If">
-                    <rect key="frame" x="323" y="617" width="36" height="30"/>
-                    <state key="normal" title="Stats"/>
-                    <connections>
-                        <action selector="statsTapped:" destination="-1" eventType="touchUpInside" id="qM7-GC-WdH"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nhh-mY-rjO">
-                    <rect key="frame" x="16" y="617" width="48" height="30"/>
-                    <state key="normal" title="Gallery"/>
-                    <connections>
-                        <action selector="presentImagePicker:" destination="-1" eventType="touchUpInside" id="GSW-FH-QeA"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ErB-d1-0If" secondAttribute="trailing" constant="16" id="35z-jO-XIz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Fvm-ej-WhE" secondAttribute="bottom" constant="20" id="BBX-aq-3he"/>
                 <constraint firstItem="Fvm-ej-WhE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QUe-8b-OUd"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ErB-d1-0If" secondAttribute="bottom" constant="20" id="c4z-zN-Sce"/>
-                <constraint firstItem="Nhh-mY-rjO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="d5i-Mp-ULE"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Nhh-mY-rjO" secondAttribute="bottom" constant="20" id="h7p-7r-1oP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>

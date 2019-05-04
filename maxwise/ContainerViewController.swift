@@ -1,7 +1,7 @@
 import UIKit
 
 enum Screen {
-    case stats
+    case expenses
 }
 
 protocol PresentationViewControllerDelegate {
@@ -16,8 +16,10 @@ class ContainerViewController: UIPageViewController {
         return cameraViewController
     }()
     
+    private lazy var expensesViewController = ExpensesParentViewController()
+    
     private lazy var initialViewControllers = [cameraViewController,
-                                               ExpensesParentViewController()]
+                                               expensesViewController]
     
     init() {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -30,7 +32,42 @@ class ContainerViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
-        setViewControllers([initialViewControllers[0]], direction: .forward, animated: false, completion: nil)
+        setViewControllers([cameraViewController], direction: .forward, animated: false, completion: nil)
+    }
+    
+    
+    func presentImagePicker(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true, completion: nil)
+    }
+    
+}
+
+extension ContainerViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage,
+            let cgImage = image.cgImage else {
+                return
+        }
+        
+        let orientation = CGImagePropertyOrientation.init(image.imageOrientation)
+        let textDetectionController = TextPickViewController(cgImage: cgImage,
+                                                             orientation: orientation)
+        dismiss(animated: true) { [weak self] in
+            self?.present(textDetectionController,
+                          animated: true,
+                          completion: nil)
+        }
+        
     }
     
 }
@@ -38,7 +75,13 @@ class ContainerViewController: UIPageViewController {
 extension ContainerViewController: PresentationViewControllerDelegate {
     
     func show(screen: Screen) {
-        setViewControllers([initialViewControllers[1]],
+        let controllerToPresent: UIViewController
+        switch screen {
+        case .expenses:
+            controllerToPresent = expensesViewController
+        }
+
+        setViewControllers([controllerToPresent],
                            direction: .forward,
                            animated: true,
                            completion: nil)

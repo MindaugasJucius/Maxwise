@@ -212,6 +212,8 @@
 		5F4A3B6A220720870016BCC9 /* maxwise */ = {
 			isa = PBXGroup;
 			children = (
+				5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */,
+				5F470BDE220CA765002CD12D /* BlurView.swift */,
 				5F20E0AF2210239400BAECF6 /* Model */,
 				5FFACEB82219CF8500F087E4 /* Camera */,
 				5F470BDB220C6715002CD12D /* Text Picking */,
@@ -222,10 +224,8 @@
 				5F4A3B72220720880016BCC9 /* Assets.xcassets */,
 				5F4A3B74220720880016BCC9 /* LaunchScreen.storyboard */,
 				5F4A3B77220720880016BCC9 /* Info.plist */,
-				5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */,
-				5F470BDE220CA765002CD12D /* BlurView.swift */,
 				F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */,
-				5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */,
+				5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";

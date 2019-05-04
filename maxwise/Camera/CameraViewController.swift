@@ -43,10 +43,6 @@ class CameraViewController: UIViewController {
         cameraController.delegate = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     @IBAction func takePhoto(_ sender: Any) {
         #if targetEnvironment(simulator)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
@@ -59,18 +55,6 @@ class CameraViewController: UIViewController {
         #else
         cameraController.takePhoto()
         #endif
-    }
-
-    @IBAction func statsTapped(_ sender: Any) {
-        presentationDelegate?.show(screen: .stats)
-    }
-    
-    @IBAction func presentImagePicker(_ sender: Any) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        present(picker, animated: true, completion: nil)
     }
     
     @objc private func pinch(_ pinch: UIPinchGestureRecognizer) {
@@ -107,34 +91,8 @@ class CameraViewController: UIViewController {
 extension CameraViewController: PictureRetrievalDelegate {
     
     func captured(image: CGImage, orientation: CGImagePropertyOrientation) {
-        let textDetectionController = TextPickViewController.init(cgImage: image,
-                                                                  orientation: orientation)
+        let textDetectionController = TextPickViewController(cgImage: image,
+                                                             orientation: orientation)
         present(textDetectionController, animated: true, completion: nil)
     }
-}
-
-extension CameraViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage,
-            let cgImage = image.cgImage else {
-            return
-        }
-
-        let orientation = CGImagePropertyOrientation.init(image.imageOrientation)
-        let textDetectionController = TextPickViewController.init(cgImage: cgImage,
-                                                                  orientation: orientation)
-        dismiss(animated: true) { [weak self] in
-            self?.present(textDetectionController,
-                          animated: true,
-                          completion: nil)
-        }
-
-    }
-    
 }
