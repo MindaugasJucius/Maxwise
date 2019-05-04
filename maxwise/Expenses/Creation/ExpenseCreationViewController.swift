@@ -43,10 +43,9 @@ class ExpenseCreationViewController: UIViewController {
         if let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first {
             selectedPlace = nearbyPlaces[selectedIndexPath.row]
         }
+     
         viewModel.performModelCreation(selectedPlace: selectedPlace)
     }
-    
-    
 }
 
 extension ExpenseCreationViewController: UICollectionViewDataSource {

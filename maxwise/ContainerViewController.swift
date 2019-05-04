@@ -2,6 +2,7 @@ import UIKit
 
 enum Screen {
     case expenses
+    case imageAnalysis(CGImage, CGImagePropertyOrientation)
 }
 
 protocol PresentationViewControllerDelegate {
@@ -10,13 +11,16 @@ protocol PresentationViewControllerDelegate {
 
 class ContainerViewController: UIPageViewController {
 
-    private lazy var cameraViewController: CameraViewController = {
-        let cameraViewController = CameraViewController()
-        cameraViewController.presentationDelegate = self
-        return cameraViewController
-    }()
-    
+    private lazy var cameraViewController = CameraViewController(presentationDelegate: self)
     private lazy var expensesViewController = ExpensesParentViewController()
+
+    private lazy var imagePicker: UIImagePickerController = {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        return picker
+    }()
     
     private lazy var initialViewControllers = [cameraViewController,
                                                expensesViewController]
@@ -34,16 +38,6 @@ class ContainerViewController: UIPageViewController {
         dataSource = self
         setViewControllers([cameraViewController], direction: .forward, animated: false, completion: nil)
     }
-    
-    
-    func presentImagePicker(_ sender: Any) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        present(picker, animated: true, completion: nil)
-    }
-    
 }
 
 extension ContainerViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -79,12 +73,16 @@ extension ContainerViewController: PresentationViewControllerDelegate {
         switch screen {
         case .expenses:
             controllerToPresent = expensesViewController
+            setViewControllers([controllerToPresent],
+                               direction: .forward,
+                               animated: true,
+                               completion: nil)
+        case .imageAnalysis(let cgImage, let orientation):
+            let textDetectionController = TextPickViewController(cgImage: cgImage,
+                                                                 orientation: orientation)
+            present(textDetectionController, animated: true, completion: nil)
         }
 
-        setViewControllers([controllerToPresent],
-                           direction: .forward,
-                           animated: true,
-                           completion: nil)
     }
     
 }

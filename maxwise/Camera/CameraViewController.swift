@@ -14,7 +14,7 @@ class CameraViewController: UIViewController {
     private let cameraController = CameraController()
     private var cameraLayer: AVCaptureVideoPreviewLayer?
     
-    var presentationDelegate: PresentationViewControllerDelegate?
+    private let presentationDelegate: PresentationViewControllerDelegate
     
     let minimumZoom: CGFloat = 1.0
     let maximumZoom: CGFloat = 3.0
@@ -22,6 +22,15 @@ class CameraViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    init(presentationDelegate: PresentationViewControllerDelegate) {
+        self.presentationDelegate = presentationDelegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -91,8 +100,6 @@ class CameraViewController: UIViewController {
 extension CameraViewController: PictureRetrievalDelegate {
     
     func captured(image: CGImage, orientation: CGImagePropertyOrientation) {
-        let textDetectionController = TextPickViewController(cgImage: image,
-                                                             orientation: orientation)
-        present(textDetectionController, animated: true, completion: nil)
+        presentationDelegate.show(screen: .imageAnalysis(image, orientation))
     }
 }
