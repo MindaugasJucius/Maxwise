@@ -32,7 +32,6 @@ class CameraController: NSObject {
     }
     
     func takePhoto() {
-
         let settings = AVCapturePhotoSettings.init()
         settings.isAutoStillImageStabilizationEnabled = true
         settings.flashMode = .auto

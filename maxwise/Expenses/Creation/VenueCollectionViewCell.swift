@@ -29,7 +29,7 @@ class VenueCollectionViewCell: UICollectionViewCell {
             UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
                 if self.isSelected {
                     self.transform = CGAffineTransform.init(scaleX: 1.05, y: 1.05)
-                    self.blurView.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+                    self.blurView.backgroundColor = .white
                 } else {
                     self.transform = CGAffineTransform.identity
                     self.blurView.backgroundColor = BlurView.defaultBackgroundColor

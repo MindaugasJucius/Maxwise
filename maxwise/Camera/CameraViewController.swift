@@ -10,8 +10,7 @@ import UIKit
 import AVKit
 
 class CameraViewController: UIViewController {
-        
-    private let digitRecognizer = DigitRecognizer()
+    
     private let cameraController = CameraController()
     private var cameraLayer: AVCaptureVideoPreviewLayer?
     
@@ -46,6 +45,9 @@ class CameraViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    @IBAction func takePhoto(_ sender: Any) {
         #if targetEnvironment(simulator)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             let testImage = UIImage(named: "testImage")
@@ -54,11 +56,9 @@ class CameraViewController: UIViewController {
             }
             self.captured(image: cgImage, orientation: .up)
         }
-        #endif
-    }
-    
-    @IBAction func takePhoto(_ sender: Any) {
+        #else
         cameraController.takePhoto()
+        #endif
     }
 
     @IBAction func statsTapped(_ sender: Any) {

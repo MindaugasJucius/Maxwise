@@ -12,6 +12,7 @@ class ExpenseTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var locationLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var expenseImageView: UIImageView!
     @IBOutlet private weak var roundedView: UIView!
@@ -32,11 +33,16 @@ class ExpenseTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        amountLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        amountLabel.textColor = .darkGray
         titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+
+        locationLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        locationLabel.textColor = .gray
+        
         dateLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         dateLabel.textColor = .lightGray
+
+        amountLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        amountLabel.textColor = .darkGray
         
         backgroundColor = .clear
         accessoryType = .disclosureIndicator
@@ -46,6 +52,7 @@ class ExpenseTableViewCell: UITableViewCell {
     func configure(expenseDTO: ExpensePresentationDTO) {
         amountLabel.text = expenseDTO.currencyAmount
         titleLabel.text = expenseDTO.title
+        locationLabel.text = expenseDTO.locationTitle
         dateLabel.text = expenseDTO.formattedDate
         expenseImageView.image = expenseDTO.image
     }

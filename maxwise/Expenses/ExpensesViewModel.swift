@@ -4,6 +4,7 @@ struct ExpensePresentationDTO {
     let id: String
     let currencyAmount: String
     let title: String
+    let locationTitle: String
     let formattedDate: String
     let image: UIImage?
 }
@@ -41,11 +42,16 @@ class ExpensesViewModel {
                 image = deserializedImage
             }
             
-            print(expenseEntry.place?.title)
+            var locationInfo: String = "No location info"
             
+            if let place = expenseEntry.place {
+                locationInfo = "\(place.title), \(place.categoryTitle)"
+            }
+
             return ExpensePresentationDTO(id: expenseEntry.id,
                                   currencyAmount: formatted(amount: expenseEntry.amount),
                                   title: expenseEntry.title,
+                                  locationTitle: locationInfo,
                                   formattedDate: dateFormatter.string(from: expenseEntry.creationDate),
                                   image: image)
         }

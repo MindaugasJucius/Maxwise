@@ -248,9 +248,9 @@
 			children = (
 				5F240C9F222721A3009A41AE /* ExpenseCreationViewController.swift */,
 				5F240CA0222721A3009A41AE /* ExpenseCreationViewController.xib */,
+				5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */,
 				5F65C343222A6DAF00E10F92 /* VenueCollectionViewCell.swift */,
 				5F65C344222A6DAF00E10F92 /* VenueCollectionViewCell.xib */,
-				5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */,
 			);
 			path = Creation;
 			sourceTree = "<group>";
