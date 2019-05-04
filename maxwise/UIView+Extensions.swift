@@ -11,6 +11,7 @@ import UIKit
 extension UIView {
     
     func fill(in view: UIView) {
+        translatesAutoresizingMaskIntoConstraints = false
         guard view == superview,
             let superview = superview else {
                 fatalError("wrong superview")

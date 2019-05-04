@@ -46,6 +46,8 @@
 		5F9DE3902219C282008CCB94 /* TestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38F2219C282008CCB94 /* TestsHelper.swift */; };
 		5F9E13C5222C33F100805878 /* LocationAccessNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C4222C33F100805878 /* LocationAccessNotifier.swift */; };
 		5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */; };
+		5FB59211227DE2EF005D5208 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB59210227DE2EF005D5208 /* NavigationView.swift */; };
+		5FB59213227DE303005D5208 /* NavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FB59212227DE303005D5208 /* NavigationView.xib */; };
 		5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */; };
 		5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */; };
 		5FFACEC12221889A00F087E4 /* NearbyPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEC02221889A00F087E4 /* NearbyPlace.swift */; };
@@ -111,6 +113,8 @@
 		5F9DE38F2219C282008CCB94 /* TestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
 		5F9E13C4222C33F100805878 /* LocationAccessNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAccessNotifier.swift; sourceTree = "<group>"; };
 		5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationViewModel.swift; sourceTree = "<group>"; };
+		5FB59210227DE2EF005D5208 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
+		5FB59212227DE303005D5208 /* NavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationView.xib; sourceTree = "<group>"; };
 		5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlacesProvider.swift; sourceTree = "<group>"; };
 		5FFACEC02221889A00F087E4 /* NearbyPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlace.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 		5F4A3B6A220720870016BCC9 /* maxwise */ = {
 			isa = PBXGroup;
 			children = (
+				5FB59210227DE2EF005D5208 /* NavigationView.swift */,
+				5FB59212227DE303005D5208 /* NavigationView.xib */,
 				5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */,
 				5F470BDE220CA765002CD12D /* BlurView.swift */,
 				5F20E0AF2210239400BAECF6 /* Model */,
@@ -387,6 +393,7 @@
 			files = (
 				5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */,
 				5F9DE38C22198CA0008CCB94 /* ExpensesStatsViewController.xib in Resources */,
+				5FB59213227DE303005D5208 /* NavigationView.xib in Resources */,
 				5F20E0B9221034F300BAECF6 /* ExpensesViewController.xib in Resources */,
 				5F240CA2222721A3009A41AE /* ExpenseCreationViewController.xib in Resources */,
 				5F9DE37E2218A135008CCB94 /* CameraViewController.xib in Resources */,
@@ -508,6 +515,7 @@
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 				5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */,
 				5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */,
+				5FB59211227DE2EF005D5208 /* NavigationView.swift in Sources */,
 				5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */,
 				F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */,
 				5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */,

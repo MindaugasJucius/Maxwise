@@ -37,7 +37,14 @@ class ContainerViewController: UIPageViewController {
         super.viewDidLoad()
         dataSource = self
         setViewControllers([cameraViewController], direction: .forward, animated: false, completion: nil)
+        addNavigationView()
     }
+    
+    private func addNavigationView() {
+        let navigationView = NavigationView()
+        navigationView.move(to: view)
+    }
+
 }
 
 extension ContainerViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -82,7 +89,6 @@ extension ContainerViewController: PresentationViewControllerDelegate {
                                                                  orientation: orientation)
             present(textDetectionController, animated: true, completion: nil)
         }
-
     }
     
 }
