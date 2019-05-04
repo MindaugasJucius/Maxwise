@@ -41,7 +41,14 @@ class ContainerViewController: UIPageViewController {
     }
     
     private func addNavigationView() {
-        let navigationView = NavigationView()
+        let navigationView = NavigationView(
+            leftButtonTapped: { [unowned self] in
+                self.present(self.imagePicker, animated: true, completion: nil)
+            },
+            rightButtonTapped: { [unowned self] in
+                self.show(screen: .expenses)
+            }
+        )
         navigationView.move(to: view)
     }
 

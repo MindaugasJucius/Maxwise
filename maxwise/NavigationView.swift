@@ -5,9 +5,16 @@ class NavigationView: UIView {
     @IBOutlet private weak var leftButton: UIButton!
     @IBOutlet private weak var rightButton: UIButton!
     
-    init() {
+    private var leftButtonTapped: EmptyCallback
+    private var rightButtonTapped: EmptyCallback
+    
+    init(leftButtonTapped: @escaping EmptyCallback,
+         rightButtonTapped: @escaping EmptyCallback) {
+        self.leftButtonTapped = leftButtonTapped
+        self.rightButtonTapped = rightButtonTapped
         super.init(frame: .zero)
         loadNib()
+        configureButtons()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -21,6 +28,21 @@ class NavigationView: UIView {
         }
         addSubview(contentView)
         contentView.fill(in: self)
+    }
+    
+    private func configureButtons() {
+        leftButton.addTarget(self, action: #selector(tappedLeftButton), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(tappedRightButton), for: .touchUpInside)
+        leftButton.setTitle("Gallery", for: .normal)
+        rightButton.setTitle("Expenses", for: .normal)
+    }
+    
+    @objc private func tappedLeftButton() {
+        leftButtonTapped()
+    }
+    
+    @objc private func tappedRightButton() {
+        rightButtonTapped()
     }
     
     func move(to superview: UIView) {
