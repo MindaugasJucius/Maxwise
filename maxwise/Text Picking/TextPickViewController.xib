@@ -11,8 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextPickViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
-                <outlet property="cropImageView" destination="I7P-GD-dQ3" id="wqr-qM-GL0"/>
                 <outlet property="imageView" destination="UPj-Vx-dEc" id="yE5-ZE-EuG"/>
+                <outlet property="imageViewForCropping" destination="I7P-GD-dQ3" id="wqr-qM-GL0"/>
                 <outlet property="scrollView" destination="tPt-b0-dS8" id="QdG-1W-4Gl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

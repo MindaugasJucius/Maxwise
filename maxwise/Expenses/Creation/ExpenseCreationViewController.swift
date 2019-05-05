@@ -12,6 +12,7 @@ class ExpenseCreationViewController: UIViewController {
         self.nearbyPlaces = viewModel.nearbyPlaces
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        modalPresentationStyle = .overCurrentContext
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -21,7 +22,10 @@ class ExpenseCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.text = viewModel.formattedValue
-        
+        configureCollectionView()
+    }
+    
+    func configureCollectionView() {
         let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         flowLayout?.scrollDirection = .horizontal
         flowLayout?.estimatedItemSize = CGSize(width: 150, height: 80)

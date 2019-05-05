@@ -19,18 +19,20 @@ class TextPickViewController: UIViewController {
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var cropImageView: UIImageView!
-    @IBOutlet private weak var closeButton: UIButton!
-    @IBOutlet private weak var createEntryButton: UIButton!
+    @IBOutlet private weak var imageViewForCropping: UIImageView!
+    
+
+    private let presentationDelegate: PresentationViewControllerDelegate
     
     private var trackingImageRect = CGRect.zero
-    
+ 
     private let cgImage: CGImage
     private let orientation: CGImagePropertyOrientation
     
-    init(cgImage: CGImage, orientation: CGImagePropertyOrientation) {
+    init(cgImage: CGImage, orientation: CGImagePropertyOrientation, presentationDelegate: PresentationViewControllerDelegate) {
         self.cgImage = cgImage
         self.orientation = orientation
+        self.presentationDelegate = presentationDelegate
         super.init(nibName: nil, bundle: nil)
         textDetectionController.delegate = self
     }
@@ -41,6 +43,7 @@ class TextPickViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        definesPresentationContext = true
         
         let uiImage = UIImage(cgImage: cgImage,
                               scale: 1,
@@ -48,9 +51,9 @@ class TextPickViewController: UIViewController {
 
         let screenBounds = UIScreen.main.bounds
 
-        cropImageView.contentMode = .scaleAspectFit
-        cropImageView.image = uiImage
-        cropImageView.isHidden = true
+        imageViewForCropping.contentMode = .scaleAspectFit
+        imageViewForCropping.image = uiImage
+        imageViewForCropping.isHidden = true
         
         trackingImageRect = AVMakeRect(aspectRatio: uiImage.size, insideRect: screenBounds)
         
@@ -92,7 +95,7 @@ class TextPickViewController: UIViewController {
     }
     
     private func handleRecognition(in frame: CGRect) {
-        guard let image = cropImageView.image else {
+        guard let image = imageViewForCropping.image else {
             return
         }
         
@@ -110,60 +113,24 @@ class TextPickViewController: UIViewController {
         UIGraphicsEndImageContext()
 
         viewModel.performRecognition(in: tmpImg) { [weak self] result in
+            guard let self = self else {
+                return
+            }
             switch result {
             case .success(let value):
-                self?.addResultView(recognizedDouble: value)
+                if let image = self.imageView.image {
+                    self.presentationDelegate.show(screen: .expenseCreation(value, image))
+                }
             case .error:
                 print("Failed to recognize 😬")
             }
-            
-
         }
 
     }
     
     private func addResultView(recognizedDouble: Double) {
-//        let icon = Icon.init(iconPrefix: "d", suffix: "d")
-//        let category = Category.init(id: "sd",
-//                                     name: "weu",
-//                                     pluralName: "weus",
-//                                     shortName: "w",
-//                                     icon: icon,
-//                                     primary: true)
-//        let venue1 = Venue(id: "1", name: "Donky donk", categories: [category], verified: true, referralID: "d", hasPerk: false)
-//        let venue2 = Venue(id: "2", name: "Donky donkdonk", categories: [category], verified: true, referralID: "d", hasPerk: false)
-//        let venue3 = Venue(id: "2", name: "Donky donkdonkdonkdonk", categories: [category], verified: true, referralID: "d", hasPerk: false)
-//        let testVenues: [Venue] = [venue1, venue2, venue3]
-
-        let place = NearbyPlace.init()
-        place.title = "WEEEEU"
-        place.categoryTitle = "dddd"
         
-        let viewModel = ExpenseCreationViewModel(recognizedDouble: recognizedDouble,
-                                                 image: imageView.image,
-                                                 nearbyPlaces: [place])
-
-        let expenseCreationViewController = ExpenseCreationViewController(viewModel: viewModel)
-
-        let expenseCreationView: UIView! = expenseCreationViewController.view
-        addChild(expenseCreationViewController)
-        view.addSubview(expenseCreationView)
-        expenseCreationViewController.didMove(toParent: self)
-        expenseCreationView.translatesAutoresizingMaskIntoConstraints = false
-
-        let constraints = [
-            expenseCreationView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: expenseCreationView.trailingAnchor, multiplier: 1),
-            view.bottomAnchor.constraint(equalToSystemSpacingBelow: expenseCreationView.bottomAnchor, multiplier: 3),
-        ]
-        NSLayoutConstraint.activate(constraints)
     }
-
-
-    @IBAction private func closeTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
 }
 
 extension TextPickViewController: UIScrollViewDelegate {
