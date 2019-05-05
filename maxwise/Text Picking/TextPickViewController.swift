@@ -14,25 +14,20 @@ class TextPickViewController: UIViewController {
     private let textDetectionController = TextDetectionController()
     private let viewModel = TextPickViewModel()
     
-    private let nearbyPlacesProvider = NearbyPlacesProvider()
-    private var nearbyPlaces: [NearbyPlace] = []
-    
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var imageViewForCropping: UIImageView!
     
-
-    private let presentationDelegate: PresentationViewControllerDelegate
-    
     private var trackingImageRect = CGRect.zero
- 
     private let cgImage: CGImage
     private let orientation: CGImagePropertyOrientation
     
-    init(cgImage: CGImage, orientation: CGImagePropertyOrientation, presentationDelegate: PresentationViewControllerDelegate) {
+    private let recognitionOccured: (Double) -> Void
+    
+    init(cgImage: CGImage, orientation: CGImagePropertyOrientation, recognitionOccured: @escaping (Double) -> Void) {
+        self.recognitionOccured = recognitionOccured
         self.cgImage = cgImage
         self.orientation = orientation
-        self.presentationDelegate = presentationDelegate
         super.init(nibName: nil, bundle: nil)
         textDetectionController.delegate = self
     }
@@ -43,7 +38,6 @@ class TextPickViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        definesPresentationContext = true
         
         let uiImage = UIImage(cgImage: cgImage,
                               scale: 1,
@@ -67,11 +61,6 @@ class TextPickViewController: UIViewController {
         
         let ciImage = CIImage(cgImage: cgImage)
         textDetectionController.handle(ciImage: ciImage, orientation: orientation)
-        
-        nearbyPlacesProvider.performFoursquareNearbyPlaceSearch { [weak self] venues in
-            let nearbyPlaces = venues.map(NearbyPlace.init)
-            self?.nearbyPlaces = nearbyPlaces
-        }
     }
     
     private func addTapRecognizer() {
@@ -113,14 +102,9 @@ class TextPickViewController: UIViewController {
         UIGraphicsEndImageContext()
 
         viewModel.performRecognition(in: tmpImg) { [weak self] result in
-            guard let self = self else {
-                return
-            }
             switch result {
             case .success(let value):
-                if let image = self.imageView.image {
-                    self.presentationDelegate.show(screen: .expenseCreation(value, image))
-                }
+                self?.recognitionOccured(value)
             case .error:
                 print("Failed to recognize 😬")
             }
@@ -128,9 +112,6 @@ class TextPickViewController: UIViewController {
 
     }
     
-    private func addResultView(recognizedDouble: Double) {
-        
-    }
 }
 
 extension TextPickViewController: UIScrollViewDelegate {

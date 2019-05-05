@@ -48,6 +48,7 @@
 		5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */; };
 		5FB59211227DE2EF005D5208 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB59210227DE2EF005D5208 /* NavigationView.swift */; };
 		5FB59213227DE303005D5208 /* NavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FB59212227DE303005D5208 /* NavigationView.xib */; };
+		5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */; };
 		5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */; };
 		5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */; };
 		5FFACEC12221889A00F087E4 /* NearbyPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEC02221889A00F087E4 /* NearbyPlace.swift */; };
@@ -115,6 +116,7 @@
 		5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationViewModel.swift; sourceTree = "<group>"; };
 		5FB59210227DE2EF005D5208 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		5FB59212227DE303005D5208 /* NavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationView.xib; sourceTree = "<group>"; };
+		5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationParentViewController.swift; sourceTree = "<group>"; };
 		5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlacesProvider.swift; sourceTree = "<group>"; };
 		5FFACEC02221889A00F087E4 /* NearbyPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlace.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */,
 				5F65C343222A6DAF00E10F92 /* VenueCollectionViewCell.swift */,
 				5F65C344222A6DAF00E10F92 /* VenueCollectionViewCell.xib */,
+				5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */,
 			);
 			path = Creation;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				5F20E0B32210265200BAECF6 /* ExpenseEntryModelController.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
 				5F20E0B12210247C00BAECF6 /* ExpenseEntry.swift in Sources */,
+				5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */,
 				5F9DE37A22188984008CCB94 /* UserModelController.swift in Sources */,
 				5F9DE38B22198CA0008CCB94 /* ExpensesStatsViewController.swift in Sources */,
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,

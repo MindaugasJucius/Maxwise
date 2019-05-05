@@ -2,8 +2,7 @@ import UIKit
 
 enum Screen {
     case expenses
-    case imageAnalysis(CGImage, CGImagePropertyOrientation)
-    case expenseCreation(Double, UIImage)
+    case expenseCreation(CGImage, CGImagePropertyOrientation)
 }
 
 protocol PresentationViewControllerDelegate {
@@ -14,7 +13,8 @@ class ContainerViewController: UIPageViewController {
 
     private lazy var cameraViewController = CameraViewController(presentationDelegate: self)
     private lazy var expensesViewController = ExpensesParentViewController()
-
+    private lazy var expenseCreationParentViewController = ExpenseCreationParentViewController()
+    
     private lazy var imagePicker: UIImagePickerController = {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -70,13 +70,9 @@ extension ContainerViewController: UIImagePickerControllerDelegate & UINavigatio
         }
         
         let orientation = CGImagePropertyOrientation.init(image.imageOrientation)
-        let textDetectionController = TextPickViewController(cgImage: cgImage,
-                                                             orientation: orientation,
-                                                             presentationDelegate: self)
+        
         dismiss(animated: true) { [weak self] in
-            self?.present(textDetectionController,
-                          animated: true,
-                          completion: nil)
+            self?.show(screen: .expenseCreation(cgImage, orientation))
         }
         
     }
@@ -92,31 +88,10 @@ extension ContainerViewController: PresentationViewControllerDelegate {
                                direction: .forward,
                                animated: true,
                                completion: nil)
-        case .imageAnalysis(let cgImage, let orientation):
-            let textDetectionController = TextPickViewController(cgImage: cgImage,
-                                                                 orientation: orientation,
-                                                                 presentationDelegate: self)
-            present(textDetectionController, animated: true, completion: nil)
-        case .expenseCreation(let recognizedDouble, let image):
-            let icon = Icon.init(iconPrefix: "d", suffix: "d")
-            let category = Category.init(id: "sd",
-                                         name: "weu",
-                                         pluralName: "weus",
-                                         shortName: "w",
-                                         icon: icon,
-                                         primary: true)
-            let location = Location.init(address: nil, lat: nil, lng: nil, labeledLatLngs: nil, distance: nil, postalCode: nil, cc: nil, city: nil, state: nil, country: nil, formattedAddress: nil)
-            let venue1 = Venue(id: "1", name: "Donky donk", location: location, categories: [category], verified: true, referralID: "d", hasPerk: false)
-            let venue2 = Venue(id: "2", name: "Donky donkdonk", location: location, categories: [category], verified: true, referralID: "d", hasPerk: false)
-            let venue3 = Venue(id: "2", name: "Donky donkdonkdonkdonk", location: location, categories: [category], verified: true, referralID: "d", hasPerk: false)
-            let testVenues: [Venue] = [venue1, venue2, venue3]
-
-            let viewModel = ExpenseCreationViewModel(recognizedDouble: recognizedDouble,
-                                                     image: image,
-                                                     nearbyPlaces: testVenues.map(NearbyPlace.init))
-
-            let expenseCreationViewController = ExpenseCreationViewController(viewModel: viewModel)
-            presentedViewController?.present(expenseCreationViewController, animated: true, completion: nil)
+        case .expenseCreation(let capturedImage, let orientation):
+            let parentFlowVC = expenseCreationParentViewController.initialFlowViewController(capturedImage: capturedImage,
+                                                                             orientation: orientation)
+            present(parentFlowVC, animated: true, completion: nil)
         }
     }
     

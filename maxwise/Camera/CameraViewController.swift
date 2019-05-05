@@ -100,6 +100,6 @@ class CameraViewController: UIViewController {
 extension CameraViewController: PictureRetrievalDelegate {
     
     func captured(image: CGImage, orientation: CGImagePropertyOrientation) {
-        presentationDelegate.show(screen: .imageAnalysis(image, orientation))
+        presentationDelegate.show(screen: .expenseCreation(image, orientation))
     }
 }

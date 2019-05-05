@@ -14,14 +14,12 @@ class ExpenseCreationViewModel {
     }()
     
     private let recognizedDouble: Double
-    private let image: UIImage?
     private(set) var formattedValue: String = ""
     let nearbyPlaces: [NearbyPlace]
     
-    init(recognizedDouble: Double, image: UIImage?, nearbyPlaces: [NearbyPlace]) {
+    init(recognizedDouble: Double, nearbyPlaces: [NearbyPlace]) {
         self.recognizedDouble = recognizedDouble
         self.nearbyPlaces = nearbyPlaces
-        self.image = image
         formattedValue = formatted(amount: recognizedDouble)
     }
     
@@ -37,7 +35,6 @@ class ExpenseCreationViewModel {
         }
         expenseEntryModelController.create(user: user,
                                            nearbyPlace: selectedPlace,
-                                           image: image,
                                            recognizedDouble: recognizedDouble,
                                            title: "Groceries")
     }
