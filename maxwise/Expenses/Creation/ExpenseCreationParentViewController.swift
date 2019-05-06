@@ -34,7 +34,7 @@ class ExpenseCreationParentViewController: UIViewController {
     
     private func showExpenseCreation(recognizedDouble: Double) {
         let viewModel = ExpenseCreationViewModel(recognizedDouble: recognizedDouble,
-                                                 nearbyPlaces: testVenues().map(NearbyPlace.init))
+                                                 nearbyPlaces: nearbyPlaces)
 
         let expenseCreationViewController = ExpenseCreationViewController(viewModel: viewModel)
         present(expenseCreationViewController, animated: true, completion: nil)

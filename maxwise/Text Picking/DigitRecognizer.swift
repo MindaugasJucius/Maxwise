@@ -25,7 +25,7 @@ class DigitRecognizer {
             return
         }
         operation.tesseract.image = image
-        operation.tesseract.pageSegmentationMode = .singleBlock
+        operation.tesseract.pageSegmentationMode = .singleWord
         operation.tesseract.charWhitelist = "01234567890.,"
         operation.recognitionCompleteBlock = { tesseract in
             completion(tesseract?.recognizedText)

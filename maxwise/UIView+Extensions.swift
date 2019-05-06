@@ -17,8 +17,8 @@ extension UIView {
                 fatalError("wrong superview")
         }
         let constraints = [
-            leadingAnchor.constraint(equalToSystemSpacingAfter: superview.leadingAnchor, multiplier: 1),
-            superview.trailingAnchor.constraint(equalToSystemSpacingAfter: trailingAnchor, multiplier: 1),
+            leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+            superview.trailingAnchor.constraint(equalTo: trailingAnchor),
             topAnchor.constraint(equalTo: superview.topAnchor),
             bottomAnchor.constraint(equalTo: superview.bottomAnchor)
         ]
