@@ -21,10 +21,12 @@ class ExpenseCreationParentViewController: UIViewController {
         }
     }
     
-    func initialFlowViewController(capturedImage: CGImage, orientation: CGImagePropertyOrientation) -> UIViewController {
+    func initialFlowViewController(capturedImage: CGImage, orientation: CGImagePropertyOrientation, tapLocation: CGPoint) -> UIViewController {
         let textPickController = TextPickViewController(cgImage: capturedImage,
                                                         orientation: orientation,
+                                                        tapLocation: tapLocation,
                                                         recognitionOccured: recognitionOccured)
+        
         textPickController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(textPickController.view)
         textPickController.view.fill(in: view)

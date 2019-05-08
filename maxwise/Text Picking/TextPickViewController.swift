@@ -21,13 +21,15 @@ class TextPickViewController: UIViewController {
     private var trackingImageRect = CGRect.zero
     private let cgImage: CGImage
     private let orientation: CGImagePropertyOrientation
+    private let tapLocation: CGPoint
     
     private let recognitionOccured: (Double) -> Void
     
-    init(cgImage: CGImage, orientation: CGImagePropertyOrientation, recognitionOccured: @escaping (Double) -> Void) {
+    init(cgImage: CGImage, orientation: CGImagePropertyOrientation, tapLocation: CGPoint, recognitionOccured: @escaping (Double) -> Void) {
         self.recognitionOccured = recognitionOccured
         self.cgImage = cgImage
         self.orientation = orientation
+        self.tapLocation = tapLocation
         super.init(nibName: nil, bundle: nil)
         textDetectionController.delegate = self
     }
@@ -50,11 +52,10 @@ class TextPickViewController: UIViewController {
         imageViewForCropping.isHidden = true
         
         trackingImageRect = AVMakeRect(aspectRatio: uiImage.size, insideRect: screenBounds)
-        
+
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
         imageView.image = uiImage
-        addTapRecognizer()
         
         scrollView.maximumZoomScale = 3
         scrollView.delegate = self
@@ -63,24 +64,8 @@ class TextPickViewController: UIViewController {
         textDetectionController.handle(ciImage: ciImage, orientation: orientation)
     }
     
-    private func addTapRecognizer() {
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapOccured(gesture:)))
-        imageView.addGestureRecognizer(recognizer)
-    }
-    
-    @objc private func tapOccured(gesture: UITapGestureRecognizer) {
-        let tapLocation = gesture.location(in: imageView)
-
-        let containingFrame = imageView.subviews
-            .map { $0.frame }
-            .filter { $0.contains(tapLocation) }
-            .first
-
-        guard let frame = containingFrame else {
-            return
-        }
-
-        handleRecognition(in: frame)
+    @IBAction func close(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     private func handleRecognition(in frame: CGRect) {
@@ -112,6 +97,23 @@ class TextPickViewController: UIViewController {
 
     }
     
+    private func createTrackingView(frame: CGRect, matching: Bool) -> UIView {
+        let trackingView = UIView(frame: .zero)
+        trackingView.frame = frame
+        trackingView.layer.borderWidth = 1.5
+        trackingView.layer.borderColor = matching ? UIColor.green.cgColor : UIColor.red.cgColor
+        trackingView.layer.cornerRadius = 2
+        return trackingView
+    }
+    
+    private func convertedTrackingImageRect(fromPrecentageRect percentageRect: CGRect) -> CGRect {
+        let size = CGSize(width: percentageRect.width * trackingImageRect.width,
+                          height: percentageRect.height * trackingImageRect.height)
+        let origin = CGPoint(x: percentageRect.minX * trackingImageRect.width,
+                             y: (1 - percentageRect.maxY) * trackingImageRect.height + trackingImageRect.origin.y)
+        return CGRect(origin: origin, size: size)
+    }
+    
 }
 
 extension TextPickViewController: UIScrollViewDelegate {
@@ -125,25 +127,23 @@ extension TextPickViewController: UIScrollViewDelegate {
 extension TextPickViewController: TextDetectionDelegate {
     
     func detected(boundingBoxes: [CGRect]) {
-        let imageRect = trackingImageRect
+        let trackingRects = boundingBoxes.map {
+            self.convertedTrackingImageRect(fromPrecentageRect: $0)
+        }
+ 
 
-        let layers: [UIView] = boundingBoxes.compactMap { boundingBox in
-            let size = CGSize(width: boundingBox.width * imageRect.width,
-                              height: boundingBox.height * imageRect.height)
-            let origin = CGPoint(x: boundingBox.minX * imageRect.width,
-                                 y: (1 - boundingBox.maxY) * imageRect.height + imageRect.origin.y)
-            
-            let trackingView = UIView(frame: .zero)
-            trackingView.frame = CGRect(origin: origin, size: size)
-            trackingView.layer.borderWidth = 1.5
-            trackingView.layer.borderColor = UIColor.green.cgColor
-            trackingView.layer.cornerRadius = 2
-            return trackingView
+        let tapRectSize = CGSize.init(width: 30, height: 30)
+        let tapRectOrigin = CGPoint.init(x: tapLocation.x - tapRectSize.width / 2,
+                                         y: tapLocation.y - tapRectSize.height / 2)
+
+        guard let matchingRecognitionRect = trackingRects.filter({ $0.intersects(CGRect(origin: tapRectOrigin, size: tapRectSize)) }).first else {
+            return
         }
+
+        let trackingView = createTrackingView(frame: matchingRecognitionRect, matching: true)
+        imageView.addSubview(trackingView)
         
-        layers.forEach {
-            imageView.addSubview($0)
-        }
+        handleRecognition(in: matchingRecognitionRect)
     }
     
 }

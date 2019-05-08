@@ -2,7 +2,7 @@ import UIKit
 
 enum Screen {
     case expenses
-    case expenseCreation(CGImage, CGImagePropertyOrientation)
+    case expenseCreation(CGImage, CGImagePropertyOrientation, CGPoint)
 }
 
 protocol PresentationViewControllerDelegate {
@@ -72,7 +72,7 @@ extension ContainerViewController: UIImagePickerControllerDelegate & UINavigatio
         let orientation = CGImagePropertyOrientation.init(image.imageOrientation)
         
         dismiss(animated: true) { [weak self] in
-            self?.show(screen: .expenseCreation(cgImage, orientation))
+            //self?.show(screen: .expenseCreation(cgImage, orientation))
         }
         
     }
@@ -88,9 +88,10 @@ extension ContainerViewController: PresentationViewControllerDelegate {
                                direction: .forward,
                                animated: true,
                                completion: nil)
-        case .expenseCreation(let capturedImage, let orientation):
+        case .expenseCreation(let capturedImage, let orientation, let tapLocation):
             let parentFlowVC = expenseCreationParentViewController.initialFlowViewController(capturedImage: capturedImage,
-                                                                             orientation: orientation)
+                                                                                             orientation: orientation,
+                                                                                             tapLocation: tapLocation)
             present(parentFlowVC, animated: true, completion: nil)
         }
     }
