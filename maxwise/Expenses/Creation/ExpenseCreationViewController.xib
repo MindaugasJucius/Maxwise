@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExpenseCreationViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="i7X-zO-fzJ" id="Mp4-p9-pIz"/>
+                <outlet property="cameraContainerView" destination="NLg-uk-6eq" id="sQo-0B-sKw"/>
                 <outlet property="textField" destination="hle-vD-21g" id="MYF-xE-CBV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="278"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5I-kZ-cgF" customClass="BlurView" customModule="maxwise" customModuleProvider="target">
-                    <rect key="frame" x="16" y="0.0" width="343" height="278"/>
+                    <rect key="frame" x="16" y="398" width="343" height="193"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="278" id="6Ri-Cg-xKU"/>
-                    </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-GV-xNW">
-                    <rect key="frame" x="32" y="16" width="311" height="246"/>
+                    <rect key="frame" x="32" y="414" width="311" height="161"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwn-Q6-x3C">
                             <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
@@ -53,10 +50,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="i7X-zO-fzJ">
-                            <rect key="frame" x="0.0" y="91" width="311" height="100"/>
+                            <rect key="frame" x="0.0" y="91" width="311" height="35"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="100" id="QzG-fn-buF"/>
+                                <constraint firstAttribute="height" constant="35" id="QzG-fn-buF"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="b1j-R7-fxP">
                                 <size key="itemSize" width="50" height="50"/>
@@ -66,17 +63,17 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="soX-HF-qvq">
-                            <rect key="frame" x="0.0" y="196" width="311" height="50"/>
+                            <rect key="frame" x="0.0" y="131" width="311" height="30"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atR-Uy-of2">
-                                    <rect key="frame" x="0.0" y="0.0" width="155.5" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="155.5" height="30"/>
                                     <state key="normal" title="Close"/>
                                     <connections>
                                         <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="kvb-bd-ddT"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rin-np-F0y">
-                                    <rect key="frame" x="155.5" y="0.0" width="155.5" height="50"/>
+                                    <rect key="frame" x="155.5" y="0.0" width="155.5" height="30"/>
                                     <state key="normal" title="Add"/>
                                     <connections>
                                         <action selector="addExpenseTapped:" destination="-1" eventType="touchUpInside" id="RAy-pw-QFl"/>
@@ -91,19 +88,27 @@
                         <constraint firstItem="soX-HF-qvq" firstAttribute="width" secondItem="Vx1-GV-xNW" secondAttribute="width" id="ma4-bf-Prc"/>
                     </constraints>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLg-uk-6eq">
+                    <rect key="frame" x="16" y="153.5" width="343" height="236.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
             <constraints>
+                <constraint firstItem="a5I-kZ-cgF" firstAttribute="top" secondItem="NLg-uk-6eq" secondAttribute="bottom" constant="8" id="K8m-95-TnV"/>
                 <constraint firstItem="a5I-kZ-cgF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="OKv-wv-Aun"/>
                 <constraint firstItem="Vx1-GV-xNW" firstAttribute="top" secondItem="a5I-kZ-cgF" secondAttribute="top" constant="16" id="Qat-GG-7t4"/>
                 <constraint firstItem="a5I-kZ-cgF" firstAttribute="trailing" secondItem="Vx1-GV-xNW" secondAttribute="trailing" constant="16" id="S3d-gI-Ra8"/>
+                <constraint firstItem="NLg-uk-6eq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="U4T-fY-DaQ"/>
+                <constraint firstItem="NLg-uk-6eq" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.4" id="Ua5-zl-bPt"/>
                 <constraint firstItem="Vx1-GV-xNW" firstAttribute="leading" secondItem="a5I-kZ-cgF" secondAttribute="leading" constant="16" id="dwK-dd-aWG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="a5I-kZ-cgF" secondAttribute="bottom" id="eYv-Bm-nYv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NLg-uk-6eq" secondAttribute="trailing" constant="16" id="pUf-S8-OSd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vx1-GV-xNW" secondAttribute="bottom" constant="16" id="rio-Sc-gpn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="a5I-kZ-cgF" secondAttribute="trailing" constant="16" id="ybp-hM-n3z"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="120.8" y="-181.70914542728636"/>
+            <point key="canvasLocation" x="120.8" y="-322.48875562218893"/>
         </view>
     </objects>
 </document>

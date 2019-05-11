@@ -16,26 +16,27 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pp-xJ-m9n">
-                    <rect key="frame" x="157.5" y="0.0" width="60" height="60"/>
+                    <rect key="frame" x="162.5" y="0.0" width="50" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="Q8J-YH-cgB"/>
-                        <constraint firstAttribute="width" constant="60" id="lBG-fg-SLl"/>
+                        <constraint firstAttribute="height" constant="50" id="HKf-6P-3zB"/>
+                        <constraint firstAttribute="width" secondItem="3pp-xJ-m9n" secondAttribute="height" multiplier="1:1" id="Taw-Mg-wxb"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="3pp-xJ-m9n" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="DWM-7H-idC"/>
-                <constraint firstItem="3pp-xJ-m9n" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kav-Zg-NUh"/>
-                <constraint firstItem="3pp-xJ-m9n" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ocM-Gt-OGE"/>
+                <constraint firstItem="3pp-xJ-m9n" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="SGw-ZS-GaC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3pp-xJ-m9n" secondAttribute="bottom" id="bOO-lc-ykI"/>
+                <constraint firstItem="3pp-xJ-m9n" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="cm1-ob-5Iv"/>
+                <constraint firstItem="3pp-xJ-m9n" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lll-dq-w5w"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="37.600000000000001" y="130.88455772113943"/>
+            <point key="canvasLocation" x="37.600000000000001" y="120.53973013493254"/>
         </view>
     </objects>
 </document>
