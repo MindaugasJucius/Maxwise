@@ -23,8 +23,7 @@ class ContainerViewController: UIPageViewController {
         return picker
     }()
     
-    private lazy var initialViewControllers = [cameraViewController,
-                                               expensesViewController]
+    private lazy var initialViewControllers: [UIViewController] = [expensesViewController]
     
     init() {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -38,19 +37,15 @@ class ContainerViewController: UIPageViewController {
         super.viewDidLoad()
         
         dataSource = self
-        setViewControllers([cameraViewController], direction: .forward, animated: false, completion: nil)
+        setViewControllers(initialViewControllers, direction: .forward, animated: false, completion: nil)
         addNavigationView()
     }
     
     private func addNavigationView() {
-        let navigationView = NavigationView(
-            leftButtonTapped: { [unowned self] in
-                self.present(self.imagePicker, animated: true, completion: nil)
-            },
-            rightButtonTapped: { [unowned self] in
-                self.show(screen: .expenses)
-            }
-        )
+
+        let navigationView = NavigationView {
+            
+        }
         navigationView.move(to: view)
     }
 

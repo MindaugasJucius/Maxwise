@@ -2,16 +2,12 @@ import UIKit
 
 class NavigationView: UIView {
     
-    @IBOutlet private weak var leftButton: UIButton!
-    @IBOutlet private weak var rightButton: UIButton!
+    @IBOutlet private weak var centeredButton: UIButton!
+
+    private let buttonTapped: EmptyCallback
     
-    private var leftButtonTapped: EmptyCallback
-    private var rightButtonTapped: EmptyCallback
-    
-    init(leftButtonTapped: @escaping EmptyCallback,
-         rightButtonTapped: @escaping EmptyCallback) {
-        self.leftButtonTapped = leftButtonTapped
-        self.rightButtonTapped = rightButtonTapped
+    init(buttonTapped: @escaping EmptyCallback) {
+        self.buttonTapped = buttonTapped
         super.init(frame: .zero)
         loadNib()
         configureButtons()
@@ -31,18 +27,13 @@ class NavigationView: UIView {
     }
     
     private func configureButtons() {
-        leftButton.addTarget(self, action: #selector(tappedLeftButton), for: .touchUpInside)
-        rightButton.addTarget(self, action: #selector(tappedRightButton), for: .touchUpInside)
-        leftButton.setTitle("Gallery", for: .normal)
-        rightButton.setTitle("Expenses", for: .normal)
+        centeredButton.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        centeredButton.setTitle("", for: .normal)
+        centeredButton.setImage(#imageLiteral(resourceName: "add"), for: .normal)
     }
     
-    @objc private func tappedLeftButton() {
-        leftButtonTapped()
-    }
-    
-    @objc private func tappedRightButton() {
-        rightButtonTapped()
+    @objc private func tappedButton() {
+        buttonTapped()
     }
     
     func move(to superview: UIView) {
