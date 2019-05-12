@@ -65,7 +65,7 @@ class CameraViewController: UIViewController {
         cameraLayer?.frame = view.bounds
     }
     
-    @IBAction func takePhoto(_ sender: Any) {
+    private func takePhoto() {
         #if targetEnvironment(simulator)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             let testImage = UIImage(named: "testImage")
@@ -81,15 +81,15 @@ class CameraViewController: UIViewController {
     
     @objc private func tap(_ tap: UITapGestureRecognizer) {
         let tapLocation = tap.location(in: view)
-        guard let convertedPoint = cameraLayer?.captureDevicePointConverted(fromLayerPoint: tapLocation) else {
-            return
-        }
-        let range = CGFloat(0)...CGFloat(1)
-        guard range.contains(convertedPoint.x),
-            range.contains(convertedPoint.y) else {
-            return
-        }
-        cameraController.takePhoto()
+//        guard let convertedPoint = cameraLayer?.captureDevicePointConverted(fromLayerPoint: tapLocation) else {
+//            return
+//        }
+//        let range = CGFloat(0)...CGFloat(1)
+//        guard range.contains(convertedPoint.x),
+//            range.contains(convertedPoint.y) else {
+//            return
+//        }
+        takePhoto()
         self.tapLocation = tapLocation
     }
     

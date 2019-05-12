@@ -25,6 +25,8 @@ class ExpenseCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.text = viewModel.formattedValue
+        cameraContainerView.layer.masksToBounds = true
+        cameraContainerView.layer.cornerRadius = 6
         //configureCollectionView()
         addCameraController()
     }
@@ -36,7 +38,7 @@ class ExpenseCreationViewController: UIViewController {
         cameraViewController.view.fill(in: cameraContainerView)
         cameraViewController.didMove(toParent: nil)
     }
-        
+    
     private func addRecognitionController(cgImage: CGImage,
                                           orientation: CGImagePropertyOrientation,
                                           tapLocation: CGPoint) {

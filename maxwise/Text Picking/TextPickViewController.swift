@@ -8,6 +8,7 @@
 
 import UIKit
 import AVKit
+import Vision
 
 class TextPickViewController: UIViewController {
 
@@ -45,14 +46,10 @@ class TextPickViewController: UIViewController {
                               scale: 1,
                               orientation: UIImage.Orientation(orientation))
 
-        let screenBounds = UIScreen.main.bounds
-
-        imageViewForCropping.contentMode = .scaleAspectFit
-        imageViewForCropping.image = uiImage
-        imageViewForCropping.isHidden = true
-        
-        trackingImageRect = AVMakeRect(aspectRatio: uiImage.size, insideRect: screenBounds)
-
+//        imageViewForCropping.contentMode = .scaleAspectFit
+//        imageViewForCropping.image = uiImage
+//        imageViewForCropping.isHidden = true
+    
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
         imageView.image = uiImage
@@ -62,6 +59,15 @@ class TextPickViewController: UIViewController {
         
         let ciImage = CIImage(cgImage: cgImage)
         textDetectionController.handle(ciImage: ciImage, orientation: orientation)
+        let tapRectSize = CGSize.init(width: 30, height: 30)
+        let tapRectOrigin = CGPoint.init(x: tapLocation.x - tapRectSize.width / 2,
+                                         y: tapLocation.y - tapRectSize.height / 2)
+        imageView.addSubview(createTrackingView(frame: .init(origin: tapRectOrigin, size: tapRectSize), matching: true))
+    }
+    
+    override func viewDidLayoutSubviews() {
+        trackingImageRect = AVMakeRect(aspectRatio: .init(width: cgImage.width, height: cgImage.height),
+                                       insideRect: view.frame)
     }
     
     @IBAction func close(_ sender: Any) {
@@ -85,7 +91,10 @@ class TextPickViewController: UIViewController {
         image.draw(at: origin)
         let tmpImg = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-
+        let imageView = UIImageView(image: tmpImg)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(imageView)
+        imageView.fill(in: view)
         viewModel.performRecognition(in: tmpImg) { [weak self] result in
             switch result {
             case .success(let value):
@@ -128,9 +137,15 @@ extension TextPickViewController: TextDetectionDelegate {
     
     func detected(boundingBoxes: [CGRect]) {
         let trackingRects = boundingBoxes.map {
-            self.convertedTrackingImageRect(fromPrecentageRect: $0)
+            convertedTrackingImageRect(fromPrecentageRect: .init(origin: $0.origin, size: $0.size))
+//            VNImageRectForNormalizedRect($0, Int(trackingImageRect.width), Int(trackingImageRect.height))
         }
  
+
+        trackingRects.forEach { rect in
+            let trackingView = createTrackingView(frame: rect, matching: false)
+            imageView.addSubview(trackingView)
+        }
 
         let tapRectSize = CGSize.init(width: 30, height: 30)
         let tapRectOrigin = CGPoint.init(x: tapLocation.x - tapRectSize.width / 2,
