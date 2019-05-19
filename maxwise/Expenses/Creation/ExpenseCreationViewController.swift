@@ -25,6 +25,10 @@ class ExpenseCreationViewController: UIViewController {
         super.viewDidLoad()
         textField.text = viewModel.formattedValue
         configureCollectionView()
+        let tags = viewModel.categories.map { $0.title }
+        tagListView.addTags(tags)
+
+        tagListView.scrollDirection = .horizontal
     }
     
     func configureCollectionView() {

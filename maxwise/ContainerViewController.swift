@@ -42,6 +42,13 @@ class ContainerViewController: UIPageViewController {
         addNavigationView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let viewModel = ExpenseCreationViewModel(recognizedDouble: 14.0, nearbyPlaces: [])
+        let expenseCreationVC = ExpenseCreationViewController(viewModel: viewModel)
+        present(expenseCreationVC, animated: false, completion: nil)
+    }
+    
     private func addNavigationView() {
         let navigationView = NavigationView(
             leftButtonTapped: { [unowned self] in

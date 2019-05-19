@@ -5,6 +5,7 @@ class ExpenseCreationViewModel {
     
     private let expenseEntryModelController = ExpenseEntryModelController()
     private let userModelController = UserModelController()
+    private let expenseCategoryModelController = ExpenseCategoryModelController()
     
     private lazy var currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -16,6 +17,9 @@ class ExpenseCreationViewModel {
     private let recognizedDouble: Double
     private(set) var formattedValue: String = ""
     let nearbyPlaces: [NearbyPlace]
+    var categories: [ExpenseCategory] {
+        return expenseCategoryModelController.storedCategories()
+    }
     
     init(recognizedDouble: Double, nearbyPlaces: [NearbyPlace]) {
         self.recognizedDouble = recognizedDouble
