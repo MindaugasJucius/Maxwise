@@ -1,9 +1,11 @@
 import UIKit
+import AMTagListView
 
 class ExpenseCreationViewController: UIViewController {
 
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var tagListView: AMTagListView!
     
     private let nearbyPlaces: [NearbyPlace]
     private let viewModel: ExpenseCreationViewModel

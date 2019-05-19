@@ -9,6 +9,7 @@ target 'maxwise' do
   pod 'RealmSwift'
   pod 'FoursquareAPIClient'
   pod 'IQKeyboardManagerSwift'
+  pod 'AMTagListView' 
 
   target 'maxwiseTests' do
     inherit! :search_paths
