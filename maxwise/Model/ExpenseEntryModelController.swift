@@ -5,12 +5,13 @@ class ExpenseEntryModelController {
     @discardableResult
     func create(user: User,
                 nearbyPlace: NearbyPlace?,
+                category: ExpenseCategory,
                 recognizedDouble: Double,
                 title: String) -> ExpenseEntry {
         
         let expenseEntry = ExpenseEntry.init()
         expenseEntry.amount = recognizedDouble
-        expenseEntry.imageData = nil//image?.jpegData(compressionQuality: 0.5)
+        expenseEntry.category = category
         expenseEntry.title = title
         expenseEntry.place = nearbyPlace
         expenseEntry.id = UUID.init().uuidString
