@@ -32,10 +32,8 @@ class ExpenseCreationViewController: UIViewController {
 
         cameraContainerView.layer.masksToBounds = true
         cameraContainerView.layer.cornerRadius = 6
-        //configureCollectionView()
         addCameraController()
         
-        configureCollectionView()
         configureTagListView()
     }
     
@@ -96,10 +94,6 @@ class ExpenseCreationViewController: UIViewController {
         recognitionController.didMove(toParent: nil)
     }
 
-    @IBAction func closeButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-
     @IBAction func addExpenseTapped(_ sender: Any) {
         guard let tagView = selectedTag,
             let categoryID = tagView.categoryID else {
@@ -110,12 +104,12 @@ class ExpenseCreationViewController: UIViewController {
             return
         }
         
-        var selectedPlace: NearbyPlace? = nil
-        if let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first {
-            selectedPlace = nearbyPlaces[selectedIndexPath.row]
-        }
-     
-        viewModel.performModelCreation(selectedPlace: selectedPlace,
+//        var selectedPlace: NearbyPlace? = nil
+//        if let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first {
+//            selectedPlace = nearbyPlaces[selectedIndexPath.row]
+//        }
+//
+        viewModel.performModelCreation(selectedPlace: nil,
                                        seletedCategory: selectedCategory)
     }
 }
@@ -161,6 +155,7 @@ extension AMTagView {
     func applyDeselectedStyle() {
         tagColor = .lightGray
         innerTagColor = .lightGray
+    }
 }
 
 extension ExpenseCreationViewController: CameraCaptureDelegate {

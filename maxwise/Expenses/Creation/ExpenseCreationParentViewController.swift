@@ -21,20 +21,7 @@ class ExpenseCreationParentViewController: UIViewController {
         }
     }
     
-    func initialFlowViewController(capturedImage: CGImage, orientation: CGImagePropertyOrientation, tapLocation: CGPoint) -> UIViewController {
-        let textPickController = TextPickViewController(cgImage: capturedImage,
-                                                        orientation: orientation,
-                                                        tapLocation: tapLocation,
-                                                        recognitionOccured: recognitionOccured)
-        
-        textPickController.view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(textPickController.view)
-        textPickController.view.fill(in: view)
-        addChild(textPickController)
-        return self
-    }
-    
-    private func showExpenseCreation(recognizedDouble: Double) {
+    func showExpenseCreation(recognizedDouble: Double) {
         let viewModel = ExpenseCreationViewModel(recognizedDouble: recognizedDouble,
                                                  nearbyPlaces: nearbyPlaces)
 
