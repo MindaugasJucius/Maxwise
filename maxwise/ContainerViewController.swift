@@ -3,6 +3,7 @@ import UIKit
 enum Screen {
     case expenses
     case expenseCreation(CGImage, CGImagePropertyOrientation, CGPoint)
+    case camera
 }
 
 protocol PresentationViewControllerDelegate {
@@ -11,7 +12,7 @@ protocol PresentationViewControllerDelegate {
 
 class ContainerViewController: UIPageViewController {
 
-    private lazy var cameraViewController = CameraViewController(presentationDelegate: self)
+    //private lazy var cameraViewController = CameraViewController(presentationDelegate: self)
     private lazy var expensesViewController = ExpensesParentViewController()
     private lazy var expenseCreationParentViewController = ExpenseCreationParentViewController()
     
@@ -23,8 +24,7 @@ class ContainerViewController: UIPageViewController {
         return picker
     }()
     
-    private lazy var initialViewControllers = [cameraViewController,
-                                               expensesViewController]
+    private lazy var initialViewControllers: [UIViewController] = [expensesViewController]
     
     init() {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -36,9 +36,9 @@ class ContainerViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        definesPresentationContext = true
         dataSource = self
-        setViewControllers([cameraViewController], direction: .forward, animated: false, completion: nil)
+        setViewControllers(initialViewControllers, direction: .forward, animated: false, completion: nil)
         addNavigationView()
     }
     
@@ -50,14 +50,10 @@ class ContainerViewController: UIPageViewController {
     }
     
     private func addNavigationView() {
-        let navigationView = NavigationView(
-            leftButtonTapped: { [unowned self] in
-                self.present(self.imagePicker, animated: true, completion: nil)
-            },
-            rightButtonTapped: { [unowned self] in
-                self.show(screen: .expenses)
-            }
-        )
+
+        let navigationView = NavigationView { [weak self] in
+            self?.show(screen: .camera)
+        }
         navigationView.move(to: view)
     }
 
@@ -100,6 +96,9 @@ extension ContainerViewController: PresentationViewControllerDelegate {
                                                                                              orientation: orientation,
                                                                                              tapLocation: tapLocation)
             present(parentFlowVC, animated: true, completion: nil)
+        case .camera:
+            present(expenseCreationParentViewController.showExpenseCreation(), animated: true, completion: nil)
+
         }
     }
     

@@ -9,6 +9,10 @@
 import UIKit
 import AVKit
 
+protocol CameraCaptureDelegate: class {
+    func captured(image: CGImage, orientation: CGImagePropertyOrientation, tapLocation: CGPoint)
+}
+
 class CameraViewController: UIViewController {
     
     private let cameraController = CameraController()
@@ -16,7 +20,7 @@ class CameraViewController: UIViewController {
     
     private var tapLocation: CGPoint?
     
-    private let presentationDelegate: PresentationViewControllerDelegate
+    private weak var captureDelegate: CameraCaptureDelegate?
     
     let minimumZoom: CGFloat = 1.0
     let maximumZoom: CGFloat = 3.0
@@ -26,9 +30,10 @@ class CameraViewController: UIViewController {
         return .lightContent
     }
 
-    init(presentationDelegate: PresentationViewControllerDelegate) {
-        self.presentationDelegate = presentationDelegate
+    init(captureDelegate: CameraCaptureDelegate) {
+        self.captureDelegate = captureDelegate
         super.init(nibName: nil, bundle: nil)
+        modalPresentationStyle = .overCurrentContext
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,7 +65,7 @@ class CameraViewController: UIViewController {
         cameraLayer?.frame = view.bounds
     }
     
-    @IBAction func takePhoto(_ sender: Any) {
+    private func takePhoto() {
         #if targetEnvironment(simulator)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             let testImage = UIImage(named: "testImage")
@@ -76,15 +81,15 @@ class CameraViewController: UIViewController {
     
     @objc private func tap(_ tap: UITapGestureRecognizer) {
         let tapLocation = tap.location(in: view)
-        guard let convertedPoint = cameraLayer?.captureDevicePointConverted(fromLayerPoint: tapLocation) else {
-            return
-        }
-        let range = CGFloat(0)...CGFloat(1)
-        guard range.contains(convertedPoint.x),
-            range.contains(convertedPoint.y) else {
-            return
-        }
-        cameraController.takePhoto()
+//        guard let convertedPoint = cameraLayer?.captureDevicePointConverted(fromLayerPoint: tapLocation) else {
+//            return
+//        }
+//        let range = CGFloat(0)...CGFloat(1)
+//        guard range.contains(convertedPoint.x),
+//            range.contains(convertedPoint.y) else {
+//            return
+//        }
+        takePhoto()
         self.tapLocation = tapLocation
     }
     
@@ -125,6 +130,8 @@ extension CameraViewController: PictureRetrievalDelegate {
         guard let tapLocation = tapLocation else {
             fatalError("Shouldn't happen")
         }
-        presentationDelegate.show(screen: .expenseCreation(image, orientation, tapLocation))
+        captureDelegate?.captured(image: image,
+                                  orientation: orientation,
+                                  tapLocation: tapLocation)
     }
 }
