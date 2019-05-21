@@ -2,7 +2,7 @@ import UIKit
 
 enum Screen {
     case expenses
-    case expenseCreation(CGImage, CGImagePropertyOrientation, CGPoint)
+    case expenseCreation
 }
 
 protocol PresentationViewControllerDelegate {
@@ -33,8 +33,8 @@ class ContainerViewController: UIPageViewController {
     }
     
     private func addNavigationView() {
-        let navigationView = NavigationView {
-            
+        let navigationView = NavigationView { [weak self] in
+            self?.show(screen: .expenseCreation)
         }
         navigationView.move(to: view)
     }
@@ -48,7 +48,6 @@ class ContainerViewController: UIPageViewController {
 
 }
 
-
 extension ContainerViewController: PresentationViewControllerDelegate {
     
     func show(screen: Screen) {
@@ -58,8 +57,9 @@ extension ContainerViewController: PresentationViewControllerDelegate {
                                direction: .forward,
                                animated: true,
                                completion: nil)
-        case .expenseCreation(let capturedImage, let orientation, let tapLocation):
-            expenseCreationParentViewController.showExpenseCreation(recognizedDouble: 0)
+        case .expenseCreation:
+            let vc = expenseCreationParentViewController.expenseCreation(recognizedDouble: 0)
+            present(vc, animated: true, completion: nil)
         }
     }
     

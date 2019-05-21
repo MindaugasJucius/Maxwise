@@ -52,7 +52,7 @@ class CameraViewController: UIViewController {
     
     private func addCameraLayer() {
         let cameraLayer = AVCaptureVideoPreviewLayer(session: cameraController.captureSession)
-        cameraLayer.videoGravity = .resizeAspect
+        cameraLayer.videoGravity = .resizeAspectFill
         self.cameraLayer = cameraLayer
         view.layer.insertSublayer(cameraLayer, at: 0)
         

@@ -45,12 +45,8 @@ class TextPickViewController: UIViewController {
         let uiImage = UIImage(cgImage: cgImage,
                               scale: 1,
                               orientation: UIImage.Orientation(orientation))
-
-//        imageViewForCropping.contentMode = .scaleAspectFit
-//        imageViewForCropping.image = uiImage
-//        imageViewForCropping.isHidden = true
-    
-        imageView.contentMode = .scaleAspectFit
+        
+        imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
         imageView.image = uiImage
         
@@ -136,9 +132,13 @@ extension TextPickViewController: UIScrollViewDelegate {
 extension TextPickViewController: TextDetectionDelegate {
     
     func detected(boundingBoxes: [CGRect]) {
-        let trackingRects = boundingBoxes.map {
-            convertedTrackingImageRect(fromPrecentageRect: .init(origin: $0.origin, size: $0.size))
-//            VNImageRectForNormalizedRect($0, Int(trackingImageRect.width), Int(trackingImageRect.height))
+        let scale = imageView.frame.height / trackingImageRect.height
+        let transform = CGAffineTransform.init(scaleX: scale, y: scale)
+        let trackingRects = boundingBoxes.map { box -> CGRect in
+            
+            let converted = convertedTrackingImageRect(fromPrecentageRect: .init(origin: box.origin, size: box.size))
+            let transformed = converted.applying(transform)
+            return transformed
         }
  
 
@@ -150,7 +150,7 @@ extension TextPickViewController: TextDetectionDelegate {
         let tapRectSize = CGSize.init(width: 30, height: 30)
         let tapRectOrigin = CGPoint.init(x: tapLocation.x - tapRectSize.width / 2,
                                          y: tapLocation.y - tapRectSize.height / 2)
-
+        
         guard let matchingRecognitionRect = trackingRects.filter({ $0.intersects(CGRect(origin: tapRectOrigin, size: tapRectSize)) }).first else {
             return
         }

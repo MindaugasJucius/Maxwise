@@ -4,12 +4,6 @@ class ExpenseCreationParentViewController: UIViewController {
 
     private let nearbyPlacesProvider = NearbyPlacesProvider()
     private var nearbyPlaces: [NearbyPlace] = []
-
-    private lazy var recognitionOccured: (Double) -> Void = {
-        return { [weak self] recognizedValue in
-            self?.showExpenseCreation(recognizedDouble: recognizedValue)
-        }
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +15,12 @@ class ExpenseCreationParentViewController: UIViewController {
         }
     }
     
-    func showExpenseCreation(recognizedDouble: Double) {
+    func expenseCreation(recognizedDouble: Double) -> UIViewController {
         let viewModel = ExpenseCreationViewModel(recognizedDouble: recognizedDouble,
                                                  nearbyPlaces: nearbyPlaces)
 
         let expenseCreationViewController = ExpenseCreationViewController(viewModel: viewModel)
-        present(expenseCreationViewController, animated: true, completion: nil)
+        return expenseCreationViewController
     }
     
     private func testVenues() -> [Venue] {
