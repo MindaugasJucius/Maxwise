@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -27,8 +27,11 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLg-uk-6eq">
-                    <rect key="frame" x="16" y="121" width="343" height="363"/>
+                    <rect key="frame" x="16" y="26.666666666666657" width="343" height="457.33333333333337"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="NLg-uk-6eq" secondAttribute="height" multiplier="3:4" id="2Xu-iD-GNl"/>
+                    </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-GV-xNW">
                     <rect key="frame" x="32" y="525" width="311" height="115"/>
@@ -69,7 +72,6 @@
                 <constraint firstItem="Vx1-GV-xNW" firstAttribute="centerX" secondItem="a5I-kZ-cgF" secondAttribute="centerX" id="ZoA-8D-wwa"/>
                 <constraint firstItem="a5I-kZ-cgF" firstAttribute="height" secondItem="Vx1-GV-xNW" secondAttribute="height" constant="32" id="bSh-mN-QIz"/>
                 <constraint firstItem="NLg-uk-6eq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="bzZ-bI-ect"/>
-                <constraint firstItem="NLg-uk-6eq" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="gM7-pv-OyW"/>
                 <constraint firstItem="Vx1-GV-xNW" firstAttribute="leading" secondItem="a5I-kZ-cgF" secondAttribute="leading" constant="16" id="m6r-Y4-MeY"/>
                 <constraint firstItem="a5I-kZ-cgF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="sol-UQ-Akq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NLg-uk-6eq" secondAttribute="trailing" constant="16" id="t4l-Al-CHX"/>

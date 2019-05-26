@@ -52,7 +52,7 @@ class CameraViewController: UIViewController {
     
     private func addCameraLayer() {
         let cameraLayer = AVCaptureVideoPreviewLayer(session: cameraController.captureSession)
-        cameraLayer.videoGravity = .resizeAspectFill
+        cameraLayer.videoGravity = .resizeAspect
         self.cameraLayer = cameraLayer
         view.layer.insertSublayer(cameraLayer, at: 0)
         
@@ -67,20 +67,18 @@ class CameraViewController: UIViewController {
     
     private func takePhoto() {
         #if targetEnvironment(simulator)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             let testImage = UIImage(named: "testImage")
             guard let cgImage = testImage?.cgImage else {
                 return
             }
             self.captured(image: cgImage, orientation: .up)
-        }
         #else
         cameraController.takePhoto()
         #endif
     }
     
     @objc private func tap(_ tap: UITapGestureRecognizer) {
-        let tapLocation = tap.location(in: view)
+        tapLocation = tap.location(in: view)
 //        guard let convertedPoint = cameraLayer?.captureDevicePointConverted(fromLayerPoint: tapLocation) else {
 //            return
 //        }
@@ -90,7 +88,6 @@ class CameraViewController: UIViewController {
 //            return
 //        }
         takePhoto()
-        self.tapLocation = tapLocation
     }
     
     @objc private func pinch(_ pinch: UIPinchGestureRecognizer) {

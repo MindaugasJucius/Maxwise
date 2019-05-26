@@ -61,7 +61,7 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
 
         let deviceOrientation = UIDevice.current.orientation.exifOrientation()
         delegate?.captured(image: cgImage,
-                                  orientation: deviceOrientation)
+                           orientation: deviceOrientation)
     }
     
 }

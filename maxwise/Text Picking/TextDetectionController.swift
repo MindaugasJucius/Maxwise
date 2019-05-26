@@ -9,10 +9,9 @@ class TextDetectionController {
     
     weak var delegate: TextDetectionDelegate?
     
-    func handle(ciImage: CIImage, orientation: CGImagePropertyOrientation) {
-        
+    func handle(cgImage: CGImage, orientation: CGImagePropertyOrientation) {        
         let handler = VNImageRequestHandler(
-            ciImage: ciImage,
+            cgImage: cgImage,
             orientation: orientation,
             options: [VNImageOption: Any]()
         )
