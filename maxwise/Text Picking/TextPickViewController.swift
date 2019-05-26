@@ -17,7 +17,6 @@ class TextPickViewController: UIViewController {
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var imageViewForCropping: UIImageView!
     
     private var trackingImageRect = CGRect.zero
     private let cgImage: CGImage
@@ -46,15 +45,14 @@ class TextPickViewController: UIViewController {
                               scale: 1,
                               orientation: UIImage.Orientation(orientation))
         
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
         imageView.image = uiImage
         
         scrollView.maximumZoomScale = 3
         scrollView.delegate = self
         
-        let ciImage = CIImage(cgImage: cgImage)
-        textDetectionController.handle(ciImage: ciImage, orientation: orientation)
+        textDetectionController.handle(cgImage: cgImage, orientation: orientation)
         let tapRectSize = CGSize.init(width: 30, height: 30)
         let tapRectOrigin = CGPoint.init(x: tapLocation.x - tapRectSize.width / 2,
                                          y: tapLocation.y - tapRectSize.height / 2)
@@ -62,8 +60,7 @@ class TextPickViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        trackingImageRect = AVMakeRect(aspectRatio: .init(width: cgImage.width, height: cgImage.height),
-                                       insideRect: view.frame)
+        trackingImageRect = view.bounds
     }
     
     @IBAction func close(_ sender: Any) {
@@ -71,15 +68,17 @@ class TextPickViewController: UIViewController {
     }
     
     private func handleRecognition(in frame: CGRect) {
-        guard let image = imageViewForCropping.image else {
+        guard let image = imageView.image else {
             return
         }
-        
-        let rectangleOriginInTrackingImageRect = frame.origin.y - trackingImageRect.origin.y
+
+        // Image's dimensions are of camera's outputing size. This property scales the passed in tracking rect from the
+        // screen size coordinate system to that of the camera's.
         let imageScaleMatchingContainerRect = CGRect.init(x: frame.origin.x * (image.size.width / trackingImageRect.width),
-                                                          y: rectangleOriginInTrackingImageRect * (image.size.height / trackingImageRect.height),
+                                                          y: frame.origin.y * (image.size.height / trackingImageRect.height),
                                                           width: (frame.width / trackingImageRect.width) * image.size.width,
                                                           height: (frame.height / trackingImageRect.height) * image.size.height)
+
         
         UIGraphicsBeginImageContext(imageScaleMatchingContainerRect.size)
         let origin = CGPoint(x: -imageScaleMatchingContainerRect.origin.x,
@@ -87,10 +86,7 @@ class TextPickViewController: UIViewController {
         image.draw(at: origin)
         let tmpImg = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        let imageView = UIImageView(image: tmpImg)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(imageView)
-        imageView.fill(in: view)
+        
         viewModel.performRecognition(in: tmpImg) { [weak self] result in
             switch result {
             case .success(let value):
@@ -132,15 +128,10 @@ extension TextPickViewController: UIScrollViewDelegate {
 extension TextPickViewController: TextDetectionDelegate {
     
     func detected(boundingBoxes: [CGRect]) {
-        let scale = imageView.frame.height / trackingImageRect.height
-        let transform = CGAffineTransform.init(scaleX: scale, y: scale)
         let trackingRects = boundingBoxes.map { box -> CGRect in
-            
             let converted = convertedTrackingImageRect(fromPrecentageRect: .init(origin: box.origin, size: box.size))
-            let transformed = converted.applying(transform)
-            return transformed
+            return converted
         }
- 
 
         trackingRects.forEach { rect in
             let trackingView = createTrackingView(frame: rect, matching: false)
@@ -153,9 +144,10 @@ extension TextPickViewController: TextDetectionDelegate {
         let tapRect = CGRect(origin: tapRectOrigin, size: tapRectSize)
         
         let largestIntersectionRect = trackingRects.map { ($0.intersection(tapRect), $0) }
-                                                .sorted { $0.0.size.height > $1.0.size.height }
-                                                .map { $0.1 }
-                                                .first
+                                                   .sorted { $0.0.size.height > $1.0.size.height }
+                                                   .map { $0.1 }
+                                                   .first
+        
         guard let matchingRect = largestIntersectionRect else {
             return
         }
@@ -164,7 +156,7 @@ extension TextPickViewController: TextDetectionDelegate {
         imageView.addSubview(trackingView)
 
         
-        //handleRecognition(in: matchingRecognitionRect)
+        handleRecognition(in: matchingRect)
     }
     
 }

@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextPickViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
                 <outlet property="imageView" destination="UPj-Vx-dEc" id="yE5-ZE-EuG"/>
-                <outlet property="imageViewForCropping" destination="I7P-GD-dQ3" id="wqr-qM-GL0"/>
                 <outlet property="scrollView" destination="tPt-b0-dS8" id="QdG-1W-4Gl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,9 +21,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I7P-GD-dQ3">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPt-b0-dS8">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
@@ -55,13 +51,9 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="tPt-b0-dS8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="29l-UY-STR"/>
-                <constraint firstAttribute="bottom" secondItem="I7P-GD-dQ3" secondAttribute="bottom" id="53x-KZ-EIU"/>
                 <constraint firstItem="tPt-b0-dS8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GMq-fx-03B"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="I7P-GD-dQ3" secondAttribute="trailing" id="Oar-Q8-Pja"/>
-                <constraint firstItem="I7P-GD-dQ3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="OuT-Yt-n00"/>
                 <constraint firstItem="tPt-b0-dS8" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="Vcu-eJ-fhZ"/>
                 <constraint firstItem="tPt-b0-dS8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Wen-DC-XIq"/>
-                <constraint firstItem="I7P-GD-dQ3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="caY-wi-aYt"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="117.59999999999999" y="48.125937031484263"/>
