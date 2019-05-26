@@ -32,9 +32,13 @@ class ExpenseCreationViewController: UIViewController {
 
         cameraContainerView.layer.masksToBounds = true
         cameraContainerView.layer.cornerRadius = 6
-        addCameraController()
         
         configureTagListView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addCameraController()
     }
     
     private func configureTagListView() {
