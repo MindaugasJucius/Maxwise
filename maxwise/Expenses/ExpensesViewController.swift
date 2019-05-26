@@ -28,11 +28,14 @@ class ExpensesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        expenses = viewModel.expenseEntries()
+        viewModel.observeExpenseEntries { [weak self] expenseDTOs in
+            self?.expenses = expenseDTOs
+            self?.tableView.reloadData()
+        }
+
         viewModel.amountSpentChanged = { [weak self] amount in
             self?.expensesStatsViewController.amount = amount
         }
-        tableView.reloadData()
     }
     
     private func configureTableView() {

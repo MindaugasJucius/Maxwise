@@ -1,6 +1,8 @@
 import RealmSwift
 
 class ExpenseEntryModelController {
+
+    private var expenseEntryObservationToken: NotificationToken?
     
     @discardableResult
     func create(user: User,
@@ -27,6 +29,20 @@ class ExpenseEntryModelController {
         }
         
         return expenseEntry
+    }
+
+    func observeExpenseEntries(updated: @escaping ([ExpenseEntry]) -> ()) {
+        let realm = try? Realm()
+        expenseEntryObservationToken = realm?.objects(ExpenseEntry.self).observe { change in
+            switch change {
+            case .initial(let value):
+                updated(Array(value))
+            case .update(let value, deletions: _, insertions: _, modifications: _):
+                updated(Array(value))
+            default:
+                print("huh")
+            }
+        }
     }
     
     func retrieveAllExpenseEntries() -> [ExpenseEntry] {

@@ -33,28 +33,37 @@ class ExpensesViewModel {
             beginObservingAmountChanges()
         }
     }
-        
-    func expenseEntries() -> [ExpensePresentationDTO] {
-        return modelController.retrieveAllExpenseEntries().map { expenseEntry in
-            var image: UIImage? = nil
-            if let imageData = expenseEntry.imageData {
-                let deserializedImage = UIImage(data: imageData)
-                image = deserializedImage
-            }
-            
-            var locationInfo: String = "No location info"
-            
-            if let place = expenseEntry.place {
-                locationInfo = "\(place.title), \(place.categoryTitle)"
+    
+    func observeExpenseEntries(changeOccured: @escaping ([ExpensePresentationDTO]) -> Void) {
+        modelController.observeExpenseEntries { [weak self] expenseEntries in
+            guard let self = self else {
+                return
             }
 
-            return ExpensePresentationDTO(id: expenseEntry.id,
-                                  currencyAmount: formatted(amount: expenseEntry.amount),
-                                  title: expenseEntry.title,
-                                  locationTitle: locationInfo,
-                                  formattedDate: dateFormatter.string(from: expenseEntry.creationDate),
-                                  image: image)
+            let dtos = expenseEntries.map { self.dto(from: $0) }
+            changeOccured(dtos)
         }
+    }
+    
+    private func dto(from expenseEntry: ExpenseEntry) -> ExpensePresentationDTO {
+        var image: UIImage? = nil
+        if let imageData = expenseEntry.imageData {
+            let deserializedImage = UIImage(data: imageData)
+            image = deserializedImage
+        }
+        
+        var locationInfo: String = "No location info"
+        
+        if let place = expenseEntry.place {
+            locationInfo = "\(place.title), \(place.categoryTitle)"
+        }
+        
+        return ExpensePresentationDTO(id: expenseEntry.id,
+                                      currencyAmount: formatted(amount: expenseEntry.amount),
+                                      title: expenseEntry.title,
+                                      locationTitle: locationInfo,
+                                      formattedDate: dateFormatter.string(from: expenseEntry.creationDate),
+                                      image: image)
     }
     
     private func beginObservingAmountChanges() {
