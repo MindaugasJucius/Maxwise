@@ -43,7 +43,7 @@ class ContainerViewController: UIPageViewController {
         super.viewDidAppear(animated)
         let viewModel = ExpenseCreationViewModel(nearbyPlaces: [])
         let expenseCreationVC = ExpenseCreationViewController(viewModel: viewModel)
-        present(expenseCreationVC, animated: false, completion: nil)
+        present(expenseCreationVC, animated: true, completion: nil)
     }
 
 }
