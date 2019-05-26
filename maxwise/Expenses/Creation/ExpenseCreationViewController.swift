@@ -118,6 +118,8 @@ class ExpenseCreationViewController: UIViewController {
 //
         viewModel.performModelCreation(selectedPlace: nil,
                                        seletedCategory: selectedCategory)
+        
+        dismiss(animated: true, completion: nil)
     }
 }
 
