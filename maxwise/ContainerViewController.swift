@@ -41,7 +41,7 @@ class ContainerViewController: UIPageViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let viewModel = ExpenseCreationViewModel(recognizedDouble: 14.0, nearbyPlaces: [])
+        let viewModel = ExpenseCreationViewModel(nearbyPlaces: [])
         let expenseCreationVC = ExpenseCreationViewController(viewModel: viewModel)
         present(expenseCreationVC, animated: false, completion: nil)
     }
@@ -58,7 +58,7 @@ extension ContainerViewController: PresentationViewControllerDelegate {
                                animated: true,
                                completion: nil)
         case .expenseCreation:
-            let vc = expenseCreationParentViewController.expenseCreation(recognizedDouble: 0)
+            let vc = expenseCreationParentViewController.expenseCreation()
             present(vc, animated: true, completion: nil)
         }
     }

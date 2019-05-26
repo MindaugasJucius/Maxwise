@@ -63,17 +63,13 @@ class TextPickViewController: UIViewController {
         trackingImageRect = view.bounds
     }
     
-    @IBAction func close(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     private func handleRecognition(in frame: CGRect) {
         guard let image = imageView.image else {
             return
         }
 
-        // Image's dimensions are of camera's outputing size. This property scales the passed in tracking rect from the
-        // screen size coordinate system to that of the camera's.
+        // Image's dimensions are of camera's outputing size. This property scales
+        // the passed in tracking rect from the screen size coordinate system to that of the camera's.
         let imageScaleMatchingContainerRect = CGRect.init(x: frame.origin.x * (image.size.width / trackingImageRect.width),
                                                           y: frame.origin.y * (image.size.height / trackingImageRect.height),
                                                           width: (frame.width / trackingImageRect.width) * image.size.width,

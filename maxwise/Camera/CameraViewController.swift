@@ -79,14 +79,6 @@ class CameraViewController: UIViewController {
     
     @objc private func tap(_ tap: UITapGestureRecognizer) {
         tapLocation = tap.location(in: view)
-//        guard let convertedPoint = cameraLayer?.captureDevicePointConverted(fromLayerPoint: tapLocation) else {
-//            return
-//        }
-//        let range = CGFloat(0)...CGFloat(1)
-//        guard range.contains(convertedPoint.x),
-//            range.contains(convertedPoint.y) else {
-//            return
-//        }
         takePhoto()
     }
     

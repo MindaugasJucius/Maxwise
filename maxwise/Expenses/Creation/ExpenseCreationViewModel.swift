@@ -14,17 +14,24 @@ class ExpenseCreationViewModel {
         return formatter
     }()
     
-    private let recognizedDouble: Double
-    private(set) var formattedValue: String = ""
+    private var recognizedDouble: Double = 0.0
+
     let nearbyPlaces: [NearbyPlace]
     var categories: [ExpenseCategory] {
         return expenseCategoryModelController.storedCategories()
     }
+
+    lazy var recognitionOccured: (Double) -> (String) = {
+        return { [weak self] recognizedNumber in
+            guard let self = self else { fatalError() }
+            self.recognizedDouble = recognizedNumber
+            return self.formatted(amount: recognizedNumber)
+        }
+    }()
     
-    init(recognizedDouble: Double, nearbyPlaces: [NearbyPlace]) {
-        self.recognizedDouble = recognizedDouble
+    
+    init(nearbyPlaces: [NearbyPlace]) {
         self.nearbyPlaces = nearbyPlaces
-        formattedValue = formatted(amount: recognizedDouble)
     }
     
     private func formatted(amount: Double) -> String {
@@ -41,7 +48,7 @@ class ExpenseCreationViewModel {
                                            nearbyPlace: selectedPlace,
                                            category: seletedCategory,
                                            recognizedDouble: recognizedDouble,
-                                           title: "Groceries")
+                                           title: seletedCategory.title)
     }
     
 }

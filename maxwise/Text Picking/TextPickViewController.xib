@@ -28,21 +28,12 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="0.70057508680000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFS-BL-EzC">
-                            <rect key="frame" x="164.5" y="617" width="46" height="30"/>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="close:" destination="-1" eventType="touchUpInside" id="ekP-HC-Vsp"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="EFS-BL-EzC" firstAttribute="centerX" secondItem="tPt-b0-dS8" secondAttribute="centerX" id="0tj-sV-hVe"/>
                         <constraint firstItem="UPj-Vx-dEc" firstAttribute="leading" secondItem="tPt-b0-dS8" secondAttribute="leading" id="4qm-yB-e8e"/>
                         <constraint firstAttribute="trailing" secondItem="UPj-Vx-dEc" secondAttribute="trailing" id="Und-2L-cWu"/>
                         <constraint firstItem="UPj-Vx-dEc" firstAttribute="top" secondItem="tPt-b0-dS8" secondAttribute="top" id="Zn0-at-KVC"/>
                         <constraint firstItem="UPj-Vx-dEc" firstAttribute="centerX" secondItem="tPt-b0-dS8" secondAttribute="centerX" id="lEa-On-8JF"/>
-                        <constraint firstAttribute="bottom" secondItem="EFS-BL-EzC" secondAttribute="bottom" constant="20" id="qT9-Ra-eaL"/>
                         <constraint firstItem="UPj-Vx-dEc" firstAttribute="centerY" secondItem="tPt-b0-dS8" secondAttribute="centerY" id="uN8-zM-yXm"/>
                         <constraint firstAttribute="bottom" secondItem="UPj-Vx-dEc" secondAttribute="bottom" id="xBE-VQ-TvM"/>
                     </constraints>

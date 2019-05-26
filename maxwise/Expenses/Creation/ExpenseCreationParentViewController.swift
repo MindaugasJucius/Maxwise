@@ -15,9 +15,8 @@ class ExpenseCreationParentViewController: UIViewController {
         }
     }
     
-    func expenseCreation(recognizedDouble: Double) -> UIViewController {
-        let viewModel = ExpenseCreationViewModel(recognizedDouble: recognizedDouble,
-                                                 nearbyPlaces: nearbyPlaces)
+    func expenseCreation() -> UIViewController {
+        let viewModel = ExpenseCreationViewModel(nearbyPlaces: nearbyPlaces)
 
         let expenseCreationViewController = ExpenseCreationViewController(viewModel: viewModel)
         return expenseCreationViewController

@@ -28,7 +28,6 @@ class ExpenseCreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.text = viewModel.formattedValue
 
         cameraContainerView.layer.masksToBounds = true
         cameraContainerView.layer.cornerRadius = 6
@@ -44,6 +43,7 @@ class ExpenseCreationViewController: UIViewController {
     private func configureTagListView() {
         viewModel.categories.forEach { category in
             let tagView = AMTagView(frame: .zero)
+            tagView.holeRadius = 3
             tagView.applyDeselectedStyle()
             tagView.categoryID = category.id
             tagView.tagText = category.title as NSString
@@ -85,8 +85,11 @@ class ExpenseCreationViewController: UIViewController {
                                           tapLocation: CGPoint) {
         
         let recognitionOccured: (Double) -> Void = { [weak self] value in
-            self?.textField.text = "\(value)"
+            guard let self = self else { return }
+            let formattedValue = self.viewModel.recognitionOccured(value)
+            self.textField.text = formattedValue
         }
+        
         let recognitionController = TextPickViewController(cgImage: cgImage,
                                                            orientation: orientation,
                                                            tapLocation: tapLocation,
@@ -149,7 +152,6 @@ extension AMTagView {
             userInfo = ["id": newValue as Any]
         }
     }
-    
     
     func applySelectedStyle() {
         tagColor = .gray

@@ -8,7 +8,6 @@ enum RecognitionResult {
 class TextPickViewModel {
     
     private let digitRecognizer = DigitRecognizer()
-    private var lastRecognizedFormattedValue: Double = 0
     
     private lazy var formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -43,9 +42,7 @@ class TextPickViewModel {
         guard let doubleValue = formatter.number(from: trimmedResult)?.doubleValue else {
             return .error
         }
-        
-        lastRecognizedFormattedValue = doubleValue
-        
+    
         return .success(doubleValue)
     }
     

@@ -27,7 +27,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLg-uk-6eq">
-                    <rect key="frame" x="16" y="26.666666666666657" width="343" height="457.33333333333337"/>
+                    <rect key="frame" x="16" y="43.666666666666657" width="343" height="457.33333333333337"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="NLg-uk-6eq" secondAttribute="height" multiplier="3:4" id="2Xu-iD-GNl"/>
@@ -66,7 +66,7 @@
             <constraints>
                 <constraint firstItem="Vx1-GV-xNW" firstAttribute="trailing" secondItem="a5I-kZ-cgF" secondAttribute="trailing" constant="-16" id="4ah-mI-auW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="a5I-kZ-cgF" secondAttribute="bottom" constant="70" id="Bgd-BB-2w1"/>
-                <constraint firstItem="a5I-kZ-cgF" firstAttribute="top" secondItem="NLg-uk-6eq" secondAttribute="bottom" constant="25" id="Hda-Hf-Hdx"/>
+                <constraint firstItem="a5I-kZ-cgF" firstAttribute="top" secondItem="NLg-uk-6eq" secondAttribute="bottom" constant="8" id="Hda-Hf-Hdx"/>
                 <constraint firstItem="Vx1-GV-xNW" firstAttribute="centerY" secondItem="a5I-kZ-cgF" secondAttribute="centerY" id="SAy-hT-drz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="a5I-kZ-cgF" secondAttribute="trailing" constant="16" id="WQo-eu-cK5"/>
                 <constraint firstItem="Vx1-GV-xNW" firstAttribute="centerX" secondItem="a5I-kZ-cgF" secondAttribute="centerX" id="ZoA-8D-wwa"/>
