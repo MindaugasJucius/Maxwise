@@ -18,6 +18,7 @@
 		5F20E0BE2210352F00BAECF6 /* ExpenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F20E0BC2210352F00BAECF6 /* ExpenseTableViewCell.xib */; };
 		5F240CA1222721A3009A41AE /* ExpenseCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F240C9F222721A3009A41AE /* ExpenseCreationViewController.swift */; };
 		5F240CA2222721A3009A41AE /* ExpenseCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F240CA0222721A3009A41AE /* ExpenseCreationViewController.xib */; };
+		5F2D4BD7229B266000884FA9 /* ModalBlurTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */; };
 		5F4021CE22905DE600B0C60C /* ExpenseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4021CD22905DE600B0C60C /* ExpenseCategory.swift */; };
 		5F4021D022912CD100B0C60C /* ExpenseCategoryModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4021CF22912CD100B0C60C /* ExpenseCategoryModelController.swift */; };
 		5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD5220C6011002CD12D /* TextDetectionController.swift */; };
@@ -84,6 +85,7 @@
 		5F20E0BC2210352F00BAECF6 /* ExpenseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseTableViewCell.xib; sourceTree = "<group>"; };
 		5F240C9F222721A3009A41AE /* ExpenseCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationViewController.swift; sourceTree = "<group>"; };
 		5F240CA0222721A3009A41AE /* ExpenseCreationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseCreationViewController.xib; sourceTree = "<group>"; };
+		5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalBlurTransitionController.swift; sourceTree = "<group>"; };
 		5F4021CD22905DE600B0C60C /* ExpenseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategory.swift; sourceTree = "<group>"; };
 		5F4021CF22912CD100B0C60C /* ExpenseCategoryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategoryModelController.swift; sourceTree = "<group>"; };
 		5F470BD5220C6011002CD12D /* TextDetectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetectionController.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				5F4A3B77220720880016BCC9 /* Info.plist */,
 				F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */,
 				5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */,
+				5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -475,7 +478,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C44BF7B71AA5AC9A68C83A93 /* [CP] Check Pods Manifest.lock */ = {
@@ -536,6 +539,7 @@
 				5F9E13C5222C33F100805878 /* LocationAccessNotifier.swift in Sources */,
 				5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */,
 				5F4021D022912CD100B0C60C /* ExpenseCategoryModelController.swift in Sources */,
+				5F2D4BD7229B266000884FA9 /* ModalBlurTransitionController.swift in Sources */,
 				5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -697,7 +701,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				DEVELOPMENT_TEAM = HXH54ANZMG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
@@ -708,7 +712,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojam.maxwise;
+				PRODUCT_BUNDLE_IDENTIFIER = zazh.ygajem.maxwise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -722,7 +726,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				DEVELOPMENT_TEAM = HXH54ANZMG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
@@ -733,7 +737,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojam.maxwise;
+				PRODUCT_BUNDLE_IDENTIFIER = zazh.ygajem.maxwise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
