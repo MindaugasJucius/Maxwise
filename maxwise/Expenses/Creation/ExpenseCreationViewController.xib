@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExpenseCreationViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
                 <outlet property="cameraContainerView" destination="NLg-uk-6eq" id="sQo-0B-sKw"/>
+                <outlet property="initialCameraHeightConstraint" destination="dfx-br-WUA" id="fEz-IU-aTD"/>
                 <outlet property="tagListView" destination="g1i-4U-m8x" id="9kj-S5-iKN"/>
                 <outlet property="textField" destination="hle-vD-21g" id="MYF-xE-CBV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -27,10 +28,11 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLg-uk-6eq">
-                    <rect key="frame" x="16" y="43.666666666666657" width="343" height="457.33333333333337"/>
+                    <rect key="frame" x="16" y="441" width="343" height="60"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="NLg-uk-6eq" secondAttribute="height" multiplier="3:4" id="2Xu-iD-GNl"/>
+                        <constraint firstAttribute="width" secondItem="NLg-uk-6eq" secondAttribute="height" multiplier="3:4" priority="750" id="2Xu-iD-GNl"/>
+                        <constraint firstAttribute="height" constant="60" id="dfx-br-WUA"/>
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-GV-xNW">

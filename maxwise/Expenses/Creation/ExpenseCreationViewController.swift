@@ -4,8 +4,8 @@ import AMTagListView
 class ExpenseCreationViewController: UIViewController {
 
     @IBOutlet private weak var cameraContainerView: UIView!
+    @IBOutlet private weak var initialCameraHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var textField: UITextField!
-    //@IBOutlet private weak var collectionView: UICollectionView!
     
     @IBOutlet private weak var tagListView: AMTagListView!
     private weak var selectedTag: AMTagView?
@@ -28,16 +28,31 @@ class ExpenseCreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textField.keyboardType = .numberPad
 
         cameraContainerView.layer.masksToBounds = true
         cameraContainerView.layer.cornerRadius = 6
         
         configureTagListView()
+        configureCameraContainerLayer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        addCameraController()
+        //addCameraController()
+    }
+    
+    private func configureCameraContainerLayer() {
+        cameraContainerView.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(showCamera))
+        cameraContainerView.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc private func showCamera() {
+        initialCameraHeightConstraint.isActive = false
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     private func configureTagListView() {
