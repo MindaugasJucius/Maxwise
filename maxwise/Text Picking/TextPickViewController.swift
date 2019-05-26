@@ -150,15 +150,21 @@ extension TextPickViewController: TextDetectionDelegate {
         let tapRectSize = CGSize.init(width: 30, height: 30)
         let tapRectOrigin = CGPoint.init(x: tapLocation.x - tapRectSize.width / 2,
                                          y: tapLocation.y - tapRectSize.height / 2)
+        let tapRect = CGRect(origin: tapRectOrigin, size: tapRectSize)
         
-        guard let matchingRecognitionRect = trackingRects.filter({ $0.intersects(CGRect(origin: tapRectOrigin, size: tapRectSize)) }).first else {
+        let largestIntersectionRect = trackingRects.map { ($0.intersection(tapRect), $0) }
+                                                .sorted { $0.0.size.height > $1.0.size.height }
+                                                .map { $0.1 }
+                                                .first
+        guard let matchingRect = largestIntersectionRect else {
             return
         }
 
-        let trackingView = createTrackingView(frame: matchingRecognitionRect, matching: true)
+        let trackingView = createTrackingView(frame: matchingRect, matching: true)
         imageView.addSubview(trackingView)
+
         
-        handleRecognition(in: matchingRecognitionRect)
+        //handleRecognition(in: matchingRecognitionRect)
     }
     
 }
