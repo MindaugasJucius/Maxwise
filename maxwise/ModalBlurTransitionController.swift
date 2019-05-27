@@ -12,6 +12,7 @@ import UIKit
 class ModalBlurTransitionController: NSObject, UIViewControllerTransitioningDelegate {
     
     private var modalTransitionType: ModalTransitionType?
+    private let blurOverlay = UIVisualEffectView()
     
     private var transitionDuration: TimeInterval {
         guard let transitionType = modalTransitionType else { fatalError() }
@@ -42,8 +43,6 @@ extension ModalBlurTransitionController: UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let transitionType = modalTransitionType else { fatalError() }
         
-        var overlay: UIVisualEffectView?
-        
         let viewToTransition: UIView
         switch transitionType {
         case .presentation:
@@ -64,14 +63,15 @@ extension ModalBlurTransitionController: UIViewControllerAnimatedTransitioning {
         // Create blur animator and animations for modal states
         let blurAnimator = UIViewPropertyAnimator(duration: transitionDuration, curve: .easeInOut)
         
-        let presentedBlurState: () -> () = {
-            overlay?.effect = UIBlurEffect(style: .light)
+        let presentedBlurState = {
+            self.blurOverlay.effect = UIBlurEffect(style: .light)
         }
         
-        let dismissedBlurState: () -> () = {
-            overlay?.effect = nil
+        let dismissedBlurState = {
+            self.blurOverlay.effect = nil
         }
         
+        // Create an animator with appropriate parameters
         let animator: UIViewPropertyAnimator
         switch transitionType {
         case .presentation:
@@ -82,11 +82,8 @@ extension ModalBlurTransitionController: UIViewControllerAnimatedTransitioning {
         
         switch transitionType {
         case .presentation:
-            // Create blur overlay and add it to the transition container
-            let presentationOverlay = UIVisualEffectView()
-            transitionContext.containerView.addSubview(presentationOverlay)
-            presentationOverlay.fill(in: transitionContext.containerView)
-            overlay = presentationOverlay
+            transitionContext.containerView.addSubview(blurOverlay)
+            blurOverlay.fill(in: transitionContext.containerView)
             
             transitionContext.containerView.addSubview(viewToTransition)
             viewToTransition.fill(in: transitionContext.containerView)
@@ -95,9 +92,6 @@ extension ModalBlurTransitionController: UIViewControllerAnimatedTransitioning {
             animator.addAnimations(presentedState)
             blurAnimator.addAnimations(presentedBlurState)
         case .dismissal:
-            // Find the blur overlay in the hierarchy
-            let existingOverlay = transitionContext.containerView.subviews.compactMap { $0 as? UIVisualEffectView }.first
-            overlay = existingOverlay
             animator.addAnimations(viewOffScreenState)
             blurAnimator.addAnimations(dismissedBlurState)
         }
