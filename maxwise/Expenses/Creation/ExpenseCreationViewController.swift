@@ -9,7 +9,7 @@ enum ModalTransitionType {
 class ExpenseCreationViewController: UIViewController {
 
     @IBOutlet private weak var cameraContainerView: UIView!
-    @IBOutlet private weak var blurView: BlurView!
+    @IBOutlet private weak var expenseInfoContainerView: UIView!
     @IBOutlet private weak var initialCameraHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var textField: UITextField!
     
@@ -40,8 +40,8 @@ class ExpenseCreationViewController: UIViewController {
 
         configureTagListView()
         configureCameraContainerLayer()
-        blurView.layer.applyShadow()
-        blurView.layer.cornerRadius = 6
+        expenseInfoContainerView.layer.applyShadow()
+        expenseInfoContainerView.layer.cornerRadius = 6
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,9 +53,8 @@ class ExpenseCreationViewController: UIViewController {
         cameraContainerView.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(showCamera))
         cameraContainerView.addGestureRecognizer(tapRecognizer)
-    
-        cameraContainerView.layer.cornerRadius = 6
         cameraContainerView.layer.applyShadow()
+        cameraContainerView.layer.cornerRadius = 6
     }
     
     @objc private func showCamera() {

@@ -48,6 +48,8 @@ class CameraViewController: UIViewController {
         view.addGestureRecognizer(pinch)
         let tap = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
         view.addGestureRecognizer(tap)
+        
+        view.layer.cornerRadius = 6
     }
     
     private func addCameraLayer() {
