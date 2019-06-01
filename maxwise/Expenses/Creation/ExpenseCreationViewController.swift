@@ -103,19 +103,6 @@ class ExpenseCreationViewController: UIViewController {
         tagListView.scrollDirection = .horizontal
     }
     
-//    private func configureCollectionView() {
-//        let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
-//        flowLayout?.scrollDirection = .horizontal
-//        flowLayout?.estimatedItemSize = CGSize(width: 150, height: 80)
-//        collectionView.backgroundColor = .clear
-//        collectionView.dataSource = self
-//        collectionView.allowsSelection = true
-//        let venueCellNib = UINib(nibName: VenueCollectionViewCell.nibName, bundle: nil)
-//        collectionView.register(venueCellNib,
-//                                forCellWithReuseIdentifier: VenueCollectionViewCell.nibName)
-//        collectionView.alwaysBounceHorizontal = true
-//    }
-    
     private func addCameraController() {
         addChild(cameraViewController)
         cameraContainerView.insertSubview(cameraViewController.view,
@@ -156,11 +143,6 @@ class ExpenseCreationViewController: UIViewController {
             return
         }
         
-//        var selectedPlace: NearbyPlace? = nil
-//        if let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first {
-//            selectedPlace = nearbyPlaces[selectedIndexPath.row]
-//        }
-//
         viewModel.performModelCreation(selectedPlace: nil,
                                        seletedCategory: selectedCategory)
         
