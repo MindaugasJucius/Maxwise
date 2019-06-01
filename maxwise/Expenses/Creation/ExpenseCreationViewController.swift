@@ -9,9 +9,16 @@ enum ModalTransitionType {
 class ExpenseCreationViewController: UIViewController {
 
     @IBOutlet private weak var cameraContainerView: UIView!
-    @IBOutlet private weak var expenseInfoContainerView: UIView!
+    private lazy var cameraContainerBlurView: UIView! = {
+        let blurView = BlurView()
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        return blurView
+    }()
+    
     @IBOutlet private var initialCameraHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var aspectCameraHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet private weak var expenseInfoContainerView: UIView!
     @IBOutlet private weak var textField: UITextField!
     
     @IBOutlet private weak var tagListView: AMTagListView!
@@ -56,14 +63,23 @@ class ExpenseCreationViewController: UIViewController {
         cameraContainerView.addGestureRecognizer(tapRecognizer)
         cameraContainerView.layer.applyShadow()
         cameraContainerView.layer.cornerRadius = 6
+        
+        cameraContainerView.addSubview(cameraContainerBlurView)
+        cameraContainerBlurView.fill(in: cameraContainerView)
     }
     
     @objc private func showCamera() {
-        let isCameraSmall = initialCameraHeightConstraint.isActive
-        aspectCameraHeightConstraint.isActive = isCameraSmall
-        initialCameraHeightConstraint.isActive = !isCameraSmall
+        let isCameraContainerHidden = initialCameraHeightConstraint.isActive
+        cameraContainerView.isUserInteractionEnabled = !isCameraContainerHidden
+        aspectCameraHeightConstraint.isActive = isCameraContainerHidden
+        initialCameraHeightConstraint.isActive = !isCameraContainerHidden
         let animator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 0.82) {
             self.view.layoutIfNeeded()
+            if isCameraContainerHidden {
+                self.cameraContainerBlurView.alpha = 0
+            } else {
+                self.cameraContainerBlurView.alpha = 1
+            }
         }
         animator.startAnimation()
     }
@@ -102,7 +118,8 @@ class ExpenseCreationViewController: UIViewController {
     
     private func addCameraController() {
         addChild(cameraViewController)
-        cameraContainerView.addSubview(cameraViewController.view)
+        cameraContainerView.insertSubview(cameraViewController.view,
+                                          belowSubview: cameraContainerBlurView)
         cameraViewController.view.translatesAutoresizingMaskIntoConstraints = false
         cameraViewController.view.fill(in: cameraContainerView)
         cameraViewController.didMove(toParent: nil)
@@ -111,7 +128,6 @@ class ExpenseCreationViewController: UIViewController {
     private func addRecognitionController(cgImage: CGImage,
                                           orientation: CGImagePropertyOrientation,
                                           tapLocation: CGPoint) {
-        
         let recognitionOccured: (Double) -> Void = { [weak self] value in
             guard let self = self else { return }
             let formattedValue = self.viewModel.recognitionOccured(value)
@@ -123,7 +139,8 @@ class ExpenseCreationViewController: UIViewController {
                                                            tapLocation: tapLocation,
                                                            recognitionOccured: recognitionOccured)
         addChild(recognitionController)
-        cameraContainerView.addSubview(recognitionController.view)
+        cameraContainerView.insertSubview(recognitionController.view,
+                                          belowSubview: cameraContainerBlurView)
         recognitionController.view.translatesAutoresizingMaskIntoConstraints = false
         recognitionController.view.fill(in: cameraContainerView)
         recognitionController.didMove(toParent: nil)
