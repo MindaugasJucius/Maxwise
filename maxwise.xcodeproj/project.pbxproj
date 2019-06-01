@@ -49,6 +49,7 @@
 		5F9DE3902219C282008CCB94 /* TestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38F2219C282008CCB94 /* TestsHelper.swift */; };
 		5F9E13C5222C33F100805878 /* LocationAccessNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C4222C33F100805878 /* LocationAccessNotifier.swift */; };
 		5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */; };
+		5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */; };
 		5FB59211227DE2EF005D5208 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB59210227DE2EF005D5208 /* NavigationView.swift */; };
 		5FB59213227DE303005D5208 /* NavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FB59212227DE303005D5208 /* NavigationView.xib */; };
 		5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */; };
@@ -120,6 +121,7 @@
 		5F9DE38F2219C282008CCB94 /* TestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
 		5F9E13C4222C33F100805878 /* LocationAccessNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAccessNotifier.swift; sourceTree = "<group>"; };
 		5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationViewModel.swift; sourceTree = "<group>"; };
+		5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
 		5FB59210227DE2EF005D5208 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		5FB59212227DE303005D5208 /* NavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationView.xib; sourceTree = "<group>"; };
 		5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationParentViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */,
 				5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */,
 				5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */,
+				5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
 				5F20E0B12210247C00BAECF6 /* ExpenseEntry.swift in Sources */,
 				5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */,
+				5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */,
 				5F9DE37A22188984008CCB94 /* UserModelController.swift in Sources */,
 				5F9DE38B22198CA0008CCB94 /* ExpensesStatsViewController.swift in Sources */,
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,

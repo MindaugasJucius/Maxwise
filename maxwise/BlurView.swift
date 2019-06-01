@@ -37,7 +37,6 @@ class BlurView: UIVisualEffectView {
     
     private func configure() {
         backgroundColor = BlurView.defaultBackgroundColor
-        clipsToBounds = true
         layer.cornerRadius = 6
     }
     

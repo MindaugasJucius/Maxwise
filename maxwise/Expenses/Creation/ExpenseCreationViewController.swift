@@ -9,6 +9,7 @@ enum ModalTransitionType {
 class ExpenseCreationViewController: UIViewController {
 
     @IBOutlet private weak var cameraContainerView: UIView!
+    @IBOutlet private weak var blurView: BlurView!
     @IBOutlet private weak var initialCameraHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var textField: UITextField!
     
@@ -37,29 +38,32 @@ class ExpenseCreationViewController: UIViewController {
         super.viewDidLoad()
         textField.keyboardType = .numberPad
 
-        cameraContainerView.layer.masksToBounds = true
-        cameraContainerView.layer.cornerRadius = 6
-        
         configureTagListView()
         configureCameraContainerLayer()
+        blurView.layer.applyShadow()
+        blurView.layer.cornerRadius = 6
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //addCameraController()
+        addCameraController()
     }
     
     private func configureCameraContainerLayer() {
         cameraContainerView.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(showCamera))
         cameraContainerView.addGestureRecognizer(tapRecognizer)
+    
+        cameraContainerView.layer.cornerRadius = 6
+        cameraContainerView.layer.applyShadow()
     }
     
     @objc private func showCamera() {
         initialCameraHeightConstraint.isActive = false
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
+        let animator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 0.82) {
             self.view.layoutIfNeeded()
-        }, completion: nil)
+        }
+        animator.startAnimation()
     }
     
     private func configureTagListView() {
