@@ -9,11 +9,18 @@ enum ModalTransitionType {
 class ExpenseCreationViewController: UIViewController {
 
     @IBOutlet private weak var cameraContainerView: UIView!
+    @IBOutlet weak var collapseCameraContainerButton: UIButton!
     private lazy var cameraContainerBlurView: UIView! = {
         let blurView = BlurView()
         blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.layer.cornerRadius = 6
+        blurView.layer.masksToBounds = true
         return blurView
     }()
+    private lazy var tapRecognizer = UITapGestureRecognizer(
+        target: self,
+        action: #selector(showCamera)
+    )
     
     @IBOutlet private var initialCameraHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var aspectCameraHeightConstraint: NSLayoutConstraint!
@@ -59,26 +66,36 @@ class ExpenseCreationViewController: UIViewController {
     
     private func configureCameraContainerLayer() {
         cameraContainerView.isUserInteractionEnabled = true
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(showCamera))
         cameraContainerView.addGestureRecognizer(tapRecognizer)
         cameraContainerView.layer.applyShadow()
         cameraContainerView.layer.cornerRadius = 6
-        
-        cameraContainerView.addSubview(cameraContainerBlurView)
+        cameraContainerView.insertSubview(
+            cameraContainerBlurView,
+            belowSubview: collapseCameraContainerButton
+        )
         cameraContainerBlurView.fill(in: cameraContainerView)
+        
+        collapseCameraContainerButton.alpha = 0
+        collapseCameraContainerButton.addTarget(
+            self,
+            action: #selector(showCamera),
+            for: .touchUpInside
+        )
     }
     
     @objc private func showCamera() {
         let isCameraContainerHidden = initialCameraHeightConstraint.isActive
-        cameraContainerView.isUserInteractionEnabled = !isCameraContainerHidden
+        tapRecognizer.isEnabled = !isCameraContainerHidden
         aspectCameraHeightConstraint.isActive = isCameraContainerHidden
         initialCameraHeightConstraint.isActive = !isCameraContainerHidden
         let animator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 0.82) {
             self.view.layoutIfNeeded()
             if isCameraContainerHidden {
                 self.cameraContainerBlurView.alpha = 0
+                self.collapseCameraContainerButton.alpha = 1
             } else {
                 self.cameraContainerBlurView.alpha = 1
+                self.collapseCameraContainerButton.alpha = 0
             }
         }
         animator.startAnimation()

@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="aspectCameraHeightConstraint" destination="2Xu-iD-GNl" id="dTV-V9-OdY"/>
                 <outlet property="cameraContainerView" destination="NLg-uk-6eq" id="sQo-0B-sKw"/>
+                <outlet property="collapseCameraContainerButton" destination="hfT-0F-jT1" id="3hg-Yj-5fi"/>
                 <outlet property="expenseInfoContainerView" destination="a5I-kZ-cgF" id="V1I-Cf-zJC"/>
                 <outlet property="initialCameraHeightConstraint" destination="dfx-br-WUA" id="fEz-IU-aTD"/>
                 <outlet property="tagListView" destination="g1i-4U-m8x" id="9kj-S5-iKN"/>
@@ -68,9 +69,17 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLg-uk-6eq">
                     <rect key="frame" x="16" y="441" width="343" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfT-0F-jT1">
+                            <rect key="frame" x="303" y="22" width="32" height="30"/>
+                            <state key="normal" title="Hide"/>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="NLg-uk-6eq" secondAttribute="height" multiplier="3:4" priority="750" id="2Xu-iD-GNl"/>
+                        <constraint firstAttribute="bottom" secondItem="hfT-0F-jT1" secondAttribute="bottom" constant="8" id="Lha-Ij-H0u"/>
+                        <constraint firstAttribute="trailing" secondItem="hfT-0F-jT1" secondAttribute="trailing" constant="8" id="ZJF-sl-RsQ"/>
                         <constraint firstAttribute="height" constant="60" id="dfx-br-WUA"/>
                     </constraints>
                 </view>
