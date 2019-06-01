@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExpenseCreationViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
+                <outlet property="aspectCameraHeightConstraint" destination="2Xu-iD-GNl" id="dTV-V9-OdY"/>
                 <outlet property="cameraContainerView" destination="NLg-uk-6eq" id="sQo-0B-sKw"/>
                 <outlet property="expenseInfoContainerView" destination="a5I-kZ-cgF" id="V1I-Cf-zJC"/>
                 <outlet property="initialCameraHeightConstraint" destination="dfx-br-WUA" id="fEz-IU-aTD"/>

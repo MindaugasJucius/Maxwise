@@ -10,7 +10,8 @@ class ExpenseCreationViewController: UIViewController {
 
     @IBOutlet private weak var cameraContainerView: UIView!
     @IBOutlet private weak var expenseInfoContainerView: UIView!
-    @IBOutlet private weak var initialCameraHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private var initialCameraHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private var aspectCameraHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var textField: UITextField!
     
     @IBOutlet private weak var tagListView: AMTagListView!
@@ -58,7 +59,9 @@ class ExpenseCreationViewController: UIViewController {
     }
     
     @objc private func showCamera() {
-        initialCameraHeightConstraint.isActive = false
+        let isCameraSmall = initialCameraHeightConstraint.isActive
+        aspectCameraHeightConstraint.isActive = isCameraSmall
+        initialCameraHeightConstraint.isActive = !isCameraSmall
         let animator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 0.82) {
             self.view.layoutIfNeeded()
         }
