@@ -67,7 +67,7 @@ class ExpenseCreationViewController: UIViewController {
     private func configureCameraContainerLayer() {
         cameraContainerView.isUserInteractionEnabled = true
         cameraContainerView.addGestureRecognizer(tapRecognizer)
-        cameraContainerView.layer.applyShadow()
+        cameraContainerView.clipsToBounds = true
         cameraContainerView.layer.cornerRadius = 6
         cameraContainerView.insertSubview(
             cameraContainerBlurView,
