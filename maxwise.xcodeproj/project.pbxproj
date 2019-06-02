@@ -61,6 +61,7 @@
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
 		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
 		F45D67CE22A3D96B00DB1AE1 /* VibrantContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */; };
+		F45D67D122A3E10600DB1AE1 /* AMTagView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D67D022A3E10600DB1AE1 /* AMTagView+Extensions.swift */; };
 		F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +139,7 @@
 		AE8AA537479DCA59B808B9D1 /* Pods-maxwise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwise.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwise/Pods-maxwise.release.xcconfig"; sourceTree = "<group>"; };
 		BFE3CBB719654DA4B77BCD30 /* Pods-maxwiseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantContentView.swift; sourceTree = "<group>"; };
+		F45D67D022A3E10600DB1AE1 /* AMTagView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AMTagView+Extensions.swift"; sourceTree = "<group>"; };
 		F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		F739ED49C2038FB2BE827A0C /* Pods-maxwiseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -247,9 +249,9 @@
 				5F4A3B77220720880016BCC9 /* Info.plist */,
 				F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */,
 				5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */,
-				5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */,
+				F45D67CF22A3E0BB00DB1AE1 /* Custom subclasses */,
 				5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */,
-				F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */,
+				F45D67D022A3E10600DB1AE1 /* AMTagView+Extensions.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -323,6 +325,15 @@
 				F739ED49C2038FB2BE827A0C /* Pods-maxwiseTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F45D67CF22A3E0BB00DB1AE1 /* Custom subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */,
+				F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */,
+			);
+			path = "Custom subclasses";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -531,6 +542,7 @@
 				5F20E0B32210265200BAECF6 /* ExpenseEntryModelController.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
 				5F20E0B12210247C00BAECF6 /* ExpenseEntry.swift in Sources */,
+				F45D67D122A3E10600DB1AE1 /* AMTagView+Extensions.swift in Sources */,
 				5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */,
 				5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */,
 				5F9DE37A22188984008CCB94 /* UserModelController.swift in Sources */,

@@ -6,12 +6,26 @@ class VibrantContentView: UIView {
     private lazy var vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
     private lazy var vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
     
+    var contentView: UIView {
+        return vibrancyEffectView.contentView
+    }
+    
+    init() {
+        super.init(frame: .zero)
+        configure()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configure()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = frame.height / 2
     }
     
-    func configure(with contentView: UIView) {
+    private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         layer.masksToBounds = true
         
@@ -23,8 +37,7 @@ class VibrantContentView: UIView {
         blurEffectView.contentView.addSubview(vibrancyEffectView)
         vibrancyEffectView.translatesAutoresizingMaskIntoConstraints = false
         vibrancyEffectView.fill(in: blurEffectView.contentView)
-        
-        vibrancyEffectView.contentView.addSubview(contentView)
-        contentView.fill(in: vibrancyEffectView.contentView)
+//        vibrancyEffectView.contentView.addSubview(contentView)
+//        contentView.fill(in: vibrancyEffectView.contentView)
     }
 }

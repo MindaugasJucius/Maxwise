@@ -21,12 +21,38 @@ class ExpenseCreationViewController: UIViewController {
     }()
     @IBOutlet weak var collapseButtonContainer: VibrantContentView!
     
-    
     private lazy var cameraContainerBlurView: UIView! = {
         let blurView = BlurView()
         blurView.translatesAutoresizingMaskIntoConstraints = false
         blurView.layer.cornerRadius = 6
         blurView.layer.masksToBounds = true
+        
+        let vibrantView = VibrantContentView()
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "camera"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        vibrantView.contentView.addSubview(imageView)
+        blurView.contentView.addSubview(vibrantView)
+        
+        let vibrantViewSideLength: CGFloat = 35
+        let imageViewSideLength: CGFloat = 20
+        
+        let imageViewConstraints = [
+            imageView.heightAnchor.constraint(equalToConstant: imageViewSideLength),
+            imageView.widthAnchor.constraint(equalToConstant: imageViewSideLength),
+            imageView.centerXAnchor.constraint(equalTo: vibrantView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: vibrantView.centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(imageViewConstraints)
+        
+        let vibrantViewConstraints = [
+            vibrantView.heightAnchor.constraint(equalToConstant: vibrantViewSideLength),
+            vibrantView.widthAnchor.constraint(equalToConstant: vibrantViewSideLength),
+            vibrantView.centerXAnchor.constraint(equalTo: blurView.centerXAnchor),
+            vibrantView.centerYAnchor.constraint(equalTo: blurView.centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(vibrantViewConstraints)
+        
         return blurView
     }()
     private lazy var tapRecognizer = UITapGestureRecognizer(
@@ -93,8 +119,10 @@ class ExpenseCreationViewController: UIViewController {
             belowSubview: collapseButtonContainer
         )
         cameraContainerBlurView.fill(in: cameraContainerView)
+
+        collapseButtonContainer.contentView.addSubview(collapseCameraButton)
+        collapseCameraButton.fill(in: collapseButtonContainer.contentView)
         
-        collapseButtonContainer.configure(with: collapseCameraButton)
         collapseButtonContainer.alpha = 0
         
         collapseCameraButton.addTarget(
@@ -206,29 +234,6 @@ extension ExpenseCreationViewController: UICollectionViewDataSource {
         return venueCell
     }
     
-}
-
-
-extension AMTagView {
-    
-    var categoryID: String? {
-        get {
-            return userInfo["id"] as? String
-        }
-        set {
-            userInfo = ["id": newValue as Any]
-        }
-    }
-    
-    func applySelectedStyle() {
-        tagColor = .gray
-        innerTagColor = .gray
-    }
-    
-    func applyDeselectedStyle() {
-        tagColor = .lightGray
-        innerTagColor = .lightGray
-    }
 }
 
 extension ExpenseCreationViewController: CameraCaptureDelegate {
