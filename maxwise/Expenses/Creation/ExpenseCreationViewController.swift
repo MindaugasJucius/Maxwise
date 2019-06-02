@@ -23,7 +23,7 @@ class ExpenseCreationViewController: UIViewController {
     )
     
     @IBOutlet private var initialCameraHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private var aspectCameraHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private var expandedCameraHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet private weak var expenseInfoContainerView: UIView!
     @IBOutlet private weak var textField: UITextField!
@@ -47,6 +47,13 @@ class ExpenseCreationViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let ratio: CGFloat = 4/3
+        let expandedCameraHeight = ratio * cameraContainerView.bounds.width
+        expandedCameraHeightConstraint.constant = expandedCameraHeight
     }
     
     override func viewDidLoad() {
@@ -86,7 +93,7 @@ class ExpenseCreationViewController: UIViewController {
     @objc private func showCamera() {
         let isCameraContainerHidden = initialCameraHeightConstraint.isActive
         tapRecognizer.isEnabled = !isCameraContainerHidden
-        aspectCameraHeightConstraint.isActive = isCameraContainerHidden
+        expandedCameraHeightConstraint.isActive = isCameraContainerHidden
         initialCameraHeightConstraint.isActive = !isCameraContainerHidden
         let animator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 0.82) {
             self.view.layoutIfNeeded()

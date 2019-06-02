@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExpenseCreationViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
-                <outlet property="aspectCameraHeightConstraint" destination="2Xu-iD-GNl" id="dTV-V9-OdY"/>
                 <outlet property="cameraContainerView" destination="NLg-uk-6eq" id="sQo-0B-sKw"/>
                 <outlet property="collapseCameraContainerButton" destination="hfT-0F-jT1" id="3hg-Yj-5fi"/>
+                <outlet property="expandedCameraHeightConstraint" destination="5JY-rw-nNn" id="Fof-uC-Zhp"/>
                 <outlet property="expenseInfoContainerView" destination="a5I-kZ-cgF" id="V1I-Cf-zJC"/>
                 <outlet property="initialCameraHeightConstraint" destination="dfx-br-WUA" id="fEz-IU-aTD"/>
                 <outlet property="tagListView" destination="g1i-4U-m8x" id="9kj-S5-iKN"/>
@@ -77,7 +77,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="NLg-uk-6eq" secondAttribute="height" multiplier="3:4" priority="750" id="2Xu-iD-GNl"/>
+                        <constraint firstAttribute="height" priority="750" constant="60" id="5JY-rw-nNn"/>
                         <constraint firstAttribute="bottom" secondItem="hfT-0F-jT1" secondAttribute="bottom" constant="8" id="Lha-Ij-H0u"/>
                         <constraint firstAttribute="trailing" secondItem="hfT-0F-jT1" secondAttribute="trailing" constant="8" id="ZJF-sl-RsQ"/>
                         <constraint firstAttribute="height" constant="60" id="dfx-br-WUA"/>

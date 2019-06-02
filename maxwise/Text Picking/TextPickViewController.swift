@@ -45,7 +45,7 @@ class TextPickViewController: UIViewController {
                               scale: 1,
                               orientation: UIImage.Orientation(orientation))
         
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
         imageView.image = uiImage
         
