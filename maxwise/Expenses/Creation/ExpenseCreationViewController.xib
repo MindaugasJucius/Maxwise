@@ -16,6 +16,7 @@
                 <outlet property="expandedCameraHeightConstraint" destination="5JY-rw-nNn" id="Fof-uC-Zhp"/>
                 <outlet property="expenseInfoContainerView" destination="a5I-kZ-cgF" id="V1I-Cf-zJC"/>
                 <outlet property="initialCameraHeightConstraint" destination="dfx-br-WUA" id="fEz-IU-aTD"/>
+                <outlet property="resetToCameraButtonContainer" destination="G8e-iZ-hv0" id="6qk-cc-wSS"/>
                 <outlet property="tagListView" destination="g1i-4U-m8x" id="9kj-S5-iKN"/>
                 <outlet property="textField" destination="hle-vD-21g" id="MYF-xE-CBV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -72,19 +73,27 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMZ-ib-M42" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
                             <rect key="frame" x="292" y="9" width="35" height="35"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="HMZ-ib-M42" secondAttribute="height" multiplier="1:1" id="Ymb-hw-kva"/>
                                 <constraint firstAttribute="width" constant="35" id="ee4-ks-7rN"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8e-iZ-hv0" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
+                            <rect key="frame" x="154" y="9" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="35" id="Jke-SR-ylZ"/>
+                                <constraint firstAttribute="width" secondItem="G8e-iZ-hv0" secondAttribute="height" multiplier="1:1" id="Q3t-Hc-8bp"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="750" constant="60" id="5JY-rw-nNn"/>
+                        <constraint firstItem="G8e-iZ-hv0" firstAttribute="centerX" secondItem="NLg-uk-6eq" secondAttribute="centerX" id="QHP-3E-JKR"/>
                         <constraint firstAttribute="trailingMargin" secondItem="HMZ-ib-M42" secondAttribute="trailing" constant="8" id="RlZ-Jl-C8x"/>
                         <constraint firstAttribute="bottomMargin" secondItem="HMZ-ib-M42" secondAttribute="bottom" constant="8" id="bwv-tO-9ed"/>
                         <constraint firstAttribute="height" constant="60" id="dfx-br-WUA"/>
+                        <constraint firstItem="G8e-iZ-hv0" firstAttribute="centerY" secondItem="HMZ-ib-M42" secondAttribute="centerY" id="enA-a9-htt"/>
                     </constraints>
                 </view>
             </subviews>

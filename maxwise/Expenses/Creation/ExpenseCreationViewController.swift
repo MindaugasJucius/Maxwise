@@ -19,7 +19,18 @@ class ExpenseCreationViewController: UIViewController {
                                               right: 8)
         return button
     }()
-    @IBOutlet weak var collapseButtonContainer: VibrantContentView!
+    @IBOutlet private weak var collapseButtonContainer: VibrantContentView!
+    
+    private lazy var resetToCameraButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "refresh"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 8,
+                                              left: 8,
+                                              bottom: 8,
+                                              right: 8)
+        return button
+    }()
+    @IBOutlet private weak var resetToCameraButtonContainer: VibrantContentView!
     
     private lazy var cameraContainerBlurView: UIView! = {
         let blurView = BlurView()
@@ -27,12 +38,12 @@ class ExpenseCreationViewController: UIViewController {
         blurView.layer.cornerRadius = 6
         blurView.layer.masksToBounds = true
         
-        let vibrantView = VibrantContentView()
+        let cameraImageContainerView = VibrantContentView()
         let imageView = UIImageView(image: #imageLiteral(resourceName: "camera"))
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        vibrantView.contentView.addSubview(imageView)
-        blurView.contentView.addSubview(vibrantView)
+        cameraImageContainerView.contentView.addSubview(imageView)
+        blurView.contentView.addSubview(cameraImageContainerView)
         
         let vibrantViewSideLength: CGFloat = 35
         let imageViewSideLength: CGFloat = 20
@@ -40,21 +51,22 @@ class ExpenseCreationViewController: UIViewController {
         let imageViewConstraints = [
             imageView.heightAnchor.constraint(equalToConstant: imageViewSideLength),
             imageView.widthAnchor.constraint(equalToConstant: imageViewSideLength),
-            imageView.centerXAnchor.constraint(equalTo: vibrantView.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: vibrantView.centerYAnchor)
+            imageView.centerXAnchor.constraint(equalTo: cameraImageContainerView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: cameraImageContainerView.centerYAnchor)
         ]
         NSLayoutConstraint.activate(imageViewConstraints)
         
         let vibrantViewConstraints = [
-            vibrantView.heightAnchor.constraint(equalToConstant: vibrantViewSideLength),
-            vibrantView.widthAnchor.constraint(equalToConstant: vibrantViewSideLength),
-            vibrantView.centerXAnchor.constraint(equalTo: blurView.centerXAnchor),
-            vibrantView.centerYAnchor.constraint(equalTo: blurView.centerYAnchor)
+            cameraImageContainerView.heightAnchor.constraint(equalToConstant: vibrantViewSideLength),
+            cameraImageContainerView.widthAnchor.constraint(equalToConstant: vibrantViewSideLength),
+            cameraImageContainerView.centerXAnchor.constraint(equalTo: blurView.centerXAnchor),
+            cameraImageContainerView.centerYAnchor.constraint(equalTo: blurView.centerYAnchor)
         ]
         NSLayoutConstraint.activate(vibrantViewConstraints)
         
         return blurView
     }()
+    
     private lazy var tapRecognizer = UITapGestureRecognizer(
         target: self,
         action: #selector(showCamera)
@@ -114,12 +126,14 @@ class ExpenseCreationViewController: UIViewController {
         cameraContainerView.addGestureRecognizer(tapRecognizer)
         cameraContainerView.clipsToBounds = true
         cameraContainerView.layer.cornerRadius = 6
+        
         cameraContainerView.insertSubview(
             cameraContainerBlurView,
             belowSubview: collapseButtonContainer
         )
         cameraContainerBlurView.fill(in: cameraContainerView)
 
+        //Add collapse button
         collapseButtonContainer.contentView.addSubview(collapseCameraButton)
         collapseCameraButton.fill(in: collapseButtonContainer.contentView)
         
@@ -127,7 +141,19 @@ class ExpenseCreationViewController: UIViewController {
         
         collapseCameraButton.addTarget(
             self,
-            action: #selector(showCamera),
+            action: #selector(collapseCamera),
+            for: .touchUpInside
+        )
+        
+        //Add reset to camera button
+        resetToCameraButtonContainer.contentView.addSubview(resetToCameraButton)
+        resetToCameraButton.fill(in: resetToCameraButtonContainer.contentView)
+        
+        resetToCameraButtonContainer.alpha = 0
+        
+        resetToCameraButton.addTarget(
+            self,
+            action: #selector(removeRecognitionController),
             for: .touchUpInside
         )
     }
@@ -148,6 +174,20 @@ class ExpenseCreationViewController: UIViewController {
             }
         }
         animator.startAnimation()
+    }
+    
+    @objc private func collapseCamera() {
+        showCamera()
+        removeRecognitionController()
+    }
+    
+    @objc private func removeRecognitionController() {
+        guard children.last is TextPickViewController else {
+            return
+        }
+        children.last?.view.removeFromSuperview()
+        children.last?.removeFromParent()
+        resetToCameraButtonContainer.alpha = 0
     }
     
     private func configureTagListView() {
@@ -239,6 +279,7 @@ extension ExpenseCreationViewController: UICollectionViewDataSource {
 extension ExpenseCreationViewController: CameraCaptureDelegate {
     
     func captured(image: CGImage, orientation: CGImagePropertyOrientation, tapLocation: CGPoint) {
+        resetToCameraButtonContainer.alpha = 1
         addRecognitionController(cgImage: image, orientation: orientation, tapLocation: tapLocation)
     }
     
