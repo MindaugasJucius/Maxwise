@@ -60,6 +60,7 @@
 		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
 		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
+		F45D67CE22A3D96B00DB1AE1 /* VibrantContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */; };
 		F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +137,7 @@
 		89CE2E999663A6CE2DA3855D /* Pods-maxwise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxwise/Pods-maxwise.debug.xcconfig"; sourceTree = "<group>"; };
 		AE8AA537479DCA59B808B9D1 /* Pods-maxwise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwise.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwise/Pods-maxwise.release.xcconfig"; sourceTree = "<group>"; };
 		BFE3CBB719654DA4B77BCD30 /* Pods-maxwiseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantContentView.swift; sourceTree = "<group>"; };
 		F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		F739ED49C2038FB2BE827A0C /* Pods-maxwiseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -247,6 +249,7 @@
 				5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */,
 				5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */,
 				5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */,
+				F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -460,7 +463,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AMTagListView/AMTagListView.framework",
 				"${BUILT_PRODUCTS_DIR}/FoursquareAPIClient/FoursquareAPIClient.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -481,7 +484,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C44BF7B71AA5AC9A68C83A93 /* [CP] Check Pods Manifest.lock */ = {
@@ -515,6 +518,7 @@
 			files = (
 				5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */,
 				5F470BDF220CA765002CD12D /* BlurView.swift in Sources */,
+				F45D67CE22A3D96B00DB1AE1 /* VibrantContentView.swift in Sources */,
 				5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */,
 				5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */,
 				5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */,

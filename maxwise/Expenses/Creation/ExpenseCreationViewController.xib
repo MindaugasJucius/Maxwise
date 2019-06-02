@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExpenseCreationViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
                 <outlet property="cameraContainerView" destination="NLg-uk-6eq" id="sQo-0B-sKw"/>
-                <outlet property="collapseCameraContainerButton" destination="hfT-0F-jT1" id="3hg-Yj-5fi"/>
+                <outlet property="collapseButtonContainer" destination="HMZ-ib-M42" id="Tb7-KI-kdn"/>
                 <outlet property="expandedCameraHeightConstraint" destination="5JY-rw-nNn" id="Fof-uC-Zhp"/>
                 <outlet property="expenseInfoContainerView" destination="a5I-kZ-cgF" id="V1I-Cf-zJC"/>
                 <outlet property="initialCameraHeightConstraint" destination="dfx-br-WUA" id="fEz-IU-aTD"/>
@@ -70,16 +70,20 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLg-uk-6eq">
                     <rect key="frame" x="16" y="441" width="343" height="60"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfT-0F-jT1">
-                            <rect key="frame" x="303" y="22" width="32" height="30"/>
-                            <state key="normal" title="Hide"/>
-                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMZ-ib-M42" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
+                            <rect key="frame" x="292" y="9" width="35" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="HMZ-ib-M42" secondAttribute="height" multiplier="1:1" id="Ymb-hw-kva"/>
+                                <constraint firstAttribute="width" constant="35" id="ee4-ks-7rN"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="750" constant="60" id="5JY-rw-nNn"/>
-                        <constraint firstAttribute="bottom" secondItem="hfT-0F-jT1" secondAttribute="bottom" constant="8" id="Lha-Ij-H0u"/>
-                        <constraint firstAttribute="trailing" secondItem="hfT-0F-jT1" secondAttribute="trailing" constant="8" id="ZJF-sl-RsQ"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="HMZ-ib-M42" secondAttribute="trailing" constant="8" id="RlZ-Jl-C8x"/>
+                        <constraint firstAttribute="bottomMargin" secondItem="HMZ-ib-M42" secondAttribute="bottom" constant="8" id="bwv-tO-9ed"/>
                         <constraint firstAttribute="height" constant="60" id="dfx-br-WUA"/>
                     </constraints>
                 </view>
@@ -94,7 +98,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="120.8" y="-119.64017991004499"/>
+            <point key="canvasLocation" x="119.56521739130436" y="-119.83695652173914"/>
         </view>
     </objects>
 </document>

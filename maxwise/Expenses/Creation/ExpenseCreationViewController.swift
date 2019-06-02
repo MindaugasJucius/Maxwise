@@ -9,7 +9,19 @@ enum ModalTransitionType {
 class ExpenseCreationViewController: UIViewController {
 
     @IBOutlet private weak var cameraContainerView: UIView!
-    @IBOutlet weak var collapseCameraContainerButton: UIButton!
+    
+    private lazy var collapseCameraButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "collapse"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 8,
+                                              left: 8,
+                                              bottom: 8,
+                                              right: 8)
+        return button
+    }()
+    @IBOutlet weak var collapseButtonContainer: VibrantContentView!
+    
+    
     private lazy var cameraContainerBlurView: UIView! = {
         let blurView = BlurView()
         blurView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,12 +90,14 @@ class ExpenseCreationViewController: UIViewController {
         cameraContainerView.layer.cornerRadius = 6
         cameraContainerView.insertSubview(
             cameraContainerBlurView,
-            belowSubview: collapseCameraContainerButton
+            belowSubview: collapseButtonContainer
         )
         cameraContainerBlurView.fill(in: cameraContainerView)
         
-        collapseCameraContainerButton.alpha = 0
-        collapseCameraContainerButton.addTarget(
+        collapseButtonContainer.configure(with: collapseCameraButton)
+        collapseButtonContainer.alpha = 0
+        
+        collapseCameraButton.addTarget(
             self,
             action: #selector(showCamera),
             for: .touchUpInside
@@ -99,10 +113,10 @@ class ExpenseCreationViewController: UIViewController {
             self.view.layoutIfNeeded()
             if isCameraContainerHidden {
                 self.cameraContainerBlurView.alpha = 0
-                self.collapseCameraContainerButton.alpha = 1
+                self.collapseButtonContainer.alpha = 1
             } else {
                 self.cameraContainerBlurView.alpha = 1
-                self.collapseCameraContainerButton.alpha = 0
+                self.collapseButtonContainer.alpha = 0
             }
         }
         animator.startAnimation()
