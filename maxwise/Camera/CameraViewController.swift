@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  maxwise
-//
-//  Created by Mindaugas Jucius on 2/3/19.
-//  Copyright © 2019 Mindaugas Jucius. All rights reserved.
-//
-
 import UIKit
 import AVKit
 
@@ -17,6 +9,15 @@ class CameraViewController: UIViewController {
     
     private let cameraController = CameraController()
     private var cameraLayer: AVCaptureVideoPreviewLayer?
+    
+    @IBOutlet private weak var explanationContainerView: VibrantContentView!
+    private lazy var explanationLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.text = "Tap to recognize numbers"
+        return label
+    }()
     
     private var tapLocation: CGPoint?
     
@@ -43,13 +44,21 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addCameraLayer()
-        view.backgroundColor = .gray
+        view.backgroundColor = .white
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinch(_:)))
         view.addGestureRecognizer(pinch)
         let tap = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
         view.addGestureRecognizer(tap)
-        
         view.layer.cornerRadius = 6
+        
+        explanationContainerView.configuration = VibrantContentView.Configuration(cornerStyle: .rounded,
+                                                                                  blurEffectStyle: .prominent)
+        explanationContainerView.contentView?.addSubview(explanationLabel)
+        let labelConstraints = [
+            explanationLabel.centerXAnchor.constraint(equalTo: explanationContainerView.centerXAnchor),
+            explanationLabel.centerYAnchor.constraint(equalTo: explanationContainerView.centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(labelConstraints)
     }
     
     private func addCameraLayer() {

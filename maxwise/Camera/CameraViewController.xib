@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
+                <outlet property="explanationContainerView" destination="B16-Eh-2Gz" id="8IF-1g-H2F"/>
                 <outlet property="view" destination="iN0-l3-epB" id="TCU-bn-64r"/>
             </connections>
         </placeholder>
@@ -18,6 +19,19 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B16-Eh-2Gz" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
+                    <rect key="frame" x="67" y="16" width="241" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="qTQ-nR-Dtj"/>
+                        <constraint firstAttribute="width" constant="241" id="urz-6Y-Y9V"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="B16-Eh-2Gz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3kX-6B-jcf"/>
+                <constraint firstItem="B16-Eh-2Gz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="uda-hU-fEK"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="140" y="597.30134932533736"/>
