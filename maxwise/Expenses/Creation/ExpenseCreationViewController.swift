@@ -39,10 +39,12 @@ class ExpenseCreationViewController: UIViewController {
         blurView.layer.masksToBounds = true
         
         let cameraImageContainerView = VibrantContentView()
+        cameraImageContainerView.configuration = VibrantContentView.Configuration(cornerStyle: .circular,
+                                                                                  blurEffectStyle: .prominent)
         let imageView = UIImageView(image: #imageLiteral(resourceName: "camera"))
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        cameraImageContainerView.contentView.addSubview(imageView)
+        cameraImageContainerView.contentView?.addSubview(imageView)
         blurView.contentView.addSubview(cameraImageContainerView)
         
         let vibrantViewSideLength: CGFloat = 35
@@ -134,8 +136,10 @@ class ExpenseCreationViewController: UIViewController {
         cameraContainerBlurView.fill(in: cameraContainerView)
 
         //Add collapse button
-        collapseButtonContainer.contentView.addSubview(collapseCameraButton)
-        collapseCameraButton.fill(in: collapseButtonContainer.contentView)
+        collapseButtonContainer.configuration = VibrantContentView.Configuration(cornerStyle: .circular,
+                                                                                 blurEffectStyle: .dark)
+        collapseButtonContainer.contentView?.addSubview(collapseCameraButton)
+        collapseCameraButton.fillInSuperview()
         
         collapseButtonContainer.alpha = 0
         
@@ -146,8 +150,10 @@ class ExpenseCreationViewController: UIViewController {
         )
         
         //Add reset to camera button
-        resetToCameraButtonContainer.contentView.addSubview(resetToCameraButton)
-        resetToCameraButton.fill(in: resetToCameraButtonContainer.contentView)
+        resetToCameraButtonContainer.configuration = VibrantContentView.Configuration(cornerStyle: .circular,
+                                                                                      blurEffectStyle: .dark)
+        resetToCameraButtonContainer.contentView?.addSubview(resetToCameraButton)
+        resetToCameraButton.fillInSuperview()
         
         resetToCameraButtonContainer.alpha = 0
         

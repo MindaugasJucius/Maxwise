@@ -24,6 +24,13 @@ extension UIView {
         ]
         NSLayoutConstraint.activate(constraints)
     }
+
+    func fillInSuperview() {
+        guard let superview = superview else {
+            fatalError("no superview")
+        }
+        fill(in: superview)
+    }
     
     static var nibName: String {
         return String(describing: self)

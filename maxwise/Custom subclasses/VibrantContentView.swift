@@ -1,33 +1,50 @@
 import UIKit
 
+
 class VibrantContentView: UIView {
-    
-    private let blurEffect = UIBlurEffect(style: .prominent)
-    private lazy var vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
-    private lazy var vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
-    
-    var contentView: UIView {
-        return vibrancyEffectView.contentView
+
+    struct Configuration {
+        enum CornerAppearance {
+            case rounded
+            case circular
+        }
+        
+        var cornerStyle: CornerAppearance
+        var blurEffectStyle: UIBlurEffect.Style
     }
     
-    init() {
-        super.init(frame: .zero)
-        configure()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        configure()
+    private(set) var contentView: UIView?
+
+    var configuration: Configuration? {
+        didSet {
+            guard let configuration = configuration else {
+                return
+            }
+            apply(configuration: configuration)
+        }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layer.cornerRadius = frame.height / 2
+        guard let configuration = configuration else {
+            return
+        }
+        switch configuration.cornerStyle {
+        case .circular:
+            layer.cornerRadius = frame.height / 2
+        case .rounded:
+            layer.cornerRadius = 6
+        }
+
     }
     
-    private func configure() {
+    private func apply(configuration: Configuration) {
         translatesAutoresizingMaskIntoConstraints = false
         layer.masksToBounds = true
+        
+        let blurEffect = UIBlurEffect(style: configuration.blurEffectStyle)
+        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+        let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
         
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +54,7 @@ class VibrantContentView: UIView {
         blurEffectView.contentView.addSubview(vibrancyEffectView)
         vibrancyEffectView.translatesAutoresizingMaskIntoConstraints = false
         vibrancyEffectView.fill(in: blurEffectView.contentView)
-//        vibrancyEffectView.contentView.addSubview(contentView)
-//        contentView.fill(in: vibrancyEffectView.contentView)
+        
+        contentView = vibrancyEffectView.contentView
     }
 }
