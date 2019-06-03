@@ -7,17 +7,27 @@ extension AMTagView {
             return userInfo["id"] as? String
         }
         set {
-            userInfo = ["id": newValue as Any]
+            userInfo["id"] = newValue as Any
         }
     }
     
-    func applySelectedStyle() {
-        tagColor = .gray
-        innerTagColor = .gray
+    var color: UIColor? {
+        get {
+            return userInfo["color"] as? UIColor
+        }
+        set {
+            userInfo["color"] = newValue as Any
+        }
     }
     
-    func applyDeselectedStyle() {
-        tagColor = .lightGray
-        innerTagColor = .lightGray
+    func applySelectedStyle(color: UIColor) {
+        tagColor = color
+        innerTagColor = color
+    }
+    
+    func applyDeselectedStyle(color: UIColor) {
+        let transparentColor = color.withAlphaComponent(0.5)
+        tagColor = transparentColor
+        innerTagColor = transparentColor
     }
 }

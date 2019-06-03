@@ -203,15 +203,26 @@ class ExpenseCreationViewController: UIViewController {
         viewModel.categories.forEach { category in
             let tagView = AMTagView(frame: .zero)
             tagView.holeRadius = 3
-            tagView.applyDeselectedStyle()
+            tagView.userInfo = [:]
+            if let color = category.color {
+                tagView.color = color
+                tagView.applyDeselectedStyle(color: color)
+            }
             tagView.categoryID = category.id
             tagView.tagText = category.title as NSString
             tagListView.addTagView(tagView)
         }
         
         tagListView.setTapHandler { [weak self] tagView in
-            self?.selectedTag?.applyDeselectedStyle()
-            tagView?.applySelectedStyle()
+            guard let color = tagView?.color else {
+                return
+            }
+            
+            if let currentSelectedTagColor = self?.selectedTag?.color {
+                self?.selectedTag?.applyDeselectedStyle(color: currentSelectedTagColor)
+            }
+
+            tagView?.applySelectedStyle(color: color)
             self?.selectedTag = tagView
         }
         

@@ -9,10 +9,15 @@ class ExpenseCategoryModelController {
         guard !UserDefaults.standard.bool(forKey: defaultCategoriesCreatedKey) else {
             return
         }
-        let defaultCategoryTitles = ["Food", "Entertainment", "Eating Out", "Sport"]
-        defaultCategoryTitles.map { title in
+        
+        let defaultCategoryProperties: [(String, UIColor)] = [("Food", .tealBlue),
+                                                              ("Entertainment", .pink),
+                                                              ("Eating Out", .orange),
+                                                              ("Sport", .blue)]
+        defaultCategoryProperties.map { properties in
             let category = ExpenseCategory()
-            category.title = title
+            category.title = properties.0
+            category.colorHexValue = properties.1.hexString
             category.id = NSUUID.init().uuidString
             return category
         }.forEach {

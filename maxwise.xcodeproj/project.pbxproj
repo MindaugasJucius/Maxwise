@@ -60,6 +60,7 @@
 		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
 		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
+		F4187C4422A578C9002DEBB0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */; };
 		F45D67CE22A3D96B00DB1AE1 /* VibrantContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */; };
 		F45D67D122A3E10600DB1AE1 /* AMTagView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D67D022A3E10600DB1AE1 /* AMTagView+Extensions.swift */; };
 		F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */; };
@@ -138,6 +139,7 @@
 		89CE2E999663A6CE2DA3855D /* Pods-maxwise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxwise/Pods-maxwise.debug.xcconfig"; sourceTree = "<group>"; };
 		AE8AA537479DCA59B808B9D1 /* Pods-maxwise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwise.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwise/Pods-maxwise.release.xcconfig"; sourceTree = "<group>"; };
 		BFE3CBB719654DA4B77BCD30 /* Pods-maxwiseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantContentView.swift; sourceTree = "<group>"; };
 		F45D67D022A3E10600DB1AE1 /* AMTagView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AMTagView+Extensions.swift"; sourceTree = "<group>"; };
 		F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				5FB59212227DE303005D5208 /* NavigationView.xib */,
 				5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */,
 				5F470BDE220CA765002CD12D /* BlurView.swift */,
+				F45D67CF22A3E0BB00DB1AE1 /* Custom subclasses */,
 				5F20E0AF2210239400BAECF6 /* Model */,
 				5FFACEB82219CF8500F087E4 /* Camera */,
 				5F470BDB220C6715002CD12D /* Text Picking */,
@@ -249,9 +252,9 @@
 				5F4A3B77220720880016BCC9 /* Info.plist */,
 				F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */,
 				5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */,
-				F45D67CF22A3E0BB00DB1AE1 /* Custom subclasses */,
 				5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */,
 				F45D67D022A3E10600DB1AE1 /* AMTagView+Extensions.swift */,
+				F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				5F65C345222A6DAF00E10F92 /* VenueCollectionViewCell.swift in Sources */,
 				5F20E0B32210265200BAECF6 /* ExpenseEntryModelController.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
+				F4187C4422A578C9002DEBB0 /* UIColor+Extension.swift in Sources */,
 				5F20E0B12210247C00BAECF6 /* ExpenseEntry.swift in Sources */,
 				F45D67D122A3E10600DB1AE1 /* AMTagView+Extensions.swift in Sources */,
 				5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */,
