@@ -111,7 +111,8 @@ class ExpenseCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.keyboardType = .numberPad
-
+        textField.becomeFirstResponder()
+        
         configureTagListView()
         configureCameraContainerLayer()
         expenseInfoContainerView.layer.applyShadow()
@@ -137,7 +138,7 @@ class ExpenseCreationViewController: UIViewController {
 
         //Add collapse button
         collapseButtonContainer.configuration = VibrantContentView.Configuration(cornerStyle: .circular,
-                                                                                 blurEffectStyle: .dark)
+                                                                                 blurEffectStyle: .prominent)
         collapseButtonContainer.contentView?.addSubview(collapseCameraButton)
         collapseCameraButton.fillInSuperview()
         
@@ -151,7 +152,7 @@ class ExpenseCreationViewController: UIViewController {
         
         //Add reset to camera button
         resetToCameraButtonContainer.configuration = VibrantContentView.Configuration(cornerStyle: .circular,
-                                                                                      blurEffectStyle: .dark)
+                                                                                      blurEffectStyle: .prominent)
         resetToCameraButtonContainer.contentView?.addSubview(resetToCameraButton)
         resetToCameraButton.fillInSuperview()
         
@@ -165,6 +166,8 @@ class ExpenseCreationViewController: UIViewController {
     }
     
     @objc private func showCamera() {
+        textField.resignFirstResponder()
+        
         let isCameraContainerHidden = initialCameraHeightConstraint.isActive
         tapRecognizer.isEnabled = !isCameraContainerHidden
         expandedCameraHeightConstraint.isActive = isCameraContainerHidden
