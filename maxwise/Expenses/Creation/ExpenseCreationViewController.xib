@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,6 +17,7 @@
                 <outlet property="expenseInfoContainerView" destination="a5I-kZ-cgF" id="V1I-Cf-zJC"/>
                 <outlet property="initialCameraHeightConstraint" destination="dfx-br-WUA" id="fEz-IU-aTD"/>
                 <outlet property="resetToCameraButtonContainer" destination="G8e-iZ-hv0" id="6qk-cc-wSS"/>
+                <outlet property="segmentedControl" destination="XSy-5f-SPq" id="SSc-FQ-zQr"/>
                 <outlet property="tagListView" destination="g1i-4U-m8x" id="9kj-S5-iKN"/>
                 <outlet property="textField" destination="hle-vD-21g" id="MYF-xE-CBV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -45,18 +46,21 @@
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1i-4U-m8x" customClass="AMTagListView">
                                     <rect key="frame" x="0.0" y="40" width="311" height="35"/>
                                 </scrollView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rin-np-F0y">
-                                    <rect key="frame" x="0.0" y="80" width="311" height="35"/>
-                                    <state key="normal" title="Add"/>
-                                    <connections>
-                                        <action selector="addExpenseTapped:" destination="-1" eventType="touchUpInside" id="RAy-pw-QFl"/>
-                                    </connections>
-                                </button>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-5f-SPq">
+                                    <rect key="frame" x="0.0" y="80" width="311" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="d87-0D-297"/>
+                                    </constraints>
+                                    <segments>
+                                        <segment title="First"/>
+                                        <segment title="Second"/>
+                                    </segments>
+                                </segmentedControl>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="hle-vD-21g" firstAttribute="width" secondItem="Vx1-GV-xNW" secondAttribute="width" id="0ui-0I-YpB"/>
-                                <constraint firstItem="Rin-np-F0y" firstAttribute="width" secondItem="Vx1-GV-xNW" secondAttribute="width" id="E6h-q5-U8v"/>
                                 <constraint firstItem="g1i-4U-m8x" firstAttribute="width" secondItem="Vx1-GV-xNW" secondAttribute="width" id="Rf9-fN-gX0"/>
+                                <constraint firstItem="XSy-5f-SPq" firstAttribute="width" secondItem="Vx1-GV-xNW" secondAttribute="width" id="sad-0W-tSp"/>
                             </constraints>
                         </stackView>
                     </subviews>

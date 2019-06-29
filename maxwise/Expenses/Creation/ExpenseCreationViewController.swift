@@ -56,6 +56,7 @@ class ExpenseCreationViewController: UIViewController {
             imageView.centerXAnchor.constraint(equalTo: cameraImageContainerView.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: cameraImageContainerView.centerYAnchor)
         ]
+
         NSLayoutConstraint.activate(imageViewConstraints)
         
         let vibrantViewConstraints = [
@@ -82,6 +83,7 @@ class ExpenseCreationViewController: UIViewController {
     
     @IBOutlet private weak var tagListView: AMTagListView!
     private weak var selectedTag: AMTagView?
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
     private let nearbyPlaces: [NearbyPlace]
     private let viewModel: ExpenseCreationViewModel
@@ -111,17 +113,28 @@ class ExpenseCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.keyboardType = .numberPad
+        textField.placeholder = "Expense amount"
         textField.becomeFirstResponder()
         
         configureTagListView()
         configureCameraContainerLayer()
+        configureSegmentedControl()
         expenseInfoContainerView.layer.applyShadow()
         expenseInfoContainerView.layer.cornerRadius = 6
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // Creating camera session in viewDidLoad in main queue lags a bit
         addCameraController()
+    }
+    
+    private func configureSegmentedControl() {
+        segmentedControl.removeAllSegments()
+        ["100%", "50%"].enumerated().forEach { index, title in
+            segmentedControl.insertSegment(withTitle: title, at: index, animated: false)
+        }
+        segmentedControl.selectedSegmentIndex = 0
     }
     
     private func configureCameraContainerLayer() {
