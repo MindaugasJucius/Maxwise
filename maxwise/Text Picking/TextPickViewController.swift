@@ -23,9 +23,9 @@ class TextPickViewController: UIViewController {
     private let orientation: CGImagePropertyOrientation
     private let tapLocation: CGPoint
     
-    private let recognitionOccured: (Double) -> Void
+    private let recognitionOccured: (String) -> Void
     
-    init(cgImage: CGImage, orientation: CGImagePropertyOrientation, tapLocation: CGPoint, recognitionOccured: @escaping (Double) -> Void) {
+    init(cgImage: CGImage, orientation: CGImagePropertyOrientation, tapLocation: CGPoint, recognitionOccured: @escaping (String) -> Void) {
         self.recognitionOccured = recognitionOccured
         self.cgImage = cgImage
         self.orientation = orientation

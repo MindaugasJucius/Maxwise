@@ -140,6 +140,7 @@ class ExpenseCreationViewController: UIViewController {
     }
 
     private func tryToCreateExpense() {
+        textField.text = viewModel.recognitionOccured(textField.text)
         viewModel.performModelCreation(selectedPlace: nil, categoryID: selectedTag?.categoryID) { [weak self] result in
             switch result {
             case .success(_):
@@ -295,7 +296,7 @@ class ExpenseCreationViewController: UIViewController {
     private func addRecognitionController(cgImage: CGImage,
                                           orientation: CGImagePropertyOrientation,
                                           tapLocation: CGPoint) {
-        let recognitionOccured: (Double) -> Void = { [weak self] value in
+        let recognitionOccured: (String) -> Void = { [weak self] value in
             guard let self = self else { return }
             let formattedValue = self.viewModel.recognitionOccured(value)
             self.textField.text = formattedValue

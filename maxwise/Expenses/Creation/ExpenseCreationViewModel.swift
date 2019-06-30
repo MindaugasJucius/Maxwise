@@ -21,6 +21,13 @@ class ExpenseCreationViewModel {
         return formatter
     }()
     
+    private lazy var formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+    
     private var recognizedDouble: Double?
     
     let nearbyPlaces: [NearbyPlace]
@@ -28,14 +35,23 @@ class ExpenseCreationViewModel {
         return expenseCategoryModelController.storedCategories()
     }
 
-    lazy var recognitionOccured: (Double) -> (String) = {
-        return { [weak self] recognizedNumber in
-            guard let self = self else { fatalError() }
-            self.recognizedDouble = recognizedNumber
-            return self.formatted(amount: recognizedNumber)
+    lazy var recognitionOccured: (String?) -> (String) = {
+        return { [weak self] recognizedString in
+            let value: String
+            if let unwrapped = recognizedString, !unwrapped.isEmpty {
+                value = unwrapped
+            } else {
+                value = "0"
+            }
+            guard let self = self,
+                let doubleValue = self.formatter.number(from: value)?.doubleValue else {
+                fatalError()
+            }
+            
+            self.recognizedDouble = doubleValue
+            return self.formatted(amount: doubleValue)
         }
     }()
-    
     
     init(nearbyPlaces: [NearbyPlace]) {
         self.nearbyPlaces = nearbyPlaces

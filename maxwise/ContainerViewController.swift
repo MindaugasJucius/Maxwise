@@ -33,7 +33,8 @@ class ContainerViewController: UIPageViewController {
     }
     
     private func addNavigationView() {
-        let navigationView = NavigationView { [weak self] in
+        let navigationView = NavigationView()
+        navigationView.buttonTapped = { [weak self] in
             self?.show(screen: .expenseCreation)
         }
         navigationView.move(to: view)
