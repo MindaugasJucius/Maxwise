@@ -79,7 +79,7 @@ class ExpenseCreationViewController: UIViewController {
     @IBOutlet private var expandedCameraHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet private weak var expenseInfoContainerView: UIView!
-    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet private weak var textField: CurrencyTextField!
     
     @IBOutlet private weak var tagListView: AMTagListView!
     private weak var selectedTag: AMTagView?
@@ -114,7 +114,7 @@ class ExpenseCreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .decimalPad
         textField.placeholder = "Expense amount"
         textField.becomeFirstResponder()
         textField.layer.applyBorder()
@@ -140,8 +140,7 @@ class ExpenseCreationViewController: UIViewController {
     }
 
     private func tryToCreateExpense() {
-        textField.text = viewModel.recognitionOccured(textField.text)
-        viewModel.performModelCreation(selectedPlace: nil, categoryID: selectedTag?.categoryID) { [weak self] result in
+        viewModel.performModelCreation(amount: textField.value, selectedPlace: nil, categoryID: selectedTag?.categoryID) { [weak self] result in
             switch result {
             case .success(_):
                 self?.dismiss(animated: true, completion: nil)
@@ -297,9 +296,7 @@ class ExpenseCreationViewController: UIViewController {
                                           orientation: CGImagePropertyOrientation,
                                           tapLocation: CGPoint) {
         let recognitionOccured: (String) -> Void = { [weak self] value in
-            guard let self = self else { return }
-            let formattedValue = self.viewModel.recognitionOccured(value)
-            self.textField.text = formattedValue
+            self?.textField.text = value
         }
         
         let recognitionController = TextPickViewController(cgImage: cgImage,

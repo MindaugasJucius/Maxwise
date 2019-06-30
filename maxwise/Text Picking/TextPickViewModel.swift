@@ -37,7 +37,7 @@ class TextPickViewModel {
 
         let trimmedResult = value.replacingOccurrences(of: " ", with: "")
                                  .trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-
+        
         return .success(trimmedResult)
     }
     

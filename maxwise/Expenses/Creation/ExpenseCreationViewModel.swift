@@ -14,56 +14,21 @@ class ExpenseCreationViewModel {
     private let userModelController = UserModelController()
     private let expenseCategoryModelController = ExpenseCategoryModelController()
     
-    private lazy var currencyFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = .currency
-        return formatter
-    }()
-    
-    private lazy var formatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = .decimal
-        return formatter
-    }()
-    
     private var recognizedDouble: Double?
     
     let nearbyPlaces: [NearbyPlace]
     var categories: [ExpenseCategory] {
         return expenseCategoryModelController.storedCategories()
     }
-
-    lazy var recognitionOccured: (String?) -> (String) = {
-        return { [weak self] recognizedString in
-            let value: String
-            if let unwrapped = recognizedString, !unwrapped.isEmpty {
-                value = unwrapped
-            } else {
-                value = "0"
-            }
-            guard let self = self,
-                let doubleValue = self.formatter.number(from: value)?.doubleValue else {
-                fatalError()
-            }
-            
-            self.recognizedDouble = doubleValue
-            return self.formatted(amount: doubleValue)
-        }
-    }()
     
     init(nearbyPlaces: [NearbyPlace]) {
         self.nearbyPlaces = nearbyPlaces
+
     }
     
-    private func formatted(amount: Double) -> String {
-        let amountNumber = NSNumber(value: amount)
-        let formattedAmount = currencyFormatter.string(from: amountNumber) ?? "😬"
-        return formattedAmount
-    }
-    
-    func performModelCreation(selectedPlace: NearbyPlace?, categoryID: String?, result: (Result<Void, [CreationIssue]>) -> ()) {
+    func performModelCreation(amount: Double?, selectedPlace: NearbyPlace?, categoryID: String?, result: (Result<Void, [CreationIssue]>) -> ()) {
+        recognizedDouble = amount
+        
         let validationResult = validate(selectedPlace: selectedPlace, categoryID: categoryID)
         switch validationResult {
         case .error(let issues):
