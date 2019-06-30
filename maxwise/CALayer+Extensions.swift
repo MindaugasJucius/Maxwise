@@ -8,4 +8,10 @@ extension CALayer {
         shadowOpacity = 0.3
         masksToBounds = false
     }
+    
+    func applyBorder() {
+        borderWidth = 1
+        cornerRadius = 6
+        borderColor = UIColor.clear.cgColor
+    }
 }

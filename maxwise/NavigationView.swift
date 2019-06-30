@@ -4,17 +4,18 @@ class NavigationView: UIView {
     
     @IBOutlet private weak var centeredButton: UIButton!
 
-    private let buttonTapped: EmptyCallback
+    var buttonTapped: EmptyCallback?
     
-    init(buttonTapped: @escaping EmptyCallback) {
-        self.buttonTapped = buttonTapped
+    init() {
         super.init(frame: .zero)
         loadNib()
         configureButtons()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        loadNib()
+        configureButtons()
     }
     
     private func loadNib() {
@@ -33,7 +34,7 @@ class NavigationView: UIView {
     }
     
     @objc private func tappedButton() {
-        buttonTapped()
+        buttonTapped?()
     }
     
     func move(to superview: UIView) {

@@ -1,11 +1,17 @@
 import UIKit
 
-enum RecognitionResult {
-    case success(Double)
-    case error
+enum Result<Type, Error> {
+    case success(Type)
+    case error(Error)
 }
 
 class TextPickViewModel {
+    
+    enum RecognitionError: Error {
+        case noImage
+        case noNumber
+        case noRecognizedValue
+    }
     
     private let digitRecognizer = DigitRecognizer()
     
@@ -16,9 +22,9 @@ class TextPickViewModel {
         return formatter
     }()
     
-    func performRecognition(in image: UIImage?, completion: @escaping (RecognitionResult) -> ()) {
+    func performRecognition(in image: UIImage?, completion: @escaping (Result<Double, RecognitionError>) -> ()) {
         guard let image = image else {
-            completion(.error)
+            completion(.error(.noImage))
             return
         }
         
@@ -31,16 +37,16 @@ class TextPickViewModel {
         }
     }
         
-    private func convertRecognizedString(value: String?) -> RecognitionResult {
+    private func convertRecognizedString(value: String?) -> Result<Double, RecognitionError> {
         guard let value = value else {
-            return .error
+            return .error(.noRecognizedValue)
         }
 
         let trimmedResult = value.replacingOccurrences(of: " ", with: "")
                                  .trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         guard let doubleValue = formatter.number(from: trimmedResult)?.doubleValue else {
-            return .error
+            return .error(.noNumber)
         }
     
         return .success(doubleValue)

@@ -85,6 +85,8 @@ class ExpenseCreationViewController: UIViewController {
     private weak var selectedTag: AMTagView?
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
+    @IBOutlet private weak var navigationView: NavigationView!
+    
     private let nearbyPlaces: [NearbyPlace]
     private let viewModel: ExpenseCreationViewModel
     private let transitionDelegate = ModalBlurTransitionController()
@@ -115,18 +117,56 @@ class ExpenseCreationViewController: UIViewController {
         textField.keyboardType = .numberPad
         textField.placeholder = "Expense amount"
         textField.becomeFirstResponder()
+        textField.layer.applyBorder()
         
         configureTagListView()
         configureCameraContainerLayer()
         configureSegmentedControl()
+        configureNavigationView()
         expenseInfoContainerView.layer.applyShadow()
         expenseInfoContainerView.layer.cornerRadius = 6
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // Creating camera session in viewDidLoad in main queue lags a bit
+        // Creating camera session in viewDidLoad on the main queue lags a bit
         addCameraController()
+    }
+    
+    private func configureNavigationView() {
+        navigationView.buttonTapped = { [weak self] in
+            self?.tryToCreateExpense()
+        }
+    }
+
+    private func tryToCreateExpense() {
+        viewModel.performModelCreation(selectedPlace: nil, categoryID: selectedTag?.categoryID) { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.dismiss(animated: true, completion: nil)
+            case .error(let issues):
+                self?.handle(issues: issues)
+            }
+        }
+    }
+    
+    private func handle(issues: [CreationIssue]) {
+        resetErrorStates()
+        issues.forEach { issue in
+            switch issue {
+            case .noAmount:
+                textField.layer.borderColor = UIColor.red.cgColor
+            case .noCategory:
+                tagListView.layer.borderColor = UIColor.red.cgColor
+            case .alert(let message):
+                showAlert(for: message)
+            }
+        }
+    }
+    
+    private func resetErrorStates() {
+        textField.layer.borderColor = UIColor.clear.cgColor
+        tagListView.layer.borderColor = UIColor.clear.cgColor
     }
     
     private func configureSegmentedControl() {
@@ -240,6 +280,7 @@ class ExpenseCreationViewController: UIViewController {
         }
         
         tagListView.scrollDirection = .horizontal
+        tagListView.layer.applyBorder()
     }
     
     private func addCameraController() {
@@ -272,21 +313,6 @@ class ExpenseCreationViewController: UIViewController {
         recognitionController.didMove(toParent: nil)
     }
 
-    @IBAction func addExpenseTapped(_ sender: Any) {
-        guard let tagView = selectedTag,
-            let categoryID = tagView.categoryID else {
-            return
-        }
-
-        guard let selectedCategory = viewModel.categories.filter({ $0.id == categoryID }).first else {
-            return
-        }
-        
-        viewModel.performModelCreation(selectedPlace: nil,
-                                       seletedCategory: selectedCategory)
-        
-        dismiss(animated: true, completion: nil)
-    }
 }
 
 extension ExpenseCreationViewController: UICollectionViewDataSource {

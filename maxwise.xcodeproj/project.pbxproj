@@ -49,6 +49,7 @@
 		5F9DE3902219C282008CCB94 /* TestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38F2219C282008CCB94 /* TestsHelper.swift */; };
 		5F9E13C5222C33F100805878 /* LocationAccessNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C4222C33F100805878 /* LocationAccessNotifier.swift */; };
 		5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */; };
+		5FA3DBB522C8C531009FD189 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA3DBB422C8C531009FD189 /* UIViewController+Extensions.swift */; };
 		5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */; };
 		5FB59211227DE2EF005D5208 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB59210227DE2EF005D5208 /* NavigationView.swift */; };
 		5FB59213227DE303005D5208 /* NavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FB59212227DE303005D5208 /* NavigationView.xib */; };
@@ -124,6 +125,7 @@
 		5F9DE38F2219C282008CCB94 /* TestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
 		5F9E13C4222C33F100805878 /* LocationAccessNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAccessNotifier.swift; sourceTree = "<group>"; };
 		5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationViewModel.swift; sourceTree = "<group>"; };
+		5FA3DBB422C8C531009FD189 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
 		5FB59210227DE2EF005D5208 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		5FB59212227DE303005D5208 /* NavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationView.xib; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */,
 				F45D67D022A3E10600DB1AE1 /* AMTagView+Extensions.swift */,
 				F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */,
+				5FA3DBB422C8C531009FD189 /* UIViewController+Extensions.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				5F470BDF220CA765002CD12D /* BlurView.swift in Sources */,
 				F45D67CE22A3D96B00DB1AE1 /* VibrantContentView.swift in Sources */,
 				5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */,
+				5FA3DBB522C8C531009FD189 /* UIViewController+Extensions.swift in Sources */,
 				5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */,
 				5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */,
 				5F9DE3782217FF0E008CCB94 /* User.swift in Sources */,

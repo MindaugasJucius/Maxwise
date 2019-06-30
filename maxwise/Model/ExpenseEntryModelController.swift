@@ -1,15 +1,21 @@
 import RealmSwift
 
+enum CreationIssue: Error {
+    case noAmount
+    case noCategory
+    case alert(String)
+}
+
 class ExpenseEntryModelController {
 
     private var expenseEntryObservationToken: NotificationToken?
     
-    @discardableResult
     func create(user: User,
                 nearbyPlace: NearbyPlace?,
                 category: ExpenseCategory,
                 recognizedDouble: Double,
-                title: String) -> ExpenseEntry {
+                title: String,
+                completion: (Result<Void, CreationIssue>) -> ()) {
         
         let expenseEntry = ExpenseEntry.init()
         expenseEntry.amount = recognizedDouble
@@ -18,17 +24,16 @@ class ExpenseEntryModelController {
         expenseEntry.place = nearbyPlace
         expenseEntry.id = UUID.init().uuidString
 
-        guard let realm = try? Realm() else {
-            print("expense not persisted")
-            return expenseEntry
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.add(expenseEntry)
+                user.entries.append(expenseEntry)
+            }
+            completion(.success(()))
+        } catch let error {
+            completion(.error(.alert(error.localizedDescription)))
         }
-
-        try? realm.write {
-            realm.add(expenseEntry)
-            user.entries.append(expenseEntry)
-        }
-        
-        return expenseEntry
     }
 
     func observeExpenseEntries(updated: @escaping ([ExpenseEntry]) -> ()) {
