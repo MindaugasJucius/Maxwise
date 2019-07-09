@@ -1,4 +1,5 @@
 import RealmSwift
+import Intents
 
 enum CreationIssue: Error {
     case noAmount
@@ -30,6 +31,7 @@ class ExpenseEntryModelController {
                 realm.add(expenseEntry)
                 user.entries.append(expenseEntry)
             }
+            donateCreateExpense(expense: expenseEntry)
             completion(.success(()))
         } catch let error {
             completion(.error(.alert(error.localizedDescription)))
@@ -59,4 +61,21 @@ class ExpenseEntryModelController {
         return arrayEntries
     }
     
+    func donateCreateExpense(expense: ExpenseEntry) {
+        guard let currentCode = Locale.current.currencyCode else {
+            return
+        }
+        let currencyAmount = INCurrencyAmount(amount: NSDecimalNumber(value: expense.amount),
+                                              currencyCode: currentCode)
+        let intent = CreateExpenseIntent()
+        intent.amount = currencyAmount
+        intent.category = .entertainment
+
+        let interaction = INInteraction(intent: intent, response: nil)
+
+        interaction.donate { error in
+            print(error?.localizedDescription)
+        }
+    }
+
 }
