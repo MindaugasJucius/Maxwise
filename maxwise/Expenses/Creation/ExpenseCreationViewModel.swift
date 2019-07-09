@@ -23,7 +23,6 @@ class ExpenseCreationViewModel {
     
     init(nearbyPlaces: [NearbyPlace]) {
         self.nearbyPlaces = nearbyPlaces
-
     }
     
     func performModelCreation(amount: Double?, selectedPlace: NearbyPlace?, categoryID: String?, result: (Result<Void, [CreationIssue]>) -> ()) {

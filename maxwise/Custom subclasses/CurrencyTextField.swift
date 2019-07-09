@@ -23,11 +23,11 @@ class CurrencyTextField: UITextField {
         super.awakeFromNib()
         addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         keyboardType = .numberPad
-        textAlignment = .right
+        textAlignment = .left
         editingChanged()
     }
     
-    @objc private func editingChanged() {
+    @objc func editingChanged() {
         value = input()
     }
 

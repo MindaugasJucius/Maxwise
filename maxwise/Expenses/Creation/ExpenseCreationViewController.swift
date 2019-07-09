@@ -297,6 +297,7 @@ class ExpenseCreationViewController: UIViewController {
                                           tapLocation: CGPoint) {
         let recognitionOccured: (String) -> Void = { [weak self] value in
             self?.textField.text = value
+            self?.textField.editingChanged()
         }
         
         let recognitionController = TextPickViewController(cgImage: cgImage,
