@@ -6,7 +6,6 @@ target 'maxwise' do
   use_frameworks!
 
   pod 'TesseractOCRiOS'
-  pod 'RealmSwift'
   pod 'FoursquareAPIClient'
   pod 'IQKeyboardManagerSwift'
   pod 'AMTagListView' 

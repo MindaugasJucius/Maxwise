@@ -75,6 +75,8 @@
 			<string>create</string>
 			<key>INIntentConfigurable</key>
 			<true/>
+			<key>INIntentDefaultImageName</key>
+			<string>add</string>
 			<key>INIntentDescriptionID</key>
 			<string>jOy4qL</string>
 			<key>INIntentInput</key>
@@ -101,12 +103,17 @@
 			<string>CreateExpense</string>
 			<key>INIntentParameterCombinations</key>
 			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+				</dict>
 				<key>amount</key>
 				<dict>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Add an expense</string>
+					<string>Add an ${amount}</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>tnGOf4</string>
 				</dict>
@@ -124,6 +131,15 @@
 					<string>Add an expense ${amount}</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>SyuFjE</string>
+				</dict>
+				<key>category</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Add ${category}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>wPCsBE</string>
 				</dict>
 			</dict>
 			<key>INIntentParameters</key>
@@ -184,7 +200,7 @@
 							<key>INIntentParameterPromptDialogCustom</key>
 							<true/>
 							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Enter ${amount}</string>
+							<string>What's the expense's amount?</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
 							<string>FpUkXd</string>
 							<key>INIntentParameterPromptDialogType</key>
@@ -235,7 +251,7 @@
 					<key>INIntentParameterCustomDisambiguation</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>category</string>
+					<string>Category</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>oTdn7K</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -247,7 +263,7 @@
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
-						<string>food</string>
+						<string>unknown</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>category</string>
@@ -329,7 +345,7 @@
 					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>
-				<integer>4</integer>
+				<integer>6</integer>
 				<key>INIntentResponseParameters</key>
 				<array>
 					<dict>
@@ -339,12 +355,16 @@
 						<string>QsmyBX</string>
 						<key>INIntentResponseParameterDisplayPriority</key>
 						<integer>1</integer>
+						<key>INIntentResponseParameterEnumType</key>
+						<string>Enum</string>
+						<key>INIntentResponseParameterEnumTypeNamespace</key>
+						<string>7UxMxC</string>
 						<key>INIntentResponseParameterName</key>
 						<string>categoryTitle</string>
 						<key>INIntentResponseParameterTag</key>
-						<integer>3</integer>
+						<integer>6</integer>
 						<key>INIntentResponseParameterType</key>
-						<string>String</string>
+						<string>Integer</string>
 					</dict>
 					<dict>
 						<key>INIntentResponseParameterDisplayName</key>
@@ -356,9 +376,9 @@
 						<key>INIntentResponseParameterName</key>
 						<string>totalAmount</string>
 						<key>INIntentResponseParameterTag</key>
-						<integer>4</integer>
+						<integer>5</integer>
 						<key>INIntentResponseParameterType</key>
-						<string>String</string>
+						<string>CurrencyAmount</string>
 					</dict>
 				</array>
 			</dict>

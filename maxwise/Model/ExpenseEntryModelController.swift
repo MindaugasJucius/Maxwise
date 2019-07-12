@@ -68,7 +68,7 @@ class ExpenseEntryModelController {
         let currencyAmount = INCurrencyAmount(amount: NSDecimalNumber(value: expense.amount),
                                               currencyCode: currentCode)
         let intent = CreateExpenseIntent()
-        intent.amount = currencyAmount
+        //intent.amount = currencyAmount
         intent.category = .entertainment
 
         let interaction = INInteraction(intent: intent, response: nil)
