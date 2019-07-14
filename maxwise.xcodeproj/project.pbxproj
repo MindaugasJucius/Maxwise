@@ -943,7 +943,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = maxwise/maxwise.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HXH54ANZMG;
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
@@ -954,7 +954,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zazh.ygajem.maxwise;
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -969,7 +969,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = maxwise/maxwise.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HXH54ANZMG;
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS/Static",
@@ -980,7 +980,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zazh.ygajem.maxwise;
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1035,7 +1035,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HXH54ANZMG;
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
 				INFOPLIST_FILE = CreatingExpensesUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1043,7 +1043,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zazh.ygajem.maxwise.CreatingExpensesUI;
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise.CreatingExpensesUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1055,7 +1055,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HXH54ANZMG;
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
 				INFOPLIST_FILE = CreatingExpensesUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1063,7 +1063,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zazh.ygajem.maxwise.CreatingExpensesUI;
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise.CreatingExpensesUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1076,7 +1076,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CreatingExpenses/CreatingExpenses.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HXH54ANZMG;
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
 				INFOPLIST_FILE = CreatingExpenses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1084,7 +1084,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zazh.ygajem.maxwise.CreatingExpenses;
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise.CreatingExpenses;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1097,7 +1097,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CreatingExpenses/CreatingExpenses.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HXH54ANZMG;
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
 				INFOPLIST_FILE = CreatingExpenses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1105,7 +1105,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = zazh.ygajem.maxwise.CreatingExpenses;
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise.CreatingExpenses;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
