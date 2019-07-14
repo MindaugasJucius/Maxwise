@@ -2,15 +2,15 @@ import RealmSwift
 import Foundation
 import UIKit
 
-enum UserModelError: Error {
+public enum UserModelError: Error {
     case failedToCreateRealm
 }
 
-class UserModelController {
+public class UserModelController {
     
     private var amountObservationToken: NotificationToken?
     
-    func currentUserOrCreate() throws -> User {
+    public func currentUserOrCreate() throws -> User {
         guard let realm = try? Realm() else {
             throw UserModelError.failedToCreateRealm
         }
@@ -22,7 +22,7 @@ class UserModelController {
         return user
     }
     
-    func observeAmountSpent(forUser user: User, amountChanged: @escaping (Double) -> ()) {
+    public func observeAmountSpent(forUser user: User, amountChanged: @escaping (Double) -> ()) {
         // Initial value notification
         amountChanged(amountSpent(entries: user.entries))
         

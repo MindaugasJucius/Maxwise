@@ -75,7 +75,7 @@ struct LabeledLatLng: Codable {
 
 
 @objcMembers
-class NearbyPlace: Object {
+public class NearbyPlace: Object {
 
     dynamic var id: String = ""
     var lat = RealmOptional<Double>()

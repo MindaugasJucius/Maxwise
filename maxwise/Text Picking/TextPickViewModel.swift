@@ -1,10 +1,5 @@
 import UIKit
 
-enum Result<Type, Error> {
-    case success(Type)
-    case error(Error)
-}
-
 class TextPickViewModel {
     
     enum RecognitionError: Error {
@@ -17,7 +12,7 @@ class TextPickViewModel {
     
     func performRecognition(in image: UIImage?, completion: @escaping (Result<String, RecognitionError>) -> ()) {
         guard let image = image else {
-            completion(.error(.noImage))
+            completion(.failure(.noImage))
             return
         }
         
@@ -32,7 +27,7 @@ class TextPickViewModel {
         
     private func convertRecognizedString(value: String?) -> Result<String, RecognitionError> {
         guard let value = value else {
-            return .error(.noRecognizedValue)
+            return .failure(.noRecognizedValue)
         }
 
         let trimmedResult = value.replacingOccurrences(of: " ", with: "")

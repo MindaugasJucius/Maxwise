@@ -1,17 +1,17 @@
 import RealmSwift
 import Intents
 
-enum CreationIssue: Error {
+public enum CreationIssue: Error {
     case noAmount
     case noCategory
     case alert(String)
 }
 
-class ExpenseEntryModelController {
+public class ExpenseEntryModelController {
 
     private var expenseEntryObservationToken: NotificationToken?
     
-    func create(user: User,
+    public func create(user: User,
                 nearbyPlace: NearbyPlace?,
                 category: ExpenseCategory,
                 recognizedDouble: Double,
@@ -34,11 +34,11 @@ class ExpenseEntryModelController {
             donateCreateExpense(expense: expenseEntry)
             completion(.success(()))
         } catch let error {
-            completion(.error(.alert(error.localizedDescription)))
+            completion(.failure(.alert(error.localizedDescription)))
         }
     }
 
-    func observeExpenseEntries(updated: @escaping ([ExpenseEntry]) -> ()) {
+    public func observeExpenseEntries(updated: @escaping ([ExpenseEntry]) -> ()) {
         let realm = try? Realm()
         expenseEntryObservationToken = realm?.objects(ExpenseEntry.self).observe { change in
             switch change {
@@ -52,7 +52,7 @@ class ExpenseEntryModelController {
         }
     }
     
-    func retrieveAllExpenseEntries() -> [ExpenseEntry] {
+    public func retrieveAllExpenseEntries() -> [ExpenseEntry] {
         guard let realm = try? Realm() else {
             return []
         }
@@ -61,7 +61,7 @@ class ExpenseEntryModelController {
         return arrayEntries
     }
     
-    func donateCreateExpense(expense: ExpenseEntry) {
+    public func donateCreateExpense(expense: ExpenseEntry) {
         guard let currencyCode = Locale.current.currencyCode else {
             return
         }

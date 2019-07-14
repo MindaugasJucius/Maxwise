@@ -2,11 +2,11 @@ import Foundation
 import RealmSwift
 import UIKit
 
-class ExpenseCategoryModelController {
+public class ExpenseCategoryModelController {
     
     private let defaultCategoriesCreatedKey = "defaultCategoriesCreated"
     
-    func addDefaultCategoriesIfNeeded() {
+    public func addDefaultCategoriesIfNeeded() {
         guard !UserDefaults.standard.bool(forKey: defaultCategoriesCreatedKey) else {
             return
         }
@@ -27,14 +27,14 @@ class ExpenseCategoryModelController {
         UserDefaults.standard.set(true, forKey: defaultCategoriesCreatedKey)
     }
     
-    func storedCategories() -> [ExpenseCategory] {
+    public func storedCategories() -> [ExpenseCategory] {
         guard let realm = try? Realm() else {
             return []
         }
         return Array(realm.objects(ExpenseCategory.self))
     }
     
-    func store(category: ExpenseCategory) {
+    public func store(category: ExpenseCategory) {
         guard let realm = try? Realm() else {
             return
         }

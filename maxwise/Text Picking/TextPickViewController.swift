@@ -87,7 +87,7 @@ class TextPickViewController: UIViewController {
             switch result {
             case .success(let value):
                 self?.recognitionOccured(value)
-            case .error:
+            case .failure:
                 print("Failed to recognize 😬")
             }
         }

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		24128F3758533D81B8C252A7 /* Pods_maxwise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */; };
 		5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */; };
-		5F20E0B12210247C00BAECF6 /* ExpenseEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B02210247C00BAECF6 /* ExpenseEntry.swift */; };
-		5F20E0B32210265200BAECF6 /* ExpenseEntryModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B22210265200BAECF6 /* ExpenseEntryModelController.swift */; };
 		5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B42210281B00BAECF6 /* TextPickViewModel.swift */; };
 		5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B6221034F300BAECF6 /* ExpensesViewController.swift */; };
 		5F20E0B9221034F300BAECF6 /* ExpensesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F20E0B7221034F300BAECF6 /* ExpensesViewController.xib */; };
@@ -19,8 +17,25 @@
 		5F240CA1222721A3009A41AE /* ExpenseCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F240C9F222721A3009A41AE /* ExpenseCreationViewController.swift */; };
 		5F240CA2222721A3009A41AE /* ExpenseCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F240CA0222721A3009A41AE /* ExpenseCreationViewController.xib */; };
 		5F2D4BD7229B266000884FA9 /* ModalBlurTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */; };
-		5F4021CE22905DE600B0C60C /* ExpenseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4021CD22905DE600B0C60C /* ExpenseCategory.swift */; };
-		5F4021D022912CD100B0C60C /* ExpenseCategoryModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4021CF22912CD100B0C60C /* ExpenseCategoryModelController.swift */; };
+		5F353A5922DB48C500F96D3D /* ExpenseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F353A5022DB48C400F96D3D /* ExpenseKit.framework */; };
+		5F353A6022DB48C500F96D3D /* ExpenseKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F353A5F22DB48C500F96D3D /* ExpenseKitTests.swift */; };
+		5F353A6222DB48C500F96D3D /* ExpenseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F353A5222DB48C400F96D3D /* ExpenseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F353A6522DB48C500F96D3D /* ExpenseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F353A5022DB48C400F96D3D /* ExpenseKit.framework */; };
+		5F353A6622DB48C500F96D3D /* ExpenseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F353A5022DB48C400F96D3D /* ExpenseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5F353A6E22DB48F400F96D3D /* ExpenseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4021CD22905DE600B0C60C /* ExpenseCategory.swift */; };
+		5F353A6F22DB48F400F96D3D /* NearbyPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEC02221889A00F087E4 /* NearbyPlace.swift */; };
+		5F353A7022DB48F400F96D3D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE3772217FF0E008CCB94 /* User.swift */; };
+		5F353A7122DB48F400F96D3D /* ExpenseEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B02210247C00BAECF6 /* ExpenseEntry.swift */; };
+		5F353A7222DB48F400F96D3D /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE37922188984008CCB94 /* UserModelController.swift */; };
+		5F353A7322DB48F400F96D3D /* ExpenseEntryModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B22210265200BAECF6 /* ExpenseEntryModelController.swift */; };
+		5F353A7422DB48F400F96D3D /* ExpenseCategoryModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4021CF22912CD100B0C60C /* ExpenseCategoryModelController.swift */; };
+		5F353A7622DB497800F96D3D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5F353A7522DB497800F96D3D /* Realm */; };
+		5F353A7822DB497C00F96D3D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5F353A7722DB497C00F96D3D /* RealmSwift */; };
+		5F353A7922DB4ACA00F96D3D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */; };
+		5F353A7A22DB4BB100F96D3D /* ExpenseCreation.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */; };
+		5F353A8822DB59C200F96D3D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5F353A8722DB59C200F96D3D /* RealmSwift */; };
+		5F353A8E22DB59EE00F96D3D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5F353A8D22DB59EE00F96D3D /* Realm */; };
+		5F353A8F22DB5A8E00F96D3D /* ExpenseCreationIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */; };
 		5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD5220C6011002CD12D /* TextDetectionController.swift */; };
 		5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD7220C62E0002CD12D /* TextPickViewController.swift */; };
 		5F470BDA220C62E0002CD12D /* TextPickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F470BD8220C62E0002CD12D /* TextPickViewController.xib */; };
@@ -32,23 +47,16 @@
 		5F4A3B81220720880016BCC9 /* UserModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B80220720880016BCC9 /* UserModelControllerTests.swift */; };
 		5F65C345222A6DAF00E10F92 /* VenueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65C343222A6DAF00E10F92 /* VenueCollectionViewCell.swift */; };
 		5F65C346222A6DAF00E10F92 /* VenueCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F65C344222A6DAF00E10F92 /* VenueCollectionViewCell.xib */; };
-		5F65CD4B22D2621B0040C218 /* ExpenseCreation.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */; settings = {ATTRIBUTES = (codegen, ); }; };
+		5F65CD4B22D2621B0040C218 /* ExpenseCreation.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		5F65CD5322D27C050040C218 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD5222D27C050040C218 /* IntentHandler.swift */; };
-		5F65CD5B22D27C050040C218 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F65CD5A22D27C050040C218 /* IntentsUI.framework */; };
-		5F65CD5E22D27C050040C218 /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD5D22D27C050040C218 /* IntentViewController.swift */; };
-		5F65CD6122D27C050040C218 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F65CD5F22D27C050040C218 /* MainInterface.storyboard */; };
-		5F65CD6522D27C050040C218 /* CreatingExpensesUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5F65CD5922D27C050040C218 /* CreatingExpensesUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5F65CD6822D27C050040C218 /* CreatingExpenses.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5F65CD5022D27C050040C218 /* CreatingExpenses.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		5F65CD7022D27C2F0040C218 /* ExpenseCreation.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */; };
-		5F65CD7122D27C2F0040C218 /* ExpenseCreation.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */; };
+		5F65CD7022D27C2F0040C218 /* ExpenseCreation.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		5F68787022073D8800F4FE7C /* TesseractOCR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F68786F22073D8800F4FE7C /* TesseractOCR.framework */; };
 		5F6878752207419600F4FE7C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6878742207419600F4FE7C /* libz.tbd */; };
 		5F6878772207425400F4FE7C /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 5F6878762207425400F4FE7C /* tessdata */; };
 		5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6878782207728C00F4FE7C /* DigitRecognizer.swift */; };
 		5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F68787A2207744D00F4FE7C /* CameraController.swift */; };
 		5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F86C57122108C9B005CFF9E /* ExpensesViewModel.swift */; };
-		5F9DE3782217FF0E008CCB94 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE3772217FF0E008CCB94 /* User.swift */; };
-		5F9DE37A22188984008CCB94 /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE37922188984008CCB94 /* UserModelController.swift */; };
 		5F9DE37C22189582008CCB94 /* ExpenseEntryModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE37B22189582008CCB94 /* ExpenseEntryModelControllerTests.swift */; };
 		5F9DE37E2218A135008CCB94 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9DE37D2218A135008CCB94 /* CameraViewController.xib */; };
 		5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38122195D7A008CCB94 /* ExpensesParentViewController.swift */; };
@@ -66,35 +74,46 @@
 		5FD3E1C322D5247400E05051 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 5FD3E1C222D5247400E05051 /* Realm */; };
 		5FD3E1C522D5247400E05051 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5FD3E1C422D5247400E05051 /* RealmSwift */; };
 		5FD95D8922D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */; };
-		5FD95D8A22D3D0A500DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */; };
 		5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */; };
 		5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */; };
 		5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */; };
-		5FFACEC12221889A00F087E4 /* NearbyPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEC02221889A00F087E4 /* NearbyPlace.swift */; };
 		5FFACEC32222AD4200F087E4 /* FoursquareVenueSearchParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEC22222AD4200F087E4 /* FoursquareVenueSearchParseTests.swift */; };
 		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
 		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
-		F4187C4422A578C9002DEBB0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */; };
 		F45D67CE22A3D96B00DB1AE1 /* VibrantContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */; };
 		F45D67D122A3E10600DB1AE1 /* AMTagView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D67D022A3E10600DB1AE1 /* AMTagView+Extensions.swift */; };
 		F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5F4A3B7D220720880016BCC9 /* PBXContainerItemProxy */ = {
+		5F353A5A22DB48C500F96D3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F4A3B60220720870016BCC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F353A4F22DB48C400F96D3D;
+			remoteInfo = ExpenseKit;
+		};
+		5F353A5C22DB48C500F96D3D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5F4A3B60220720870016BCC9 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5F4A3B67220720870016BCC9;
 			remoteInfo = maxwise;
 		};
-		5F65CD6322D27C050040C218 /* PBXContainerItemProxy */ = {
+		5F353A6322DB48C500F96D3D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5F4A3B60220720870016BCC9 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5F65CD5822D27C050040C218;
-			remoteInfo = CreatingExpensesUI;
+			remoteGlobalIDString = 5F353A4F22DB48C400F96D3D;
+			remoteInfo = ExpenseKit;
+		};
+		5F4A3B7D220720880016BCC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F4A3B60220720870016BCC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F4A3B67220720870016BCC9;
+			remoteInfo = maxwise;
 		};
 		5F65CD6622D27C050040C218 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -103,9 +122,27 @@
 			remoteGlobalIDString = 5F65CD4F22D27C050040C218;
 			remoteInfo = CreatingExpenses;
 		};
+		5F75E16622DB5BF40014B062 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F4A3B60220720870016BCC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F353A4F22DB48C400F96D3D;
+			remoteInfo = ExpenseKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5F353A6A22DB48C500F96D3D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5F353A6622DB48C500F96D3D /* ExpenseKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F65CD6F22D27C050040C218 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -113,7 +150,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				5F65CD6822D27C050040C218 /* CreatingExpenses.appex in Embed App Extensions */,
-				5F65CD6522D27C050040C218 /* CreatingExpensesUI.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,6 +170,12 @@
 		5F240C9F222721A3009A41AE /* ExpenseCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationViewController.swift; sourceTree = "<group>"; };
 		5F240CA0222721A3009A41AE /* ExpenseCreationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseCreationViewController.xib; sourceTree = "<group>"; };
 		5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalBlurTransitionController.swift; sourceTree = "<group>"; };
+		5F353A5022DB48C400F96D3D /* ExpenseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExpenseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F353A5222DB48C400F96D3D /* ExpenseKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpenseKit.h; sourceTree = "<group>"; };
+		5F353A5322DB48C400F96D3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F353A5822DB48C500F96D3D /* ExpenseKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpenseKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F353A5F22DB48C500F96D3D /* ExpenseKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseKitTests.swift; sourceTree = "<group>"; };
+		5F353A6122DB48C500F96D3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F4021CD22905DE600B0C60C /* ExpenseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategory.swift; sourceTree = "<group>"; };
 		5F4021CF22912CD100B0C60C /* ExpenseCategoryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategoryModelController.swift; sourceTree = "<group>"; };
 		5F470BD5220C6011002CD12D /* TextDetectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetectionController.swift; sourceTree = "<group>"; };
@@ -155,7 +197,6 @@
 		5F65CD5022D27C050040C218 /* CreatingExpenses.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CreatingExpenses.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F65CD5222D27C050040C218 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		5F65CD5422D27C050040C218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5F65CD5922D27C050040C218 /* CreatingExpensesUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CreatingExpensesUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F65CD5A22D27C050040C218 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		5F65CD5D22D27C050040C218 /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
 		5F65CD6022D27C050040C218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -205,10 +246,28 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5F353A4D22DB48C400F96D3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F353A7822DB497C00F96D3D /* RealmSwift in Frameworks */,
+				5F353A7622DB497800F96D3D /* Realm in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F353A5522DB48C500F96D3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F353A5922DB48C500F96D3D /* ExpenseKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F4A3B65220720870016BCC9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F353A6522DB48C500F96D3D /* ExpenseKit.framework in Frameworks */,
 				5FD3E1C322D5247400E05051 /* Realm in Frameworks */,
 				5F6878752207419600F4FE7C /* libz.tbd in Frameworks */,
 				5FD3E1C522D5247400E05051 /* RealmSwift in Frameworks */,
@@ -231,14 +290,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5F65CD5622D27C050040C218 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5F65CD5B22D27C050040C218 /* IntentsUI.framework in Frameworks */,
+				5F353A8E22DB59EE00F96D3D /* Realm in Frameworks */,
+				5F353A8822DB59C200F96D3D /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,13 +301,6 @@
 		5F20E0AF2210239400BAECF6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5FFACEC02221889A00F087E4 /* NearbyPlace.swift */,
-				5F20E0B02210247C00BAECF6 /* ExpenseEntry.swift */,
-				5F20E0B22210265200BAECF6 /* ExpenseEntryModelController.swift */,
-				5F9DE3772217FF0E008CCB94 /* User.swift */,
-				5F9DE37922188984008CCB94 /* UserModelController.swift */,
-				5F4021CD22905DE600B0C60C /* ExpenseCategory.swift */,
-				5F4021CF22912CD100B0C60C /* ExpenseCategoryModelController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -275,6 +321,34 @@
 			path = Expenses;
 			sourceTree = "<group>";
 		};
+		5F353A5122DB48C400F96D3D /* ExpenseKit */ = {
+			isa = PBXGroup;
+			children = (
+				5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */,
+				5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */,
+				F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */,
+				5FFACEC02221889A00F087E4 /* NearbyPlace.swift */,
+				5F20E0B02210247C00BAECF6 /* ExpenseEntry.swift */,
+				5F20E0B22210265200BAECF6 /* ExpenseEntryModelController.swift */,
+				5F9DE3772217FF0E008CCB94 /* User.swift */,
+				5F9DE37922188984008CCB94 /* UserModelController.swift */,
+				5F4021CD22905DE600B0C60C /* ExpenseCategory.swift */,
+				5F4021CF22912CD100B0C60C /* ExpenseCategoryModelController.swift */,
+				5F353A5222DB48C400F96D3D /* ExpenseKit.h */,
+				5F353A5322DB48C400F96D3D /* Info.plist */,
+			);
+			path = ExpenseKit;
+			sourceTree = "<group>";
+		};
+		5F353A5E22DB48C500F96D3D /* ExpenseKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				5F353A5F22DB48C500F96D3D /* ExpenseKitTests.swift */,
+				5F353A6122DB48C500F96D3D /* Info.plist */,
+			);
+			path = ExpenseKitTests;
+			sourceTree = "<group>";
+		};
 		5F470BDB220C6715002CD12D /* Text Picking */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,11 +364,12 @@
 		5F4A3B5F220720870016BCC9 = {
 			isa = PBXGroup;
 			children = (
-				5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */,
 				5F4A3B6A220720870016BCC9 /* maxwise */,
 				5F4A3B7F220720880016BCC9 /* maxwiseTests */,
 				5F65CD5122D27C050040C218 /* CreatingExpenses */,
 				5F65CD5C22D27C050040C218 /* CreatingExpensesUI */,
+				5F353A5E22DB48C500F96D3D /* ExpenseKitTests */,
+				5F353A5122DB48C400F96D3D /* ExpenseKit */,
 				5F4A3B69220720870016BCC9 /* Products */,
 				5FFD2C172207321700DDFBE5 /* Frameworks */,
 				82867976399200E00ACBCD6C /* Pods */,
@@ -307,7 +382,8 @@
 				5F4A3B68220720870016BCC9 /* maxwise.app */,
 				5F4A3B7C220720880016BCC9 /* maxwiseTests.xctest */,
 				5F65CD5022D27C050040C218 /* CreatingExpenses.appex */,
-				5F65CD5922D27C050040C218 /* CreatingExpensesUI.appex */,
+				5F353A5022DB48C400F96D3D /* ExpenseKit.framework */,
+				5F353A5822DB48C500F96D3D /* ExpenseKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -336,7 +412,6 @@
 				5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */,
 				5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */,
 				F45D67D022A3E10600DB1AE1 /* AMTagView+Extensions.swift */,
-				F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */,
 				5FA3DBB422C8C531009FD189 /* UIViewController+Extensions.swift */,
 			);
 			path = maxwise;
@@ -391,7 +466,6 @@
 		5FD95D8722D3CD9400DD3F8F /* Shortcut */ = {
 			isa = PBXGroup;
 			children = (
-				5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */,
 			);
 			path = Shortcut;
 			sourceTree = "<group>";
@@ -454,7 +528,59 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		5F353A4B22DB48C400F96D3D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F353A6222DB48C500F96D3D /* ExpenseKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		5F353A4F22DB48C400F96D3D /* ExpenseKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F353A6722DB48C500F96D3D /* Build configuration list for PBXNativeTarget "ExpenseKit" */;
+			buildPhases = (
+				5F353A4B22DB48C400F96D3D /* Headers */,
+				5F353A4C22DB48C400F96D3D /* Sources */,
+				5F353A4D22DB48C400F96D3D /* Frameworks */,
+				5F353A4E22DB48C400F96D3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExpenseKit;
+			packageProductDependencies = (
+				5F353A7522DB497800F96D3D /* Realm */,
+				5F353A7722DB497C00F96D3D /* RealmSwift */,
+			);
+			productName = ExpenseKit;
+			productReference = 5F353A5022DB48C400F96D3D /* ExpenseKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5F353A5722DB48C500F96D3D /* ExpenseKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F353A6B22DB48C500F96D3D /* Build configuration list for PBXNativeTarget "ExpenseKitTests" */;
+			buildPhases = (
+				5F353A5422DB48C500F96D3D /* Sources */,
+				5F353A5522DB48C500F96D3D /* Frameworks */,
+				5F353A5622DB48C500F96D3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F353A5B22DB48C500F96D3D /* PBXTargetDependency */,
+				5F353A5D22DB48C500F96D3D /* PBXTargetDependency */,
+			);
+			name = ExpenseKitTests;
+			productName = ExpenseKitTests;
+			productReference = 5F353A5822DB48C500F96D3D /* ExpenseKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5F4A3B67220720870016BCC9 /* maxwise */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F4A3B85220720880016BCC9 /* Build configuration list for PBXNativeTarget "maxwise" */;
@@ -465,12 +591,13 @@
 				5F4A3B66220720870016BCC9 /* Resources */,
 				C053B3759255C07B2D3C502B /* [CP] Embed Pods Frameworks */,
 				5F65CD6F22D27C050040C218 /* Embed App Extensions */,
+				5F353A6A22DB48C500F96D3D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5F65CD6422D27C050040C218 /* PBXTargetDependency */,
 				5F65CD6722D27C050040C218 /* PBXTargetDependency */,
+				5F353A6422DB48C500F96D3D /* PBXTargetDependency */,
 			);
 			name = maxwise;
 			packageProductDependencies = (
@@ -511,27 +638,15 @@
 			buildRules = (
 			);
 			dependencies = (
+				5F75E16722DB5BF40014B062 /* PBXTargetDependency */,
 			);
 			name = CreatingExpenses;
+			packageProductDependencies = (
+				5F353A8722DB59C200F96D3D /* RealmSwift */,
+				5F353A8D22DB59EE00F96D3D /* Realm */,
+			);
 			productName = CreatingExpenses;
 			productReference = 5F65CD5022D27C050040C218 /* CreatingExpenses.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		5F65CD5822D27C050040C218 /* CreatingExpensesUI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5F65CD6922D27C050040C218 /* Build configuration list for PBXNativeTarget "CreatingExpensesUI" */;
-			buildPhases = (
-				5F65CD5522D27C050040C218 /* Sources */,
-				5F65CD5622D27C050040C218 /* Frameworks */,
-				5F65CD5722D27C050040C218 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CreatingExpensesUI;
-			productName = CreatingExpensesUI;
-			productReference = 5F65CD5922D27C050040C218 /* CreatingExpensesUI.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -544,6 +659,13 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Mindaugas Jucius";
 				TargetAttributes = {
+					5F353A4F22DB48C400F96D3D = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					5F353A5722DB48C500F96D3D = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 5F4A3B67220720870016BCC9;
+					};
 					5F4A3B67220720870016BCC9 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -552,9 +674,6 @@
 						TestTargetID = 5F4A3B67220720870016BCC9;
 					};
 					5F65CD4F22D27C050040C218 = {
-						CreatedOnToolsVersion = 11.0;
-					};
-					5F65CD5822D27C050040C218 = {
 						CreatedOnToolsVersion = 11.0;
 					};
 				};
@@ -578,12 +697,27 @@
 				5F4A3B67220720870016BCC9 /* maxwise */,
 				5F4A3B7B220720880016BCC9 /* maxwiseTests */,
 				5F65CD4F22D27C050040C218 /* CreatingExpenses */,
-				5F65CD5822D27C050040C218 /* CreatingExpensesUI */,
+				5F353A4F22DB48C400F96D3D /* ExpenseKit */,
+				5F353A5722DB48C500F96D3D /* ExpenseKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5F353A4E22DB48C400F96D3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F353A5622DB48C500F96D3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F4A3B66220720870016BCC9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -613,14 +747,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5F65CD5722D27C050040C218 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5F65CD6122D27C050040C218 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +828,30 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5F353A4C22DB48C400F96D3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F353A6F22DB48F400F96D3D /* NearbyPlace.swift in Sources */,
+				5F353A7322DB48F400F96D3D /* ExpenseEntryModelController.swift in Sources */,
+				5F353A6E22DB48F400F96D3D /* ExpenseCategory.swift in Sources */,
+				5F353A7A22DB4BB100F96D3D /* ExpenseCreation.intentdefinition in Sources */,
+				5F353A7022DB48F400F96D3D /* User.swift in Sources */,
+				5F353A7122DB48F400F96D3D /* ExpenseEntry.swift in Sources */,
+				5F353A7222DB48F400F96D3D /* UserModelController.swift in Sources */,
+				5F353A7422DB48F400F96D3D /* ExpenseCategoryModelController.swift in Sources */,
+				5F353A7922DB4ACA00F96D3D /* UIColor+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5F353A5422DB48C500F96D3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F353A6022DB48C500F96D3D /* ExpenseKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F4A3B64220720870016BCC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -714,20 +864,14 @@
 				5FA3DBB522C8C531009FD189 /* UIViewController+Extensions.swift in Sources */,
 				5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */,
 				5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */,
-				5F9DE3782217FF0E008CCB94 /* User.swift in Sources */,
-				5FFACEC12221889A00F087E4 /* NearbyPlace.swift in Sources */,
 				5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */,
 				5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */,
 				5F20E0BD2210352F00BAECF6 /* ExpenseTableViewCell.swift in Sources */,
 				5F65C345222A6DAF00E10F92 /* VenueCollectionViewCell.swift in Sources */,
-				5F20E0B32210265200BAECF6 /* ExpenseEntryModelController.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
-				F4187C4422A578C9002DEBB0 /* UIColor+Extension.swift in Sources */,
-				5F20E0B12210247C00BAECF6 /* ExpenseEntry.swift in Sources */,
 				F45D67D122A3E10600DB1AE1 /* AMTagView+Extensions.swift in Sources */,
 				5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */,
 				5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */,
-				5F9DE37A22188984008CCB94 /* UserModelController.swift in Sources */,
 				5F9DE38B22198CA0008CCB94 /* ExpensesStatsViewController.swift in Sources */,
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 				5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */,
@@ -737,12 +881,10 @@
 				5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */,
 				F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */,
 				5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */,
-				5F4021CE22905DE600B0C60C /* ExpenseCategory.swift in Sources */,
 				5FA3DBB722C91B9A009FD189 /* CurrencyTextField.swift in Sources */,
 				5F240CA1222721A3009A41AE /* ExpenseCreationViewController.swift in Sources */,
 				5F9E13C5222C33F100805878 /* LocationAccessNotifier.swift in Sources */,
 				5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */,
-				5F4021D022912CD100B0C60C /* ExpenseCategoryModelController.swift in Sources */,
 				5F2D4BD7229B266000884FA9 /* ModalBlurTransitionController.swift in Sources */,
 				5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */,
 			);
@@ -764,38 +906,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F353A8F22DB5A8E00F96D3D /* ExpenseCreationIntentHandler.swift in Sources */,
 				5F65CD7022D27C2F0040C218 /* ExpenseCreation.intentdefinition in Sources */,
 				5F65CD5322D27C050040C218 /* IntentHandler.swift in Sources */,
-				5FD95D8A22D3D0A500DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5F65CD5522D27C050040C218 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5F65CD7122D27C2F0040C218 /* ExpenseCreation.intentdefinition in Sources */,
-				5F65CD5E22D27C050040C218 /* IntentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5F353A5B22DB48C500F96D3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F353A4F22DB48C400F96D3D /* ExpenseKit */;
+			targetProxy = 5F353A5A22DB48C500F96D3D /* PBXContainerItemProxy */;
+		};
+		5F353A5D22DB48C500F96D3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F4A3B67220720870016BCC9 /* maxwise */;
+			targetProxy = 5F353A5C22DB48C500F96D3D /* PBXContainerItemProxy */;
+		};
+		5F353A6422DB48C500F96D3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F353A4F22DB48C400F96D3D /* ExpenseKit */;
+			targetProxy = 5F353A6322DB48C500F96D3D /* PBXContainerItemProxy */;
+		};
 		5F4A3B7E220720880016BCC9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5F4A3B67220720870016BCC9 /* maxwise */;
 			targetProxy = 5F4A3B7D220720880016BCC9 /* PBXContainerItemProxy */;
 		};
-		5F65CD6422D27C050040C218 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5F65CD5822D27C050040C218 /* CreatingExpensesUI */;
-			targetProxy = 5F65CD6322D27C050040C218 /* PBXContainerItemProxy */;
-		};
 		5F65CD6722D27C050040C218 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5F65CD4F22D27C050040C218 /* CreatingExpenses */;
 			targetProxy = 5F65CD6622D27C050040C218 /* PBXContainerItemProxy */;
+		};
+		5F75E16722DB5BF40014B062 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F353A4F22DB48C400F96D3D /* ExpenseKit */;
+			targetProxy = 5F75E16622DB5BF40014B062 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -819,6 +967,104 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5F353A6822DB48C500F96D3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ExpenseKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojam.ExpenseKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5F353A6922DB48C500F96D3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ExpenseKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojam.ExpenseKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5F353A6C22DB48C500F96D3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				INFOPLIST_FILE = ExpenseKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojam.ExpenseKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/maxwise.app/maxwise";
+			};
+			name = Debug;
+		};
+		5F353A6D22DB48C500F96D3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				INFOPLIST_FILE = ExpenseKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojam.ExpenseKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/maxwise.app/maxwise";
+			};
+			name = Release;
+		};
 		5F4A3B83220720880016BCC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1031,52 +1277,13 @@
 			};
 			name = Release;
 		};
-		5F65CD6A22D27C050040C218 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PDR4VQLAH4;
-				INFOPLIST_FILE = CreatingExpensesUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise.CreatingExpensesUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		5F65CD6B22D27C050040C218 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PDR4VQLAH4;
-				INFOPLIST_FILE = CreatingExpensesUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise.CreatingExpensesUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		5F65CD6D22D27C050040C218 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = CreatingExpenses/CreatingExpenses.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = CreatingExpenses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1098,6 +1305,7 @@
 				CODE_SIGN_ENTITLEMENTS = CreatingExpenses/CreatingExpenses.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = CreatingExpenses/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1116,6 +1324,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5F353A6722DB48C500F96D3D /* Build configuration list for PBXNativeTarget "ExpenseKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F353A6822DB48C500F96D3D /* Debug */,
+				5F353A6922DB48C500F96D3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F353A6B22DB48C500F96D3D /* Build configuration list for PBXNativeTarget "ExpenseKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F353A6C22DB48C500F96D3D /* Debug */,
+				5F353A6D22DB48C500F96D3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5F4A3B63220720870016BCC9 /* Build configuration list for PBXProject "maxwise" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1143,15 +1369,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F65CD6922D27C050040C218 /* Build configuration list for PBXNativeTarget "CreatingExpensesUI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5F65CD6A22D27C050040C218 /* Debug */,
-				5F65CD6B22D27C050040C218 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		5F65CD6C22D27C050040C218 /* Build configuration list for PBXNativeTarget "CreatingExpenses" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1168,13 +1385,33 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
-				branch = tg/spm;
-				kind = branch;
+				kind = exactVersion;
+				version = 3.17.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5F353A7522DB497800F96D3D /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5FD3E1C122D5247400E05051 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		5F353A7722DB497C00F96D3D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5FD3E1C122D5247400E05051 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		5F353A8722DB59C200F96D3D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5FD3E1C122D5247400E05051 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		5F353A8D22DB59EE00F96D3D /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5FD3E1C122D5247400E05051 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
 		5FD3E1C222D5247400E05051 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5FD3E1C122D5247400E05051 /* XCRemoteSwiftPackageReference "realm-cocoa" */;

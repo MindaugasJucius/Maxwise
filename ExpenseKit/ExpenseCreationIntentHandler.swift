@@ -1,5 +1,6 @@
 import Foundation
 import Intents
+import ExpenseKit
 
 class ExpenseCreationIntentHandler: NSObject, CreateExpenseIntentHandling {
     
