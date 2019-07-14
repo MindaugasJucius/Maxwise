@@ -30,7 +30,7 @@ public class ExpenseEntryModelController {
         expenseEntry.id = UUID.init().uuidString
 
         do {
-            let realm = try Realm()
+            let realm = try Realm.groupRealm()
             try realm.write {
                 realm.add(expenseEntry)
                 user.entries.append(expenseEntry)
@@ -43,7 +43,7 @@ public class ExpenseEntryModelController {
     }
 
     public func observeExpenseEntries(updated: @escaping ([ExpenseEntry]) -> ()) {
-        let realm = try? Realm()
+        let realm = try? Realm.groupRealm()
         expenseEntryObservationToken = realm?.objects(ExpenseEntry.self).observe { change in
             switch change {
             case .initial(let value):
@@ -57,7 +57,7 @@ public class ExpenseEntryModelController {
     }
     
     public func retrieveAllExpenseEntries() -> [ExpenseEntry] {
-        guard let realm = try? Realm() else {
+        guard let realm = try? Realm.groupRealm() else {
             return []
         }
         let arrayEntries = Array(realm.objects(ExpenseEntry.self))

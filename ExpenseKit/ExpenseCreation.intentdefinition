@@ -34,7 +34,7 @@
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Add expense with ${spentAmount} euros to ${category} </string>
+					<string>Add expense of ${spentAmount} euros to ${category} </string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>ifRWTg</string>
 				</dict>
@@ -225,6 +225,22 @@
 						<string>SYK8cv</string>
 						<key>INIntentResponseCodeName</key>
 						<string>failure</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Failed to get selected category</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>Aw3JZM</string>
+						<key>INIntentResponseCodeName</key>
+						<string>failedToFindCategory</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Failed to get current user</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>7VYx6L</string>
+						<key>INIntentResponseCodeName</key>
+						<string>failedToGetUser</string>
 					</dict>
 				</array>
 				<key>INIntentResponseLastParameterTag</key>

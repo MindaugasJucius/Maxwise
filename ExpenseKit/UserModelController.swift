@@ -15,7 +15,7 @@ public class UserModelController {
     }
     
     public func currentUserOrCreate() throws -> User {
-        guard let realm = try? Realm() else {
+        guard let realm = try? Realm.groupRealm() else {
             throw UserModelError.failedToCreateRealm
         }
         

@@ -1,5 +1,6 @@
 import Foundation
 import RealmSwift
+import Intents
 import UIKit
 
 public class ExpenseCategoryModelController {
@@ -32,14 +33,18 @@ public class ExpenseCategoryModelController {
     }
     
     public func storedCategories() -> [ExpenseCategory] {
-        guard let realm = try? Realm() else {
+        guard let realm = try? Realm.groupRealm() else {
             return []
         }
         return Array(realm.objects(ExpenseCategory.self))
     }
     
+    public func category(from intentCategory: IntentCategory) -> ExpenseCategory? {
+        return storedCategories().filter { $0.id == intentCategory.identifier }.first
+    }
+    
     public func store(category: ExpenseCategory) {
-        guard let realm = try? Realm() else {
+        guard let realm = try? Realm.groupRealm() else {
             return
         }
         try? realm.write {
