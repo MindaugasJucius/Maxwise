@@ -62,17 +62,14 @@ class ExpenseEntryModelController {
     }
     
     func donateCreateExpense(expense: ExpenseEntry) {
-        guard let currentCode = Locale.current.currencyCode else {
+        guard let currencyCode = Locale.current.currencyCode else {
             return
         }
-        let currencyAmount = INCurrencyAmount(amount: NSDecimalNumber(value: expense.amount),
-                                              currencyCode: currentCode)
         let intent = CreateExpenseIntent()
-        //intent.amount = currencyAmount
-        intent.category = .entertainment
 
         let interaction = INInteraction(intent: intent, response: nil)
-
+        interaction.identifier = expense.id
+        
         interaction.donate { error in
             print(error?.localizedDescription)
         }

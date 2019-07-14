@@ -1,8 +1,10 @@
 import RealmSwift
+import Foundation
+import UIKit
 
 class ExpenseCategory: Object {
     
-    @objc dynamic var id = ""
+    @objc dynamic var id: String! = ""
     @objc dynamic var title = ""
     @objc dynamic var colorHexValue: String = ""
     @objc dynamic var creationDate = Date()

@@ -1,4 +1,6 @@
 import RealmSwift
+import Foundation
+import UIKit
 
 enum UserModelError: Error {
     case failedToCreateRealm

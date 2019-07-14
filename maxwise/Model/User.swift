@@ -1,8 +1,9 @@
 import RealmSwift
+import Foundation
 
 class User: Object {
 
-    @objc dynamic var id = ""
+    @objc dynamic var id: String! = ""
     @objc dynamic var name = ""
     let entries = List<ExpenseEntry>()
     

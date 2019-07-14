@@ -42,9 +42,9 @@ class ContainerViewController: UIPageViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let viewModel = ExpenseCreationViewModel(nearbyPlaces: [])
-        let expenseCreationVC = ExpenseCreationViewController(viewModel: viewModel)
-        present(expenseCreationVC, animated: true, completion: nil)
+//        let viewModel = ExpenseCreationViewModel(nearbyPlaces: [])
+//        let expenseCreationVC = ExpenseCreationViewController(viewModel: viewModel)
+//        present(expenseCreationVC, animated: true, completion: nil)
     }
 
 }

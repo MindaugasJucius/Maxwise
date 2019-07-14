@@ -3,61 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>INEnums</key>
-	<array>
-		<dict>
-			<key>INEnumDisplayName</key>
-			<string>Category</string>
-			<key>INEnumDisplayNameID</key>
-			<string>NKpEri</string>
-			<key>INEnumGeneratesHeader</key>
-			<true/>
-			<key>INEnumName</key>
-			<string>Enum</string>
-			<key>INEnumType</key>
-			<string>Regular</string>
-			<key>INEnumValues</key>
-			<array>
-				<dict>
-					<key>INEnumValueDisplayName</key>
-					<string>unknown</string>
-					<key>INEnumValueDisplayNameID</key>
-					<string>B2yEWZ</string>
-					<key>INEnumValueName</key>
-					<string>unknown</string>
-				</dict>
-				<dict>
-					<key>INEnumValueDisplayName</key>
-					<string>entertainment</string>
-					<key>INEnumValueDisplayNameID</key>
-					<string>91Akuf</string>
-					<key>INEnumValueIndex</key>
-					<integer>1</integer>
-					<key>INEnumValueName</key>
-					<string>entertainment</string>
-				</dict>
-				<dict>
-					<key>INEnumValueDisplayName</key>
-					<string>food</string>
-					<key>INEnumValueDisplayNameID</key>
-					<string>qsQPgh</string>
-					<key>INEnumValueIndex</key>
-					<integer>2</integer>
-					<key>INEnumValueName</key>
-					<string>food</string>
-				</dict>
-				<dict>
-					<key>INEnumValueDisplayName</key>
-					<string>sports</string>
-					<key>INEnumValueDisplayNameID</key>
-					<string>SFd35p</string>
-					<key>INEnumValueIndex</key>
-					<integer>3</integer>
-					<key>INEnumValueName</key>
-					<string>sports</string>
-				</dict>
-			</array>
-		</dict>
-	</array>
+	<array/>
 	<key>INIntentDefinitionModelVersion</key>
 	<string>1.1</string>
 	<key>INIntentDefinitionNamespace</key>
@@ -79,24 +25,18 @@
 			<string>add</string>
 			<key>INIntentDescriptionID</key>
 			<string>jOy4qL</string>
-			<key>INIntentInput</key>
-			<string>amount</string>
-			<key>INIntentKeyParameter</key>
-			<string>amount</string>
 			<key>INIntentLastParameterTag</key>
-			<integer>7</integer>
+			<integer>11</integer>
 			<key>INIntentManagedParameterCombinations</key>
 			<dict>
-				<key>amount,category</key>
+				<key>spentAmount,category</key>
 				<dict>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>${amount}, ${category}</string>
+					<string>Add expense with ${spentAmount} euros to ${category} </string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>ifRWTg</string>
-					<key>INIntentParameterCombinationUpdatesLinked</key>
-					<true/>
 				</dict>
 			</dict>
 			<key>INIntentName</key>
@@ -107,39 +47,10 @@
 				<dict>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
-				</dict>
-				<key>amount</key>
-				<dict>
-					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
-					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Add an ${amount}</string>
+					<string>Create an expense</string>
 					<key>INIntentParameterCombinationTitleID</key>
-					<string>tnGOf4</string>
-				</dict>
-				<key>amount,category</key>
-				<dict>
-					<key>INIntentParameterCombinationIsPrimary</key>
-					<true/>
-					<key>INIntentParameterCombinationSubtitle</key>
-					<string>Add an ${amount} with a specified ${category}</string>
-					<key>INIntentParameterCombinationSubtitleID</key>
-					<string>ThOPy3</string>
-					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
-					<true/>
-					<key>INIntentParameterCombinationTitle</key>
-					<string>Add an expense ${amount}</string>
-					<key>INIntentParameterCombinationTitleID</key>
-					<string>SyuFjE</string>
-				</dict>
-				<key>category</key>
-				<dict>
-					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
-					<true/>
-					<key>INIntentParameterCombinationTitle</key>
-					<string>Add ${category}</string>
-					<key>INIntentParameterCombinationTitleID</key>
-					<string>wPCsBE</string>
+					<string>1pdGrH</string>
 				</dict>
 			</dict>
 			<key>INIntentParameters</key>
@@ -148,71 +59,51 @@
 					<key>INIntentParameterCustomDisambiguation</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Amount</string>
+					<string>Spent Amount</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>JtjqNn</string>
+					<string>JU7PbB</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
-						<key>INIntentParameterMetadataCurrencyCodes</key>
-						<array>
-							<dict/>
-						</array>
 						<key>INIntentParameterMetadataMaximumValue</key>
 						<real>10000</real>
+						<key>INIntentParameterMetadataMinimumValue</key>
+						<real>0.01</real>
 						<key>INIntentParameterMetadataType</key>
 						<string>Field</string>
 					</dict>
 					<key>INIntentParameterName</key>
-					<string>amount</string>
+					<string>spentAmount</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
 							<key>INIntentParameterPromptDialogCustom</key>
 							<true/>
 							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>There are ${count} options matching ‘${amount}’.</string>
+							<string>How many euros did you spend?</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>UJN95C</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>DisambiguationIntroduction</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Which one?</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>qid3Zw</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>DisambiguationSelection</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Just to confirm, you wanted ‘${amount}’?</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>pk1vLw</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Confirmation</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>What's the expense's amount?</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>FpUkXd</string>
+							<string>qtroS0</string>
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Primary</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>Just to confirm, you wanted ‘${spentAmount}’?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>bOTpWZ</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Confirmation</string>
 						</dict>
 					</array>
 					<key>INIntentParameterSupportsResolution</key>
 					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>2</integer>
+					<integer>9</integer>
 					<key>INIntentParameterType</key>
-					<string>CurrencyAmount</string>
+					<string>Decimal</string>
 					<key>INIntentParameterUnsupportedReasons</key>
 					<array>
 						<dict>
@@ -223,7 +114,7 @@
 							<key>INIntentParameterUnsupportedReasonFormatString</key>
 							<string>${displayName} can't be negative.</string>
 							<key>INIntentParameterUnsupportedReasonFormatStringID</key>
-							<string>xVfBcp</string>
+							<string>bW8QUj</string>
 						</dict>
 						<dict>
 							<key>INIntentParameterUnsupportedReasonCode</key>
@@ -233,7 +124,7 @@
 							<key>INIntentParameterUnsupportedReasonFormatString</key>
 							<string>${displayName} can't be higher than ${maximumValue}.</string>
 							<key>INIntentParameterUnsupportedReasonFormatStringID</key>
-							<string>MSF4XG</string>
+							<string>cPsd4k</string>
 						</dict>
 						<dict>
 							<key>INIntentParameterUnsupportedReasonCode</key>
@@ -243,7 +134,7 @@
 							<key>INIntentParameterUnsupportedReasonFormatString</key>
 							<string>${displayName} can't be lower than ${minimumValue}.</string>
 							<key>INIntentParameterUnsupportedReasonFormatStringID</key>
-							<string>TocYnn</string>
+							<string>YyGKiT</string>
 						</dict>
 					</array>
 				</dict>
@@ -253,20 +144,15 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Category</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>oTdn7K</string>
+					<string>LdfGhF</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>2</integer>
-					<key>INIntentParameterEnumType</key>
-					<string>Enum</string>
-					<key>INIntentParameterEnumTypeNamespace</key>
-					<string>7UxMxC</string>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<string>unknown</string>
-					</dict>
 					<key>INIntentParameterName</key>
 					<string>category</string>
+					<key>INIntentParameterObjectType</key>
+					<string>IntentCategory</string>
+					<key>INIntentParameterObjectTypeNamespace</key>
+					<string>7UxMxC</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -281,7 +167,7 @@
 							<key>INIntentParameterPromptDialogFormatString</key>
 							<string>There are ${count} options matching ‘${category}’.</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>yt8AnD</string>
+							<string>b7o7kX</string>
 							<key>INIntentParameterPromptDialogType</key>
 							<string>DisambiguationIntroduction</string>
 						</dict>
@@ -289,7 +175,7 @@
 							<key>INIntentParameterPromptDialogFormatString</key>
 							<string>Which one?</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>gnwAoD</string>
+							<string>IAqMaI</string>
 							<key>INIntentParameterPromptDialogType</key>
 							<string>DisambiguationSelection</string>
 						</dict>
@@ -299,22 +185,19 @@
 							<key>INIntentParameterPromptDialogFormatString</key>
 							<string>Just to confirm, you wanted ‘${category}’?</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>5eM0IV</string>
+							<string>x5rOPp</string>
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Confirmation</string>
 						</dict>
 					</array>
-					<key>INIntentParameterRelationship</key>
-					<dict>
-						<key>INIntentParameterRelationshipPredicateName</key>
-						<string>HasAnyValue</string>
-					</dict>
+					<key>INIntentParameterSupportsDynamicEnumeration</key>
+					<true/>
 					<key>INIntentParameterSupportsResolution</key>
 					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>7</integer>
+					<integer>11</integer>
 					<key>INIntentParameterType</key>
-					<string>Integer</string>
+					<string>Object</string>
 				</dict>
 			</array>
 			<key>INIntentResponse</key>
@@ -355,10 +238,6 @@
 						<string>QsmyBX</string>
 						<key>INIntentResponseParameterDisplayPriority</key>
 						<integer>1</integer>
-						<key>INIntentResponseParameterEnumType</key>
-						<string>Enum</string>
-						<key>INIntentResponseParameterEnumTypeNamespace</key>
-						<string>7UxMxC</string>
 						<key>INIntentResponseParameterName</key>
 						<string>categoryTitle</string>
 						<key>INIntentResponseParameterTag</key>
@@ -395,6 +274,70 @@
 		</dict>
 	</array>
 	<key>INTypes</key>
-	<array/>
+	<array>
+		<dict>
+			<key>INTypeDisplayName</key>
+			<string>Intent Category</string>
+			<key>INTypeDisplayNameID</key>
+			<string>HBwtrJ</string>
+			<key>INTypeLastPropertyTag</key>
+			<integer>99</integer>
+			<key>INTypeName</key>
+			<string>IntentCategory</string>
+			<key>INTypeProperties</key>
+			<array>
+				<dict>
+					<key>INTypePropertyDefault</key>
+					<true/>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>1</integer>
+					<key>INTypePropertyName</key>
+					<string>identifier</string>
+					<key>INTypePropertyTag</key>
+					<integer>1</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDefault</key>
+					<true/>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>2</integer>
+					<key>INTypePropertyName</key>
+					<string>displayString</string>
+					<key>INTypePropertyTag</key>
+					<integer>2</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDefault</key>
+					<true/>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>3</integer>
+					<key>INTypePropertyName</key>
+					<string>pronunciationHint</string>
+					<key>INTypePropertyTag</key>
+					<integer>3</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDefault</key>
+					<true/>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>4</integer>
+					<key>INTypePropertyName</key>
+					<string>alternativeSpeakableMatches</string>
+					<key>INTypePropertySupportsMultipleValues</key>
+					<true/>
+					<key>INTypePropertyTag</key>
+					<integer>4</integer>
+					<key>INTypePropertyType</key>
+					<string>SpeakableString</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
