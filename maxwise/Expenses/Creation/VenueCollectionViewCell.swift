@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ExpenseKit
 
 class VenueCollectionViewCell: UICollectionViewCell {
 

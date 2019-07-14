@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import ExpenseKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -9,6 +9,7 @@
 import CoreLocation
 import MapKit
 import FoursquareAPIClient
+import ExpenseKit
 
 class NearbyPlacesProvider: NSObject {
 

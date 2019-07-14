@@ -11,6 +11,10 @@ public class ExpenseEntryModelController {
 
     private var expenseEntryObservationToken: NotificationToken?
     
+    public init() {
+        
+    }
+    
     public func create(user: User,
                 nearbyPlace: NearbyPlace?,
                 category: ExpenseCategory,
@@ -44,7 +48,7 @@ public class ExpenseEntryModelController {
             switch change {
             case .initial(let value):
                 updated(Array(value))
-            case .update(let value, deletions: _, insertions: _, modifications: _):
+        case .update(let value, deletions: _, insertions: _, modifications: _):
                 updated(Array(value))
             default:
                 print("huh")

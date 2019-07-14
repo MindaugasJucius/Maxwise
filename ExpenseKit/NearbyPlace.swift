@@ -3,12 +3,12 @@ import CoreLocation
 import RealmSwift
 import Realm
 
-struct VenuesSearch: Codable {
+public struct VenuesSearch: Codable {
     let meta: Meta
-    let response: Response
+    public let response: Response
 }
 
-struct Meta: Codable {
+public struct Meta: Codable {
     let code: Int
     let requestID: String
     
@@ -18,12 +18,12 @@ struct Meta: Codable {
     }
 }
 
-struct Response: Codable {
-    let venues: [Venue]
-    let confident: Bool
+public struct Response: Codable {
+    public let venues: [Venue]
+    public let confident: Bool
 }
 
-struct Venue: Codable {
+public struct Venue: Codable {
     let id, name: String
     let location: Location
     let categories: [Category]
@@ -42,13 +42,13 @@ struct Venue: Codable {
     }
 }
 
-struct Category: Codable {
+public struct Category: Codable {
     let id, name, pluralName, shortName: String
     let icon: Icon
     let primary: Bool
 }
 
-struct Icon: Codable {
+public struct Icon: Codable {
     let iconPrefix: String
     let suffix: String
     
@@ -58,7 +58,7 @@ struct Icon: Codable {
     }
 }
 
-struct Location: Codable {
+public struct Location: Codable {
     let address: String?
     let lat, lng: Double?
     let labeledLatLngs: [LabeledLatLng]?
@@ -68,7 +68,7 @@ struct Location: Codable {
     let formattedAddress: [String]?
 }
 
-struct LabeledLatLng: Codable {
+public struct LabeledLatLng: Codable {
     let label: String
     let lat, lng: Double
 }
@@ -78,10 +78,10 @@ struct LabeledLatLng: Codable {
 public class NearbyPlace: Object {
 
     dynamic var id: String = ""
-    var lat = RealmOptional<Double>()
-    var lng = RealmOptional<Double>()
-    dynamic var title: String = ""
-    dynamic var categoryTitle: String = ""
+    public var lat = RealmOptional<Double>()
+    public var lng = RealmOptional<Double>()
+    public dynamic var title: String = ""
+    public dynamic var categoryTitle: String = ""
 
     var location: CLLocationCoordinate2D? {
         if let latitude = lat.value,

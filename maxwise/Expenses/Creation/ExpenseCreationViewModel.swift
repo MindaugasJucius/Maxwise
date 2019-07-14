@@ -2,6 +2,11 @@ import Foundation
 import UIKit
 import ExpenseKit
 
+enum ValidationResult<T> {
+    case success(T)
+    case failure([CreationIssue])
+}
+
 class ExpenseCreationViewModel {
     
     private struct ExpenseDTO {
@@ -26,13 +31,13 @@ class ExpenseCreationViewModel {
         self.nearbyPlaces = nearbyPlaces
     }
     
-    func performModelCreation(amount: Double?, selectedPlace: NearbyPlace?, categoryID: String?, result: (Result<Void, [CreationIssue]>) -> ()) {
+    func performModelCreation(amount: Double?, selectedPlace: NearbyPlace?, categoryID: String?, result: (ValidationResult<Void>) -> ()) {
         recognizedDouble = amount
         
         let validationResult = validate(selectedPlace: selectedPlace, categoryID: categoryID)
         switch validationResult {
-        case .error(let issues):
-            result(.error(issues))
+        case .failure(let issues):
+            result(.failure(issues))
         case .success(let dto):
             expenseEntryModelController.create(
                 user: dto.user,
@@ -42,8 +47,8 @@ class ExpenseCreationViewModel {
                 title: dto.category.title,
                 completion: { creationResult in
                     switch creationResult {
-                    case .error(let error):
-                        result(.error([error]))
+                    case .failure(let error):
+                        result(.failure([error]))
                     case .success(_):
                         result(.success(()))
                     }
@@ -52,7 +57,7 @@ class ExpenseCreationViewModel {
         }
     }
     
-    private func validate(selectedPlace: NearbyPlace?, categoryID: String?) -> Result<ExpenseDTO, [CreationIssue]> {
+    private func validate(selectedPlace: NearbyPlace?, categoryID: String?) -> ValidationResult<ExpenseDTO> {
         var issues: [CreationIssue] = []
         
         let filteredSelected = categories.filter { $0.id == categoryID }
@@ -64,7 +69,7 @@ class ExpenseCreationViewModel {
         let recognition = retrieve(from: recognizedDouble, issue: .noAmount, issues: &issues)
 
         guard let categoryValue = category, let userValue = user, let recognitionValue = recognition else {
-            return .error(issues)
+            return .failure(issues)
         }
 
         let expenseDTO = ExpenseDTO(category: categoryValue, user: userValue, place: nil, amount: recognitionValue)

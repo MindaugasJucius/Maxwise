@@ -9,6 +9,10 @@ public enum UserModelError: Error {
 public class UserModelController {
     
     private var amountObservationToken: NotificationToken?
+
+    public init() {
+        
+    }
     
     public func currentUserOrCreate() throws -> User {
         guard let realm = try? Realm() else {

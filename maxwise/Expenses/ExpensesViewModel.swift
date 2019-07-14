@@ -1,4 +1,5 @@
 import UIKit
+import ExpenseKit
 
 struct ExpensePresentationDTO {
     let id: String

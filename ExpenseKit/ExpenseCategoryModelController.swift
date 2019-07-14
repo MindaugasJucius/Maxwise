@@ -26,6 +26,10 @@ public class ExpenseCategoryModelController {
         }
         UserDefaults.standard.set(true, forKey: defaultCategoriesCreatedKey)
     }
+
+    public init() {
+        
+    }
     
     public func storedCategories() -> [ExpenseCategory] {
         guard let realm = try? Realm() else {

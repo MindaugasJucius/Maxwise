@@ -145,7 +145,7 @@ class ExpenseCreationViewController: UIViewController {
             switch result {
             case .success(_):
                 self?.dismiss(animated: true, completion: nil)
-            case .error(let issues):
+            case .failure(let issues):
                 self?.handle(issues: issues)
             }
         }

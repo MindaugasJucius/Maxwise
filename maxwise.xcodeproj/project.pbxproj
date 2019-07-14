@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		24128F3758533D81B8C252A7 /* Pods_maxwise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */; };
+		2596A9BB6F90D9A30A6D3A83 /* Pods_ExpenseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D7441A592E5DAB8FC20E57 /* Pods_ExpenseKit.framework */; };
 		5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */; };
 		5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B42210281B00BAECF6 /* TextPickViewModel.swift */; };
 		5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B6221034F300BAECF6 /* ExpensesViewController.swift */; };
@@ -153,6 +154,7 @@
 /* Begin PBXFileReference section */
 		1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maxwise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maxwiseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51D7441A592E5DAB8FC20E57 /* Pods_ExpenseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpenseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Orientation+Extensions.swift"; sourceTree = "<group>"; };
 		5F20E0B02210247C00BAECF6 /* ExpenseEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
 		5F20E0B22210265200BAECF6 /* ExpenseEntryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryModelController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
 		5FB59210227DE2EF005D5208 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		5FB59212227DE303005D5208 /* NavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationView.xib; sourceTree = "<group>"; };
+		5FC9297F22DB644500CB23DC /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationIntentHandler.swift; sourceTree = "<group>"; };
 		5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationParentViewController.swift; sourceTree = "<group>"; };
 		5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -231,7 +234,9 @@
 		5FFD2C202207353B00DDFBE5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		89CE2E999663A6CE2DA3855D /* Pods-maxwise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxwise/Pods-maxwise.debug.xcconfig"; sourceTree = "<group>"; };
 		AE8AA537479DCA59B808B9D1 /* Pods-maxwise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwise.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwise/Pods-maxwise.release.xcconfig"; sourceTree = "<group>"; };
+		B854ACC99C602D72975C059C /* Pods-ExpenseKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExpenseKit/Pods-ExpenseKit.release.xcconfig"; sourceTree = "<group>"; };
 		BFE3CBB719654DA4B77BCD30 /* Pods-maxwiseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EA1C0C0C4A8FAC6A0B1B4D5E /* Pods-ExpenseKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExpenseKit/Pods-ExpenseKit.debug.xcconfig"; sourceTree = "<group>"; };
 		F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantContentView.swift; sourceTree = "<group>"; };
 		F45D67D022A3E10600DB1AE1 /* AMTagView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AMTagView+Extensions.swift"; sourceTree = "<group>"; };
@@ -244,6 +249,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2596A9BB6F90D9A30A6D3A83 /* Pods_ExpenseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +486,7 @@
 		5FFD2C172207321700DDFBE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5FC9297F22DB644500CB23DC /* RealmSwift.framework */,
 				5F6878742207419600F4FE7C /* libz.tbd */,
 				5F68786F22073D8800F4FE7C /* TesseractOCR.framework */,
 				5FFD2C202207353B00DDFBE5 /* libc++.tbd */,
@@ -489,6 +496,7 @@
 				1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */,
 				3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */,
 				5F65CD5A22D27C050040C218 /* IntentsUI.framework */,
+				51D7441A592E5DAB8FC20E57 /* Pods_ExpenseKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -500,6 +508,8 @@
 				AE8AA537479DCA59B808B9D1 /* Pods-maxwise.release.xcconfig */,
 				BFE3CBB719654DA4B77BCD30 /* Pods-maxwiseTests.debug.xcconfig */,
 				F739ED49C2038FB2BE827A0C /* Pods-maxwiseTests.release.xcconfig */,
+				EA1C0C0C4A8FAC6A0B1B4D5E /* Pods-ExpenseKit.debug.xcconfig */,
+				B854ACC99C602D72975C059C /* Pods-ExpenseKit.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -532,6 +542,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F353A6722DB48C500F96D3D /* Build configuration list for PBXNativeTarget "ExpenseKit" */;
 			buildPhases = (
+				BEC9FA86A775C2EAADA6BD42 /* [CP] Check Pods Manifest.lock */,
 				5F353A4B22DB48C400F96D3D /* Headers */,
 				5F353A4C22DB48C400F96D3D /* Sources */,
 				5F353A4D22DB48C400F96D3D /* Frameworks */,
@@ -542,8 +553,6 @@
 			dependencies = (
 			);
 			name = ExpenseKit;
-			packageProductDependencies = (
-			);
 			productName = ExpenseKit;
 			productReference = 5F353A5022DB48C400F96D3D /* ExpenseKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -586,8 +595,6 @@
 				5F353A6422DB48C500F96D3D /* PBXTargetDependency */,
 			);
 			name = maxwise;
-			packageProductDependencies = (
-			);
 			productName = maxwise;
 			productReference = 5F4A3B68220720870016BCC9 /* maxwise.app */;
 			productType = "com.apple.product-type.application";
@@ -625,8 +632,6 @@
 				5F75E16722DB5BF40014B062 /* PBXTargetDependency */,
 			);
 			name = CreatingExpenses;
-			packageProductDependencies = (
-			);
 			productName = CreatingExpenses;
 			productReference = 5F65CD5022D27C050040C218 /* CreatingExpenses.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -669,8 +674,6 @@
 				Base,
 			);
 			mainGroup = 5F4A3B5F220720870016BCC9;
-			packageReferences = (
-			);
 			productRefGroup = 5F4A3B69220720870016BCC9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -756,6 +759,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BEC9FA86A775C2EAADA6BD42 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ExpenseKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C053B3759255C07B2D3C502B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -768,6 +793,8 @@
 				"${BUILT_PRODUCTS_DIR}/AMTagListView/AMTagListView.framework",
 				"${BUILT_PRODUCTS_DIR}/FoursquareAPIClient/FoursquareAPIClient.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -777,6 +804,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMTagListView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoursquareAPIClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -950,6 +979,7 @@
 /* Begin XCBuildConfiguration section */
 		5F353A6822DB48C500F96D3D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA1C0C0C4A8FAC6A0B1B4D5E /* Pods-ExpenseKit.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -978,6 +1008,7 @@
 		};
 		5F353A6922DB48C500F96D3D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B854ACC99C602D72975C059C /* Pods-ExpenseKit.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1183,7 +1214,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1209,7 +1240,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
