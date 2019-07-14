@@ -283,8 +283,6 @@
 			<string>nTov9d</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
-			<key>INIntentUserConfirmationRequired</key>
-			<true/>
 			<key>INIntentVerb</key>
 			<string>Create</string>
 		</dict>

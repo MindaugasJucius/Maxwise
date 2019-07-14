@@ -195,9 +195,6 @@
 		5F65CD5222D27C050040C218 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		5F65CD5422D27C050040C218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F65CD5A22D27C050040C218 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
-		5F65CD5D22D27C050040C218 /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
-		5F65CD6022D27C050040C218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		5F65CD6222D27C050040C218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F65CD7222D27E190040C218 /* maxwise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = maxwise.entitlements; sourceTree = "<group>"; };
 		5F65CD7322D27E3E0040C218 /* CreatingExpenses.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CreatingExpenses.entitlements; sourceTree = "<group>"; };
 		5F68786F22073D8800F4FE7C /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -364,7 +361,6 @@
 				5F4A3B6A220720870016BCC9 /* maxwise */,
 				5F4A3B7F220720880016BCC9 /* maxwiseTests */,
 				5F65CD5122D27C050040C218 /* CreatingExpenses */,
-				5F65CD5C22D27C050040C218 /* CreatingExpensesUI */,
 				5F353A5E22DB48C500F96D3D /* ExpenseKitTests */,
 				5F353A5122DB48C400F96D3D /* ExpenseKit */,
 				5F4A3B69220720870016BCC9 /* Products */,
@@ -435,16 +431,6 @@
 				5F65CD5422D27C050040C218 /* Info.plist */,
 			);
 			path = CreatingExpenses;
-			sourceTree = "<group>";
-		};
-		5F65CD5C22D27C050040C218 /* CreatingExpensesUI */ = {
-			isa = PBXGroup;
-			children = (
-				5F65CD5D22D27C050040C218 /* IntentViewController.swift */,
-				5F65CD5F22D27C050040C218 /* MainInterface.storyboard */,
-				5F65CD6222D27C050040C218 /* Info.plist */,
-			);
-			path = CreatingExpensesUI;
 			sourceTree = "<group>";
 		};
 		5F9E13C8222C44DC00805878 /* Creation */ = {
@@ -968,14 +954,6 @@
 				5F4A3B75220720880016BCC9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		5F65CD5F22D27C050040C218 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5F65CD6022D27C050040C218 /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
