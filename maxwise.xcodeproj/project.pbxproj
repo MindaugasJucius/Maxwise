@@ -68,6 +68,7 @@
 		5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */; };
 		5FB59211227DE2EF005D5208 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB59210227DE2EF005D5208 /* NavigationView.swift */; };
 		5FB59213227DE303005D5208 /* NavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FB59212227DE303005D5208 /* NavigationView.xib */; };
+		5FC9298222DB83F000CB23DC /* Realm+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9298122DB83F000CB23DC /* Realm+Extensions.swift */; };
 		5FD95D8922D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */; };
 		5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */; };
 		5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */; };
@@ -222,6 +223,7 @@
 		5FB59210227DE2EF005D5208 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		5FB59212227DE303005D5208 /* NavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationView.xib; sourceTree = "<group>"; };
 		5FC9297F22DB644500CB23DC /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FC9298122DB83F000CB23DC /* Realm+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extensions.swift"; sourceTree = "<group>"; };
 		5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationIntentHandler.swift; sourceTree = "<group>"; };
 		5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationParentViewController.swift; sourceTree = "<group>"; };
 		5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				5F4021CF22912CD100B0C60C /* ExpenseCategoryModelController.swift */,
 				5F353A5222DB48C400F96D3D /* ExpenseKit.h */,
 				5F353A5322DB48C400F96D3D /* Info.plist */,
+				5FC9298122DB83F000CB23DC /* Realm+Extensions.swift */,
 			);
 			path = ExpenseKit;
 			sourceTree = "<group>";
@@ -851,6 +854,7 @@
 				5F353A7222DB48F400F96D3D /* UserModelController.swift in Sources */,
 				5F353A7422DB48F400F96D3D /* ExpenseCategoryModelController.swift in Sources */,
 				5F353A7922DB4ACA00F96D3D /* UIColor+Extension.swift in Sources */,
+				5FC9298222DB83F000CB23DC /* Realm+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
