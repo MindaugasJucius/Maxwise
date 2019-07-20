@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import AMTagListView
 
 class ExpenseTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var locationLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var expenseImageView: UIImageView!
     @IBOutlet private weak var roundedView: UIView!
+    
+    @IBOutlet private weak var stackView: UIStackView!
+    private lazy var categoryView = AMTagView()
     
     private lazy var roundedLayer: CALayer = {
         let layer = CALayer.init()
@@ -35,9 +38,6 @@ class ExpenseTableViewCell: UITableViewCell {
         super.awakeFromNib()
         titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
 
-        locationLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        locationLabel.textColor = .gray
-        
         dateLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         dateLabel.textColor = .lightGray
 
@@ -47,14 +47,22 @@ class ExpenseTableViewCell: UITableViewCell {
         backgroundColor = .clear
         accessoryType = .disclosureIndicator
         layer.insertSublayer(roundedLayer, at: 0)
+
+        categoryView.holeRadius = 3
+        stackView.insertArrangedSubview(categoryView, at: 1)
     }
 
     func configure(expenseDTO: ExpensePresentationDTO) {
         amountLabel.text = expenseDTO.currencyAmount
         titleLabel.text = expenseDTO.title
-        locationLabel.text = expenseDTO.locationTitle
+
         dateLabel.text = expenseDTO.formattedDate
         expenseImageView.image = expenseDTO.image
+    
+        categoryView.tagText = expenseDTO.categoryTitle as NSString
+        if let color = expenseDTO.categoryColor {
+            categoryView.applySelectedStyle(color: color)
+        }
     }
     
 }
