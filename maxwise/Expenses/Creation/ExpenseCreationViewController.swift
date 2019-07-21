@@ -124,6 +124,7 @@ class ExpenseCreationViewController: UIViewController {
         configureCameraContainerLayer()
         configureSegmentedControl()
         configureNavigationView()
+        addDismissalTapHandler()
         expenseInfoContainerView.layer.applyShadow()
         expenseInfoContainerView.layer.cornerRadius = 6
     }
@@ -132,6 +133,15 @@ class ExpenseCreationViewController: UIViewController {
         super.viewDidAppear(animated)
         // Creating camera session in viewDidLoad on the main queue lags a bit
         addCameraController()
+    }
+    
+    private func addDismissalTapHandler() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissController))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func dismissController() {
+        dismiss(animated: true, completion: nil)
     }
     
     private func configureNavigationView() {
