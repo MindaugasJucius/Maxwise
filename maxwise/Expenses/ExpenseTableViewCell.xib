@@ -37,15 +37,15 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TTZ-3O-VTr">
-                                <rect key="frame" x="8" y="12.5" width="40" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bag.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TTZ-3O-VTr">
+                                <rect key="frame" x="8" y="12" width="40" height="39.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TTZ-3O-VTr" secondAttribute="height" multiplier="1:1" id="b3A-0l-F4O"/>
                                     <constraint firstAttribute="height" constant="40" id="uDJ-Zv-tmo"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crh-0s-oQu">
-                                <rect key="frame" x="248" y="22.5" width="42" height="20.5"/>
+                                <rect key="frame" x="240" y="22.5" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                             <constraint firstItem="TTZ-3O-VTr" firstAttribute="centerY" secondItem="RHD-el-LBa" secondAttribute="centerY" id="Tbf-kC-UjF"/>
                             <constraint firstItem="rIr-Xn-lW5" firstAttribute="leading" secondItem="TTZ-3O-VTr" secondAttribute="trailing" constant="10" id="WhR-fK-X1e"/>
                             <constraint firstItem="crh-0s-oQu" firstAttribute="centerY" secondItem="TTZ-3O-VTr" secondAttribute="centerY" id="ZfX-9O-GiX"/>
-                            <constraint firstAttribute="trailing" secondItem="crh-0s-oQu" secondAttribute="trailing" id="iMe-OT-42y"/>
+                            <constraint firstAttribute="trailing" secondItem="crh-0s-oQu" secondAttribute="trailing" constant="8" id="iMe-OT-42y"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -82,4 +82,7 @@
             <point key="canvasLocation" x="-1014.4" y="-170.46476761619192"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="bag.fill" catalog="system" width="62" height="64"/>
+    </resources>
 </document>

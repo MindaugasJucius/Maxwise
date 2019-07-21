@@ -22,7 +22,7 @@ class ExpenseTableViewCell: UITableViewCell {
     
     private lazy var roundedLayer: CALayer = {
         let layer = CALayer.init()
-        layer.backgroundColor = UIColor.white.cgColor
+        layer.backgroundColor = UIColor.init(named: "expenseCellBackground")?.cgColor
         layer.cornerRadius = 6
         return layer
     }()
@@ -36,6 +36,7 @@ class ExpenseTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        tintColor = .lightGray
         titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
 
         dateLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
@@ -45,23 +46,24 @@ class ExpenseTableViewCell: UITableViewCell {
         amountLabel.textColor = .darkGray
         
         backgroundColor = .clear
-        accessoryType = .disclosureIndicator
         layer.insertSublayer(roundedLayer, at: 0)
-
+        selectionStyle = .none
+        accessoryType = .disclosureIndicator
+        
         categoryView.holeRadius = 3
+        categoryView.heightAnchor.constraint(equalToConstant: 25).isActive = true
         stackView.insertArrangedSubview(categoryView, at: 1)
     }
-
+    
     func configure(expenseDTO: ExpensePresentationDTO) {
         amountLabel.text = expenseDTO.currencyAmount
         titleLabel.text = expenseDTO.title
 
         dateLabel.text = expenseDTO.formattedDate
-        expenseImageView.image = expenseDTO.image
     
         categoryView.tagText = expenseDTO.categoryTitle as NSString
         if let color = expenseDTO.categoryColor {
-            categoryView.applySelectedStyle(color: color)
+            categoryView.applyDeselectedStyle(color: color)
         }
     }
     
