@@ -240,6 +240,7 @@ class ExpenseCreationViewController: UIViewController {
         expandedCameraHeightConstraint.isActive = isCameraContainerHidden
         initialCameraHeightConstraint.isActive = !isCameraContainerHidden
         let animator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 0.82) {
+            self.cameraViewController.view.setNeedsLayout()
             self.view.layoutIfNeeded()
             if isCameraContainerHidden {
                 self.cameraContainerBlurView.alpha = 0
