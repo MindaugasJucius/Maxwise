@@ -111,6 +111,9 @@ class ExpenseCreationViewController: UIViewController {
         let ratio: CGFloat = 4/3
         let expandedCameraHeight = ratio * cameraContainerView.bounds.width
         expandedCameraHeightConstraint.constant = expandedCameraHeight
+
+        let diff = navigationView.frame.maxY - textField.convert(textField.frame, to: view).maxY
+        textField.keyboardDistanceFromTextField = diff
     }
     
     override func viewDidLoad() {
@@ -252,6 +255,7 @@ class ExpenseCreationViewController: UIViewController {
     @objc private func collapseCamera() {
         showCamera()
         removeRecognitionController()
+        textField.becomeFirstResponder()
     }
     
     @objc private func removeRecognitionController() {
