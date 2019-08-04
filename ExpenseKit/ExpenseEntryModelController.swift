@@ -44,7 +44,9 @@ public class ExpenseEntryModelController {
 
     public func observeExpenseEntries(updated: @escaping ([ExpenseEntry]) -> ()) {
         let realm = try? Realm.groupRealm()
-        expenseEntryObservationToken = realm?.objects(ExpenseEntry.self).observe { change in
+        let expenseEntries = realm?.objects(ExpenseEntry.self)
+            .sorted(byKeyPath: "creationDate", ascending: false)
+        expenseEntryObservationToken = expenseEntries?.observe { change in
             switch change {
             case .initial(let value):
                 updated(Array(value))

@@ -1,7 +1,7 @@
 import UIKit
 import ExpenseKit
 
-struct ExpensePresentationDTO {
+struct ExpensePresentationDTO: Hashable {
     let id: String
     let currencyAmount: String
     let title: String
@@ -36,14 +36,13 @@ class ExpensesViewModel {
         }
     }
     
-    func observeExpenseEntries(changeOccured: @escaping ([ExpensePresentationDTO]) -> Void) {
+    func observeExpenseEntries(changeOccured: @escaping ([Date: [ExpensePresentationDTO]]) -> Void) {
         modelController.observeExpenseEntries { [weak self] expenseEntries in
             guard let self = self else {
                 return
             }
 
-            let dtos = expenseEntries.map { self.dto(from: $0) }
-            changeOccured(dtos)
+            changeOccured(self.groupedByWeek(expenses: expenseEntries))
         }
     }
     
@@ -70,6 +69,23 @@ class ExpensesViewModel {
                                       categoryColor: category.color,
                                       formattedDate: dateFormatter.string(from: expenseEntry.creationDate),
                                       image: image)
+    }
+    
+    private func groupedByWeek(expenses: [ExpenseEntry]) -> [Date: [ExpensePresentationDTO]] {
+        let dictionary = [Date: [ExpensePresentationDTO]]()
+        let components = Set<Calendar.Component>(arrayLiteral: .year, .month, .weekOfMonth)
+        return expenses.reduce(into: dictionary) { [weak self] (result, entry) in
+            guard let self = self else {
+                return
+            }
+            
+            let components = Calendar.current.dateComponents(components, from: entry.creationDate)
+            guard let dateFromComponents = Calendar.current.date(from: components) else {
+                return
+            }
+            let existing = result[dateFromComponents] ?? []
+            result[dateFromComponents] = existing + [self.dto(from: entry)]
+        }
     }
     
     private func beginObservingAmountChanges() {

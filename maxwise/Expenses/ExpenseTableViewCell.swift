@@ -32,7 +32,7 @@ class ExpenseTableViewCell: UITableViewCell {
         
         selectionStyle = .none
         accessoryType = .disclosureIndicator
-        separatorInset = .zero  
+        separatorInset = .zero
         
         categoryView.holeRadius = 3
         categoryView.heightAnchor.constraint(equalToConstant: 25).isActive = true

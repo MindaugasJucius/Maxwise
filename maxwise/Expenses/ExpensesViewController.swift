@@ -5,8 +5,24 @@ class ExpensesViewController: UIViewController {
     private let expensesStatsViewController = ExpensesStatsViewController()
     
     private let viewModel: ExpensesViewModel
-    private var expenses = [ExpensePresentationDTO]()
-
+//    private var expenses = [Date: [ExpensePresentationDTO]]()
+    
+    private lazy var dataSource: UITableViewDiffableDataSource<Date, ExpensePresentationDTO> = {
+        return UITableViewDiffableDataSource(tableView: tableView) { [weak self] (tableView, indexPath, expenseEntryDTO) in
+            guard let self = self else {
+                return nil
+            }
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: ExpenseTableViewCell.nibName, for: indexPath)
+            guard let expenseCell = cell as? ExpenseTableViewCell else {
+                return cell
+            }
+            
+            expenseCell.configure(expenseDTO: expenseEntryDTO)
+            return expenseCell
+        }
+    }()
+    
     @IBOutlet private weak var tableView: UITableView!
 
     init(viewModel: ExpensesViewModel) {
@@ -28,9 +44,13 @@ class ExpensesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.observeExpenseEntries { [weak self] expenseDTOs in
-            self?.expenses = expenseDTOs
-            self?.tableView.reloadData()
+        viewModel.observeExpenseEntries { [weak self] groupedExpenses in
+            let snapshot = NSDiffableDataSourceSnapshot<Date, ExpensePresentationDTO>()
+            snapshot.appendSections(Array(groupedExpenses.keys))
+            groupedExpenses.forEach { (key, value) in
+                snapshot.appendItems(value, toSection: key)
+            }
+            self?.dataSource.apply(snapshot)
         }
 
         viewModel.amountSpentChanged = { [weak self] amount in
@@ -41,15 +61,17 @@ class ExpensesViewController: UIViewController {
     private func configureTableView() {
         let cellNib = UINib.init(nibName: ExpenseTableViewCell.nibName, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: ExpenseTableViewCell.nibName)
-        tableView.dataSource = self
+        tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.estimatedRowHeight = 95
         tableView.estimatedSectionHeaderHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.backgroundColor = .clear
+        
+        
     }
-
+    
 }
 
 extension ExpensesViewController: UITableViewDelegate {
@@ -60,20 +82,3 @@ extension ExpensesViewController: UITableViewDelegate {
     
 }
 
-extension ExpensesViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return expenses.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ExpenseTableViewCell.nibName, for: indexPath)
-        guard let expenseCell = cell as? ExpenseTableViewCell else {
-            return cell
-        }
-        
-        expenseCell.configure(expenseDTO: expenses[indexPath.row])
-        return expenseCell
-    }
-    
-}
