@@ -48,7 +48,6 @@ class ExpensesViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.backgroundColor = .clear
-        tableView.separatorStyle = .none
     }
 
 }
