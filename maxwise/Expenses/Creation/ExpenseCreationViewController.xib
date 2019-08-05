@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +14,6 @@
                 <outlet property="expandedCameraHeightConstraint" destination="5JY-rw-nNn" id="Fof-uC-Zhp"/>
                 <outlet property="expenseInfoContainerView" destination="a5I-kZ-cgF" id="V1I-Cf-zJC"/>
                 <outlet property="initialCameraHeightConstraint" destination="dfx-br-WUA" id="fEz-IU-aTD"/>
-                <outlet property="navigationView" destination="Kyh-Tt-YzN" id="EYK-pG-4T1"/>
                 <outlet property="resetToCameraButtonContainer" destination="G8e-iZ-hv0" id="6qk-cc-wSS"/>
                 <outlet property="segmentedControl" destination="XSy-5f-SPq" id="SSc-FQ-zQr"/>
                 <outlet property="tagListView" destination="g1i-4U-m8x" id="9kj-S5-iKN"/>
@@ -30,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5I-kZ-cgF">
-                    <rect key="frame" x="16" y="493" width="343" height="147"/>
+                    <rect key="frame" x="16" y="563" width="343" height="147"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-GV-xNW">
                             <rect key="frame" x="16" y="16" width="311" height="115"/>
@@ -74,7 +71,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLg-uk-6eq">
-                    <rect key="frame" x="16" y="425" width="343" height="60"/>
+                    <rect key="frame" x="16" y="495" width="343" height="60"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMZ-ib-M42" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
                             <rect key="frame" x="292" y="9" width="35" height="35"/>
@@ -101,21 +98,12 @@
                         <constraint firstItem="G8e-iZ-hv0" firstAttribute="centerY" secondItem="HMZ-ib-M42" secondAttribute="centerY" id="enA-a9-htt"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kyh-Tt-YzN" customClass="NavigationView" customModule="maxwise" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="656" width="375" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="HXZ-B7-tI8"/>
-                    </constraints>
-                </view>
             </subviews>
             <constraints>
-                <constraint firstItem="Kyh-Tt-YzN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Aee-c0-Pul"/>
                 <constraint firstItem="a5I-kZ-cgF" firstAttribute="top" secondItem="NLg-uk-6eq" secondAttribute="bottom" constant="8" id="Hda-Hf-Hdx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="a5I-kZ-cgF" secondAttribute="trailing" constant="16" id="WQo-eu-cK5"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Kyh-Tt-YzN" secondAttribute="trailing" id="Wej-Gg-WV2"/>
                 <constraint firstItem="NLg-uk-6eq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="bzZ-bI-ect"/>
-                <constraint firstItem="Kyh-Tt-YzN" firstAttribute="top" secondItem="a5I-kZ-cgF" secondAttribute="bottom" constant="16" id="gHK-c6-xMe"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Kyh-Tt-YzN" secondAttribute="bottom" constant="20" id="gYZ-Em-COY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="a5I-kZ-cgF" secondAttribute="bottom" constant="16" id="nm4-Dv-6Ny"/>
                 <constraint firstItem="a5I-kZ-cgF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="sol-UQ-Akq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NLg-uk-6eq" secondAttribute="trailing" constant="16" id="t4l-Al-CHX"/>
             </constraints>

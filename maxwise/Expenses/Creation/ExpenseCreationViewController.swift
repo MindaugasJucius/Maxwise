@@ -86,8 +86,6 @@ class ExpenseCreationViewController: UIViewController {
     private weak var selectedTag: AMTagView?
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
-    @IBOutlet private weak var navigationView: NavigationView!
-    
     private let nearbyPlaces: [NearbyPlace]
     private let viewModel: ExpenseCreationViewModel
     private let transitionDelegate = ModalBlurTransitionController()
@@ -111,9 +109,7 @@ class ExpenseCreationViewController: UIViewController {
         let ratio: CGFloat = 4/3
         let expandedCameraHeight = ratio * cameraContainerView.bounds.width
         expandedCameraHeightConstraint.constant = expandedCameraHeight
-
-        let diff = navigationView.frame.maxY - textField.convert(textField.frame, to: view).maxY
-        textField.keyboardDistanceFromTextField = diff
+        textField.keyboardDistanceFromTextField = 70
     }
     
     override func viewDidLoad() {
@@ -122,11 +118,20 @@ class ExpenseCreationViewController: UIViewController {
         textField.placeholder = "Expense amount"
         textField.becomeFirstResponder()
         textField.layer.applyBorder()
-        
+    
+        let inputView = ExpenseCreationInputView.create(
+            closeButton: { [weak self] in
+                self?.dismissController()
+            },
+            createButton: { [weak self] in
+                self?.tryToCreateExpense()
+            }
+        )
+        textField.inputAccessoryView = inputView
+
         configureTagListView()
         configureCameraContainerLayer()
         configureSegmentedControl()
-        configureNavigationView()
         addDismissalTapHandler()
         expenseInfoContainerView.layer.applyShadow()
         expenseInfoContainerView.layer.cornerRadius = 6
@@ -145,12 +150,6 @@ class ExpenseCreationViewController: UIViewController {
     
     @objc private func dismissController() {
         dismiss(animated: true, completion: nil)
-    }
-    
-    private func configureNavigationView() {
-        navigationView.buttonTapped = { [weak self] in
-            self?.tryToCreateExpense()
-        }
     }
 
     private func tryToCreateExpense() {

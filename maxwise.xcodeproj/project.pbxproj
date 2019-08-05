@@ -69,6 +69,8 @@
 		5FB59211227DE2EF005D5208 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB59210227DE2EF005D5208 /* NavigationView.swift */; };
 		5FB59213227DE303005D5208 /* NavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FB59212227DE303005D5208 /* NavigationView.xib */; };
 		5FC9298222DB83F000CB23DC /* Realm+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9298122DB83F000CB23DC /* Realm+Extensions.swift */; };
+		5FC9298422F89FFF00CB23DC /* ExpenseCreationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9298322F89FFF00CB23DC /* ExpenseCreationInputView.swift */; };
+		5FC9298622F8A02200CB23DC /* ExpenseCreationInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FC9298522F8A02200CB23DC /* ExpenseCreationInputView.xib */; };
 		5FD95D8922D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */; };
 		5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */; };
 		5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */; };
@@ -221,6 +223,8 @@
 		5FB59212227DE303005D5208 /* NavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationView.xib; sourceTree = "<group>"; };
 		5FC9297F22DB644500CB23DC /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FC9298122DB83F000CB23DC /* Realm+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extensions.swift"; sourceTree = "<group>"; };
+		5FC9298322F89FFF00CB23DC /* ExpenseCreationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationInputView.swift; sourceTree = "<group>"; };
+		5FC9298522F8A02200CB23DC /* ExpenseCreationInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseCreationInputView.xib; sourceTree = "<group>"; };
 		5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationIntentHandler.swift; sourceTree = "<group>"; };
 		5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationParentViewController.swift; sourceTree = "<group>"; };
 		5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +313,8 @@
 				5F20E0BC2210352F00BAECF6 /* ExpenseTableViewCell.xib */,
 				5F9DE38922198CA0008CCB94 /* ExpensesStatsViewController.swift */,
 				5F9DE38A22198CA0008CCB94 /* ExpensesStatsViewController.xib */,
+				5FC9298322F89FFF00CB23DC /* ExpenseCreationInputView.swift */,
+				5FC9298522F8A02200CB23DC /* ExpenseCreationInputView.xib */,
 				5F9E13C8222C44DC00805878 /* Creation */,
 			);
 			path = Expenses;
@@ -436,8 +442,8 @@
 		5F9E13C8222C44DC00805878 /* Creation */ = {
 			isa = PBXGroup;
 			children = (
-				5F240C9F222721A3009A41AE /* ExpenseCreationViewController.swift */,
 				5F240CA0222721A3009A41AE /* ExpenseCreationViewController.xib */,
+				5F240C9F222721A3009A41AE /* ExpenseCreationViewController.swift */,
 				5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */,
 				5F65C343222A6DAF00E10F92 /* VenueCollectionViewCell.swift */,
 				5F65C344222A6DAF00E10F92 /* VenueCollectionViewCell.xib */,
@@ -696,6 +702,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */,
+				5FC9298622F8A02200CB23DC /* ExpenseCreationInputView.xib in Resources */,
 				5F9DE38C22198CA0008CCB94 /* ExpensesStatsViewController.xib in Resources */,
 				5FB59213227DE303005D5208 /* NavigationView.xib in Resources */,
 				5F20E0B9221034F300BAECF6 /* ExpensesViewController.xib in Resources */,
@@ -873,6 +880,7 @@
 				5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */,
 				5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */,
 				5F9DE38B22198CA0008CCB94 /* ExpensesStatsViewController.swift in Sources */,
+				5FC9298422F89FFF00CB23DC /* ExpenseCreationInputView.swift in Sources */,
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 				5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */,
 				5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */,
