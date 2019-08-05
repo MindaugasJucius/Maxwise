@@ -20,7 +20,7 @@ class ExpenseCreationViewModel {
     private let userModelController = UserModelController()
     private let expenseCategoryModelController = ExpenseCategoryModelController()
     
-    private var recognizedDouble: Double?
+    private var expenseAmountDouble: Double?
     
     let nearbyPlaces: [NearbyPlace]
     var categories: [ExpenseCategory] {
@@ -32,7 +32,7 @@ class ExpenseCreationViewModel {
     }
     
     func performModelCreation(amount: Double?, selectedPlace: NearbyPlace?, categoryID: String?, result: (ValidationResult<Void>) -> ()) {
-        recognizedDouble = amount
+        expenseAmountDouble = amount
         
         let validationResult = validate(selectedPlace: selectedPlace, categoryID: categoryID)
         switch validationResult {
@@ -62,17 +62,22 @@ class ExpenseCreationViewModel {
         
         let filteredSelected = categories.filter { $0.id == categoryID }
 
-        let category    = retrieve(from: filteredSelected.first, issue: .noCategory, issues: &issues)
+        let category = retrieve(from: filteredSelected.first, issue: .noCategory, issues: &issues)
         
         let noUserCanBeCreated = CreationIssue.alert("User can't be created")
-        let user        = retrieve(from: try? userModelController.currentUserOrCreate(), issue: noUserCanBeCreated, issues: &issues)
-        let recognition = retrieve(from: recognizedDouble, issue: .noAmount, issues: &issues)
+        let user = retrieve(from: try? userModelController.currentUserOrCreate(), issue: noUserCanBeCreated, issues: &issues)
+        let expenseAmount = retrieve(from: expenseAmountDouble, issue: .noAmount, issues: &issues)
 
-        guard let categoryValue = category, let userValue = user, let recognitionValue = recognition else {
+        guard let amount = expenseAmount, amount > 0 else {
+            issues.append(.noAmount)
+            return .failure(issues)
+        }
+        
+        guard let categoryValue = category, let userValue = user else {
             return .failure(issues)
         }
 
-        let expenseDTO = ExpenseDTO(category: categoryValue, user: userValue, place: nil, amount: recognitionValue)
+        let expenseDTO = ExpenseDTO(category: categoryValue, user: userValue, place: nil, amount: amount)
         return .success(expenseDTO)
     }
     
