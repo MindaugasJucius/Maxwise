@@ -11,6 +11,8 @@ struct ExpensePresentationDTO: Hashable {
     let image: UIImage?
 }
 
+typealias GroupedExpenses = [(Date, [ExpensePresentationDTO])]
+
 class ExpensesViewModel {
     
     private let modelController = ExpenseEntryModelController()
@@ -30,19 +32,41 @@ class ExpensesViewModel {
         return formatter
     }()
     
+    private lazy var expenseGroupDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        return formatter
+    }()
+    
     var amountSpentChanged: ((String) -> ())? {
         didSet {
             beginObservingAmountChanges()
         }
     }
     
-    func observeExpenseEntries(changeOccured: @escaping ([Date: [ExpensePresentationDTO]]) -> Void) {
+    func observeExpenseEntries(changeOccured: @escaping (GroupedExpenses) -> Void) {
         modelController.observeExpenseEntries { [weak self] expenseEntries in
             guard let self = self else {
                 return
             }
 
-            changeOccured(self.groupedByWeek(expenses: expenseEntries))
+            changeOccured(self.groupedByDay(expenses: expenseEntries))
+        }
+    }
+    
+    func expenseGroupSectionDescription(from date: Date) -> String {
+        let comparisonResult = Calendar.current.compare(date, to: Date(), toGranularity: .year)
+        let isPreviousYear = comparisonResult == .orderedAscending
+        if Calendar.current.isDateInToday(date) {
+            return "Today"
+        } else if Calendar.current.isDateInYesterday(date) {
+            return "Yesterday"
+        } else if isPreviousYear {
+            expenseGroupDateFormatter.dateFormat = "MMMM d, yyyy"
+            return expenseGroupDateFormatter.string(from: date)
+        } else {
+            expenseGroupDateFormatter.dateFormat = "MMMM d"
+            return expenseGroupDateFormatter.string(from: date)
         }
     }
     
@@ -52,10 +76,6 @@ class ExpensesViewModel {
             let deserializedImage = UIImage(data: imageData)
             image = deserializedImage
         }
-        
-//        if let place = expenseEntry.place {
-//            locationInfo = "\(place.title), \(place.categoryTitle)"
-//        }
         
         guard let category = expenseEntry.category else {
             fatalError()
@@ -71,9 +91,9 @@ class ExpensesViewModel {
                                       image: image)
     }
     
-    private func groupedByWeek(expenses: [ExpenseEntry]) -> [Date: [ExpensePresentationDTO]] {
+    private func groupedByDay(expenses: [ExpenseEntry]) -> GroupedExpenses {
         let dictionary = [Date: [ExpensePresentationDTO]]()
-        let components = Set<Calendar.Component>(arrayLiteral: .year, .month, .weekOfMonth)
+        let components = Set<Calendar.Component>(arrayLiteral: .year, .month, .weekOfMonth, .weekday)
         return expenses.reduce(into: dictionary) { [weak self] (result, entry) in
             guard let self = self else {
                 return
@@ -85,6 +105,8 @@ class ExpensesViewModel {
             }
             let existing = result[dateFromComponents] ?? []
             result[dateFromComponents] = existing + [self.dto(from: entry)]
+        }.sorted { (tuple1, tuple2) in
+            return tuple1.key > tuple2.key
         }
     }
     

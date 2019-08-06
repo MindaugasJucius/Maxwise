@@ -5,7 +5,7 @@ class ExpensesViewController: UIViewController {
     private let expensesStatsViewController = ExpensesStatsViewController()
     
     private let viewModel: ExpensesViewModel
-//    private var expenses = [Date: [ExpensePresentationDTO]]()
+    private var expenseGroups = [(Date, [ExpensePresentationDTO])]()
     
     private lazy var dataSource: UITableViewDiffableDataSource<Date, ExpensePresentationDTO> = {
         return UITableViewDiffableDataSource(tableView: tableView) { [weak self] (tableView, indexPath, expenseEntryDTO) in
@@ -45,8 +45,10 @@ class ExpensesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.observeExpenseEntries { [weak self] groupedExpenses in
+            self?.expenseGroups = groupedExpenses
             let snapshot = NSDiffableDataSourceSnapshot<Date, ExpensePresentationDTO>()
-            snapshot.appendSections(Array(groupedExpenses.keys))
+            snapshot.appendSections(groupedExpenses.map { $0.0 })
+
             groupedExpenses.forEach { (key, value) in
                 snapshot.appendItems(value, toSection: key)
             }
@@ -68,8 +70,6 @@ class ExpensesViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.backgroundColor = .clear
-        
-        
     }
     
 }
@@ -77,8 +77,10 @@ class ExpensesViewController: UIViewController {
 extension ExpensesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return expensesStatsViewController.view
+        let label = UILabel(frame: .zero)
+        let group = expenseGroups[section]
+        label.text = viewModel.expenseGroupSectionDescription(from: group.0)
+        return label
     }
     
 }
-
