@@ -63,12 +63,12 @@ class ExpenseCreationIntentHandler: NSObject, CreateExpenseIntentHandling {
         }
         
         let expenseModelController = ExpenseEntryModelController()
-
-        expenseModelController.create(user: user,
-                                      nearbyPlace: nil,
-                                      category: expenseCategory,
-                                      recognizedDouble: amount,
-                                      title: expenseCategory.title) { result in
+        let expenseDTO = ExpenseDTO(category: expenseCategory,
+                                    user: user,
+                                    place: nil,
+                                    amount: amount,
+                                    shareAmount: .full)
+        expenseModelController.create(expenseDTO: expenseDTO) { result in
             switch result {
             case .success(_):
                 completion(.init(code: .success, userActivity: nil))
@@ -76,7 +76,6 @@ class ExpenseCreationIntentHandler: NSObject, CreateExpenseIntentHandling {
                 completion(.init(code: .failure, userActivity: nil))
             }
         }
-
     }
     
 

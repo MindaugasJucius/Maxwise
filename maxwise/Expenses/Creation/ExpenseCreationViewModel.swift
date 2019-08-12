@@ -9,13 +9,6 @@ enum ValidationResult<T> {
 
 class ExpenseCreationViewModel {
     
-    private struct ExpenseDTO {
-        let category: ExpenseCategory
-        let user: User
-        let place: NearbyPlace?
-        let amount: Double
-    }
-        
     private let expenseEntryModelController = ExpenseEntryModelController()
     private let userModelController = UserModelController()
     private let expenseCategoryModelController = ExpenseCategoryModelController()
@@ -23,41 +16,41 @@ class ExpenseCreationViewModel {
     private var expenseAmountDouble: Double?
     
     let nearbyPlaces: [NearbyPlace]
+    
     var categories: [ExpenseCategory] {
         return expenseCategoryModelController.storedCategories()
     }
+    
+    var percentages: [ExpenseDTO.SharePercentage] = [.full, .half]
     
     init(nearbyPlaces: [NearbyPlace]) {
         self.nearbyPlaces = nearbyPlaces
     }
     
-    func performModelCreation(amount: Double?, selectedPlace: NearbyPlace?, categoryID: String?, result: (ValidationResult<Void>) -> ()) {
+    func performModelCreation(amount: Double?, selectedPlace: NearbyPlace?, categoryID: String?, sharePercentage: ExpenseDTO.SharePercentage, result: (ValidationResult<Void>) -> ()) {
         expenseAmountDouble = amount
         
-        let validationResult = validate(selectedPlace: selectedPlace, categoryID: categoryID)
+        let validationResult = validate(selectedPlace: selectedPlace,
+                                        categoryID: categoryID,
+                                        sharePercentage: sharePercentage)
         switch validationResult {
         case .failure(let issues):
             result(.failure(issues))
         case .success(let dto):
-            expenseEntryModelController.create(
-                user: dto.user,
-                nearbyPlace: dto.place,
-                category: dto.category,
-                recognizedDouble: dto.amount,
-                title: dto.category.title,
-                completion: { creationResult in
-                    switch creationResult {
-                    case .failure(let error):
-                        result(.failure([error]))
-                    case .success(_):
-                        result(.success(()))
-                    }
+            expenseEntryModelController.create(expenseDTO: dto) { creationResult in
+                switch creationResult {
+                case .failure(let error):
+                    result(.failure([error]))
+                case .success(_):
+                    result(.success(()))
                 }
-            )
+            }
         }
     }
     
-    private func validate(selectedPlace: NearbyPlace?, categoryID: String?) -> ValidationResult<ExpenseDTO> {
+    private func validate(selectedPlace: NearbyPlace?,
+                          categoryID: String?,
+                          sharePercentage: ExpenseDTO.SharePercentage) -> ValidationResult<ExpenseDTO> {
         var issues: [CreationIssue] = []
         
         let filteredSelected = categories.filter { $0.id == categoryID }
@@ -77,7 +70,11 @@ class ExpenseCreationViewModel {
             return .failure(issues)
         }
 
-        let expenseDTO = ExpenseDTO(category: categoryValue, user: userValue, place: nil, amount: amount)
+        let expenseDTO = ExpenseDTO(category: categoryValue,
+                                    user: userValue,
+                                    place: nil,
+                                    amount: amount,
+                                    shareAmount: sharePercentage)
         return .success(expenseDTO)
     }
     

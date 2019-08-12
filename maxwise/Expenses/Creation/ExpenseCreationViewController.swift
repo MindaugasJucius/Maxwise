@@ -153,7 +153,12 @@ class ExpenseCreationViewController: UIViewController {
     }
 
     private func tryToCreateExpense() {
-        viewModel.performModelCreation(amount: textField.value, selectedPlace: nil, categoryID: selectedTag?.categoryID) { [weak self] result in
+        let selectedShare = viewModel.percentages[segmentedControl.selectedSegmentIndex]
+
+        viewModel.performModelCreation(amount: textField.value,
+                                       selectedPlace: nil,
+                                       categoryID: selectedTag?.categoryID,
+                                       sharePercentage: selectedShare) { [weak self] result in
             switch result {
             case .success(_):
                 self?.dismiss(animated: true, completion: nil)
@@ -184,9 +189,10 @@ class ExpenseCreationViewController: UIViewController {
     
     private func configureSegmentedControl() {
         segmentedControl.removeAllSegments()
-        ["100%", "50%"].enumerated().forEach { index, title in
-            segmentedControl.insertSegment(withTitle: title, at: index, animated: false)
+        viewModel.percentages.enumerated().forEach { (offset: Int, element: ExpenseDTO.SharePercentage) in
+            segmentedControl.insertSegment(withTitle: element.uiRepresentation, at: offset, animated: false)
         }
+
         segmentedControl.selectedSegmentIndex = 0
     }
     

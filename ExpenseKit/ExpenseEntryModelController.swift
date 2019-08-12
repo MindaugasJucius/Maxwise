@@ -15,25 +15,21 @@ public class ExpenseEntryModelController {
         
     }
     
-    public func create(user: User,
-                nearbyPlace: NearbyPlace?,
-                category: ExpenseCategory,
-                recognizedDouble: Double,
-                title: String,
-                completion: (Result<Void, CreationIssue>) -> ()) {
+    public func create(expenseDTO: ExpenseDTO,
+                       completion: (Result<Void, CreationIssue>) -> ()) {
         
         let expenseEntry = ExpenseEntry.init()
-        expenseEntry.amount = recognizedDouble
-        expenseEntry.category = category
-        expenseEntry.title = title
-        expenseEntry.place = nearbyPlace
+        expenseEntry.amount = expenseDTO.amount
+        expenseEntry.category = expenseDTO.category
+        expenseEntry.title = expenseDTO.category.title
+        expenseEntry.place = expenseDTO.place
         expenseEntry.id = UUID.init().uuidString
-
+        expenseEntry.sharePercentage = expenseDTO.shareAmount.databaseRepresentation
         do {
             let realm = try Realm.groupRealm()
             try realm.write {
                 realm.add(expenseEntry)
-                user.entries.append(expenseEntry)
+                expenseDTO.user.entries.append(expenseEntry)
             }
             donateCreateExpense(expense: expenseEntry)
             completion(.success(()))
