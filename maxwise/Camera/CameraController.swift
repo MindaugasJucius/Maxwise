@@ -33,7 +33,7 @@ class CameraController: NSObject {
     
     func takePhoto() {
         let settings = AVCapturePhotoSettings.init()
-        settings.isAutoStillImageStabilizationEnabled = true
+        settings.photoQualityPrioritization = .speed
         settings.flashMode = .auto
         let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
 
