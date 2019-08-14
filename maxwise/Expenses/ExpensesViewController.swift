@@ -80,6 +80,8 @@ extension ExpensesViewController: UITableViewDelegate {
         let label = UILabel(frame: .zero)
         let group = expenseGroups[section]
         label.text = viewModel.expenseGroupSectionDescription(from: group.0)
+        label.textColor = .secondaryLabel
+        label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
         return label
     }
     

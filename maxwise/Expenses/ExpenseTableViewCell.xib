@@ -60,7 +60,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="baE-cK-QuV" secondAttribute="trailing" id="9Rl-en-ER1"/>
                             <constraint firstAttribute="height" constant="50" id="ZmP-OH-aGo"/>
@@ -85,6 +84,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="amountLabel" destination="T4o-bh-EhT" id="TD0-Pd-zoV"/>
+                <outlet property="categoryEmojiLabel" destination="baE-cK-QuV" id="zyE-PH-kh6"/>
                 <outlet property="shareAmountLabel" destination="crh-0s-oQu" id="hUd-Eq-F2A"/>
                 <outlet property="shareAmountLabelExplanation" destination="vqa-Dw-Tel" id="qLi-oN-qtg"/>
                 <outlet property="stackView" destination="rIr-Xn-lW5" id="Wfr-xW-yh9"/>

@@ -12,14 +12,15 @@ public class ExpenseCategoryModelController {
             return
         }
         
-        let defaultCategoryProperties: [(String, UIColor)] = [("Food", .tealBlue),
-                                                              ("Entertainment", .pink),
-                                                              ("Eating Out", .orange),
-                                                              ("Sport", .blue)]
+        let defaultCategoryProperties: [(String, String, UIColor)] = [("Food", "🍛", .tealBlue),
+                                                                      ("Entertainment", "🤸‍♂️", .pink),
+                                                                      ("Eating Out", "🍽", .orange),
+                                                                      ("Sport", "🤾‍♀️", .blue)]
         defaultCategoryProperties.map { properties in
             let category = ExpenseCategory()
             category.title = properties.0
-            category.colorHexValue = properties.1.hexString
+            category.emojiValue = properties.1
+            category.colorHexValue = properties.2.hexString
             category.id = NSUUID.init().uuidString
             return category
         }.forEach {

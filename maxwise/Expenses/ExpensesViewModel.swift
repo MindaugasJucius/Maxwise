@@ -14,8 +14,8 @@ struct ExpensePresentationDTO: Hashable {
     let currencyAmount: String
     let sharePercentageCurrencyAmount: String
     let title: String
-    let categoryTitle: String
     let categoryColor: UIColor?
+    let categoryEmojiValue: String
     let formattedDate: String
     let image: UIImage?
 
@@ -98,8 +98,8 @@ class ExpensesViewModel {
                                       currencyAmount: formatted(amount: expenseEntry.amount),
                                       sharePercentageCurrencyAmount: formatted(amount: shareAmount),
                                       title: expenseEntry.title,
-                                      categoryTitle: category.title,
                                       categoryColor: category.color,
+                                      categoryEmojiValue: category.emojiValue,
                                       formattedDate: dateFormatter.string(from: expenseEntry.creationDate),
                                       image: image)
     }

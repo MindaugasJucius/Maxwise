@@ -6,6 +6,7 @@ public class ExpenseCategory: Object {
     
     @objc public dynamic var id: String! = ""
     @objc public dynamic var title = ""
+    @objc public dynamic var emojiValue = "💸"
     @objc public dynamic var colorHexValue: String = ""
     @objc public dynamic var creationDate = Date()
     
