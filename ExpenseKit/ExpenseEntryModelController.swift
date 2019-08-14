@@ -24,7 +24,7 @@ public class ExpenseEntryModelController {
         expenseEntry.title = expenseDTO.category.title
         expenseEntry.place = expenseDTO.place
         expenseEntry.id = UUID.init().uuidString
-        expenseEntry.sharePercentage = expenseDTO.shareAmount.databaseRepresentation
+        expenseEntry.sharePercentage = expenseDTO.shareAmount.rawValue
         do {
             let realm = try Realm.groupRealm()
             try realm.write {

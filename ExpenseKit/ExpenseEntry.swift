@@ -1,11 +1,33 @@
 import RealmSwift
 import Foundation
 
-
-
 public struct ExpenseDTO {
 
-    public enum SharePercentage {
+    public enum SharePercentage: RawRepresentable {
+        
+        public var rawValue: Double {
+            switch self {
+            case .custom(let double):
+                return double
+            case .full:
+                return 1
+            case .half:
+                return 0.5
+            }
+        }
+        
+        public typealias RawValue = Double
+        
+        public init?(rawValue: Double) {
+            if rawValue == 1 {
+                self = .full
+            } else if rawValue == 0.5 {
+                self = .half
+            } else {
+                self = .custom(rawValue)
+            }
+        }
+        
         case full
         case half
         case custom(Double)
@@ -18,17 +40,6 @@ public struct ExpenseDTO {
                 return "100%"
             case .half:
                 return "50%"
-            }
-        }
-        
-        var databaseRepresentation: Double {
-            switch self {
-            case .custom(let amount):
-                return amount
-            case .full:
-                return 100
-            case .half:
-                return 50
             }
         }
         
