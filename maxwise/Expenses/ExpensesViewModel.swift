@@ -2,13 +2,23 @@ import UIKit
 import ExpenseKit
 
 struct ExpensePresentationDTO: Hashable {
+    static func == (lhs: ExpensePresentationDTO, rhs: ExpensePresentationDTO) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     let id: String
     let currencyAmount: String
+    let sharePercentageCurrencyAmount: String
     let title: String
     let categoryTitle: String
     let categoryColor: UIColor?
     let formattedDate: String
     let image: UIImage?
+
 }
 
 typealias GroupedExpenses = [(Date, [ExpensePresentationDTO])]
@@ -28,7 +38,7 @@ class ExpensesViewModel {
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
-        formatter.dateFormat = "yyyy-MM-dd hh:mm"
+        formatter.dateFormat = "hh:mm"
         return formatter
     }()
     
@@ -76,14 +86,17 @@ class ExpensesViewModel {
             let deserializedImage = UIImage(data: imageData)
             image = deserializedImage
         }
-        
+
         guard let category = expenseEntry.category else {
             fatalError()
         }
 
         
+        let shareAmount = expenseEntry.amount * expenseEntry.sharePercentage
+        
         return ExpensePresentationDTO(id: expenseEntry.id,
                                       currencyAmount: formatted(amount: expenseEntry.amount),
+                                      sharePercentageCurrencyAmount: formatted(amount: shareAmount),
                                       title: expenseEntry.title,
                                       categoryTitle: category.title,
                                       categoryColor: category.color,

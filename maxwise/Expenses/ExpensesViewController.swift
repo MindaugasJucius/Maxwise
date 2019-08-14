@@ -65,7 +65,7 @@ class ExpensesViewController: UIViewController {
         tableView.register(cellNib, forCellReuseIdentifier: ExpenseTableViewCell.nibName)
         tableView.dataSource = dataSource
         tableView.delegate = self
-        tableView.estimatedRowHeight = 95
+        tableView.estimatedRowHeight = 67
         tableView.estimatedSectionHeaderHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
         tableView.sectionHeaderHeight = UITableView.automaticDimension
