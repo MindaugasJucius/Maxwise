@@ -63,6 +63,10 @@ class ExpensesViewController: UIViewController {
     private func configureTableView() {
         let cellNib = UINib.init(nibName: ExpenseTableViewCell.nibName, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: ExpenseTableViewCell.nibName)
+
+        let headerNib = UINib.init(nibName: ExpensesSectionHeaderView.nibName, bundle: nil)
+        tableView.register(headerNib,
+                           forHeaderFooterViewReuseIdentifier: ExpensesSectionHeaderView.nibName)
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.estimatedRowHeight = 67
@@ -77,12 +81,14 @@ class ExpensesViewController: UIViewController {
 extension ExpensesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel(frame: .zero)
+        let sectionView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ExpensesSectionHeaderView.nibName)
+        guard let sectionHeader = sectionView as? ExpensesSectionHeaderView else {
+            return sectionView
+        }
         let group = expenseGroups[section]
-        label.text = viewModel.expenseGroupSectionDescription(from: group.0)
-        label.textColor = .secondaryLabel
-        label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
-        return label
+        let text = viewModel.expenseGroupSectionDescription(from: group.0)
+        sectionHeader.configure(title: text)
+        return sectionHeader
     }
     
 }
