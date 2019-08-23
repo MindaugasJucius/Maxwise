@@ -1,5 +1,13 @@
 import UIKit
 
+public enum UIColorInputError: Error {
+    
+    case missingHashMarkAsPrefix(String)
+    case unableToScanHexValue(String)
+    case mismatchedHexStringLength(String)
+    case unableToOutputHexStringForWideDisplayColor
+}
+
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
@@ -33,25 +41,25 @@ extension UIColor {
         return nil
     }
     
-    var hexString: String {
-        let colorRef = cgColor.components
-        let r = colorRef?[0] ?? 0
-        let g = colorRef?[1] ?? 0
-        let b = ((colorRef?.count ?? 0) > 2 ? colorRef?[2] : g) ?? 0
-        let a = cgColor.alpha
+    public func hexStringThrows(_ includeAlpha: Bool = true) throws -> String  {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
         
-        var color = String(
-            format: "#%02lX%02lX%02lX",
-            lroundf(Float(r * 255)),
-            lroundf(Float(g * 255)),
-            lroundf(Float(b * 255))
-        )
-        
-        if a < 1 {
-            color += String(format: "%02lX", lroundf(Float(a)))
+        guard r >= 0 && r <= 1 && g >= 0 && g <= 1 && b >= 0 && b <= 1 else {
+            throw UIColorInputError.unableToOutputHexStringForWideDisplayColor
         }
         
-        return color
+        if (includeAlpha) {
+            return String(format: "#%02X%02X%02X%02X",
+                          Int(round(r * 255)), Int(round(g * 255)),
+                          Int(round(b * 255)), Int(round(a * 255)))
+        } else {
+            return String(format: "#%02X%02X%02X", Int(round(r * 255)),
+                          Int(round(g * 255)), Int(round(b * 255)))
+        }
     }
     
 }
