@@ -40,21 +40,18 @@ class ExpensesViewController: UIViewController {
         title = "Expenses"
         view.backgroundColor = UIColor.init(named: "background")
         addChild(expensesStatsViewController)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+
         viewModel.observeExpenseEntries { [weak self] groupedExpenses in
             self?.expenseGroups = groupedExpenses
             let snapshot = NSDiffableDataSourceSnapshot<Date, ExpensePresentationDTO>()
             snapshot.appendSections(groupedExpenses.map { $0.0 })
-
+            
             groupedExpenses.forEach { (key, value) in
                 snapshot.appendItems(value, toSection: key)
             }
             self?.dataSource.apply(snapshot)
         }
-
+        
         viewModel.amountSpentChanged = { [weak self] amount in
             self?.expensesStatsViewController.amount = amount
         }
