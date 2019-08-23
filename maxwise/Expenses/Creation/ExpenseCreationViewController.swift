@@ -118,6 +118,11 @@ class ExpenseCreationViewController: UIViewController {
         textField.placeholder = "Expense amount"
         textField.becomeFirstResponder()
         textField.layer.applyBorder()
+        textField.textColor = .label
+        
+        expenseInfoContainerView.layer.applyShadow()
+        expenseInfoContainerView.layer.cornerRadius = 6
+        expenseInfoContainerView.backgroundColor = .systemBackground
     
         let inputView = ExpenseCreationInputView.create(
             closeButton: { [weak self] in
@@ -133,8 +138,6 @@ class ExpenseCreationViewController: UIViewController {
         configureCameraContainerLayer()
         configureSegmentedControl()
         addDismissalTapHandler()
-        expenseInfoContainerView.layer.applyShadow()
-        expenseInfoContainerView.layer.cornerRadius = 6
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -333,26 +336,6 @@ class ExpenseCreationViewController: UIViewController {
         recognitionController.didMove(toParent: nil)
     }
 
-}
-
-extension ExpenseCreationViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return nearbyPlaces.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: VenueCollectionViewCell.nibName,
-            for: indexPath
-        )
-        guard let venueCell = cell as? VenueCollectionViewCell else {
-            return cell
-        }
-        venueCell.update(venue: nearbyPlaces[indexPath.row])
-        return venueCell
-    }
-    
 }
 
 extension ExpenseCreationViewController: CameraCaptureDelegate {

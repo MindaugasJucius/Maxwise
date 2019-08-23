@@ -17,10 +17,8 @@ class ExpenseTableViewCell: UITableViewCell {
         titleLabel.textColor = .label
 
         shareAmountLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-//        shareAmountLabel.textColor = .secondaryLabel
-        
+
         shareAmountLabelExplanation.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-//        shareAmountLabelExplanation.textColor = .tertiaryLabel
         shareAmountLabelExplanation.text = "You spent".uppercased()
         
         amountLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
@@ -38,7 +36,6 @@ class ExpenseTableViewCell: UITableViewCell {
         titleLabel.text = expenseDTO.title
         shareAmountLabel.textColor = expenseDTO.categoryColor?.withAlphaComponent(0.9)
         shareAmountLabelExplanation.textColor = expenseDTO.categoryColor?.withAlphaComponent(0.7)
-//        backgroundColor = expenseDTO.categoryColor?.withAlphaComponent(0.05)
     }
     
 }

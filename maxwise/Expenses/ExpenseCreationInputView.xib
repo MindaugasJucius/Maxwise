@@ -20,7 +20,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="47" height="32"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <state key="normal" title="Close">
-                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="titleColor" xcode11CocoaTouchSystemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
                             <connections>
                                 <action selector="closeButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="pdL-YM-3ss"/>
@@ -30,7 +30,7 @@
                             <rect key="frame" x="319" y="0.0" width="55" height="32"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <state key="normal" title="Create">
-                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="titleColor" xcode11CocoaTouchSystemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
                             <connections>
                                 <action selector="createButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="t1D-lv-deR"/>

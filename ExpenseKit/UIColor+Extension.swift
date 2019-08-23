@@ -1,10 +1,6 @@
 import UIKit
 
-public enum UIColorInputError: Error {
-    
-    case missingHashMarkAsPrefix(String)
-    case unableToScanHexValue(String)
-    case mismatchedHexStringLength(String)
+enum UIColorInputError: Error {    
     case unableToOutputHexStringForWideDisplayColor
 }
 
