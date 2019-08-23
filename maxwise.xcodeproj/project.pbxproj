@@ -44,6 +44,8 @@
 		5F4A3B81220720880016BCC9 /* UserModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B80220720880016BCC9 /* UserModelControllerTests.swift */; };
 		5F56B99023049E1C005AF4AF /* ExpensesSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F56B98F23049E1C005AF4AF /* ExpensesSectionHeaderView.swift */; };
 		5F56B99223049E2B005AF4AF /* ExpensesSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F56B99123049E2B005AF4AF /* ExpensesSectionHeaderView.xib */; };
+		5F56B99523101C9B005AF4AF /* ExpenseCategorySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F56B99323101C9B005AF4AF /* ExpenseCategorySelectionViewController.swift */; };
+		5F56B99623101C9B005AF4AF /* ExpenseCategorySelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F56B99423101C9B005AF4AF /* ExpenseCategorySelectionViewController.xib */; };
 		5F65C345222A6DAF00E10F92 /* VenueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65C343222A6DAF00E10F92 /* VenueCollectionViewCell.swift */; };
 		5F65C346222A6DAF00E10F92 /* VenueCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F65C344222A6DAF00E10F92 /* VenueCollectionViewCell.xib */; };
 		5F65CD4B22D2621B0040C218 /* ExpenseCreation.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
@@ -194,6 +196,8 @@
 		5F4A3B82220720880016BCC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F56B98F23049E1C005AF4AF /* ExpensesSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesSectionHeaderView.swift; sourceTree = "<group>"; };
 		5F56B99123049E2B005AF4AF /* ExpensesSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpensesSectionHeaderView.xib; sourceTree = "<group>"; };
+		5F56B99323101C9B005AF4AF /* ExpenseCategorySelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategorySelectionViewController.swift; sourceTree = "<group>"; };
+		5F56B99423101C9B005AF4AF /* ExpenseCategorySelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseCategorySelectionViewController.xib; sourceTree = "<group>"; };
 		5F65C343222A6DAF00E10F92 /* VenueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCollectionViewCell.swift; sourceTree = "<group>"; };
 		5F65C344222A6DAF00E10F92 /* VenueCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VenueCollectionViewCell.xib; sourceTree = "<group>"; };
 		5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ExpenseCreation.intentdefinition; sourceTree = "<group>"; };
@@ -454,6 +458,8 @@
 				5F65C343222A6DAF00E10F92 /* VenueCollectionViewCell.swift */,
 				5F65C344222A6DAF00E10F92 /* VenueCollectionViewCell.xib */,
 				5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */,
+				5F56B99323101C9B005AF4AF /* ExpenseCategorySelectionViewController.swift */,
+				5F56B99423101C9B005AF4AF /* ExpenseCategorySelectionViewController.xib */,
 			);
 			path = Creation;
 			sourceTree = "<group>";
@@ -715,6 +721,7 @@
 				5F240CA2222721A3009A41AE /* ExpenseCreationViewController.xib in Resources */,
 				5F9DE37E2218A135008CCB94 /* CameraViewController.xib in Resources */,
 				5F56B99223049E2B005AF4AF /* ExpensesSectionHeaderView.xib in Resources */,
+				5F56B99623101C9B005AF4AF /* ExpenseCategorySelectionViewController.xib in Resources */,
 				5F6878772207425400F4FE7C /* tessdata in Resources */,
 				5F65C346222A6DAF00E10F92 /* VenueCollectionViewCell.xib in Resources */,
 				5F20E0BE2210352F00BAECF6 /* ExpenseTableViewCell.xib in Resources */,
@@ -872,6 +879,7 @@
 			files = (
 				5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */,
 				5F470BDF220CA765002CD12D /* BlurView.swift in Sources */,
+				5F56B99523101C9B005AF4AF /* ExpenseCategorySelectionViewController.swift in Sources */,
 				F45D67CE22A3D96B00DB1AE1 /* VibrantContentView.swift in Sources */,
 				5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */,
 				5F65CD4B22D2621B0040C218 /* ExpenseCreation.intentdefinition in Sources */,

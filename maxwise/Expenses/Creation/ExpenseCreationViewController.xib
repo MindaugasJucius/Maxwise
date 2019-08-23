@@ -5,20 +5,20 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExpenseCreationViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
+                <outlet property="amountTextField" destination="hle-vD-21g" id="MYF-xE-CBV"/>
                 <outlet property="cameraContainerView" destination="NLg-uk-6eq" id="sQo-0B-sKw"/>
+                <outlet property="categorySelectionContainerView" destination="apP-nG-cs1" id="EMs-du-xRT"/>
                 <outlet property="collapseButtonContainer" destination="HMZ-ib-M42" id="Tb7-KI-kdn"/>
                 <outlet property="expandedCameraHeightConstraint" destination="5JY-rw-nNn" id="Fof-uC-Zhp"/>
                 <outlet property="expenseInfoContainerView" destination="a5I-kZ-cgF" id="V1I-Cf-zJC"/>
+                <outlet property="expenseTitle" destination="GBs-TY-1Co" id="szP-1W-UIx"/>
                 <outlet property="initialCameraHeightConstraint" destination="dfx-br-WUA" id="fEz-IU-aTD"/>
                 <outlet property="resetToCameraButtonContainer" destination="G8e-iZ-hv0" id="6qk-cc-wSS"/>
                 <outlet property="segmentedControl" destination="XSy-5f-SPq" id="SSc-FQ-zQr"/>
-                <outlet property="tagListView" destination="g1i-4U-m8x" id="9kj-S5-iKN"/>
-                <outlet property="textField" destination="hle-vD-21g" id="MYF-xE-CBV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,51 +28,66 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5I-kZ-cgF">
-                    <rect key="frame" x="16" y="563" width="343" height="147"/>
+                    <rect key="frame" x="16" y="603" width="343" height="107"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-GV-xNW">
-                            <rect key="frame" x="16" y="16" width="311" height="115"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aVY-p7-jAw">
+                            <rect key="frame" x="16" y="16" width="311" height="75"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hle-vD-21g" customClass="CurrencyTextField" customModule="maxwise" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="311" height="35"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apP-nG-cs1">
+                                    <rect key="frame" x="0.0" y="0.0" width="62.333333333333336" height="75"/>
+                                </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-GV-xNW">
+                                    <rect key="frame" x="70.333333333333329" y="0.0" width="240.66666666666669" height="75"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBs-TY-1Co">
+                                            <rect key="frame" x="0.0" y="0.0" width="240.66666666666666" height="35"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fMm-l6-zTT">
+                                            <rect key="frame" x="0.0" y="40" width="240.66666666666666" height="35"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hle-vD-21g" customClass="CurrencyTextField" customModule="maxwise" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="35"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-5f-SPq">
+                                                    <rect key="frame" x="111.66666666666669" y="0.0" width="129" height="36"/>
+                                                    <segments>
+                                                        <segment title="First"/>
+                                                        <segment title="Second"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="0Ap-aP-D1Q"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="65g-9L-amf"/>
+                                        <constraint firstItem="GBs-TY-1Co" firstAttribute="width" secondItem="Vx1-GV-xNW" secondAttribute="width" id="CbM-0D-rah"/>
+                                        <constraint firstItem="fMm-l6-zTT" firstAttribute="width" secondItem="Vx1-GV-xNW" secondAttribute="width" id="V9a-Ar-AW8"/>
                                     </constraints>
-                                    <color key="textColor" cocoaTouchSystemColor="systemGroupedBackgroundColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1i-4U-m8x" customClass="AMTagListView">
-                                    <rect key="frame" x="0.0" y="40" width="311" height="35"/>
-                                </scrollView>
-                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-5f-SPq">
-                                    <rect key="frame" x="0.0" y="80" width="311" height="36"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="d87-0D-297"/>
-                                    </constraints>
-                                    <segments>
-                                        <segment title="First"/>
-                                        <segment title="Second"/>
-                                    </segments>
-                                </segmentedControl>
+                                </stackView>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="hle-vD-21g" firstAttribute="width" secondItem="Vx1-GV-xNW" secondAttribute="width" id="0ui-0I-YpB"/>
-                                <constraint firstItem="g1i-4U-m8x" firstAttribute="width" secondItem="Vx1-GV-xNW" secondAttribute="width" id="Rf9-fN-gX0"/>
-                                <constraint firstItem="XSy-5f-SPq" firstAttribute="width" secondItem="Vx1-GV-xNW" secondAttribute="width" id="sad-0W-tSp"/>
+                                <constraint firstItem="apP-nG-cs1" firstAttribute="width" secondItem="aVY-p7-jAw" secondAttribute="width" multiplier="0.2" id="KEH-pT-Ey3"/>
                             </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="Vx1-GV-xNW" secondAttribute="bottom" constant="16" id="Gy8-SC-FHT"/>
-                        <constraint firstItem="Vx1-GV-xNW" firstAttribute="leading" secondItem="a5I-kZ-cgF" secondAttribute="leading" constant="16" id="J1N-fx-R1a"/>
-                        <constraint firstItem="Vx1-GV-xNW" firstAttribute="top" secondItem="a5I-kZ-cgF" secondAttribute="top" constant="16" id="YO6-6a-w6A"/>
-                        <constraint firstAttribute="trailing" secondItem="Vx1-GV-xNW" secondAttribute="trailing" constant="16" id="YSx-99-0fb"/>
+                        <constraint firstItem="aVY-p7-jAw" firstAttribute="top" secondItem="a5I-kZ-cgF" secondAttribute="top" constant="16" id="Kiq-SC-kCe"/>
+                        <constraint firstAttribute="bottom" secondItem="aVY-p7-jAw" secondAttribute="bottom" constant="16" id="PVt-Oj-Eja"/>
+                        <constraint firstAttribute="trailing" secondItem="aVY-p7-jAw" secondAttribute="trailing" constant="16" id="bPc-yg-Fwn"/>
+                        <constraint firstItem="aVY-p7-jAw" firstAttribute="leading" secondItem="a5I-kZ-cgF" secondAttribute="leading" constant="16" id="wNq-hS-0Jr"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLg-uk-6eq">
-                    <rect key="frame" x="16" y="495" width="343" height="60"/>
+                    <rect key="frame" x="16" y="535" width="343" height="60"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMZ-ib-M42" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
                             <rect key="frame" x="292" y="9" width="35" height="35"/>

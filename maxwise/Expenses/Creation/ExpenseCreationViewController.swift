@@ -80,10 +80,12 @@ class ExpenseCreationViewController: UIViewController {
     @IBOutlet private var expandedCameraHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet private weak var expenseInfoContainerView: UIView!
-    @IBOutlet private weak var textField: CurrencyTextField!
+    @IBOutlet private weak var amountTextField: CurrencyTextField!
+    @IBOutlet private weak var expenseTitle: UITextField!
     
-    @IBOutlet private weak var tagListView: AMTagListView!
-    private weak var selectedTag: AMTagView?
+    @IBOutlet weak var categorySelectionContainerView: UIView!
+    //    @IBOutlet private weak var tagListView: AMTagListView!
+//    private weak var selectedTag: AMTagView?
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
     private let nearbyPlaces: [NearbyPlace]
@@ -109,18 +111,23 @@ class ExpenseCreationViewController: UIViewController {
         let ratio: CGFloat = 4/3
         let expandedCameraHeight = ratio * cameraContainerView.bounds.width
         expandedCameraHeightConstraint.constant = expandedCameraHeight
-        textField.keyboardDistanceFromTextField = 70
+        amountTextField.keyboardDistanceFromTextField = 50
+        expenseTitle.keyboardDistanceFromTextField = 90
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.keyboardType = .decimalPad
-        textField.placeholder = "Expense amount"
-        textField.becomeFirstResponder()
-        textField.layer.applyBorder()
-        textField.textColor = .label
+        amountTextField.keyboardType = .decimalPad
+        amountTextField.placeholder = "Expense amount"
+        amountTextField.becomeFirstResponder()
+        amountTextField.backgroundColor = .systemBackground
+        amountTextField.textColor = .label
         
-        expenseInfoContainerView.layer.applyShadow()
+        expenseTitle.placeholder = "Enter a description"
+        expenseTitle.backgroundColor = .systemBackground
+        expenseTitle.textColor = .label
+        
+        expenseInfoContainerView.layer.applyShadow(color: .tertiaryLabel)
         expenseInfoContainerView.layer.cornerRadius = 6
         expenseInfoContainerView.backgroundColor = .systemBackground
     
@@ -132,11 +139,13 @@ class ExpenseCreationViewController: UIViewController {
                 self?.tryToCreateExpense()
             }
         )
-        textField.inputAccessoryView = inputView
+        amountTextField.inputAccessoryView = inputView
+        expenseTitle.inputAccessoryView = inputView
 
-        configureTagListView()
+        //configureTagListView()
         configureCameraContainerLayer()
         configureSegmentedControl()
+        addCategorySelectionController()
         addDismissalTapHandler()
     }
     
@@ -144,6 +153,18 @@ class ExpenseCreationViewController: UIViewController {
         super.viewDidAppear(animated)
         // Creating camera session in viewDidLoad on the main queue lags a bit
         addCameraController()
+    }
+    
+    private func addCategorySelectionController() {
+        categorySelectionContainerView.layer.masksToBounds = false
+        categorySelectionContainerView.clipsToBounds = false
+        
+        let categorySelectionController = ExpenseCategorySelectionViewController(categories: viewModel.categories)
+        addChild(categorySelectionController)
+        categorySelectionContainerView.addSubview(categorySelectionController.view)
+        categorySelectionController.view.translatesAutoresizingMaskIntoConstraints = false
+        categorySelectionController.view.fillInSuperview()
+        categorySelectionController.didMove(toParent: nil)
     }
     
     private func addDismissalTapHandler() {
@@ -158,9 +179,9 @@ class ExpenseCreationViewController: UIViewController {
     private func tryToCreateExpense() {
         let selectedShare = viewModel.percentages[segmentedControl.selectedSegmentIndex]
 
-        viewModel.performModelCreation(amount: textField.value,
+        viewModel.performModelCreation(amount: amountTextField.value,
                                        selectedPlace: nil,
-                                       categoryID: selectedTag?.categoryID,
+                                       categoryID: "0",
                                        sharePercentage: selectedShare) { [weak self] result in
             switch result {
             case .success(_):
@@ -176,9 +197,10 @@ class ExpenseCreationViewController: UIViewController {
         issues.forEach { issue in
             switch issue {
             case .noAmount:
-                textField.layer.borderColor = UIColor.red.cgColor
+                amountTextField.layer.borderColor = UIColor.red.cgColor
             case .noCategory:
-                tagListView.layer.borderColor = UIColor.red.cgColor
+                print("no category")
+//                tagListView.layer.borderColor = UIColor.red.cgColor
             case .alert(let message):
                 showAlert(for: message)
             }
@@ -186,8 +208,8 @@ class ExpenseCreationViewController: UIViewController {
     }
     
     private func resetErrorStates() {
-        textField.layer.borderColor = UIColor.clear.cgColor
-        tagListView.layer.borderColor = UIColor.clear.cgColor
+        amountTextField.layer.borderColor = UIColor.clear.cgColor
+//        tagListView.layer.borderColor = UIColor.clear.cgColor
     }
     
     private func configureSegmentedControl() {
@@ -241,7 +263,7 @@ class ExpenseCreationViewController: UIViewController {
     }
     
     @objc private func showCamera() {
-        textField.resignFirstResponder()
+        amountTextField.resignFirstResponder()
         
         let isCameraContainerHidden = initialCameraHeightConstraint.isActive
         tapRecognizer.isEnabled = !isCameraContainerHidden
@@ -264,7 +286,7 @@ class ExpenseCreationViewController: UIViewController {
     @objc private func collapseCamera() {
         showCamera()
         removeRecognitionController()
-        textField.becomeFirstResponder()
+        amountTextField.becomeFirstResponder()
     }
     
     @objc private func removeRecognitionController() {
@@ -276,36 +298,41 @@ class ExpenseCreationViewController: UIViewController {
         resetToCameraButtonContainer.alpha = 0
     }
     
-    private func configureTagListView() {
-        viewModel.categories.forEach { category in
-            let tagView = AMTagView(frame: .zero)
-            tagView.holeRadius = 3
-            tagView.userInfo = [:]
-            if let color = category.color {
-                tagView.color = color
-                tagView.applyDeselectedStyle(color: color)
-            }
-            tagView.categoryID = category.id
-            tagView.tagText = category.title as NSString
-            tagListView.addTagView(tagView)
-        }
-        
-        tagListView.setTapHandler { [weak self] tagView in
-            guard let color = tagView?.color else {
-                return
-            }
-            
-            if let currentSelectedTagColor = self?.selectedTag?.color {
-                self?.selectedTag?.applyDeselectedStyle(color: currentSelectedTagColor)
-            }
-
-            tagView?.applySelectedStyle(color: color)
-            self?.selectedTag = tagView
-        }
-        
-        tagListView.scrollDirection = .horizontal
-        tagListView.layer.applyBorder()
-    }
+//    private func configureTagListView() {
+//        viewModel.categories.forEach { category in
+//            let tagView = AMTagView(frame: .zero)
+//            tagView.holeRadius = 3
+//            tagView.userInfo = [:]
+//            tagView.textFont = .systemFont(ofSize: 16, weight: .regular)
+//            tagView.textPadding = .init(x: 3, y: 3)
+//            if let color = category.color {
+//                tagView.color = color
+//                tagView.applyDeselectedStyle(color: color)
+//            }
+//            tagView.categoryID = category.id
+//            let tagTitle = "\(category.emojiValue) \(category.title)"
+//            tagView.tagText = tagTitle as NSString
+//            tagListView.addTagView(tagView, andRearrange: false)
+//        }
+//
+//        tagListView.setTapHandler { [weak self] tagView in
+//            guard let color = tagView?.color else {
+//                return
+//            }
+//
+//            if let currentSelectedTagColor = self?.selectedTag?.color {
+//                self?.selectedTag?.applyDeselectedStyle(color: currentSelectedTagColor)
+//            }
+//
+//            tagView?.applySelectedStyle(color: color)
+//            self?.expenseTitle.placeholder = tagView?.tagText as String?
+//            self?.selectedTag = tagView
+//        }
+//
+//        tagListView.scrollDirection = .horizontal
+//        tagListView.layer.applyBorder()
+//        tagListView.layer.borderColor = UIColor.clear.cgColor
+//    }
     
     private func addCameraController() {
         addChild(cameraViewController)
@@ -320,8 +347,8 @@ class ExpenseCreationViewController: UIViewController {
                                           orientation: CGImagePropertyOrientation,
                                           tapLocation: CGPoint) {
         let recognitionOccured: (String) -> Void = { [weak self] value in
-            self?.textField.text = value
-            self?.textField.editingChanged()
+            self?.amountTextField.text = value
+            self?.amountTextField.editingChanged()
         }
         
         let recognitionController = TextPickViewController(cgImage: cgImage,

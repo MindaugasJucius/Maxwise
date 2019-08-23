@@ -1,10 +1,10 @@
 import UIKit
 
 extension CALayer {
-    func applyShadow() {
+    func applyShadow(color: UIColor) {
         shadowRadius = 5
         shadowOffset = CGSize.init(width: 3, height: 2)
-        shadowColor = UIColor.lightGray.cgColor
+        shadowColor = color.cgColor
         shadowOpacity = 0.3
         masksToBounds = false
     }
@@ -12,6 +12,5 @@ extension CALayer {
     func applyBorder() {
         borderWidth = 1
         cornerRadius = 6
-        borderColor = UIColor.clear.cgColor
     }
 }
