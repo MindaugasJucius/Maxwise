@@ -159,7 +159,7 @@ class ExpenseCreationViewController: UIViewController {
         categorySelectionContainerView.layer.masksToBounds = false
         categorySelectionContainerView.clipsToBounds = false
         
-        let categorySelectionController = ExpenseCategorySelectionViewController(categories: viewModel.categories)
+        let categorySelectionController = ExpenseSelectedCategoryViewController(categories: viewModel.categories)
         addChild(categorySelectionController)
         categorySelectionContainerView.addSubview(categorySelectionController.view)
         categorySelectionController.view.translatesAutoresizingMaskIntoConstraints = false

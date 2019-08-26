@@ -1,18 +1,11 @@
-//
-//  ExpenseCategorySelectionViewController.swift
-//  maxwise
-//
-//  Created by Mindaugas Jucius on 8/23/19.
-//  Copyright © 2019 Mindaugas Jucius. All rights reserved.
-//
-
 import UIKit
 import ExpenseKit
 
-class ExpenseCategorySelectionViewController: UIViewController {
+class ExpenseSelectedCategoryViewController: UIViewController {
 
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var emojiLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
     
     private let categories: [ExpenseCategory]
     
@@ -29,9 +22,15 @@ class ExpenseCategorySelectionViewController: UIViewController {
         super.viewDidLoad()
         view.layer.applyBorder()
         view.layer.borderColor = UIColor.clear.cgColor
-        categoryLabel.font = .systemFont(ofSize: 8, weight: .bold)
         containerView.layer.applyBorder()
         configureForCategory()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
+        containerView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func tap() {
+//        present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
     }
     
     private func configureForCategory() {
@@ -39,14 +38,14 @@ class ExpenseCategorySelectionViewController: UIViewController {
             let category = categories.filter ({ $0.id == preselectedCategoryID }).first else {
                 fatalError()
         }
-        
+
         containerView.backgroundColor = category.color?.withAlphaComponent(0.1)
         containerView.layer.borderColor = category.color?.withAlphaComponent(0.4).cgColor
         emojiLabel.text = category.emojiValue
-
+        titleLabel.text = category.title.uppercased()
+        titleLabel.textColor = category.color
         if let shadowColor = category.color {
             view.layer.applyShadow(color: shadowColor)
         }
     }
-    
 }

@@ -6,6 +6,7 @@ import UIKit
 public class ExpenseCategoryModelController {
     
     private let defaultCategoriesCreatedKey = "defaultCategoriesCreated"
+    public static let preselectedCategoryKey = "preselectedCategoryKey"
     
     public func addDefaultCategoriesIfNeeded() {
         guard !UserDefaults.standard.bool(forKey: defaultCategoriesCreatedKey) else {
@@ -25,6 +26,10 @@ public class ExpenseCategoryModelController {
                 category.colorHexValue = hexString
             }
             category.id = NSUUID.init().uuidString
+            
+            if category.title == "Entertainment" {
+                UserDefaults.standard.set(category.id, forKey: ExpenseCategoryModelController.preselectedCategoryKey)
+            }
             return category
         }.forEach {
             store(category: $0)
