@@ -21,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = ContainerViewController()
 
-        IQKeyboardManager.shared.enable = true
-
         ExpenseCategoryModelController().addDefaultCategoriesIfNeeded()
         return true
     }

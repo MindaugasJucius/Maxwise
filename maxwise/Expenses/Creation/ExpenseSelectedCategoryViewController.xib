@@ -11,7 +11,6 @@
             <connections>
                 <outlet property="containerView" destination="Fah-l3-4qi" id="2wd-ft-s67"/>
                 <outlet property="emojiLabel" destination="iGw-Qg-ZPf" id="aH6-gP-xXt"/>
-                <outlet property="titleLabel" destination="hxS-MC-o70" id="45M-AL-PM7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,17 +19,11 @@
             <rect key="frame" x="0.0" y="0.0" width="144" height="139"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="4" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hxS-MC-o70">
-                    <rect key="frame" x="2" y="120.5" width="140" height="14.5"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fah-l3-4qi">
-                    <rect key="frame" x="0.0" y="0.0" width="144" height="123"/>
+                    <rect key="frame" x="0.0" y="0.0" width="144" height="139"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGw-Qg-ZPf">
-                            <rect key="frame" x="55" y="43.5" width="34" height="36"/>
+                            <rect key="frame" x="55" y="51.5" width="34" height="36"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -45,13 +38,10 @@
             </subviews>
             <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hxS-MC-o70" secondAttribute="trailing" constant="2" id="0h9-Qs-YeD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Fah-l3-4qi" secondAttribute="trailing" id="5Bz-zS-wtd"/>
-                <constraint firstItem="hxS-MC-o70" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="2" id="GZf-Vu-kkC"/>
                 <constraint firstItem="Fah-l3-4qi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Uk2-lO-8Hs"/>
                 <constraint firstItem="Fah-l3-4qi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VF5-7k-Eqp"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Fah-l3-4qi" secondAttribute="bottom" constant="16" id="WsZ-wf-NrN"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hxS-MC-o70" secondAttribute="bottom" constant="4" id="dev-h8-l6n"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Fah-l3-4qi" secondAttribute="bottom" id="WsZ-wf-NrN"/>
             </constraints>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

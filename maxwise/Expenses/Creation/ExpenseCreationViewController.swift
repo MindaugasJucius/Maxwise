@@ -10,6 +10,7 @@ enum ModalTransitionType {
 class ExpenseCreationViewController: UIViewController {
 
     @IBOutlet private weak var cameraContainerView: UIView!
+    @IBOutlet private weak var safeAreaBottomConstraint: NSLayoutConstraint!
     
     private lazy var collapseCameraButton: UIButton = {
         let button = UIButton()
@@ -84,6 +85,7 @@ class ExpenseCreationViewController: UIViewController {
     @IBOutlet private weak var expenseTitle: UITextField!
     
     @IBOutlet weak var categorySelectionContainerView: UIView!
+    private var selectedCategory: ExpenseCategory?
     //    @IBOutlet private weak var tagListView: AMTagListView!
 //    private weak var selectedTag: AMTagView?
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
@@ -111,17 +113,19 @@ class ExpenseCreationViewController: UIViewController {
         let ratio: CGFloat = 4/3
         let expandedCameraHeight = ratio * cameraContainerView.bounds.width
         expandedCameraHeightConstraint.constant = expandedCameraHeight
-        amountTextField.keyboardDistanceFromTextField = 50
-        expenseTitle.keyboardDistanceFromTextField = 90
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+
         amountTextField.keyboardType = .decimalPad
         amountTextField.placeholder = "Expense amount"
-        amountTextField.becomeFirstResponder()
         amountTextField.backgroundColor = .systemBackground
         amountTextField.textColor = .label
+        amountTextField.becomeFirstResponder()
         
         expenseTitle.placeholder = "Enter a description"
         expenseTitle.backgroundColor = .systemBackground
@@ -142,7 +146,6 @@ class ExpenseCreationViewController: UIViewController {
         amountTextField.inputAccessoryView = inputView
         expenseTitle.inputAccessoryView = inputView
 
-        //configureTagListView()
         configureCameraContainerLayer()
         configureSegmentedControl()
         addCategorySelectionController()
@@ -155,16 +158,33 @@ class ExpenseCreationViewController: UIViewController {
         addCameraController()
     }
     
-    private func addCategorySelectionController() {
-        categorySelectionContainerView.layer.masksToBounds = false
-        categorySelectionContainerView.clipsToBounds = false
+    @objc private func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         
-        let categorySelectionController = ExpenseSelectedCategoryViewController(categories: viewModel.categories)
-        addChild(categorySelectionController)
-        categorySelectionContainerView.addSubview(categorySelectionController.view)
-        categorySelectionController.view.translatesAutoresizingMaskIntoConstraints = false
-        categorySelectionController.view.fillInSuperview()
-        categorySelectionController.didMove(toParent: nil)
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            safeAreaBottomConstraint.constant = 16
+        } else {
+            safeAreaBottomConstraint.constant = keyboardViewEndFrame.height
+        }
+    }
+    
+    private func addCategorySelectionController() {
+        let categorySelectedController = ExpenseSelectedCategoryViewController(categories: viewModel.categories) { [weak self] selectedCategory in
+            self?.handleCategorySelection(category: selectedCategory)
+        }
+        addChild(categorySelectedController)
+        categorySelectionContainerView.addSubview(categorySelectedController.view)
+        categorySelectedController.view.translatesAutoresizingMaskIntoConstraints = false
+        categorySelectedController.view.fillInSuperview()
+        categorySelectedController.didMove(toParent: nil)
+    }
+    
+    private func handleCategorySelection(category: ExpenseCategory) {
+        expenseTitle.placeholder = category.title.capitalized
+        selectedCategory = category
     }
     
     private func addDismissalTapHandler() {
@@ -181,7 +201,7 @@ class ExpenseCreationViewController: UIViewController {
 
         viewModel.performModelCreation(amount: amountTextField.value,
                                        selectedPlace: nil,
-                                       categoryID: "0",
+                                       categoryID: selectedCategory?.id,
                                        sharePercentage: selectedShare) { [weak self] result in
             switch result {
             case .success(_):
@@ -197,10 +217,9 @@ class ExpenseCreationViewController: UIViewController {
         issues.forEach { issue in
             switch issue {
             case .noAmount:
-                amountTextField.layer.borderColor = UIColor.red.cgColor
+                amountTextField.textColor = .red
             case .noCategory:
                 print("no category")
-//                tagListView.layer.borderColor = UIColor.red.cgColor
             case .alert(let message):
                 showAlert(for: message)
             }
@@ -208,8 +227,7 @@ class ExpenseCreationViewController: UIViewController {
     }
     
     private func resetErrorStates() {
-        amountTextField.layer.borderColor = UIColor.clear.cgColor
-//        tagListView.layer.borderColor = UIColor.clear.cgColor
+        amountTextField.textColor = .label
     }
     
     private func configureSegmentedControl() {
@@ -298,42 +316,6 @@ class ExpenseCreationViewController: UIViewController {
         resetToCameraButtonContainer.alpha = 0
     }
     
-//    private func configureTagListView() {
-//        viewModel.categories.forEach { category in
-//            let tagView = AMTagView(frame: .zero)
-//            tagView.holeRadius = 3
-//            tagView.userInfo = [:]
-//            tagView.textFont = .systemFont(ofSize: 16, weight: .regular)
-//            tagView.textPadding = .init(x: 3, y: 3)
-//            if let color = category.color {
-//                tagView.color = color
-//                tagView.applyDeselectedStyle(color: color)
-//            }
-//            tagView.categoryID = category.id
-//            let tagTitle = "\(category.emojiValue) \(category.title)"
-//            tagView.tagText = tagTitle as NSString
-//            tagListView.addTagView(tagView, andRearrange: false)
-//        }
-//
-//        tagListView.setTapHandler { [weak self] tagView in
-//            guard let color = tagView?.color else {
-//                return
-//            }
-//
-//            if let currentSelectedTagColor = self?.selectedTag?.color {
-//                self?.selectedTag?.applyDeselectedStyle(color: currentSelectedTagColor)
-//            }
-//
-//            tagView?.applySelectedStyle(color: color)
-//            self?.expenseTitle.placeholder = tagView?.tagText as String?
-//            self?.selectedTag = tagView
-//        }
-//
-//        tagListView.scrollDirection = .horizontal
-//        tagListView.layer.applyBorder()
-//        tagListView.layer.borderColor = UIColor.clear.cgColor
-//    }
-    
     private func addCameraController() {
         addChild(cameraViewController)
         cameraContainerView.insertSubview(cameraViewController.view,
@@ -373,3 +355,17 @@ extension ExpenseCreationViewController: CameraCaptureDelegate {
     }
     
 }
+
+//extension UIResponder {
+//    private weak static var _currentFirstResponder: UIResponder? = nil
+//
+//    public static var current: UIResponder? {
+//        UIResponder._currentFirstResponder = nil
+//        UIApplication.shared.sendAction(#selector(findFirstResponder(sender:)), to: nil, from: nil, for: nil)
+//        return UIResponder._currentFirstResponder
+//    }
+//
+//    @objc internal func findFirstResponder(sender: AnyObject) {
+//        UIResponder._currentFirstResponder = self
+//    }
+//}

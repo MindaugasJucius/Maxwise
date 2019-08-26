@@ -17,7 +17,7 @@ public class ExpenseCategoryModelController {
                                                                       ("Entertainment", "🤸‍♂️", .pink),
                                                                       ("Eating Out", "🍽", .orange),
                                                                       ("Sport", "🤾‍♀️", .blue),
-                                                                      ("Other", "💸", .gray)]
+                                                                      ("Other", "💸", .green)]
         defaultCategoryProperties.map { properties in
             let category = ExpenseCategory()
             category.title = properties.0

@@ -5,12 +5,13 @@ class ExpenseSelectedCategoryViewController: UIViewController {
 
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var emojiLabel: UILabel!
-    @IBOutlet private weak var titleLabel: UILabel!
     
     private let categories: [ExpenseCategory]
+    private let selectedCategory: (ExpenseCategory) -> ()
     
-    init(categories: [ExpenseCategory]) {
+    init(categories: [ExpenseCategory], selectedCategory: @escaping (ExpenseCategory) -> ()) {
         self.categories = categories
+        self.selectedCategory = selectedCategory
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -23,27 +24,34 @@ class ExpenseSelectedCategoryViewController: UIViewController {
         view.layer.applyBorder()
         view.layer.borderColor = UIColor.clear.cgColor
         containerView.layer.applyBorder()
-        configureForCategory()
-        
+
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
         containerView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func tap() {
-//        present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
-    }
-    
-    private func configureForCategory() {
+
         guard let preselectedCategoryID = UserDefaults.standard.string(forKey: ExpenseCategoryModelController.preselectedCategoryKey),
             let category = categories.filter ({ $0.id == preselectedCategoryID }).first else {
                 fatalError()
         }
-
+        configure(for: category)
+        selectedCategory(category)
+    }
+    
+    @objc private func tap() {
+        let selectionVC = ExpenseCategorySelectionViewController(categories: categories) { [weak self] selectedCategory in
+            self?.dismiss(animated: true, completion: nil)
+            self?.configure(for: selectedCategory)
+            self?.selectedCategory(selectedCategory)
+        }
+        
+        let navigationController = UINavigationController(rootViewController: selectionVC)
+        navigationController.navigationBar.prefersLargeTitles = true
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    private func configure(for category: ExpenseCategory) {
         containerView.backgroundColor = category.color?.withAlphaComponent(0.1)
         containerView.layer.borderColor = category.color?.withAlphaComponent(0.4).cgColor
         emojiLabel.text = category.emojiValue
-        titleLabel.text = category.title.uppercased()
-        titleLabel.textColor = category.color
         if let shadowColor = category.color {
             view.layer.applyShadow(color: shadowColor)
         }
