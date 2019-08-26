@@ -85,8 +85,6 @@ class ExpenseCreationViewController: UIViewController {
     
     @IBOutlet weak var categorySelectionContainerView: UIView!
     private var selectedCategory: ExpenseCategory?
-    //    @IBOutlet private weak var tagListView: AMTagListView!
-//    private weak var selectedTag: AMTagView?
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
     private let nearbyPlaces: [NearbyPlace]
@@ -177,8 +175,15 @@ class ExpenseCreationViewController: UIViewController {
         addChild(categorySelectedController)
         categorySelectionContainerView.addSubview(categorySelectedController.view)
         categorySelectedController.view.translatesAutoresizingMaskIntoConstraints = false
-
-        categorySelectedController.view.fillInSuperview()
+        
+        let constraints = [
+            categorySelectedController.view.widthAnchor.constraint(equalTo: categorySelectionContainerView.widthAnchor),
+            categorySelectedController.view.heightAnchor.constraint(equalTo: categorySelectedController.view.widthAnchor),
+            categorySelectedController.view.centerXAnchor.constraint(equalTo: categorySelectionContainerView.centerXAnchor),
+            categorySelectedController.view.centerYAnchor.constraint(equalTo: categorySelectionContainerView.centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        
         categorySelectedController.didMove(toParent: nil)
     }
     
