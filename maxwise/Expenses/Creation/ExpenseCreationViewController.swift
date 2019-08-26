@@ -80,7 +80,7 @@ class ExpenseCreationViewController: UIViewController {
     @IBOutlet private var expandedCameraHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet private weak var expenseInfoContainerView: UIView!
-    @IBOutlet private weak var amountTextField: CurrencyTextField!
+    @IBOutlet private weak var amountTextField: UITextField!
     @IBOutlet private weak var expenseTitle: UITextField!
     
     @IBOutlet weak var categorySelectionContainerView: UIView!
@@ -119,7 +119,7 @@ class ExpenseCreationViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
 
         amountTextField.keyboardType = .decimalPad
-        amountTextField.placeholder = "Expense amount"
+        amountTextField.placeholder = viewModel.amountPlaceholder
         amountTextField.backgroundColor = .systemBackground
         amountTextField.textColor = .label
         amountTextField.becomeFirstResponder()
@@ -204,7 +204,7 @@ class ExpenseCreationViewController: UIViewController {
     private func tryToCreateExpense() {
         let selectedShare = viewModel.percentages[segmentedControl.selectedSegmentIndex]
 
-        viewModel.performModelCreation(amount: amountTextField.value,
+        viewModel.performModelCreation(amount: amountTextField?.text,
                                        selectedPlace: nil,
                                        categoryID: selectedCategory?.id,
                                        sharePercentage: selectedShare) { [weak self] result in
@@ -334,8 +334,11 @@ class ExpenseCreationViewController: UIViewController {
                                           orientation: CGImagePropertyOrientation,
                                           tapLocation: CGPoint) {
         let recognitionOccured: (String) -> Void = { [weak self] value in
-            self?.amountTextField.text = value
-            self?.amountTextField.editingChanged()
+            if let formattedRecognized = self?.viewModel.formatRecognized(input: value) {
+                self?.amountTextField.text = formattedRecognized
+            } else {
+                self?.handle(issues: [.noAmount])
+            }
         }
         
         let recognitionController = TextPickViewController(cgImage: cgImage,

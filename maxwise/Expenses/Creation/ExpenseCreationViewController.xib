@@ -29,34 +29,37 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5I-kZ-cgF">
-                    <rect key="frame" x="16" y="603" width="343" height="107"/>
+                    <rect key="frame" x="16" y="593" width="343" height="117"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aVY-p7-jAw">
-                            <rect key="frame" x="16" y="16" width="311" height="75"/>
+                            <rect key="frame" x="16" y="16" width="311" height="85"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apP-nG-cs1">
-                                    <rect key="frame" x="0.0" y="0.0" width="62.333333333333336" height="75"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="62.333333333333336" height="85"/>
                                 </view>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-GV-xNW">
-                                    <rect key="frame" x="70.333333333333329" y="0.0" width="240.66666666666669" height="75"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-GV-xNW">
+                                    <rect key="frame" x="70.333333333333329" y="0.0" width="240.66666666666669" height="85"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBs-TY-1Co">
                                             <rect key="frame" x="0.0" y="0.0" width="240.66666666666666" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="J46-fT-ea9"/>
+                                            </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fMm-l6-zTT">
-                                            <rect key="frame" x="0.0" y="40" width="240.66666666666666" height="35"/>
+                                            <rect key="frame" x="0.0" y="40" width="240.66666666666666" height="45"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hle-vD-21g" customClass="CurrencyTextField" customModule="maxwise" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="35"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hle-vD-21g">
+                                                    <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="45"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-5f-SPq">
-                                                    <rect key="frame" x="111.66666666666669" y="0.0" width="129" height="36"/>
+                                                    <rect key="frame" x="111.66666666666669" y="0.0" width="129" height="46"/>
                                                     <segments>
                                                         <segment title="First"/>
                                                         <segment title="Second"/>
@@ -64,7 +67,7 @@
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="0Ap-aP-D1Q"/>
+                                                <constraint firstAttribute="height" constant="45" id="0Ap-aP-D1Q"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
@@ -88,7 +91,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLg-uk-6eq">
-                    <rect key="frame" x="16" y="535" width="343" height="60"/>
+                    <rect key="frame" x="16" y="525" width="343" height="60"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMZ-ib-M42" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
                             <rect key="frame" x="292" y="9" width="35" height="35"/>

@@ -13,7 +13,22 @@ class ExpenseCreationViewModel {
     private let userModelController = UserModelController()
     private let expenseCategoryModelController = ExpenseCategoryModelController()
     
-    private var expenseAmountDouble: Double?
+    lazy var amountPlaceholder = currencyFormatter.string(from: NSNumber(value: 0))
+    lazy var currencySymbol = currencyFormatter.currencySymbol
+    
+    private lazy var currencyFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        return formatter
+    }()
+    
+    private lazy var inputToDoubleFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
     
     let nearbyPlaces: [NearbyPlace]
     
@@ -27,12 +42,21 @@ class ExpenseCreationViewModel {
         self.nearbyPlaces = nearbyPlaces
     }
     
-    func performModelCreation(amount: Double?, selectedPlace: NearbyPlace?, categoryID: String?, sharePercentage: ExpenseDTO.SharePercentage, result: (ValidationResult<Void>) -> ()) {
-        expenseAmountDouble = amount
-        
-        let validationResult = validate(selectedPlace: selectedPlace,
+    func formatRecognized(input: String) -> String? {
+        guard let number = currencyFormatter.number(from: input),
+            let string = currencyFormatter.string(from: number) else {
+            return nil
+        }
+        return string
+    }
+    
+    func performModelCreation(amount: String?, selectedPlace: NearbyPlace?, categoryID: String?, sharePercentage: ExpenseDTO.SharePercentage, result: (ValidationResult<Void>) -> ()) {
+    
+        let validationResult = validate(amount: amount,
+                                        selectedPlace: selectedPlace,
                                         categoryID: categoryID,
                                         sharePercentage: sharePercentage)
+        
         switch validationResult {
         case .failure(let issues):
             result(.failure(issues))
@@ -48,7 +72,8 @@ class ExpenseCreationViewModel {
         }
     }
     
-    private func validate(selectedPlace: NearbyPlace?,
+    private func validate(amount: String?,
+                          selectedPlace: NearbyPlace?,
                           categoryID: String?,
                           sharePercentage: ExpenseDTO.SharePercentage) -> ValidationResult<ExpenseDTO> {
         var issues: [CreationIssue] = []
@@ -59,9 +84,15 @@ class ExpenseCreationViewModel {
         
         let noUserCanBeCreated = CreationIssue.alert("User can't be created")
         let user = retrieve(from: try? userModelController.currentUserOrCreate(), issue: noUserCanBeCreated, issues: &issues)
-        let expenseAmount = retrieve(from: expenseAmountDouble, issue: .noAmount, issues: &issues)
 
-        guard let amount = expenseAmount, amount > 0 else {
+        guard let expenseAmount = retrieve(from: amount, issue: .noAmount, issues: &issues) else {
+            issues.append(.noAmount)
+            return .failure(issues)
+        }
+        
+        guard let formattedInput = inputToDoubleFormatter.number(from: expenseAmount), formattedInput.doubleValue > 0,
+            currencyFormatter.string(from: formattedInput) != nil else {
+            // Failed to format to a currency string - must be an invalid input
             issues.append(.noAmount)
             return .failure(issues)
         }
@@ -73,7 +104,7 @@ class ExpenseCreationViewModel {
         let expenseDTO = ExpenseDTO(category: categoryValue,
                                     user: userValue,
                                     place: nil,
-                                    amount: amount,
+                                    amount: formattedInput.doubleValue,
                                     shareAmount: sharePercentage)
         return .success(expenseDTO)
     }
