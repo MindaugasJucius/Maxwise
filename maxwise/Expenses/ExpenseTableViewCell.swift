@@ -1,5 +1,4 @@
 import UIKit
-import AMTagListView
 
 class ExpenseTableViewCell: UITableViewCell {
 

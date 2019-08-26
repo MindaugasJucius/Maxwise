@@ -1,34 +1,30 @@
 PODS:
   - FoursquareAPIClient (4.2.0)
-  - IQKeyboardManagerSwift (6.2.0)
-  - Realm (3.13.1):
-    - Realm/Headers (= 3.13.1)
-  - Realm/Headers (3.13.1)
-  - RealmSwift (3.13.1):
-    - Realm (= 3.13.1)
+  - Realm (3.17.0):
+    - Realm/Headers (= 3.17.0)
+  - Realm/Headers (3.17.0)
+  - RealmSwift (3.17.0):
+    - Realm (= 3.17.0)
   - TesseractOCRiOS (5.0.1)
 
 DEPENDENCIES:
   - FoursquareAPIClient
-  - IQKeyboardManagerSwift
   - RealmSwift
   - TesseractOCRiOS
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FoursquareAPIClient
-    - IQKeyboardManagerSwift
     - Realm
     - RealmSwift
     - TesseractOCRiOS
 
 SPEC CHECKSUMS:
   FoursquareAPIClient: 3cb02bb68cfdbc524741bf3ba110f94679082b46
-  IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
-  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
-  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  Realm: b30db41ff34fc858ffc25ba8d44a82c164e7ccd0
+  RealmSwift: fe733e459d60dc7b6971d4cbee2eb4854097d12c
   TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
 
-PODFILE CHECKSUM: ff996290ab287d3494c9e4c388660cd025229d6e
+PODFILE CHECKSUM: f61db38761094f245ddfb00531ecf59b124fc7c9
 
 COCOAPODS: 1.5.3

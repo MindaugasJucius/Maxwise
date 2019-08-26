@@ -1,5 +1,4 @@
 import UIKit
-import AMTagListView
 import ExpenseKit
 
 enum ModalTransitionType {
@@ -178,6 +177,7 @@ class ExpenseCreationViewController: UIViewController {
         addChild(categorySelectedController)
         categorySelectionContainerView.addSubview(categorySelectedController.view)
         categorySelectedController.view.translatesAutoresizingMaskIntoConstraints = false
+
         categorySelectedController.view.fillInSuperview()
         categorySelectedController.didMove(toParent: nil)
     }

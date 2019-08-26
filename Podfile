@@ -11,8 +11,6 @@ target 'maxwise' do
 
   pod 'TesseractOCRiOS'
   pod 'FoursquareAPIClient'
-  pod 'IQKeyboardManagerSwift'
-  pod 'AMTagListView'
   shared_pods
 
   target 'maxwiseTests' do
