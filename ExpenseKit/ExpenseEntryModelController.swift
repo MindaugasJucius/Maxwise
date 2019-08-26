@@ -21,7 +21,7 @@ public class ExpenseEntryModelController {
         let expenseEntry = ExpenseEntry.init()
         expenseEntry.amount = expenseDTO.amount
         expenseEntry.category = expenseDTO.category
-        expenseEntry.title = expenseDTO.category.title
+        expenseEntry.title = expenseDTO.title
         expenseEntry.place = expenseDTO.place
         expenseEntry.id = UUID.init().uuidString
         expenseEntry.sharePercentage = expenseDTO.shareAmount.rawValue

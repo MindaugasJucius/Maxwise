@@ -63,7 +63,8 @@ class ExpenseCreationIntentHandler: NSObject, CreateExpenseIntentHandling {
         }
         
         let expenseModelController = ExpenseEntryModelController()
-        let expenseDTO = ExpenseDTO(category: expenseCategory,
+        let expenseDTO = ExpenseDTO(title: expenseCategory.title,
+                                    category: expenseCategory,
                                     user: user,
                                     place: nil,
                                     amount: amount,

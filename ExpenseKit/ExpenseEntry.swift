@@ -45,13 +45,15 @@ public struct ExpenseDTO {
         
     }
     
+    public let title: String
     public let category: ExpenseCategory
     public let user: User
     public let place: NearbyPlace?
     public let amount: Double
     public let shareAmount: SharePercentage
 
-    public init(category: ExpenseCategory,
+    public init(title: String,
+         category: ExpenseCategory,
          user: User,
          place: NearbyPlace?,
          amount: Double,
@@ -61,6 +63,7 @@ public struct ExpenseDTO {
         self.place = place
         self.amount = amount
         self.shareAmount = shareAmount
+        self.title = title
     }
 }
 

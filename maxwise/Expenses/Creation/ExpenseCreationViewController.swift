@@ -201,7 +201,8 @@ class ExpenseCreationViewController: UIViewController {
     private func tryToCreateExpense() {
         let selectedShare = viewModel.percentages[segmentedControl.selectedSegmentIndex]
 
-        viewModel.performModelCreation(amount: amountTextField?.text,
+        viewModel.performModelCreation(title: expenseTitle.text,
+                                       amount: amountTextField?.text,
                                        selectedPlace: nil,
                                        categoryID: selectedCategory?.id,
                                        sharePercentage: selectedShare) { [weak self] result in

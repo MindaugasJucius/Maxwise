@@ -56,9 +56,15 @@ class ExpenseCreationViewModel {
         return string
     }
     
-    func performModelCreation(amount: String?, selectedPlace: NearbyPlace?, categoryID: String?, sharePercentage: ExpenseDTO.SharePercentage, result: (ValidationResult<Void>) -> ()) {
+    func performModelCreation(title: String?,
+                              amount: String?,
+                              selectedPlace: NearbyPlace?,
+                              categoryID: String?,
+                              sharePercentage: ExpenseDTO.SharePercentage,
+                              result: (ValidationResult<Void>) -> ()) {
     
-        let validationResult = validate(amount: amount,
+        let validationResult = validate(title: title,
+                                        amount: amount,
                                         selectedPlace: selectedPlace,
                                         categoryID: categoryID,
                                         sharePercentage: sharePercentage)
@@ -78,7 +84,8 @@ class ExpenseCreationViewModel {
         }
     }
     
-    private func validate(amount: String?,
+    private func validate(title: String?,
+                          amount: String?,
                           selectedPlace: NearbyPlace?,
                           categoryID: String?,
                           sharePercentage: ExpenseDTO.SharePercentage) -> ValidationResult<ExpenseDTO> {
@@ -107,7 +114,8 @@ class ExpenseCreationViewModel {
             return .failure(issues)
         }
 
-        let expenseDTO = ExpenseDTO(category: categoryValue,
+        let expenseDTO = ExpenseDTO(title: title ?? categoryValue.title,
+                                    category: categoryValue,
                                     user: userValue,
                                     place: nil,
                                     amount: formattedInput.doubleValue,
