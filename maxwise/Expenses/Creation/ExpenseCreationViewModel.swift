@@ -13,19 +13,25 @@ class ExpenseCreationViewModel {
     private let userModelController = UserModelController()
     private let expenseCategoryModelController = ExpenseCategoryModelController()
     
-    lazy var amountPlaceholder = currencyFormatter.string(from: NSNumber(value: 0))
+    var amountPlaceholder: String? {
+        get {
+            currencyFormatter.currencySymbol = ""
+            let placeholder = currencyFormatter.string(from: NSNumber(value: 0))
+            currencyFormatter.currencySymbol = NSLocale.current.currencySymbol
+            return placeholder
+        }
+    }
+    
     lazy var currencySymbol = currencyFormatter.currencySymbol
     
     private lazy var currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
-        formatter.locale = Locale.current
         formatter.numberStyle = .currency
         return formatter
     }()
     
     private lazy var inputToDoubleFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
-        formatter.locale = Locale.current
         formatter.numberStyle = .decimal
         return formatter
     }()

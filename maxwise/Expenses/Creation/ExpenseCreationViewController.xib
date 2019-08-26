@@ -10,9 +10,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExpenseCreationViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
                 <outlet property="amountTextField" destination="hle-vD-21g" id="MYF-xE-CBV"/>
+                <outlet property="amountTextFieldContainerView" destination="hNq-pT-ImE" id="hKT-te-bo5"/>
                 <outlet property="cameraContainerView" destination="NLg-uk-6eq" id="sQo-0B-sKw"/>
                 <outlet property="categorySelectionContainerView" destination="apP-nG-cs1" id="EMs-du-xRT"/>
                 <outlet property="collapseButtonContainer" destination="HMZ-ib-M42" id="Tb7-KI-kdn"/>
+                <outlet property="currencyPlaceholderLabel" destination="2jM-Ag-PdM" id="zfd-RZ-taa"/>
                 <outlet property="expandedCameraHeightConstraint" destination="5JY-rw-nNn" id="Fof-uC-Zhp"/>
                 <outlet property="expenseInfoContainerView" destination="a5I-kZ-cgF" id="V1I-Cf-zJC"/>
                 <outlet property="expenseTitle" destination="GBs-TY-1Co" id="szP-1W-UIx"/>
@@ -52,13 +54,34 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fMm-l6-zTT">
                                             <rect key="frame" x="0.0" y="40" width="240.66666666666666" height="45"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hle-vD-21g">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNq-pT-ImE">
                                                     <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="45"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-5f-SPq">
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="O" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jM-Ag-PdM">
+                                                            <rect key="frame" x="5" y="0.0" width="18.666666666666668" height="45"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hle-vD-21g">
+                                                            <rect key="frame" x="25.666666666666671" y="0.0" width="78" height="45"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="2jM-Ag-PdM" secondAttribute="bottom" id="3NJ-bP-P6C"/>
+                                                        <constraint firstItem="hle-vD-21g" firstAttribute="top" secondItem="hNq-pT-ImE" secondAttribute="top" id="Kcm-1q-al2"/>
+                                                        <constraint firstAttribute="trailing" secondItem="hle-vD-21g" secondAttribute="trailing" id="LVO-FS-X1N"/>
+                                                        <constraint firstItem="hle-vD-21g" firstAttribute="leading" secondItem="2jM-Ag-PdM" secondAttribute="trailing" constant="2" id="N5S-El-tqd"/>
+                                                        <constraint firstItem="2jM-Ag-PdM" firstAttribute="leading" secondItem="hNq-pT-ImE" secondAttribute="leading" constant="5" id="ROT-4E-bbK"/>
+                                                        <constraint firstAttribute="bottom" secondItem="hle-vD-21g" secondAttribute="bottom" id="TFe-f7-cCN"/>
+                                                        <constraint firstItem="2jM-Ag-PdM" firstAttribute="top" secondItem="hNq-pT-ImE" secondAttribute="top" id="d2p-KJ-ELA"/>
+                                                    </constraints>
+                                                </view>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-5f-SPq">
                                                     <rect key="frame" x="111.66666666666669" y="0.0" width="129" height="46"/>
                                                     <segments>
                                                         <segment title="First"/>

@@ -79,6 +79,8 @@ class ExpenseCreationViewController: UIViewController {
     @IBOutlet private var initialCameraHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var expandedCameraHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet private weak var amountTextFieldContainerView: UIView!
+    @IBOutlet private weak var currencyPlaceholderLabel: UILabel!
     @IBOutlet private weak var expenseInfoContainerView: UIView!
     @IBOutlet private weak var amountTextField: UITextField!
     @IBOutlet private weak var expenseTitle: UITextField!
@@ -117,12 +119,6 @@ class ExpenseCreationViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-
-        amountTextField.keyboardType = .decimalPad
-        amountTextField.placeholder = viewModel.amountPlaceholder
-        amountTextField.backgroundColor = .systemBackground
-        amountTextField.textColor = .label
-        amountTextField.becomeFirstResponder()
         
         expenseTitle.placeholder = "Enter a description"
         expenseTitle.backgroundColor = .systemBackground
@@ -143,6 +139,7 @@ class ExpenseCreationViewController: UIViewController {
         amountTextField.inputAccessoryView = inputView
         expenseTitle.inputAccessoryView = inputView
 
+        configureAmountTextField()
         configureCameraContainerLayer()
         configureSegmentedControl()
         addCategorySelectionController()
@@ -222,7 +219,7 @@ class ExpenseCreationViewController: UIViewController {
         issues.forEach { issue in
             switch issue {
             case .noAmount:
-                amountTextField.textColor = .red
+                amountTextFieldContainerView.layer.borderColor = UIColor.red.cgColor
             case .noCategory:
                 print("no category")
             case .alert(let message):
@@ -231,9 +228,23 @@ class ExpenseCreationViewController: UIViewController {
         }
     }
     
-    private func resetErrorStates() {
-        amountTextField.textColor = .label
+    @objc private func resetErrorStates() {
+        amountTextFieldContainerView.layer.borderColor = UIColor.clear.cgColor
     }
+    
+    private func configureAmountTextField() {
+        amountTextField.keyboardType = .decimalPad
+        amountTextField.placeholder = viewModel.amountPlaceholder
+        amountTextField.backgroundColor = .systemBackground
+        amountTextField.textColor = .label
+        amountTextField.becomeFirstResponder()
+        amountTextField.borderStyle = .none
+        amountTextField.addTarget(self, action: #selector(resetErrorStates), for: .editingChanged)
+        amountTextFieldContainerView.layer.applyBorder()
+        amountTextFieldContainerView.layer.borderColor = UIColor.clear.cgColor
+        currencyPlaceholderLabel.text = viewModel.currencySymbol
+    }
+    
     
     private func configureSegmentedControl() {
         segmentedControl.removeAllSegments()
@@ -363,17 +374,3 @@ extension ExpenseCreationViewController: CameraCaptureDelegate {
     }
     
 }
-
-//extension UIResponder {
-//    private weak static var _currentFirstResponder: UIResponder? = nil
-//
-//    public static var current: UIResponder? {
-//        UIResponder._currentFirstResponder = nil
-//        UIApplication.shared.sendAction(#selector(findFirstResponder(sender:)), to: nil, from: nil, for: nil)
-//        return UIResponder._currentFirstResponder
-//    }
-//
-//    @objc internal func findFirstResponder(sender: AnyObject) {
-//        UIResponder._currentFirstResponder = self
-//    }
-//}
