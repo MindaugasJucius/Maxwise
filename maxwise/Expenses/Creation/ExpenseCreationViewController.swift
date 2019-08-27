@@ -71,6 +71,8 @@ class ExpenseCreationViewController: UIViewController {
         return blurView
     }()
     
+    @IBOutlet private weak var createInputViewContainer: UIView!
+    
     private lazy var cameraPresentTapRecognizer = UITapGestureRecognizer(
         target: self,
         action: #selector(showCamera)
@@ -138,8 +140,10 @@ class ExpenseCreationViewController: UIViewController {
                 self?.tryToCreateExpense()
             }
         )
-        amountTextField.inputAccessoryView = inputView
-        expenseTitle.inputAccessoryView = inputView
+        
+        createInputViewContainer.addSubview(inputView!)
+        inputView?.translatesAutoresizingMaskIntoConstraints = false
+        inputView?.fillInSuperview()
 
         configureAmountTextField()
         configureCameraContainerLayer()
