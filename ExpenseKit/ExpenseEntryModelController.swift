@@ -7,6 +7,10 @@ public enum CreationIssue: Error {
     case alert(String)
 }
 
+public enum DeletionIssue: Error {
+    case failedToFindCategory
+}
+
 public class ExpenseEntryModelController {
 
     private var expenseEntryObservationToken: NotificationToken?
@@ -35,6 +39,22 @@ public class ExpenseEntryModelController {
             completion(.success(()))
         } catch let error {
             completion(.failure(.alert(error.localizedDescription)))
+        }
+    }
+    
+    public func delete(expenseWithID id: String, deleted: (Result<Void, Error>) -> ()) {
+        do {
+            let realm = try Realm.groupRealm()
+            try realm.write {
+                guard let object = realm.object(ofType: ExpenseEntry.self, forPrimaryKey: id) else {
+                    deleted(.failure(DeletionIssue.failedToFindCategory))
+                    return
+                }
+                realm.delete(object)
+                deleted(.success(()))
+            }
+        } catch let error {
+            deleted(.failure(error))
         }
     }
 

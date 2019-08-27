@@ -65,12 +65,29 @@ class ExpensesViewController: UIViewController {
         tableView.register(headerNib,
                            forHeaderFooterViewReuseIdentifier: ExpensesSectionHeaderView.nibName)
         tableView.dataSource = dataSource
+        dataSource.defaultRowAnimation = .fade
         tableView.delegate = self
         tableView.estimatedRowHeight = 67
         tableView.estimatedSectionHeaderHeight = 60
         tableView.rowHeight = UITableView.automaticDimension
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.backgroundColor = .clear
+    }
+    
+    func deleteExpense(at indexPath: IndexPath, completion: @escaping (Bool) -> Void) {
+        guard let expenseDTO = dataSource.itemIdentifier(for: indexPath) else {
+            completion(false)
+            return
+        }
+        viewModel.delete(expense: expenseDTO) { result in
+            switch result {
+            case .success:
+                completion(true)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
     }
     
 }
@@ -87,5 +104,12 @@ extension ExpensesViewController: UITableViewDelegate {
         sectionHeader.configure(title: text)
         return sectionHeader
     }
+
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction.init(style: .destructive, title: "Delete") { [weak self] (action, view, completion) in
+            self?.deleteExpense(at: indexPath, completion: completion)
+        }
+        return UISwipeActionsConfiguration.init(actions: [action])
+    }
 }
