@@ -49,8 +49,8 @@ class ExpenseCreationViewModel {
     }
     
     func formatRecognized(input: String) -> String? {
-        guard let number = currencyFormatter.number(from: input),
-            let string = currencyFormatter.string(from: number) else {
+        guard let number = inputToDoubleFormatter.number(from: input),
+            let string = inputToDoubleFormatter.string(from: number) else {
             return nil
         }
         return string

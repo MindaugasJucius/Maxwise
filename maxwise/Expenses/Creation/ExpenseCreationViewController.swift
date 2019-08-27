@@ -71,7 +71,7 @@ class ExpenseCreationViewController: UIViewController {
         return blurView
     }()
     
-    private lazy var tapRecognizer = UITapGestureRecognizer(
+    private lazy var cameraPresentTapRecognizer = UITapGestureRecognizer(
         target: self,
         action: #selector(showCamera)
     )
@@ -84,6 +84,7 @@ class ExpenseCreationViewController: UIViewController {
     @IBOutlet private weak var expenseInfoContainerView: UIView!
     @IBOutlet private weak var amountTextField: UITextField!
     @IBOutlet private weak var expenseTitle: UITextField!
+    private weak var lastResponder: UIResponder?
     
     @IBOutlet weak var categorySelectionContainerView: UIView!
     private var selectedCategory: ExpenseCategory?
@@ -145,6 +146,7 @@ class ExpenseCreationViewController: UIViewController {
         configureSegmentedControl()
         addCategorySelectionController()
         addDismissalTapHandler()
+        observeResponderChanges()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -235,6 +237,19 @@ class ExpenseCreationViewController: UIViewController {
         amountTextFieldContainerView.layer.borderColor = UIColor.clear.cgColor
     }
     
+    private func observeResponderChanges() {
+        amountTextField.addTarget(self, action: #selector(handleObserverChange(responder:)), for: .editingDidBegin)
+        expenseTitle.addTarget(self, action: #selector(handleObserverChange(responder:)), for: .editingDidBegin)
+    }
+    
+    @objc private func handleObserverChange(responder: UIResponder) {
+        self.lastResponder = responder
+        // Tapped on text field while camera is shown
+        if expandedCameraHeightConstraint.isActive {
+            collapseCamera()
+        }
+    }
+    
     private func configureAmountTextField() {
         amountTextField.keyboardType = .decimalPad
         amountTextField.placeholder = viewModel.amountPlaceholder
@@ -260,7 +275,7 @@ class ExpenseCreationViewController: UIViewController {
     
     private func configureCameraContainerLayer() {
         cameraContainerView.isUserInteractionEnabled = true
-        cameraContainerView.addGestureRecognizer(tapRecognizer)
+        cameraContainerView.addGestureRecognizer(cameraPresentTapRecognizer)
         cameraContainerView.clipsToBounds = true
         cameraContainerView.layer.cornerRadius = 6
         
@@ -300,10 +315,10 @@ class ExpenseCreationViewController: UIViewController {
     }
     
     @objc private func showCamera() {
-        amountTextField.resignFirstResponder()
+        lastResponder?.resignFirstResponder()
         
         let isCameraContainerHidden = initialCameraHeightConstraint.isActive
-        tapRecognizer.isEnabled = !isCameraContainerHidden
+        cameraPresentTapRecognizer.isEnabled = !isCameraContainerHidden
         expandedCameraHeightConstraint.isActive = isCameraContainerHidden
         initialCameraHeightConstraint.isActive = !isCameraContainerHidden
         let animator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 0.82) {
@@ -323,7 +338,7 @@ class ExpenseCreationViewController: UIViewController {
     @objc private func collapseCamera() {
         showCamera()
         removeRecognitionController()
-        amountTextField.becomeFirstResponder()
+        lastResponder?.becomeFirstResponder()
     }
     
     @objc private func removeRecognitionController() {
