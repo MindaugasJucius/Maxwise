@@ -114,7 +114,14 @@ class ExpenseCreationViewModel {
             return .failure(issues)
         }
 
-        let expenseDTO = ExpenseDTO(title: title ?? categoryValue.title,
+        let presentationTitle: String
+        if let customTitle = title, !customTitle.isEmpty {
+            presentationTitle = customTitle
+        } else {
+            presentationTitle = categoryValue.title
+        }
+        
+        let expenseDTO = ExpenseDTO(title: presentationTitle,
                                     category: categoryValue,
                                     user: userValue,
                                     place: nil,

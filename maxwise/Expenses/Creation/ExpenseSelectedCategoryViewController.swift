@@ -41,6 +41,8 @@ class ExpenseSelectedCategoryViewController: UIViewController {
             self?.dismiss(animated: true, completion: nil)
             self?.configure(for: selectedCategory)
             self?.selectedCategory(selectedCategory)
+            UserDefaults.standard.setValue(selectedCategory.id,
+                                           forKey: ExpenseCategoryModelController.preselectedCategoryKey)
         }
         
         let navigationController = UINavigationController(rootViewController: selectionVC)
