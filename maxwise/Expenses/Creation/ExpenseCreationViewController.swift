@@ -127,6 +127,7 @@ class ExpenseCreationViewController: UIViewController {
         expenseInfoContainerView.layer.applyShadow(color: .tertiaryLabel)
         expenseInfoContainerView.layer.cornerRadius = 6
         expenseInfoContainerView.backgroundColor = .systemBackground
+        expenseInfoContainerView.isUserInteractionEnabled = true
     
         let inputView = ExpenseCreationInputView.create(
             closeButton: { [weak self] in
@@ -191,6 +192,7 @@ class ExpenseCreationViewController: UIViewController {
     
     private func addDismissalTapHandler() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissController))
+        tapGesture.delegate = self
         view.addGestureRecognizer(tapGesture)
     }
     
@@ -372,6 +374,16 @@ extension ExpenseCreationViewController: CameraCaptureDelegate {
     func captured(image: CGImage, orientation: CGImagePropertyOrientation, tapLocation: CGPoint) {
         resetToCameraButtonContainer.alpha = 1
         addRecognitionController(cgImage: image, orientation: orientation, tapLocation: tapLocation)
+    }
+    
+}
+
+extension ExpenseCreationViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        let location = gestureRecognizer.location(in: view)
+        return !expenseInfoContainerView.frame.contains(location) &&
+               !cameraContainerView.frame.contains(location)
     }
     
 }
