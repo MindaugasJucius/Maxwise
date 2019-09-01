@@ -13,22 +13,22 @@ class ExpenseCreationViewController: UIViewController {
     
     private lazy var collapseCameraButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "collapse"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 8,
-                                              left: 8,
-                                              bottom: 8,
-                                              right: 8)
+        button.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0.5,
+                                              left: 0.5,
+                                              bottom: 0,
+                                              right: 0)
         return button
     }()
     @IBOutlet private weak var collapseButtonContainer: VibrantContentView!
     
     private lazy var resetToCameraButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "refresh"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 8,
-                                              left: 8,
-                                              bottom: 8,
-                                              right: 8)
+        button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0.5,
+                                              left: 0.5,
+                                              bottom: 0,
+                                              right: 0)
         return button
     }()
     @IBOutlet private weak var resetToCameraButtonContainer: VibrantContentView!

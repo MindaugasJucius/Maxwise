@@ -3,13 +3,13 @@ import UIKit
 class ExpenseCreationInputView: UIInputView {
 
     private lazy var closeButton: UIButton = {
-        let closeButton = button(imageName: "checkmark.circle.fill", title: "CLOSE")
+        let closeButton = button(imageName: "xmark.circle.fill", title: "CLOSE")
         closeButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
         return closeButton
     }()
     
     private lazy var createButton: UIButton = {
-        let createButton = button(imageName: "xmark.circle.fill", title: "CREATE")
+        let createButton = button(imageName: "checkmark.circle.fill", title: "CREATE")
         createButton.addTarget(self, action: #selector(createAction), for: .touchUpInside)
         return createButton
     }()
@@ -44,9 +44,11 @@ class ExpenseCreationInputView: UIInputView {
                                                                          blurEffectStyle: .prominent)
         
         leftContentView.contentView?.addSubview(closeButton)
+        leftContentView.contentView?.backgroundColor = UIColor.red.withAlphaComponent(0.1)
         closeButton.fillInSuperview()
 
         rightContentView.contentView?.addSubview(createButton)
+        rightContentView.contentView?.backgroundColor = UIColor.green.withAlphaComponent(0.1)
         createButton.fillInSuperview()
     }
 
@@ -54,8 +56,13 @@ class ExpenseCreationInputView: UIInputView {
         let button = UIButton.init(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(title.uppercased(), for: .normal)
-        button.setImage(UIImage(systemName: imageName), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        let font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        button.titleLabel?.font = font
+        
+        let image = UIImage(systemName: imageName,
+                            withConfiguration: UIImage.SymbolConfiguration(font: font))
+        button.setImage(image, for: .normal)
+
         return button
     }
     
