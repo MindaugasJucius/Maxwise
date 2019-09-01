@@ -11,11 +11,22 @@ import UIKit
 class ExpensesParentViewController: UINavigationController {
 
     private let expensesViewModel = ExpensesViewModel()
+    private weak var presentationDelegate: PresentationViewControllerDelegate?
+    
+    init(presentationDelegate: PresentationViewControllerDelegate) {
+        self.presentationDelegate = presentationDelegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.prefersLargeTitles = true
-        viewControllers = [ExpensesViewController(viewModel: expensesViewModel)]
+        viewControllers = [ExpensesViewController(viewModel: expensesViewModel,
+                                                  presentationDelegate: presentationDelegate)]
     }
 
 }

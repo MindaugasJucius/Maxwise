@@ -149,7 +149,7 @@ class ExpenseCreationViewController: UIViewController {
         configureCameraContainerLayer()
         configureSegmentedControl()
         addCategorySelectionController()
-        
+
         observeResponderChanges()
     }
     

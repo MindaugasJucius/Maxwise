@@ -30,7 +30,9 @@ class NavigationView: UIView {
     private func configureButtons() {
         centeredButton.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
         centeredButton.setTitle("", for: .normal)
-        centeredButton.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+
+        let image = UIImage.init(systemName: "plus.circle.fill", withConfiguration: UIImage.SymbolConfiguration.init(pointSize: 50))
+        centeredButton.setImage(image, for: .normal)
     }
     
     @objc private func tappedButton() {

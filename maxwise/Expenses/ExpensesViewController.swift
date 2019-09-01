@@ -5,6 +5,7 @@ class ExpensesViewController: UIViewController {
     private let expensesStatsViewController = ExpensesStatsViewController()
     
     private let viewModel: ExpensesViewModel
+    private weak var presentationDelegate: PresentationViewControllerDelegate?
     private var expenseGroups = [(Date, [ExpensePresentationDTO])]()
     
     private lazy var dataSource: UITableViewDiffableDataSource<Date, ExpensePresentationDTO> = {
@@ -25,8 +26,10 @@ class ExpensesViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
 
-    init(viewModel: ExpensesViewModel) {
+    init(viewModel: ExpensesViewModel,
+         presentationDelegate: PresentationViewControllerDelegate?) {
         self.viewModel = viewModel
+        self.presentationDelegate = presentationDelegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -55,6 +58,16 @@ class ExpensesViewController: UIViewController {
         viewModel.amountSpentChanged = { [weak self] amount in
             self?.expensesStatsViewController.amount = amount
         }
+        
+        addNavigationView()
+    }
+    
+    private func addNavigationView() {
+        let navigationView = NavigationView()
+        navigationView.buttonTapped = { [weak self] in
+            self?.presentationDelegate?.show(screen: .expenseCreation)
+        }
+        navigationView.move(to: view)
     }
     
     private func configureTableView() {

@@ -4,36 +4,30 @@ enum Screen {
     case expenseCreation
 }
 
-protocol PresentationViewControllerDelegate {
+protocol PresentationViewControllerDelegate: class {
     func show(screen: Screen)
 }
 
-class ContainerViewController: UIViewController {
+class ContainerViewController: UITabBarController {
 
-    private lazy var expensesViewController = ExpensesParentViewController()
+    private lazy var expensesViewController = ExpensesParentViewController(presentationDelegate: self)
     private lazy var expenseCreationParentViewController = ExpenseCreationParentViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         definesPresentationContext = true
-    
-        addChild(expensesViewController)
-        view.addSubview(expensesViewController.view)
-        expensesViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        expensesViewController.view.fill(in: view)
-        expensesViewController.didMove(toParent: nil)
 
-        addNavigationView()
+        let categoriesViewController = UIViewController(nibName: nil, bundle: nil)
+
+        categoriesViewController.tabBarItem = UITabBarItem.init(title: "Categories",
+                                                                image: UIImage(systemName: "chart.pie.fill"),
+                                                                tag: 0)
+        
+        setViewControllers([expensesViewController, categoriesViewController], animated: false)
+        expensesViewController.tabBarItem = UITabBarItem.init(tabBarSystemItem: .mostViewed, tag: 0)
+        expensesViewController.tabBarItem.title = "Expenses"
     }
     
-    private func addNavigationView() {
-        let navigationView = NavigationView()
-        navigationView.buttonTapped = { [weak self] in
-            self?.show(screen: .expenseCreation)
-        }
-        navigationView.move(to: view)
-    }
-
 }
 
 extension ContainerViewController: PresentationViewControllerDelegate {
