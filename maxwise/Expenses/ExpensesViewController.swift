@@ -1,8 +1,6 @@
 import UIKit
 
 class ExpensesViewController: UIViewController {
-
-    private let expensesStatsViewController = ExpensesStatsViewController()
     
     private let viewModel: ExpensesViewModel
     private weak var presentationDelegate: PresentationViewControllerDelegate?
@@ -24,6 +22,8 @@ class ExpensesViewController: UIViewController {
         }
     }()
     
+    lazy var noExpensesView = NoExpensesView()
+    
     @IBOutlet private weak var tableView: UITableView!
 
     init(viewModel: ExpensesViewModel,
@@ -42,7 +42,6 @@ class ExpensesViewController: UIViewController {
         configureTableView()
         title = "Expenses"
         view.backgroundColor = UIColor.init(named: "background")
-        addChild(expensesStatsViewController)
 
         viewModel.observeExpenseEntries { [weak self] groupedExpenses in
             self?.expenseGroups = groupedExpenses
@@ -55,11 +54,19 @@ class ExpensesViewController: UIViewController {
             self?.dataSource.apply(snapshot)
         }
         
-        viewModel.amountSpentChanged = { [weak self] amount in
-            self?.expensesStatsViewController.amount = amount
+        noExpensesView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(noExpensesView)
+        noExpensesView.fillInSuperview()
+        
+        viewModel.toggleNoExpensesView = { [weak self] show in
+            self?.toggleNoExpensesView(show: show)
         }
         
         addNavigationView()
+    }
+    
+    private func toggleNoExpensesView(show: Bool) {
+        noExpensesView.alpha = show ? 1 : 0
     }
     
     private func addNavigationView() {
@@ -92,12 +99,12 @@ class ExpensesViewController: UIViewController {
             completion(false)
             return
         }
-        viewModel.delete(expense: expenseDTO) { result in
+        viewModel.delete(expense: expenseDTO) { [weak self] result in
             switch result {
             case .success:
                 completion(true)
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.showAlert(for: error.localizedDescription)
                 completion(false)
             }
         }
