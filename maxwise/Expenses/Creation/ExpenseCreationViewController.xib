@@ -118,16 +118,16 @@
                     <rect key="frame" x="16" y="480" width="343" height="60"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMZ-ib-M42" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
-                            <rect key="frame" x="292" y="9" width="35" height="35"/>
+                            <rect key="frame" x="287" y="4" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="HMZ-ib-M42" secondAttribute="height" multiplier="1:1" id="Ymb-hw-kva"/>
-                                <constraint firstAttribute="width" constant="35" id="ee4-ks-7rN"/>
+                                <constraint firstAttribute="width" constant="40" id="ee4-ks-7rN"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8e-iZ-hv0" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
-                            <rect key="frame" x="154" y="9" width="35" height="35"/>
+                            <rect key="frame" x="151.66666666666666" y="4" width="40" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="35" id="Jke-SR-ylZ"/>
+                                <constraint firstAttribute="width" constant="40" id="Jke-SR-ylZ"/>
                                 <constraint firstAttribute="width" secondItem="G8e-iZ-hv0" secondAttribute="height" multiplier="1:1" id="Q3t-Hc-8bp"/>
                             </constraints>
                         </view>

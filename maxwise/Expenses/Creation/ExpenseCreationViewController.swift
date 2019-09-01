@@ -75,7 +75,7 @@ class ExpenseCreationViewController: UIViewController {
     
     private lazy var cameraPresentTapRecognizer = UITapGestureRecognizer(
         target: self,
-        action: #selector(showCamera)
+        action: #selector(toggleCameraPresentation)
     )
     
     @IBOutlet private var initialCameraHeightConstraint: NSLayoutConstraint!
@@ -134,7 +134,7 @@ class ExpenseCreationViewController: UIViewController {
     
         let inputView = ExpenseCreationInputView.create(
             closeButton: { [weak self] in
-                self?.dismissController()
+                self?.dismiss(animated: true, completion: nil)
             },
             createButton: { [weak self] in
                 self?.tryToCreateExpense()
@@ -149,7 +149,7 @@ class ExpenseCreationViewController: UIViewController {
         configureCameraContainerLayer()
         configureSegmentedControl()
         addCategorySelectionController()
-        addDismissalTapHandler()
+        
         observeResponderChanges()
     }
     
@@ -194,16 +194,6 @@ class ExpenseCreationViewController: UIViewController {
     private func handleCategorySelection(category: ExpenseCategory) {
         expenseTitle.placeholder = category.title.capitalized
         selectedCategory = category
-    }
-    
-    private func addDismissalTapHandler() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissController))
-        tapGesture.delegate = self
-        view.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func dismissController() {
-        dismiss(animated: true, completion: nil)
     }
 
     private func tryToCreateExpense() {
@@ -318,7 +308,7 @@ class ExpenseCreationViewController: UIViewController {
         )
     }
     
-    @objc private func showCamera() {
+    @objc private func toggleCameraPresentation() {
         lastResponder?.resignFirstResponder()
         
         let isCameraContainerHidden = initialCameraHeightConstraint.isActive
@@ -340,7 +330,7 @@ class ExpenseCreationViewController: UIViewController {
     }
     
     @objc private func collapseCamera() {
-        showCamera()
+        toggleCameraPresentation()
         removeRecognitionController()
         lastResponder?.becomeFirstResponder()
     }
@@ -393,16 +383,6 @@ extension ExpenseCreationViewController: CameraCaptureDelegate {
     func captured(image: CGImage, orientation: CGImagePropertyOrientation, tapLocation: CGPoint) {
         resetToCameraButtonContainer.alpha = 1
         addRecognitionController(cgImage: image, orientation: orientation, tapLocation: tapLocation)
-    }
-    
-}
-
-extension ExpenseCreationViewController: UIGestureRecognizerDelegate {
-    
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        let location = gestureRecognizer.location(in: view)
-        return !expenseInfoContainerView.frame.contains(location) &&
-               !cameraContainerView.frame.contains(location)
     }
     
 }
