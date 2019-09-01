@@ -17,15 +17,16 @@ class ContainerViewController: UITabBarController {
         super.viewDidLoad()
         definesPresentationContext = true
 
-        let categoriesViewController = UIViewController(nibName: nil, bundle: nil)
+        let categoriesViewController = CategoriesParentViewController()
 
         categoriesViewController.tabBarItem = UITabBarItem.init(title: "Categories",
                                                                 image: UIImage(systemName: "chart.pie.fill"),
                                                                 tag: 0)
+        expensesViewController.tabBarItem = UITabBarItem.init(title: "Expenses",
+                                                              image: UIImage.init(systemName: "list.bullet"),
+                                                              tag: 0)
         
         setViewControllers([expensesViewController, categoriesViewController], animated: false)
-        expensesViewController.tabBarItem = UITabBarItem.init(tabBarSystemItem: .mostViewed, tag: 0)
-        expensesViewController.tabBarItem.title = "Expenses"
     }
     
 }

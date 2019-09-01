@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		24128F3758533D81B8C252A7 /* Pods_maxwise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */; };
 		2596A9BB6F90D9A30A6D3A83 /* Pods_ExpenseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D7441A592E5DAB8FC20E57 /* Pods_ExpenseKit.framework */; };
+		5F0FC868231BC55B0083EBA9 /* CategoriesParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC867231BC55B0083EBA9 /* CategoriesParentViewController.swift */; };
+		5F0FC86B231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC869231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift */; };
+		5F0FC86C231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */; };
+		5F0FC86F231C284C0083EBA9 /* CategoryCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC86D231C284C0083EBA9 /* CategoryCreationViewController.swift */; };
+		5F0FC870231C284C0083EBA9 /* CategoryCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0FC86E231C284C0083EBA9 /* CategoryCreationViewController.xib */; };
 		5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */; };
 		5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B42210281B00BAECF6 /* TextPickViewModel.swift */; };
 		5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B6221034F300BAECF6 /* ExpensesViewController.swift */; };
@@ -164,6 +169,11 @@
 		1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maxwise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maxwiseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51D7441A592E5DAB8FC20E57 /* Pods_ExpenseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpenseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F0FC867231BC55B0083EBA9 /* CategoriesParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesParentViewController.swift; sourceTree = "<group>"; };
+		5F0FC869231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesStatisticsViewController.swift; sourceTree = "<group>"; };
+		5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesStatisticsViewController.xib; sourceTree = "<group>"; };
+		5F0FC86D231C284C0083EBA9 /* CategoryCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCreationViewController.swift; sourceTree = "<group>"; };
+		5F0FC86E231C284C0083EBA9 /* CategoryCreationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCreationViewController.xib; sourceTree = "<group>"; };
 		5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Orientation+Extensions.swift"; sourceTree = "<group>"; };
 		5F20E0B02210247C00BAECF6 /* ExpenseEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
 		5F20E0B22210265200BAECF6 /* ExpenseEntryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryModelController.swift; sourceTree = "<group>"; };
@@ -307,6 +317,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F0FC866231BC5020083EBA9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5F0FC867231BC55B0083EBA9 /* CategoriesParentViewController.swift */,
+				5F0FC869231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift */,
+				5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */,
+				5F0FC86D231C284C0083EBA9 /* CategoryCreationViewController.swift */,
+				5F0FC86E231C284C0083EBA9 /* CategoryCreationViewController.xib */,
+			);
+			name = Categories;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		5F20E0AF2210239400BAECF6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,7 +427,6 @@
 		5F4A3B6A220720870016BCC9 /* maxwise */ = {
 			isa = PBXGroup;
 			children = (
-				5FD95D8722D3CD9400DD3F8F /* Shortcut */,
 				5F65CD7222D27E190040C218 /* maxwise.entitlements */,
 				5FB59210227DE2EF005D5208 /* NavigationView.swift */,
 				5FB59212227DE303005D5208 /* NavigationView.xib */,
@@ -416,6 +438,7 @@
 				5F470BDB220C6715002CD12D /* Text Picking */,
 				5FFACEBF2221888500F087E4 /* Nearby Places */,
 				5F20E0BA2210350000BAECF6 /* Expenses */,
+				5F0FC866231BC5020083EBA9 /* Categories */,
 				5F6878762207425400F4FE7C /* tessdata */,
 				5F4A3B6B220720870016BCC9 /* AppDelegate.swift */,
 				5F4A3B72220720880016BCC9 /* Assets.xcassets */,
@@ -469,13 +492,6 @@
 				5F56B99C2313C78E005AF4AF /* ExpenseCategoryTableViewCell.xib */,
 			);
 			path = Creation;
-			sourceTree = "<group>";
-		};
-		5FD95D8722D3CD9400DD3F8F /* Shortcut */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Shortcut;
 			sourceTree = "<group>";
 		};
 		5FFACEB82219CF8500F087E4 /* Camera */ = {
@@ -720,6 +736,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */,
+				5F0FC870231C284C0083EBA9 /* CategoryCreationViewController.xib in Resources */,
+				5F0FC86C231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib in Resources */,
 				5FC9298622F8A02200CB23DC /* ExpenseCreationInputView.xib in Resources */,
 				5F9DE38C22198CA0008CCB94 /* ExpensesStatsViewController.xib in Resources */,
 				5FB59213227DE303005D5208 /* NavigationView.xib in Resources */,
@@ -906,6 +924,8 @@
 				5F56B99023049E1C005AF4AF /* ExpensesSectionHeaderView.swift in Sources */,
 				5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */,
 				5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */,
+				5F0FC86F231C284C0083EBA9 /* CategoryCreationViewController.swift in Sources */,
+				5F0FC86B231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift in Sources */,
 				5FD95D8922D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */,
 				5FB59211227DE2EF005D5208 /* NavigationView.swift in Sources */,
 				5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */,
@@ -913,6 +933,7 @@
 				5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */,
 				5F240CA1222721A3009A41AE /* ExpenseCreationViewController.swift in Sources */,
 				5F9E13C5222C33F100805878 /* LocationAccessNotifier.swift in Sources */,
+				5F0FC868231BC55B0083EBA9 /* CategoriesParentViewController.swift in Sources */,
 				5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */,
 				5F56B9992313C50C005AF4AF /* ExpenseCategorySelectionViewController.swift in Sources */,
 				5F2D4BD7229B266000884FA9 /* ModalBlurTransitionController.swift in Sources */,
