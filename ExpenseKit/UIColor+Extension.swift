@@ -12,7 +12,7 @@ extension UIColor {
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
     }
     
-    convenience init?(hex: String) {
+    public convenience init?(hex: String) {
         let r, g, b: CGFloat
         
         if hex.hasPrefix("#") {
@@ -67,11 +67,11 @@ extension UIColor {
     }
     
     
-    static var tealBlue: UIColor {
+    public static var tealBlue: UIColor {
         return .init(red: 90, green: 200, blue: 250)
     }
 
-    static var pink: UIColor {
+    public static var pink: UIColor {
         return .init(red: 255, green: 45, blue: 85)
     }
     

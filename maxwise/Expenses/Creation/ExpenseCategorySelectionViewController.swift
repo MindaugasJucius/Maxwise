@@ -40,7 +40,7 @@ class ExpenseCategorySelectionViewController: UIViewController {
 
         let cellNib = UINib.init(nibName: ExpenseCategoryTableViewCell.nibName, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: ExpenseCategoryTableViewCell.nibName)
-        tableView.estimatedRowHeight = 67
+        tableView.estimatedRowHeight = 65
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = dataSource
         tableView.backgroundColor = .clear

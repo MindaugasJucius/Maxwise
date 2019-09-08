@@ -1,4 +1,5 @@
 import UIKit
+import ExpenseKit
 
 class CategoriesParentViewController: UINavigationController {
 
@@ -7,6 +8,7 @@ class CategoriesParentViewController: UINavigationController {
         let image = UIImage(systemName: "plus.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25))
         button.setImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(presentCreationVC), for: .touchUpInside)
         return button
     }()
     
@@ -22,6 +24,11 @@ class CategoriesParentViewController: UINavigationController {
             createCategoryButton.heightAnchor.constraint(equalTo: createCategoryButton.widthAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    @objc private func presentCreationVC() {
+        let creationVC = CategoryCreationViewController(category: ExpenseCategory.init())
+        present(creationVC, animated: true, completion: nil)
     }
     
 }
