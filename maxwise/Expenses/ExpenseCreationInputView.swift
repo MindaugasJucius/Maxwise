@@ -1,21 +1,32 @@
 import UIKit
+import ExpenseKit
 
 class ExpenseCreationInputView: UIInputView {
 
-    private lazy var closeButton: UIButton = {
-        let closeButton = button(imageName: "xmark.circle.fill", title: "CLOSE")
-        closeButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
-        return closeButton
-    }()
-    
-    private lazy var createButton: UIButton = {
-        let createButton = button(imageName: "checkmark.circle.fill", title: "CREATE")
-        createButton.addTarget(self, action: #selector(createAction), for: .touchUpInside)
-        return createButton
+    private lazy var createButton: BeautifulButton = {
+        let button = BeautifulButton.init()
+        button.updateAppearances(backgroundColor: .confirmationGreen, textColor: .confirmationGreen)
+        let font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        button.titleLabel?.font = font
+        button.setTitle("CREATE", for: .normal)
+        button.tintColor = .white
+        
+        let image = UIImage(systemName: "checkmark.circle.fill",
+                            withConfiguration: UIImage.SymbolConfiguration(font: font))
+        
+        button.setImage(image, for: .normal)
+        button.adjustsImageWhenHighlighted = false
+        
+        button.addTarget(self, action: #selector(createAction), for: .touchUpInside)
+
+        button.imageEdgeInsets = UIEdgeInsets(top: 0,
+                                              left: 0,
+                                              bottom: 0,
+                                              right: 8)
+        return button
     }()
 
-    @IBOutlet weak var leftContentView: VibrantContentView!
-    @IBOutlet weak var rightContentView: VibrantContentView!
+    @IBOutlet weak var rightContentView: UIView!
     
     private var closeButtonAction: (() -> ())?
     private var createButtonAction: (() -> ())?
@@ -32,26 +43,14 @@ class ExpenseCreationInputView: UIInputView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        closeButton.tintColor = .red
-        closeButton.setTitleColor(.red, for: .normal)
-        createButton.tintColor = .green
-        createButton.setTitleColor(.green, for: .normal)
-        
-        leftContentView.configuration = VibrantContentView.Configuration(cornerStyle: .rounded,
-                                                                                  blurEffectStyle: .prominent)
-        
-        rightContentView.configuration = VibrantContentView.Configuration(cornerStyle: .rounded,
-                                                                         blurEffectStyle: .prominent)
-        
-        leftContentView.contentView?.addSubview(closeButton)
-        leftContentView.contentView?.backgroundColor = UIColor.red.withAlphaComponent(0.1)
-        closeButton.fillInSuperview()
-
-        rightContentView.contentView?.addSubview(createButton)
-        rightContentView.contentView?.backgroundColor = UIColor.green.withAlphaComponent(0.1)
+        rightContentView.addSubview(createButton)
         createButton.fillInSuperview()
     }
 
+    func update(for color: UIColor) {
+        createButton.updateAppearances(backgroundColor: color, textColor: color)
+    }
+    
     private func button(imageName: String, title: String) -> UIButton {
         let button = UIButton.init(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false

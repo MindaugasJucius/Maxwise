@@ -33,10 +33,23 @@ class ExpenseCreationViewController: UIViewController {
     }()
     @IBOutlet private weak var resetToCameraButtonContainer: VibrantContentView!
     
+    lazy var creationInputView: ExpenseCreationInputView? = {
+        let inputView = ExpenseCreationInputView.create(
+            closeButton: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            },
+            createButton: { [weak self] in
+                self?.tryToCreateExpense()
+            }
+        )
+        return inputView
+    }()
+    
     private lazy var cameraContainerBlurView: UIView! = {
         let blurView = BlurView()
         blurView.translatesAutoresizingMaskIntoConstraints = false
         blurView.layer.cornerRadius = 6
+        blurView.layer.cornerCurve = .continuous
         blurView.layer.masksToBounds = true
         
         let cameraImageContainerView = VibrantContentView()

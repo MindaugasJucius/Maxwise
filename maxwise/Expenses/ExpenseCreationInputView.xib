@@ -16,11 +16,8 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Suy-xN-rRT">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ap7-hu-M9H" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="203" height="48"/>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cK-zX-hGQ" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
-                            <rect key="frame" x="211" y="0.0" width="203" height="48"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cK-zX-hGQ">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                         </view>
                     </subviews>
                 </stackView>
@@ -35,7 +32,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="leftContentView" destination="Ap7-hu-M9H" id="cdu-Pc-ihZ"/>
                 <outlet property="rightContentView" destination="7cK-zX-hGQ" id="dFX-tP-ECe"/>
             </connections>
             <point key="canvasLocation" x="118.84057971014494" y="385.71428571428572"/>
