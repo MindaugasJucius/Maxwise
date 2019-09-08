@@ -16,6 +16,7 @@
                 <outlet property="collapseButtonContainer" destination="HMZ-ib-M42" id="Tb7-KI-kdn"/>
                 <outlet property="createInputViewContainer" destination="gdK-Oi-hRt" id="xn9-6i-O92"/>
                 <outlet property="currencyPlaceholderLabel" destination="2jM-Ag-PdM" id="zfd-RZ-taa"/>
+                <outlet property="dismissalView" destination="asV-Py-hZe" id="Tnq-zH-iR0"/>
                 <outlet property="expandedCameraHeightConstraint" destination="5JY-rw-nNn" id="Fof-uC-Zhp"/>
                 <outlet property="expenseInfoContainerView" destination="a5I-kZ-cgF" id="V1I-Cf-zJC"/>
                 <outlet property="expenseTitle" destination="GBs-TY-1Co" id="szP-1W-UIx"/>
@@ -148,10 +149,16 @@
                         <constraint firstAttribute="height" constant="45" id="QPb-fb-yDa"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asV-Py-hZe">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="472"/>
+                </view>
             </subviews>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gdK-Oi-hRt" secondAttribute="trailing" constant="16" id="8zq-GN-kO8"/>
                 <constraint firstItem="a5I-kZ-cgF" firstAttribute="top" secondItem="NLg-uk-6eq" secondAttribute="bottom" constant="8" id="Hda-Hf-Hdx"/>
+                <constraint firstItem="asV-Py-hZe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JQn-7j-DRY"/>
+                <constraint firstItem="NLg-uk-6eq" firstAttribute="top" secondItem="asV-Py-hZe" secondAttribute="bottom" constant="8" id="MSN-FN-Yfg"/>
+                <constraint firstItem="asV-Py-hZe" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Sho-SZ-1ao"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="a5I-kZ-cgF" secondAttribute="trailing" constant="16" id="WQo-eu-cK5"/>
                 <constraint firstItem="gdK-Oi-hRt" firstAttribute="top" secondItem="a5I-kZ-cgF" secondAttribute="bottom" constant="8" id="WTW-ut-BaD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gdK-Oi-hRt" secondAttribute="bottom" constant="8" id="YY0-QI-Dz9"/>
@@ -159,6 +166,7 @@
                 <constraint firstItem="gdK-Oi-hRt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="cri-C9-dFC"/>
                 <constraint firstItem="a5I-kZ-cgF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="sol-UQ-Akq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NLg-uk-6eq" secondAttribute="trailing" constant="16" id="t4l-Al-CHX"/>
+                <constraint firstItem="asV-Py-hZe" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="tyf-Br-2je"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

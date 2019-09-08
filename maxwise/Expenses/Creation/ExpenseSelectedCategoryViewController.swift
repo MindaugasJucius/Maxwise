@@ -52,7 +52,7 @@ class ExpenseSelectedCategoryViewController: UIViewController {
     
     private func configure(for category: ExpenseCategory) {
         containerView.backgroundColor = category.color?.withAlphaComponent(0.1)
-        containerView.layer.borderColor = category.color?.withAlphaComponent(0.4).cgColor
+        containerView.layer.borderColor = category.color?.cgColor
         emojiLabel.text = category.emojiValue
         if let shadowColor = category.color {
             view.layer.applyShadow(color: shadowColor)

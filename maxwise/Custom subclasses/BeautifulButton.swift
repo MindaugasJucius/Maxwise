@@ -35,7 +35,7 @@ private struct KoelButtonDefaultAppearance: KoelButtonAppearance {
     init(buttonColors: KoelButtonColorable) {
         transform = CATransform3DIdentity
         shadowOffset = CGSize(width: 0, height: 4)
-        shadowOpacity = 0.4
+        shadowOpacity = 0.5
         shadowRadius = 4
         colors = buttonColors
         dimmingViewOpacity = 0
@@ -53,7 +53,7 @@ struct KoelButtonEndAppearance: KoelButtonAppearance {
     init(buttonColors: KoelButtonColorable) {
         transform = CATransform3DMakeScale(0.98, 0.98, 1)
         shadowOffset = CGSize(width: 0, height: 2)
-        shadowOpacity = 0.7 
+        shadowOpacity = 0.7
         shadowRadius = 2
         colors = buttonColors
         dimmingViewOpacity = 0.5

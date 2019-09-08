@@ -8,6 +8,7 @@ enum ModalTransitionType {
 
 class ExpenseCreationViewController: UIViewController {
 
+    @IBOutlet private weak var dismissalView: UIView!
     @IBOutlet private weak var cameraContainerView: UIView!
     @IBOutlet private weak var safeAreaBottomConstraint: NSLayoutConstraint!
     
@@ -153,6 +154,7 @@ class ExpenseCreationViewController: UIViewController {
         configureAmountTextField()
         configureCameraContainerLayer()
         configureSegmentedControl()
+        configureDismissalView()
         addCategorySelectionController()
 
         observeResponderChanges()
@@ -251,6 +253,15 @@ class ExpenseCreationViewController: UIViewController {
         if expandedCameraHeightConstraint.isActive {
             collapseCamera()
         }
+    }
+    
+    private func configureDismissalView() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissVC))
+        dismissalView.addGestureRecognizer(tap)
+    }
+    
+    @objc private func dismissVC() {
+        dismiss(animated: true, completion: nil)
     }
     
     private func configureAmountTextField() {
