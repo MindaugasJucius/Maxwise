@@ -142,21 +142,13 @@ class ExpenseCreationViewController: UIViewController {
         
         expenseInfoContainerView.layer.applyShadow(color: .tertiaryLabel)
         expenseInfoContainerView.layer.cornerRadius = 6
+        expenseInfoContainerView.layer.cornerCurve = .continuous
         expenseInfoContainerView.backgroundColor = .systemBackground
         expenseInfoContainerView.isUserInteractionEnabled = true
-    
-        let inputView = ExpenseCreationInputView.create(
-            closeButton: { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
-            },
-            createButton: { [weak self] in
-                self?.tryToCreateExpense()
-            }
-        )
         
-        createInputViewContainer.addSubview(inputView!)
-        inputView?.translatesAutoresizingMaskIntoConstraints = false
-        inputView?.fillInSuperview()
+        createInputViewContainer.addSubview(creationInputView!)
+        creationInputView?.translatesAutoresizingMaskIntoConstraints = false
+        creationInputView?.fillInSuperview()
 
         configureAmountTextField()
         configureCameraContainerLayer()
@@ -207,6 +199,10 @@ class ExpenseCreationViewController: UIViewController {
     private func handleCategorySelection(category: ExpenseCategory) {
         expenseTitle.placeholder = category.title.capitalized
         selectedCategory = category
+        guard let color = category.color else {
+            return
+        }
+        creationInputView?.update(for: color)
     }
 
     private func tryToCreateExpense() {

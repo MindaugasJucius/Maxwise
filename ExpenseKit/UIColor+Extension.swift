@@ -62,6 +62,10 @@ extension UIColor {
 
 extension UIColor {
     
+    public static var confirmationGreen: UIColor {
+        return .init(red: 146, green: 230, blue: 54)
+    }
+    
     
     static var tealBlue: UIColor {
         return .init(red: 90, green: 200, blue: 250)
