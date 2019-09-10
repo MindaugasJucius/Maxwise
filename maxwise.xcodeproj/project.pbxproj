@@ -14,6 +14,15 @@
 		5F0FC86C231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */; };
 		5F0FC86F231C284C0083EBA9 /* CategoryCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC86D231C284C0083EBA9 /* CategoryCreationViewController.swift */; };
 		5F0FC870231C284C0083EBA9 /* CategoryCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0FC86E231C284C0083EBA9 /* CategoryCreationViewController.xib */; };
+		5F0FC872231C2A9C0083EBA9 /* NoExpensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC871231C2A9C0083EBA9 /* NoExpensesView.swift */; };
+		5F0FC874231C2ABA0083EBA9 /* NoExpensesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0FC873231C2ABA0083EBA9 /* NoExpensesView.xib */; };
+		5F0FC8762322EEFA0083EBA9 /* BeautifulButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC8752322EEFA0083EBA9 /* BeautifulButton.swift */; };
+		5F0FC87823255E660083EBA9 /* CategoryCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC87723255E660083EBA9 /* CategoryCreationView.swift */; };
+		5F0FC87A23255E7E0083EBA9 /* CategoryCreationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0FC87923255E7E0083EBA9 /* CategoryCreationView.xib */; };
+		5F169BD223256E76007666E9 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F169BD123256E76007666E9 /* EmojiTextField.swift */; };
+		5F169BD42325799A007666E9 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F169BD32325799A007666E9 /* InsetTextField.swift */; };
+		5F169BD623257CF4007666E9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F169BD523257CF4007666E9 /* Color.swift */; };
+		5F169BD823257D86007666E9 /* ColorModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F169BD723257D86007666E9 /* ColorModelController.swift */; };
 		5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */; };
 		5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B42210281B00BAECF6 /* TextPickViewModel.swift */; };
 		5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B6221034F300BAECF6 /* ExpensesViewController.swift */; };
@@ -70,8 +79,6 @@
 		5F9DE37C22189582008CCB94 /* ExpenseEntryModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE37B22189582008CCB94 /* ExpenseEntryModelControllerTests.swift */; };
 		5F9DE37E2218A135008CCB94 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9DE37D2218A135008CCB94 /* CameraViewController.xib */; };
 		5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38122195D7A008CCB94 /* ExpensesParentViewController.swift */; };
-		5F9DE38B22198CA0008CCB94 /* ExpensesStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38922198CA0008CCB94 /* ExpensesStatsViewController.swift */; };
-		5F9DE38C22198CA0008CCB94 /* ExpensesStatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9DE38A22198CA0008CCB94 /* ExpensesStatsViewController.xib */; };
 		5F9DE38E2219BF89008CCB94 /* UserModelControllerObservationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38D2219BF88008CCB94 /* UserModelControllerObservationTests.swift */; };
 		5F9DE3902219C282008CCB94 /* TestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38F2219C282008CCB94 /* TestsHelper.swift */; };
 		5F9E13C5222C33F100805878 /* LocationAccessNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C4222C33F100805878 /* LocationAccessNotifier.swift */; };
@@ -174,6 +181,15 @@
 		5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesStatisticsViewController.xib; sourceTree = "<group>"; };
 		5F0FC86D231C284C0083EBA9 /* CategoryCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCreationViewController.swift; sourceTree = "<group>"; };
 		5F0FC86E231C284C0083EBA9 /* CategoryCreationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCreationViewController.xib; sourceTree = "<group>"; };
+		5F0FC871231C2A9C0083EBA9 /* NoExpensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExpensesView.swift; sourceTree = "<group>"; };
+		5F0FC873231C2ABA0083EBA9 /* NoExpensesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoExpensesView.xib; sourceTree = "<group>"; };
+		5F0FC8752322EEFA0083EBA9 /* BeautifulButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeautifulButton.swift; sourceTree = "<group>"; };
+		5F0FC87723255E660083EBA9 /* CategoryCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCreationView.swift; sourceTree = "<group>"; };
+		5F0FC87923255E7E0083EBA9 /* CategoryCreationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCreationView.xib; sourceTree = "<group>"; };
+		5F169BD123256E76007666E9 /* EmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
+		5F169BD32325799A007666E9 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
+		5F169BD523257CF4007666E9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		5F169BD723257D86007666E9 /* ColorModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModelController.swift; sourceTree = "<group>"; };
 		5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Orientation+Extensions.swift"; sourceTree = "<group>"; };
 		5F20E0B02210247C00BAECF6 /* ExpenseEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
 		5F20E0B22210265200BAECF6 /* ExpenseEntryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryModelController.swift; sourceTree = "<group>"; };
@@ -234,8 +250,6 @@
 		5F9DE37B22189582008CCB94 /* ExpenseEntryModelControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryModelControllerTests.swift; sourceTree = "<group>"; };
 		5F9DE37D2218A135008CCB94 /* CameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
 		5F9DE38122195D7A008CCB94 /* ExpensesParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesParentViewController.swift; sourceTree = "<group>"; };
-		5F9DE38922198CA0008CCB94 /* ExpensesStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesStatsViewController.swift; sourceTree = "<group>"; };
-		5F9DE38A22198CA0008CCB94 /* ExpensesStatsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpensesStatsViewController.xib; sourceTree = "<group>"; };
 		5F9DE38D2219BF88008CCB94 /* UserModelControllerObservationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelControllerObservationTests.swift; sourceTree = "<group>"; };
 		5F9DE38F2219C282008CCB94 /* TestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
 		5F9E13C4222C33F100805878 /* LocationAccessNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAccessNotifier.swift; sourceTree = "<group>"; };
@@ -325,6 +339,10 @@
 				5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */,
 				5F0FC86D231C284C0083EBA9 /* CategoryCreationViewController.swift */,
 				5F0FC86E231C284C0083EBA9 /* CategoryCreationViewController.xib */,
+				5F0FC87723255E660083EBA9 /* CategoryCreationView.swift */,
+				5F0FC87923255E7E0083EBA9 /* CategoryCreationView.xib */,
+				5F169BD123256E76007666E9 /* EmojiTextField.swift */,
+				5F169BD32325799A007666E9 /* InsetTextField.swift */,
 			);
 			name = Categories;
 			path = ..;
@@ -346,10 +364,10 @@
 				5F86C57122108C9B005CFF9E /* ExpensesViewModel.swift */,
 				5F20E0BB2210352F00BAECF6 /* ExpenseTableViewCell.swift */,
 				5F20E0BC2210352F00BAECF6 /* ExpenseTableViewCell.xib */,
-				5F9DE38922198CA0008CCB94 /* ExpensesStatsViewController.swift */,
-				5F9DE38A22198CA0008CCB94 /* ExpensesStatsViewController.xib */,
 				5FC9298322F89FFF00CB23DC /* ExpenseCreationInputView.swift */,
 				5FC9298522F8A02200CB23DC /* ExpenseCreationInputView.xib */,
+				5F0FC871231C2A9C0083EBA9 /* NoExpensesView.swift */,
+				5F0FC873231C2ABA0083EBA9 /* NoExpensesView.xib */,
 				5F9E13C8222C44DC00805878 /* Creation */,
 				5F56B98F23049E1C005AF4AF /* ExpensesSectionHeaderView.swift */,
 				5F56B99123049E2B005AF4AF /* ExpensesSectionHeaderView.xib */,
@@ -373,6 +391,8 @@
 				5F353A5222DB48C400F96D3D /* ExpenseKit.h */,
 				5F353A5322DB48C400F96D3D /* Info.plist */,
 				5FC9298122DB83F000CB23DC /* Realm+Extensions.swift */,
+				5F169BD523257CF4007666E9 /* Color.swift */,
+				5F169BD723257D86007666E9 /* ColorModelController.swift */,
 			);
 			path = ExpenseKit;
 			sourceTree = "<group>";
@@ -549,6 +569,7 @@
 			children = (
 				5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */,
 				F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */,
+				5F0FC8752322EEFA0083EBA9 /* BeautifulButton.swift */,
 			);
 			path = "Custom subclasses";
 			sourceTree = "<group>";
@@ -739,7 +760,6 @@
 				5F0FC870231C284C0083EBA9 /* CategoryCreationViewController.xib in Resources */,
 				5F0FC86C231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib in Resources */,
 				5FC9298622F8A02200CB23DC /* ExpenseCreationInputView.xib in Resources */,
-				5F9DE38C22198CA0008CCB94 /* ExpensesStatsViewController.xib in Resources */,
 				5FB59213227DE303005D5208 /* NavigationView.xib in Resources */,
 				5F56B99E2313C78E005AF4AF /* ExpenseCategoryTableViewCell.xib in Resources */,
 				5F20E0B9221034F300BAECF6 /* ExpensesViewController.xib in Resources */,
@@ -748,7 +768,9 @@
 				5F9DE37E2218A135008CCB94 /* CameraViewController.xib in Resources */,
 				5F56B99223049E2B005AF4AF /* ExpensesSectionHeaderView.xib in Resources */,
 				5F56B99623101C9B005AF4AF /* ExpenseSelectedCategoryViewController.xib in Resources */,
+				5F0FC874231C2ABA0083EBA9 /* NoExpensesView.xib in Resources */,
 				5F6878772207425400F4FE7C /* tessdata in Resources */,
+				5F0FC87A23255E7E0083EBA9 /* CategoryCreationView.xib in Resources */,
 				5F65C346222A6DAF00E10F92 /* VenueCollectionViewCell.xib in Resources */,
 				5F20E0BE2210352F00BAECF6 /* ExpenseTableViewCell.xib in Resources */,
 				5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */,
@@ -878,8 +900,10 @@
 			files = (
 				5F353A6F22DB48F400F96D3D /* NearbyPlace.swift in Sources */,
 				5F353A7322DB48F400F96D3D /* ExpenseEntryModelController.swift in Sources */,
+				5F169BD623257CF4007666E9 /* Color.swift in Sources */,
 				5F353A6E22DB48F400F96D3D /* ExpenseCategory.swift in Sources */,
 				5F353A7A22DB4BB100F96D3D /* ExpenseCreation.intentdefinition in Sources */,
+				5F169BD823257D86007666E9 /* ColorModelController.swift in Sources */,
 				5F353A7022DB48F400F96D3D /* User.swift in Sources */,
 				5F353A7122DB48F400F96D3D /* ExpenseEntry.swift in Sources */,
 				5F353A7222DB48F400F96D3D /* UserModelController.swift in Sources */,
@@ -905,11 +929,14 @@
 				5F470BDF220CA765002CD12D /* BlurView.swift in Sources */,
 				5F56B99523101C9B005AF4AF /* ExpenseSelectedCategoryViewController.swift in Sources */,
 				F45D67CE22A3D96B00DB1AE1 /* VibrantContentView.swift in Sources */,
+				5F169BD223256E76007666E9 /* EmojiTextField.swift in Sources */,
 				5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */,
 				5F65CD4B22D2621B0040C218 /* ExpenseCreation.intentdefinition in Sources */,
 				5FA3DBB522C8C531009FD189 /* UIViewController+Extensions.swift in Sources */,
 				5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */,
 				5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */,
+				5F169BD42325799A007666E9 /* InsetTextField.swift in Sources */,
+				5F0FC87823255E660083EBA9 /* CategoryCreationView.swift in Sources */,
 				5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */,
 				5F56B99D2313C78E005AF4AF /* ExpenseCategoryTableViewCell.swift in Sources */,
 				5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */,
@@ -918,7 +945,7 @@
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
 				5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */,
 				5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */,
-				5F9DE38B22198CA0008CCB94 /* ExpensesStatsViewController.swift in Sources */,
+				5F0FC872231C2A9C0083EBA9 /* NoExpensesView.swift in Sources */,
 				5FC9298422F89FFF00CB23DC /* ExpenseCreationInputView.swift in Sources */,
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 				5F56B99023049E1C005AF4AF /* ExpensesSectionHeaderView.swift in Sources */,
@@ -926,6 +953,7 @@
 				5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */,
 				5F0FC86F231C284C0083EBA9 /* CategoryCreationViewController.swift in Sources */,
 				5F0FC86B231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift in Sources */,
+				5F0FC8762322EEFA0083EBA9 /* BeautifulButton.swift in Sources */,
 				5FD95D8922D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */,
 				5FB59211227DE2EF005D5208 /* NavigationView.swift in Sources */,
 				5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */,

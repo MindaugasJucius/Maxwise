@@ -12,7 +12,7 @@ class ExpenseCategoryTableViewCell: UITableViewCell {
     func configure(category: ExpenseCategory) {
         categoryTitleLabel.text = category.title
         emojiLabel.text = category.emojiValue
-        selectionView.backgroundColor = category.color?.withAlphaComponent(0.3)
+        selectionView.backgroundColor = category.color?.uiColor?.withAlphaComponent(0.3)
         selectedBackgroundView = selectionView
         self.category = category
     }

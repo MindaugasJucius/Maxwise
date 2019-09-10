@@ -39,7 +39,7 @@ class CategoryCreationView: UIView {
         
         if !expenseCategory.isEmpty() {
             titleTextField.text = expenseCategory.title
-            colorView.layer.backgroundColor = UIColor(hex: expenseCategory.colorHexValue)?.cgColor
+            colorView.layer.backgroundColor = expenseCategory.color?.uiColor?.cgColor
             categoryEmojiTextField.text = expenseCategory.emojiValue
         }
     }

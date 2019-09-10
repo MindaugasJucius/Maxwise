@@ -97,7 +97,7 @@ class ExpensesViewModel {
                                       currencyAmount: formatted(amount: expenseEntry.amount),
                                       sharePercentageCurrencyAmount: formatted(amount: shareAmount),
                                       title: expenseEntry.title,
-                                      categoryColor: category.color,
+                                      categoryColor: category.color?.uiColor,
                                       categoryEmojiValue: category.emojiValue,
                                       formattedDate: dateFormatter.string(from: expenseEntry.creationDate),
                                       image: image)

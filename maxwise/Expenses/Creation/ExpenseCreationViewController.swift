@@ -201,7 +201,7 @@ class ExpenseCreationViewController: UIViewController {
     private func handleCategorySelection(category: ExpenseCategory) {
         expenseTitle.placeholder = category.title.capitalized
         selectedCategory = category
-        guard let color = category.color else {
+        guard let color = category.color?.uiColor else {
             return
         }
         creationInputView?.update(for: color)

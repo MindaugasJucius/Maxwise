@@ -30,7 +30,7 @@
                                 <constraint firstAttribute="width" constant="30" id="AIh-RC-vTV"/>
                             </constraints>
                         </view>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="📊" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tjv-Xe-l0c" customClass="EmojiTextField" customModule="maxwise" customModuleProvider="target">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="🤑" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tjv-Xe-l0c" customClass="EmojiTextField" customModule="maxwise" customModuleProvider="target">
                             <rect key="frame" x="38" y="2.5" width="62" height="45.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <textInputTraits key="textInputTraits"/>
