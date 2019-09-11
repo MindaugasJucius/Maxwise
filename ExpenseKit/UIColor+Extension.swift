@@ -96,35 +96,58 @@ extension UIColor {
 extension UIColor {
     
     // Green / Sea
-    static let flatTurquoise = UIColor(hex: 0x1ABC9C)
-    static let flatGreenSea = UIColor(hex: 0x16A085)
+    static let flatTurquoise    = UIColor(hex: 0x1ABC9C)
+    static let flatGreenSea     = UIColor(hex: 0x16A085)
     // Green
-    static let flatEmerald = UIColor(hex: 0x2ECC71)
-    static let flatNephritis = UIColor(hex: 0x27AE60)
+    static let flatEmerald      = UIColor(hex: 0x2ECC71)
+    static let flatNephritis    = UIColor(hex: 0x27AE60)
     // Blue
-    static let flatPeterRiver = UIColor(hex: 0x3498DB)
-    static let flatBelizeHole = UIColor(hex: 0x2980B9)
+    static let flatPeterRiver   = UIColor(hex: 0x3498DB)
+    static let flatBelizeHole   = UIColor(hex: 0x2980B9)
     // Purple
-    static let flatAmethyst = UIColor(hex: 0x9B59B6)
-    static let flatWisteria = UIColor(hex: 0x8E44AD)
+    static let flatAmethyst     = UIColor(hex: 0x9B59B6)
+    static let flatWisteria     = UIColor(hex: 0x8E44AD)
     // Dark blue
-    static let flatWetAsphalt = UIColor(hex: 0x34495E)
+    static let flatWetAsphalt   = UIColor(hex: 0x34495E)
     static let flatMidnightBlue = UIColor(hex: 0x2C3E50)
     // Yellow
-    static let flatSunFlower = UIColor(hex: 0xF1C40F)
-    static let flatOrange = UIColor(hex: 0xF39C12)
+    static let flatSunFlower   = UIColor(hex: 0xF1C40F)
+    static let flatOrange      = UIColor(hex: 0xF39C12)
     // Orange
-    static let flatCarrot = UIColor(hex: 0xE67E22)
-    static let flatPumpkin = UIColor(hex: 0xD35400)
+    static let flatCarrot      = UIColor(hex: 0xE67E22)
+    static let flatPumpkin     = UIColor(hex: 0xD35400)
     // Red
-    static let flatAlizarin = UIColor(hex: 0xE74C3C)
+    static let flatAlizarin    = UIColor(hex: 0xE74C3C)
     static let flatPomegranate = UIColor(hex: 0xC0392B)
     // White
-    static let flatClouds = UIColor(hex: 0xECF0F1)
-    static let flatSilver = UIColor(hex: 0xBDC3C7)
+    static let flatClouds   = UIColor(hex: 0xECF0F1)
+    static let flatSilver   = UIColor(hex: 0xBDC3C7)
     // Gray
     static let flatAsbestos = UIColor(hex: 0x7F8C8D)
-    static let flatConcerte = UIColor(hex: 0x95A5A6)
+    static let flatConcrete = UIColor(hex: 0x95A5A6)
+    
+    static let palette: [UIColor] = [
+        flatTurquoise
+        ,flatGreenSea
+        ,flatEmerald
+        ,flatNephritis
+        ,flatPeterRiver
+        ,flatBelizeHole
+        ,flatAmethyst
+        ,flatWisteria
+        ,flatWetAsphalt
+        ,flatMidnightBlue
+        ,flatSunFlower
+        ,flatOrange
+        ,flatCarrot
+        ,flatPumpkin
+        ,flatAlizarin
+        ,flatPomegranate
+        ,flatClouds
+        ,flatSilver
+        ,flatAsbestos
+        ,flatConcrete
+    ]
 }
 
 /// Dutch Palette

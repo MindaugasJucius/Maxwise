@@ -21,6 +21,5 @@ public class ExpenseCategory: Object {
     public func isEmpty() -> Bool {
         return emojiValue == ExpenseCategory.defaultEmojiValue
             && title.isEmpty
-            && colorHexValue.isEmpty
     }
 }
