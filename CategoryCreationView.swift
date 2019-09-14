@@ -9,12 +9,17 @@ class CategoryCreationView: UIView {
     private let expenseCategory: ExpenseCategory
     private let colors: [Color]
     private let preselectedColor: Color?
+    private let changedColorSelection: (Color) -> Void
     
     @IBOutlet private weak var titleTextField: UITextField!
     @IBOutlet private weak var categoryEmojiTextField: UITextField!
     @IBOutlet private weak var colorSelectionCollectionView: UICollectionView!
     
-    init(expenseCategory: ExpenseCategory, colors: [Color], selectedColor: Color?) {
+    init(expenseCategory: ExpenseCategory,
+         colors: [Color],
+         selectedColor: Color?,
+         changedColorSelection: @escaping (Color) -> Void) {
+        self.changedColorSelection = changedColorSelection
         self.expenseCategory = expenseCategory
         self.preselectedColor = selectedColor
         
@@ -119,8 +124,8 @@ class CategoryCreationView: UIView {
             colorSelectionCollectionView.selectItem(at: .init(item: index, section: 0),
                                                     animated: false,
                                                     scrollPosition: .left)
+            changedColorSelection(preselectedColor)
         }
-
     }
 }
 
@@ -128,6 +133,8 @@ extension CategoryCreationView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectionFeedback.selectionChanged()
+        let color = colors[indexPath.row]
+        changedColorSelection(color)
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {

@@ -19,7 +19,14 @@ class CategoryCreationViewController: UIViewController {
         return CategoryCreationView(
             expenseCategory: expenseCategory,
             colors: notTakenColors + colorModelController.takenColors(),
-            selectedColor: initialColor
+            selectedColor: initialColor,
+            changedColorSelection: { [weak self] color in
+                guard let uiColor = color.uiColor else {
+                    return
+                }
+                self?.creationButton.updateAppearances(backgroundColor: uiColor,
+                                                       textColor: uiColor)
+            }
         )
     }()
 
@@ -38,11 +45,8 @@ class CategoryCreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let initialButtonColor = initialColor?.uiColor ?? .tealBlue
-        creationButton.updateAppearances(backgroundColor: initialButtonColor,
-                                         textColor: initialButtonColor)
-
         creationView.translatesAutoresizingMaskIntoConstraints = false
+        
         categoryCreationViewContainer.addSubview(creationView)
         creationView.fillInSuperview()
         
