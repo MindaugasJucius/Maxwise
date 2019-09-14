@@ -21,7 +21,7 @@ class NoExpensesView: UIView {
         
         bottomLabel.textColor = .tertiaryLabel
         bottomLabel.font = .systemFont(ofSize: 20, weight: .regular)
-        bottomLabel.text = "Start by tapping down below"
+        bottomLabel.text = "Start by tapping below"
         
         imageView.tintColor = .secondaryLabel
     }
