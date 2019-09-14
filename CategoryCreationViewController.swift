@@ -12,9 +12,17 @@ class CategoryCreationViewController: UIViewController {
     @IBOutlet private weak var creationButton: BeautifulButton!
     
     private let colorModelController = ColorModelController()
-    private lazy var creationView = CategoryCreationView(expenseCategory: expenseCategory,
-                                                         colors: colorModelController.colors())
+    private lazy var initialColor = colorModelController.randomNonTakenColor()
     
+    private lazy var creationView: CategoryCreationView = {
+        let notTakenColors = colorModelController.notTakenColors().filter { $0 != initialColor }
+        return CategoryCreationView(
+            expenseCategory: expenseCategory,
+            colors: notTakenColors + colorModelController.takenColors(),
+            selectedColor: initialColor
+        )
+    }()
+
     /// Initialize controller
     /// - Parameter category: Category to create or edit
     init(category: ExpenseCategory) {
@@ -30,8 +38,10 @@ class CategoryCreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        creationButton.updateAppearances(backgroundColor: UIColor.tealBlue,
-                                 textColor: UIColor.tealBlue)
+        let initialButtonColor = initialColor?.uiColor ?? .tealBlue
+        creationButton.updateAppearances(backgroundColor: initialButtonColor,
+                                         textColor: initialButtonColor)
+
         creationView.translatesAutoresizingMaskIntoConstraints = false
         categoryCreationViewContainer.addSubview(creationView)
         creationView.fillInSuperview()

@@ -18,7 +18,6 @@ public class ExpenseCategoryModelController {
     }
     
     public func addDefaultCategoriesIfNeeded() {
-        let lol = try? Realm.groupRealm()
         guard !UserDefaults.standard.bool(forKey: defaultCategoriesCreatedKey) else {
             return
         }
@@ -84,6 +83,7 @@ public class ExpenseCategoryModelController {
             return
         }
         try? realm.write {
+            category.color?.taken = true
             realm.add(category)
         }
     }

@@ -1,4 +1,5 @@
 import UIKit
+import ExpenseKit
 
 class ColorCollectionViewCell: UICollectionViewCell {
     
@@ -33,16 +34,40 @@ class ColorCollectionViewCell: UICollectionViewCell {
         return view
     }()
 
+    private lazy var alreadyTakenView: UIView = {
+        let view = UIView.init(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.9)
+        return view
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        addSubview(alreadyTakenView)
+        alreadyTakenView.clipsToBounds = true
+        alreadyTakenView.fillInSuperview()
+        alreadyTakenView.isHidden = true
+        
         addSubview(selectionView)
         selectionView.fillInSuperview()
         selectionView.clipsToBounds = true
         selectionView.isHidden = true
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        alreadyTakenView.isHidden = true
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = frame.width / 2
+    }
+    
+    func configure(forColor color: Color) {
+        backgroundColor = color.uiColor
+        if color.taken {
+            alreadyTakenView.isHidden = false
+        }
     }
 }

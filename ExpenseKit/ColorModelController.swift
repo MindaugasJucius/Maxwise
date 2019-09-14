@@ -36,12 +36,30 @@ public class ColorModelController {
         completed(defaultColorPairs)
     }
     
-    public func colors() -> [Color] {
-        guard let realm = try? Realm.groupRealm() else {
+    public func notTakenColors() -> [Color] {
+        guard let colors = colors() else {
             return []
         }
-
-        return Array(realm.objects(Color.self))
+        return Array(colors.filter { !$0.taken })
+    }
+    
+    public func takenColors() -> [Color] {
+        guard let colors = colors() else {
+            return []
+        }
+        return Array(colors.filter { $0.taken })
+    }
+    
+    public func randomNonTakenColor() -> Color? {
+        return notTakenColors().randomElement()
+    }
+    
+    func colors() -> Results<Color>? {
+        guard let realm = try? Realm.groupRealm() else {
+            return nil
+        }
+        
+        return realm.objects(Color.self)
     }
     
     public func store(uiColor: UIColor) {

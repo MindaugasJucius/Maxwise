@@ -8,15 +8,22 @@ class CategoryCreationView: UIView {
     
     private let expenseCategory: ExpenseCategory
     private let colors: [Color]
+    private let preselectedColor: Color?
     
-//    @IBOutlet private weak var colorView: UIView!
     @IBOutlet private weak var titleTextField: UITextField!
     @IBOutlet private weak var categoryEmojiTextField: UITextField!
     @IBOutlet private weak var colorSelectionCollectionView: UICollectionView!
     
-    init(expenseCategory: ExpenseCategory, colors: [Color]) {
+    init(expenseCategory: ExpenseCategory, colors: [Color], selectedColor: Color?) {
         self.expenseCategory = expenseCategory
-        self.colors = colors
+        self.preselectedColor = selectedColor
+        
+        if let selectedColor = selectedColor {
+            self.colors = [selectedColor] + colors
+        } else {
+            self.colors = colors
+        }
+        
         super.init(frame: .zero)
         loadNib()
         configure(expenseCategory: expenseCategory)
@@ -27,6 +34,9 @@ class CategoryCreationView: UIView {
     }
     
     private func configure(expenseCategory: ExpenseCategory) {
+        titleTextField.backgroundColor = .systemBackground
+        categoryEmojiTextField.backgroundColor = .systemBackground
+        
         layer.masksToBounds = true
         layer.applyShadow(color: .tertiaryLabel)
         titleTextField.becomeFirstResponder()
@@ -41,7 +51,6 @@ class CategoryCreationView: UIView {
         
         if !expenseCategory.isEmpty() {
             titleTextField.text = expenseCategory.title
-//            colorView.layer.backgroundColor = expenseCategory.color?.uiColor?.cgColor
             categoryEmojiTextField.text = expenseCategory.emojiValue
         }
         configureCollectionView()
@@ -57,6 +66,7 @@ class CategoryCreationView: UIView {
         
         contentView.layer.cornerCurve = .continuous
         contentView.layer.cornerRadius = 6
+        contentView.backgroundColor = UIColor.systemBackground
     }
 
     func isCategoryDataValid() -> Bool {
@@ -89,6 +99,7 @@ class CategoryCreationView: UIView {
             section.interGroupSpacing = 10
             return section
         }
+        
         let layoutConfiguration = UICollectionViewCompositionalLayoutConfiguration()
         layoutConfiguration.scrollDirection = .vertical
         layout.configuration = layoutConfiguration
@@ -102,6 +113,14 @@ class CategoryCreationView: UIView {
         colorSelectionCollectionView.dataSource = self
         colorSelectionCollectionView.delegate = self
         colorSelectionCollectionView.allowsSelection = true
+        
+        if let preselectedColor = preselectedColor,
+            let index = colors.firstIndex(of: preselectedColor) {
+            colorSelectionCollectionView.selectItem(at: .init(item: index, section: 0),
+                                                    animated: false,
+                                                    scrollPosition: .left)
+        }
+
     }
 }
 
@@ -109,6 +128,11 @@ extension CategoryCreationView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectionFeedback.selectionChanged()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let color = colors[indexPath.row]
+        return !color.taken
     }
     
 }
@@ -130,7 +154,8 @@ extension CategoryCreationView: UICollectionViewDataSource {
             return cell
         }
         let color = colors[indexPath.row]
-        colorCell.backgroundColor = color.uiColor
+        
+        colorCell.configure(forColor: color)
         return colorCell
     }
     
