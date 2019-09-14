@@ -11,7 +11,7 @@ class CategoryCreationView: UIView {
     private let preselectedColor: Color?
     private let changedColorSelection: (Color) -> Void
     
-    @IBOutlet private weak var titleTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet private weak var categoryEmojiTextFieldContainer: UIView!
     @IBOutlet private weak var categoryEmojiTextField: UITextField!
     @IBOutlet private weak var colorSelectionCollectionView: UICollectionView!
@@ -48,7 +48,6 @@ class CategoryCreationView: UIView {
         layer.applyShadow(color: .tertiaryLabel)
         
         titleTextField.backgroundColor = .systemBackground
-        titleTextField.becomeFirstResponder()
         titleTextField.layer.applyBorder()
         titleTextField.layer.borderColor = UIColor.clear.cgColor
         titleTextField.textColor = .label

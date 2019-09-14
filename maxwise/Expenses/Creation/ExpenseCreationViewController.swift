@@ -159,6 +159,14 @@ class ExpenseCreationViewController: UIViewController {
         addCategorySelectionController()
 
         observeResponderChanges()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(applicationDidBecomeActive),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
+    }
+
+    @objc private func applicationDidBecomeActive(notification: NSNotification) {
+        lastResponder?.becomeFirstResponder()
     }
     
     override func viewDidAppear(_ animated: Bool) {

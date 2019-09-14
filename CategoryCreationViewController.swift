@@ -56,11 +56,24 @@ class CategoryCreationViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(applicationDidBecomeActive),
+                                       name: UIApplication.willEnterForegroundNotification,
+                                       object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        creationView.titleTextField.becomeFirstResponder()
+    }
+    
+    @objc private func applicationDidBecomeActive(notification: NSNotification) {
+        creationView.titleTextField.becomeFirstResponder()
     }
     
     @objc private func persistCategory() {
         if creationView.isCategoryDataValid() {
-            
+//            ExpenseCategoryModelController.Category
         }
     }
 
