@@ -12,6 +12,7 @@ class CategoryCreationView: UIView {
     private let changedColorSelection: (Color) -> Void
     
     @IBOutlet private weak var titleTextField: UITextField!
+    @IBOutlet private weak var categoryEmojiTextFieldContainer: UIView!
     @IBOutlet private weak var categoryEmojiTextField: UITextField!
     @IBOutlet private weak var colorSelectionCollectionView: UICollectionView!
     
@@ -39,13 +40,15 @@ class CategoryCreationView: UIView {
     }
     
     private func configure(expenseCategory: ExpenseCategory) {
-        titleTextField.backgroundColor = .systemBackground
-        categoryEmojiTextField.backgroundColor = .systemBackground
+        categoryEmojiTextField.layer.applyBorder()
+        
+        categoryEmojiTextFieldContainer.layer.cornerRadius = 6
         
         layer.masksToBounds = true
         layer.applyShadow(color: .tertiaryLabel)
-        titleTextField.becomeFirstResponder()
         
+        titleTextField.backgroundColor = .systemBackground
+        titleTextField.becomeFirstResponder()
         titleTextField.layer.applyBorder()
         titleTextField.layer.borderColor = UIColor.clear.cgColor
         titleTextField.textColor = .label
@@ -125,7 +128,21 @@ class CategoryCreationView: UIView {
                                                     animated: false,
                                                     scrollPosition: .left)
             changedColorSelection(preselectedColor)
+            update(for: preselectedColor)
         }
+    }
+    
+    private func update(for color: Color) {
+        guard let uiColor = color.uiColor else {
+            return
+        }
+        categoryEmojiTextField.layer.applyBorder()
+        categoryEmojiTextField.backgroundColor = uiColor.withAlphaComponent(0.1)
+        categoryEmojiTextField.layer.borderColor = uiColor.cgColor
+        categoryEmojiTextFieldContainer.layer.applyShadow(color: uiColor)
+
+        categoryEmojiTextField.tintColor = uiColor
+        titleTextField.tintColor = uiColor
     }
 }
 
@@ -135,6 +152,7 @@ extension CategoryCreationView: UICollectionViewDelegate {
         selectionFeedback.selectionChanged()
         let color = colors[indexPath.row]
         changedColorSelection(color)
+        update(for: color)
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {

@@ -9,7 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryCreationView" customModule="maxwise" customModuleProvider="target">
             <connections>
-                <outlet property="categoryEmojiTextField" destination="Tjv-Xe-l0c" id="JX9-Nm-3eh"/>
+                <outlet property="categoryEmojiTextField" destination="Tjv-Xe-l0c" id="v5a-5n-oCK"/>
+                <outlet property="categoryEmojiTextFieldContainer" destination="pUL-yt-TzU" id="4O6-4G-MzB"/>
                 <outlet property="colorSelectionCollectionView" destination="yAo-RJ-HGQ" id="QS5-7V-If5"/>
                 <outlet property="titleTextField" destination="gKP-5J-1aq" id="WSR-fr-lUb"/>
             </connections>
@@ -25,16 +26,26 @@
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mEP-WU-lOq">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="🤑" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tjv-Xe-l0c" customClass="EmojiTextField" customModule="maxwise" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="62" height="44"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUL-yt-TzU">
+                                    <rect key="frame" x="0.0" y="0.5" width="65" height="43.5"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="🤑" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tjv-Xe-l0c" customClass="EmojiTextField" customModule="maxwise" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="65" height="43.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="62" id="h17-fo-pKe"/>
+                                        <constraint firstAttribute="bottom" secondItem="Tjv-Xe-l0c" secondAttribute="bottom" id="11K-Ff-9kl"/>
+                                        <constraint firstItem="Tjv-Xe-l0c" firstAttribute="top" secondItem="pUL-yt-TzU" secondAttribute="top" id="5rO-FJ-WbT"/>
+                                        <constraint firstAttribute="trailing" secondItem="Tjv-Xe-l0c" secondAttribute="trailing" id="89g-Lg-NxG"/>
+                                        <constraint firstItem="Tjv-Xe-l0c" firstAttribute="leading" secondItem="pUL-yt-TzU" secondAttribute="leading" id="LNa-O6-HRU"/>
+                                        <constraint firstAttribute="width" constant="65" id="vJo-47-RNM"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
+                                </view>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="740" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gKP-5J-1aq" customClass="InsetTextField" customModule="maxwise" customModuleProvider="target">
-                                    <rect key="frame" x="70" y="0.5" width="312" height="43.5"/>
+                                    <rect key="frame" x="73" y="0.5" width="309" height="43.5"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="43.5" id="bRe-Rr-WHy"/>
                                     </constraints>
@@ -42,6 +53,9 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="pUL-yt-TzU" firstAttribute="height" secondItem="gKP-5J-1aq" secondAttribute="height" id="EKO-G8-wDZ"/>
+                            </constraints>
                         </stackView>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yAo-RJ-HGQ">
                             <rect key="frame" x="0.0" y="52" width="382" height="40"/>
