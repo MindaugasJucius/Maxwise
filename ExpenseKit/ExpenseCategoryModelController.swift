@@ -11,7 +11,19 @@ public class ExpenseCategoryModelController {
     private let defaultPreselectedCategoryName = "Food"
     public static let preselectedCategoryKey = "preselectedCategoryKey"
 
-    typealias Category = (String, String, Color)
+    public struct Category {
+        let title: String
+        let emojiValue: String
+        let color: Color
+
+        public init(title: String,
+                    emojiValue: String,
+                    color: Color) {
+            self.title = title
+            self.emojiValue = emojiValue
+            self.color = color
+        }
+    }
     
     public init() {
         
@@ -38,15 +50,19 @@ public class ExpenseCategoryModelController {
                                                                          ("Other", "💸", colorPairs[.flatEmerald])]
             let nonNilCategories = defaultCategoryProperties.compactMap { maybeCategory -> Category? in
                 if let color = maybeCategory.2 {
-                    return (maybeCategory.0, maybeCategory.1, color)
+                    return Category(title: maybeCategory.0, emojiValue: maybeCategory.1, color: color)
                 }
                 return nil
             }
             
             nonNilCategories.map { properties in
-                return mapCategory(from: properties)
+                let mappedCategory = mapCategory(from: properties)
+                if mappedCategory.title == defaultPreselectedCategoryName {
+                    UserDefaults.standard.set(mappedCategory.id, forKey: ExpenseCategoryModelController.preselectedCategoryKey)
+                }
+                return mappedCategory
             }.forEach {
-                store(category: $0)
+                persist(category: $0)
             }
             
             UserDefaults.standard.set(true, forKey: defaultCategoriesCreatedKey)
@@ -55,15 +71,10 @@ public class ExpenseCategoryModelController {
     
     private func mapCategory(from properties: Category) -> ExpenseCategory {
         let category = ExpenseCategory()
-        category.title = properties.0
-        category.emojiValue = properties.1
-        category.color = properties.2
+        category.title = properties.title
+        category.emojiValue = properties.emojiValue
+        category.color = properties.color
         category.id = NSUUID.init().uuidString
-        
-        if category.title == defaultPreselectedCategoryName {
-            UserDefaults.standard.set(category.id, forKey: ExpenseCategoryModelController.preselectedCategoryKey)
-        }
-        
         return category
     }
     
@@ -78,7 +89,12 @@ public class ExpenseCategoryModelController {
         return storedCategories().filter { $0.id == intentCategory.identifier }.first
     }
     
-    public func store(category: ExpenseCategory) {
+    public func store(category properties: Category) {
+        let mapped = mapCategory(from: properties)
+        persist(category: mapped)
+    }
+    
+    private func persist(category: ExpenseCategory) {
         guard let realm = try? Realm.groupRealm() else {
             return
         }

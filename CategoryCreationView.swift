@@ -76,14 +76,26 @@ class CategoryCreationView: UIView {
         contentView.backgroundColor = UIColor.systemBackground
     }
 
-    func isCategoryDataValid() -> Bool {
+    func categoryDataIfValid() -> ExpenseCategoryModelController.Category? {
         guard let titleText = titleTextField.text, !titleText.isEmpty else {
             titleTextField.layer.borderColor = UIColor.red.cgColor
             notificationFeedback.notificationOccurred(.error)
-            return false
+            return nil
         }
+        
+        guard let emojiText = categoryEmojiTextField.text else {
+            return nil
+        }
+        
+        guard let selectedItemIndexPath = colorSelectionCollectionView.indexPathsForSelectedItems?.first else {
+            return nil
+        }
+
         notificationFeedback.notificationOccurred(.success)
-        return true
+
+        return ExpenseCategoryModelController.Category.init(title: titleText,
+                                                            emojiValue: emojiText,
+                                                            color: colors[selectedItemIndexPath.row])
     }
     
     @objc private func resetErrorStates() {

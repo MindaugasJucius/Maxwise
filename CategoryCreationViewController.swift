@@ -10,7 +10,8 @@ class CategoryCreationViewController: UIViewController {
     @IBOutlet private weak var safeAreaBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet private weak var creationButton: BeautifulButton!
-    
+
+    private let expenseCategoryModelController = ExpenseCategoryModelController()
     private let colorModelController = ColorModelController()
     private lazy var initialColor = colorModelController.randomNonTakenColor()
     
@@ -72,8 +73,9 @@ class CategoryCreationViewController: UIViewController {
     }
     
     @objc private func persistCategory() {
-        if creationView.isCategoryDataValid() {
-//            ExpenseCategoryModelController.Category
+        if let data = creationView.categoryDataIfValid() {
+            expenseCategoryModelController.store(category: data)
+            dismiss(animated: true, completion: nil)
         }
     }
 
