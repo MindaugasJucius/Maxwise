@@ -19,6 +19,8 @@ public class ColorModelController {
         }
         
         completed()
+        
+        UserDefaults.standard.set(true, forKey: defaultColorsCreatedKey)
     }
     
     public func saveDefaultCategoryColors(colors: [UIColor], completed: ([UIColor: Color]) -> ()) {

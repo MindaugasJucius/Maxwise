@@ -3,15 +3,20 @@ import ExpenseKit
 
 class CategoryCreationView: UIView {
 
+    let selectionFeedback = UISelectionFeedbackGenerator()
+    let notificationFeedback = UINotificationFeedbackGenerator()
+    
     private let expenseCategory: ExpenseCategory
+    private let colors: [Color]
     
 //    @IBOutlet private weak var colorView: UIView!
     @IBOutlet private weak var titleTextField: UITextField!
     @IBOutlet private weak var categoryEmojiTextField: UITextField!
     @IBOutlet private weak var colorSelectionCollectionView: UICollectionView!
     
-    init(expenseCategory: ExpenseCategory) {
+    init(expenseCategory: ExpenseCategory, colors: [Color]) {
         self.expenseCategory = expenseCategory
+        self.colors = colors
         super.init(frame: .zero)
         loadNib()
         configure(expenseCategory: expenseCategory)
@@ -57,8 +62,10 @@ class CategoryCreationView: UIView {
     func isCategoryDataValid() -> Bool {
         guard let titleText = titleTextField.text, !titleText.isEmpty else {
             titleTextField.layer.borderColor = UIColor.red.cgColor
+            notificationFeedback.notificationOccurred(.error)
             return false
         }
+        notificationFeedback.notificationOccurred(.success)
         return true
     }
     
@@ -93,14 +100,23 @@ class CategoryCreationView: UIView {
         colorSelectionCollectionView.register(cellNib,
                                               forCellWithReuseIdentifier: ColorCollectionViewCell.nibName)
         colorSelectionCollectionView.dataSource = self
-        
+        colorSelectionCollectionView.delegate = self
+        colorSelectionCollectionView.allowsSelection = true
     }
+}
+
+extension CategoryCreationView: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectionFeedback.selectionChanged()
+    }
+    
 }
 
 extension CategoryCreationView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return colors.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -113,7 +129,8 @@ extension CategoryCreationView: UICollectionViewDataSource {
         guard let colorCell = cell as? ColorCollectionViewCell else {
             return cell
         }
-        colorCell.backgroundColor = .blue
+        let color = colors[indexPath.row]
+        colorCell.backgroundColor = color.uiColor
         return colorCell
     }
     

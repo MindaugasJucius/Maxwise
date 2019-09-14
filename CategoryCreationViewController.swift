@@ -10,7 +10,10 @@ class CategoryCreationViewController: UIViewController {
     @IBOutlet private weak var safeAreaBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet private weak var creationButton: BeautifulButton!
-    private lazy var creationView = CategoryCreationView(expenseCategory: expenseCategory)
+    
+    private let colorModelController = ColorModelController()
+    private lazy var creationView = CategoryCreationView(expenseCategory: expenseCategory,
+                                                         colors: colorModelController.colors())
     
     /// Initialize controller
     /// - Parameter category: Category to create or edit
