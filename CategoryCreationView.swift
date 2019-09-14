@@ -36,6 +36,7 @@ class CategoryCreationView: UIView {
         titleTextField.placeholder = "Category title"
         titleTextField.autocapitalizationType = .words
         titleTextField.addTarget(self, action: #selector(resetErrorStates), for: .editingChanged)
+        titleTextField.delegate = self
         
         if !expenseCategory.isEmpty() {
             titleTextField.text = expenseCategory.title
@@ -67,4 +68,20 @@ class CategoryCreationView: UIView {
     @objc private func resetErrorStates() {
         titleTextField.layer.borderColor = UIColor.clear.cgColor
     }
+}
+
+extension CategoryCreationView: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else {
+            return true
+        }
+
+        if (text + string).count > 30 {
+            return false
+        }
+        
+        return true
+    }
+    
 }

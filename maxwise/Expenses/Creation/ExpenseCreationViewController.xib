@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -33,7 +33,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5I-kZ-cgF">
-                    <rect key="frame" x="16" y="548" width="343" height="117"/>
+                    <rect key="frame" x="16" y="543" width="343" height="117"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aVY-p7-jAw">
                             <rect key="frame" x="16" y="16" width="311" height="85"/>
@@ -116,7 +116,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLg-uk-6eq">
-                    <rect key="frame" x="16" y="480" width="343" height="60"/>
+                    <rect key="frame" x="16" y="475" width="343" height="60"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMZ-ib-M42" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
                             <rect key="frame" x="287" y="4" width="40" height="40"/>
@@ -144,13 +144,13 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdK-Oi-hRt">
-                    <rect key="frame" x="16" y="673" width="343" height="45"/>
+                    <rect key="frame" x="16" y="668" width="343" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="QPb-fb-yDa"/>
+                        <constraint firstAttribute="height" constant="50" id="QPb-fb-yDa"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asV-Py-hZe">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="472"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
                 </view>
             </subviews>
             <constraints>

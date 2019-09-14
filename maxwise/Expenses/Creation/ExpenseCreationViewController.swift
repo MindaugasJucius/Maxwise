@@ -140,6 +140,7 @@ class ExpenseCreationViewController: UIViewController {
         expenseTitle.placeholder = "Enter a description"
         expenseTitle.backgroundColor = .systemBackground
         expenseTitle.textColor = .label
+        expenseTitle.delegate = self
         
         expenseInfoContainerView.layer.applyShadow(color: .tertiaryLabel)
         expenseInfoContainerView.layer.cornerRadius = 6
@@ -265,6 +266,7 @@ class ExpenseCreationViewController: UIViewController {
     }
     
     private func configureAmountTextField() {
+        amountTextField.delegate = self
         amountTextField.keyboardType = .decimalPad
         amountTextField.placeholder = viewModel.amountPlaceholder
         amountTextField.backgroundColor = .systemBackground
@@ -403,6 +405,44 @@ extension ExpenseCreationViewController: CameraCaptureDelegate {
     func captured(image: CGImage, orientation: CGImagePropertyOrientation, tapLocation: CGPoint) {
         resetToCameraButtonContainer.alpha = 1
         addRecognitionController(cgImage: image, orientation: orientation, tapLocation: tapLocation)
+    }
+    
+}
+
+extension ExpenseCreationViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        if textField == amountTextField {
+            return checkAmountLength(additionString: string)
+        }
+        
+        if textField == expenseTitle {
+            return checkTitleLength(additionString: string)
+        }
+        
+        return true
+    }
+
+    private func checkAmountLength(additionString: String) -> Bool {
+        check(textField: amountTextField, maxLength: 10, additionString: additionString)
+    }
+    
+    private func checkTitleLength(additionString: String) -> Bool {
+        return check(textField: expenseTitle, maxLength: 30, additionString: additionString)
+    }
+    
+    private func check(textField: UITextField, maxLength: Int, additionString: String) -> Bool {
+        guard let text = textField.text else {
+            return true
+        }
+        let textToBe = text + additionString
+        if textToBe.count > maxLength {
+            return false
+        }
+        
+        return true
     }
     
 }
