@@ -426,11 +426,11 @@ extension ExpenseCreationViewController: UITextFieldDelegate {
     }
 
     private func checkAmountLength(additionString: String) -> Bool {
-        check(textField: amountTextField, maxLength: 10, additionString: additionString)
+        check(textField: amountTextField, maxLength: 8, additionString: additionString)
     }
     
     private func checkTitleLength(additionString: String) -> Bool {
-        return check(textField: expenseTitle, maxLength: 30, additionString: additionString)
+        return check(textField: expenseTitle, maxLength: 25, additionString: additionString)
     }
     
     private func check(textField: UITextField, maxLength: Int, additionString: String) -> Bool {
