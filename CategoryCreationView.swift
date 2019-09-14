@@ -5,9 +5,10 @@ class CategoryCreationView: UIView {
 
     private let expenseCategory: ExpenseCategory
     
-    @IBOutlet weak var colorView: UIView!
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var categoryEmojiTextField: UITextField!
+//    @IBOutlet private weak var colorView: UIView!
+    @IBOutlet private weak var titleTextField: UITextField!
+    @IBOutlet private weak var categoryEmojiTextField: UITextField!
+    @IBOutlet private weak var colorSelectionCollectionView: UICollectionView!
     
     init(expenseCategory: ExpenseCategory) {
         self.expenseCategory = expenseCategory
@@ -25,11 +26,6 @@ class CategoryCreationView: UIView {
         layer.applyShadow(color: .tertiaryLabel)
         titleTextField.becomeFirstResponder()
         
-        colorView.layer.cornerCurve = .circular
-        colorView.layer.cornerRadius = colorView.frame.width / 2
-        colorView.layer.borderWidth = 2
-        colorView.layer.borderColor = UIColor.gray.cgColor
-
         titleTextField.layer.applyBorder()
         titleTextField.layer.borderColor = UIColor.clear.cgColor
         titleTextField.textColor = .label
@@ -40,9 +36,10 @@ class CategoryCreationView: UIView {
         
         if !expenseCategory.isEmpty() {
             titleTextField.text = expenseCategory.title
-            colorView.layer.backgroundColor = expenseCategory.color?.uiColor?.cgColor
+//            colorView.layer.backgroundColor = expenseCategory.color?.uiColor?.cgColor
             categoryEmojiTextField.text = expenseCategory.emojiValue
         }
+        configureCollectionView()
     }
     
     private func loadNib() {
@@ -68,6 +65,58 @@ class CategoryCreationView: UIView {
     @objc private func resetErrorStates() {
         titleTextField.layer.borderColor = UIColor.clear.cgColor
     }
+    
+    private func configureCollectionView() {
+        let layout = UICollectionViewCompositionalLayout { (section, environment) -> NSCollectionLayoutSection? in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                        heightDimension: .fractionalWidth(1))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            
+            let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(35),
+                                                   heightDimension: .absolute(35))
+
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+            
+            let section = NSCollectionLayoutSection(group: group)
+            section.orthogonalScrollingBehavior = .paging
+            section.interGroupSpacing = 10
+            return section
+        }
+        let layoutConfiguration = UICollectionViewCompositionalLayoutConfiguration()
+        layoutConfiguration.scrollDirection = .vertical
+        layout.configuration = layoutConfiguration
+        
+        colorSelectionCollectionView.setCollectionViewLayout(layout, animated: false)
+        
+        let cellNib = UINib(nibName: ColorCollectionViewCell.nibName,
+                            bundle: nil)
+        colorSelectionCollectionView.register(cellNib,
+                                              forCellWithReuseIdentifier: ColorCollectionViewCell.nibName)
+        colorSelectionCollectionView.dataSource = self
+        
+    }
+}
+
+extension CategoryCreationView: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCollectionViewCell.nibName,
+                                                      for: indexPath)
+        guard let colorCell = cell as? ColorCollectionViewCell else {
+            return cell
+        }
+        colorCell.backgroundColor = .blue
+        return colorCell
+    }
+    
 }
 
 extension CategoryCreationView: UITextFieldDelegate {

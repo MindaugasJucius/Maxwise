@@ -10,57 +10,72 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryCreationView" customModule="maxwise" customModuleProvider="target">
             <connections>
                 <outlet property="categoryEmojiTextField" destination="Tjv-Xe-l0c" id="JX9-Nm-3eh"/>
-                <outlet property="colorView" destination="idP-r4-8LW" id="V9S-ec-7gw"/>
+                <outlet property="colorSelectionCollectionView" destination="yAo-RJ-HGQ" id="QS5-7V-If5"/>
                 <outlet property="titleTextField" destination="gKP-5J-1aq" id="WSR-fr-lUb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mEP-WU-lOq">
-                    <rect key="frame" x="16" y="0.0" width="382" height="50"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MAp-1x-rih">
+                    <rect key="frame" x="16" y="8" width="382" height="92"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idP-r4-8LW">
-                            <rect key="frame" x="0.0" y="10" width="30" height="30"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mEP-WU-lOq">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="🤑" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tjv-Xe-l0c" customClass="EmojiTextField" customModule="maxwise" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="62" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="62" id="h17-fo-pKe"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="740" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gKP-5J-1aq" customClass="InsetTextField" customModule="maxwise" customModuleProvider="target">
+                                    <rect key="frame" x="70" y="0.5" width="312" height="43.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="43.5" id="bRe-Rr-WHy"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                        </stackView>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yAo-RJ-HGQ">
+                            <rect key="frame" x="0.0" y="52" width="382" height="40"/>
                             <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="idP-r4-8LW" secondAttribute="height" multiplier="1:1" id="AH0-9v-HqG"/>
-                                <constraint firstAttribute="width" constant="30" id="AIh-RC-vTV"/>
+                                <constraint firstAttribute="height" constant="40" id="LjH-UF-nYk"/>
                             </constraints>
-                        </view>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="🤑" borderStyle="roundedRect" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tjv-Xe-l0c" customClass="EmojiTextField" customModule="maxwise" customModuleProvider="target">
-                            <rect key="frame" x="38" y="2.5" width="62" height="45.5"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="62" id="h17-fo-pKe"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="740" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gKP-5J-1aq" customClass="InsetTextField" customModule="maxwise" customModuleProvider="target">
-                            <rect key="frame" x="108" y="3.5" width="274" height="43.5"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="43.5" id="bRe-Rr-WHy"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fSC-F6-EBd">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="yAo-RJ-HGQ" firstAttribute="leading" secondItem="MAp-1x-rih" secondAttribute="leading" id="15Z-gE-xpS"/>
+                        <constraint firstAttribute="trailing" secondItem="yAo-RJ-HGQ" secondAttribute="trailing" id="3m1-ZH-50q"/>
+                        <constraint firstAttribute="trailing" secondItem="mEP-WU-lOq" secondAttribute="trailing" id="UWR-bs-kSz"/>
+                        <constraint firstItem="mEP-WU-lOq" firstAttribute="leading" secondItem="MAp-1x-rih" secondAttribute="leading" id="gTG-7g-INf"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="mEP-WU-lOq" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="RsU-5y-ssg"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mEP-WU-lOq" secondAttribute="trailing" constant="16" id="V3g-zg-zLw"/>
-                <constraint firstItem="mEP-WU-lOq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="VgW-Hp-daS"/>
-                <constraint firstItem="mEP-WU-lOq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ae2-aX-Bb6"/>
-                <constraint firstItem="mEP-WU-lOq" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cun-Yi-2Nb"/>
+                <constraint firstItem="MAp-1x-rih" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="3ms-2T-6nZ"/>
+                <constraint firstItem="MAp-1x-rih" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Bhp-Tx-g0J"/>
+                <constraint firstAttribute="bottom" secondItem="MAp-1x-rih" secondAttribute="bottom" constant="8" id="IZW-tC-BFt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MAp-1x-rih" secondAttribute="trailing" constant="16" id="MHd-In-uF4"/>
             </constraints>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="204.34782608695653" y="304.6875"/>
+            <point key="canvasLocation" x="204.34782608695653" y="355.58035714285711"/>
         </view>
     </objects>
 </document>

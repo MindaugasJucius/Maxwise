@@ -34,7 +34,6 @@ class ContainerViewController: UITabBarController {
         ColorModelController().savePaletteColors {
             print("Completed persisting color palette")
         }
-        
     }
     
 }
