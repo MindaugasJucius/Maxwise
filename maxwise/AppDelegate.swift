@@ -1,13 +1,4 @@
-//
-//  AppDelegate.swift
-//  maxwise
-//
-//  Created by Mindaugas Jucius on 2/3/19.
-//  Copyright © 2019 Mindaugas Jucius. All rights reserved.
-//
-
 import UIKit
-import ExpenseKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,8 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = ContainerViewController()
-
-        ExpenseCategoryModelController().addDefaultCategoriesIfNeeded()
+        
         return true
     }
     

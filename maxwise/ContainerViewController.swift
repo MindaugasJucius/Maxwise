@@ -1,4 +1,5 @@
 import UIKit
+import ExpenseKit
 
 enum Screen {
     case expenseCreation
@@ -27,6 +28,13 @@ class ContainerViewController: UITabBarController {
                                                               tag: 0)
         
         setViewControllers([expensesViewController, categoriesViewController], animated: false)
+        
+        
+        ExpenseCategoryModelController().addDefaultCategoriesIfNeeded()
+        ColorModelController().savePaletteColors {
+            print("Completed persisting color palette")
+        }
+        
     }
     
 }
