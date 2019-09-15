@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+enum ModalTransitionType {
+    case presentation
+    case dismissal
+}
+
 class ModalBlurTransitionController: NSObject, UIViewControllerTransitioningDelegate {
     
     private var modalTransitionType: ModalTransitionType?

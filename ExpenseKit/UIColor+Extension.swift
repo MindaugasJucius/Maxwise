@@ -119,12 +119,6 @@ extension UIColor {
     // Red
     static let flatAlizarin    = UIColor(hex: 0xE74C3C)
     static let flatPomegranate = UIColor(hex: 0xC0392B)
-    // White
-    static let flatClouds   = UIColor(hex: 0xECF0F1)
-    static let flatSilver   = UIColor(hex: 0xBDC3C7)
-    // Gray
-    static let flatAsbestos = UIColor(hex: 0x7F8C8D)
-    static let flatConcrete = UIColor(hex: 0x95A5A6)
     
     static let palette: [UIColor] = [
         flatTurquoise
@@ -143,10 +137,6 @@ extension UIColor {
         ,flatPumpkin
         ,flatAlizarin
         ,flatPomegranate
-        ,flatClouds
-        ,flatSilver
-        ,flatAsbestos
-        ,flatConcrete
     ]
 }
 

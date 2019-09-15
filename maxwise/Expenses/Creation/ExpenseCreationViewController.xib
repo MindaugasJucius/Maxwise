@@ -33,16 +33,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5I-kZ-cgF">
-                    <rect key="frame" x="16" y="543" width="343" height="117"/>
+                    <rect key="frame" x="16" y="540" width="343" height="120"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aVY-p7-jAw">
-                            <rect key="frame" x="16" y="16" width="311" height="85"/>
+                            <rect key="frame" x="16" y="16" width="311" height="88"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apP-nG-cs1">
-                                    <rect key="frame" x="0.0" y="0.0" width="62.333333333333336" height="85"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="62.333333333333336" height="88"/>
                                 </view>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-GV-xNW">
-                                    <rect key="frame" x="70.333333333333329" y="0.0" width="240.66666666666669" height="85"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-GV-xNW">
+                                    <rect key="frame" x="70.333333333333329" y="0.0" width="240.66666666666669" height="88"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBs-TY-1Co">
                                             <rect key="frame" x="0.0" y="0.0" width="240.66666666666666" height="35"/>
@@ -54,7 +54,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fMm-l6-zTT">
-                                            <rect key="frame" x="0.0" y="40" width="240.66666666666666" height="45"/>
+                                            <rect key="frame" x="0.0" y="43" width="240.66666666666666" height="45"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNq-pT-ImE">
                                                     <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="45"/>
@@ -116,7 +116,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLg-uk-6eq">
-                    <rect key="frame" x="16" y="475" width="343" height="60"/>
+                    <rect key="frame" x="16" y="472" width="343" height="60"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMZ-ib-M42" customClass="VibrantContentView" customModule="maxwise" customModuleProvider="target">
                             <rect key="frame" x="287" y="4" width="40" height="40"/>
@@ -150,7 +150,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asV-Py-hZe">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="464"/>
                 </view>
             </subviews>
             <constraints>

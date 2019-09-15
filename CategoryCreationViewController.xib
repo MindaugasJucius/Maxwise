@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -11,40 +11,48 @@
             <connections>
                 <outlet property="categoryCreationViewContainer" destination="h92-sd-CuU" id="BwE-0P-Vfw"/>
                 <outlet property="creationButton" destination="lYl-u2-nAR" id="IAT-Kx-iP7"/>
+                <outlet property="dismissalView" destination="LUn-ue-sRO" id="OnE-XE-a8W"/>
                 <outlet property="safeAreaBottomConstraint" destination="0bx-BL-ogU" id="Due-f8-hBV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="1174"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="584"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h92-sd-CuU">
-                    <rect key="frame" x="16" y="958" width="382" height="108"/>
+                    <rect key="frame" x="16" y="375" width="382" height="127"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="108" id="yf7-JM-WOq"/>
+                        <constraint firstAttribute="height" constant="127" id="yf7-JM-WOq"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYl-u2-nAR" customClass="BeautifulButton" customModule="maxwise" customModuleProvider="target">
-                    <rect key="frame" x="16" y="1082" width="382" height="50"/>
+                    <rect key="frame" x="16" y="518" width="382" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="C9p-cL-8Ig"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUn-ue-sRO">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="367"/>
+                </view>
             </subviews>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="h92-sd-CuU" secondAttribute="trailing" constant="16" id="0Vf-ig-LHB"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="lYl-u2-nAR" secondAttribute="bottom" constant="8" id="0bx-BL-ogU"/>
+                <constraint firstAttribute="bottom" secondItem="lYl-u2-nAR" secondAttribute="bottom" constant="16" id="0bx-BL-ogU"/>
                 <constraint firstItem="h92-sd-CuU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="8f8-JA-7yq"/>
+                <constraint firstItem="h92-sd-CuU" firstAttribute="top" secondItem="LUn-ue-sRO" secondAttribute="bottom" constant="8" id="IY6-Cv-dDc"/>
+                <constraint firstItem="LUn-ue-sRO" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Iak-If-Ifc"/>
+                <constraint firstItem="LUn-ue-sRO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Xtc-XT-7DC"/>
                 <constraint firstItem="lYl-u2-nAR" firstAttribute="top" secondItem="h92-sd-CuU" secondAttribute="bottom" constant="16" id="cNo-sS-W6k"/>
                 <constraint firstItem="lYl-u2-nAR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="iSV-aj-e55"/>
+                <constraint firstItem="LUn-ue-sRO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oGK-ci-22B"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lYl-u2-nAR" secondAttribute="trailing" constant="16" id="vPx-DB-ljG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="131.8840579710145" y="231.69642857142856"/>
+            <point key="canvasLocation" x="131.19999999999999" y="428.57142857142861"/>
         </view>
     </objects>
 </document>

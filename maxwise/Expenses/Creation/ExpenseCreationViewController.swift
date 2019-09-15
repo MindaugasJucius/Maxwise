@@ -1,13 +1,10 @@
 import UIKit
 import ExpenseKit
 
-enum ModalTransitionType {
-    case presentation
-    case dismissal
-}
-
 class ExpenseCreationViewController: UIViewController {
 
+    private let notificationFeedback = UINotificationFeedbackGenerator()
+    
     @IBOutlet private weak var dismissalView: UIView!
     @IBOutlet private weak var cameraContainerView: UIView!
     @IBOutlet private weak var safeAreaBottomConstraint: NSLayoutConstraint!
@@ -226,8 +223,10 @@ class ExpenseCreationViewController: UIViewController {
                                        sharePercentage: selectedShare) { [weak self] result in
             switch result {
             case .success(_):
+                notificationFeedback.notificationOccurred(.success)
                 self?.dismiss(animated: true, completion: nil)
             case .failure(let issues):
+                notificationFeedback.notificationOccurred(.error)
                 self?.handle(issues: issues)
             }
         }

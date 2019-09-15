@@ -3,8 +3,8 @@ import ExpenseKit
 
 class CategoryCreationView: UIView {
 
-    let selectionFeedback = UISelectionFeedbackGenerator()
-    let notificationFeedback = UINotificationFeedbackGenerator()
+    private let selectionFeedback = UISelectionFeedbackGenerator()
+    private let notificationFeedback = UINotificationFeedbackGenerator()
     
     private let expenseCategory: ExpenseCategory
     private let colors: [Color]

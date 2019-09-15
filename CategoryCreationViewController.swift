@@ -9,6 +9,7 @@ class CategoryCreationViewController: UIViewController {
     @IBOutlet private weak var categoryCreationViewContainer: UIView!
     @IBOutlet private weak var safeAreaBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet private weak var dismissalView: UIView!
     @IBOutlet private weak var creationButton: BeautifulButton!
 
     private let expenseCategoryModelController = ExpenseCategoryModelController()
@@ -61,11 +62,18 @@ class CategoryCreationViewController: UIViewController {
                                        selector: #selector(applicationDidBecomeActive),
                                        name: UIApplication.willEnterForegroundNotification,
                                        object: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissVC))
+        dismissalView.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         creationView.titleTextField.becomeFirstResponder()
+    }
+    
+    @objc private func dismissVC() {
+        dismiss(animated: true, completion: nil)
     }
     
     @objc private func applicationDidBecomeActive(notification: NSNotification) {
@@ -88,7 +96,7 @@ class CategoryCreationViewController: UIViewController {
         if notification.name == UIResponder.keyboardWillHideNotification {
             safeAreaBottomConstraint.constant = 16
         } else {
-            safeAreaBottomConstraint.constant = keyboardViewEndFrame.height
+            safeAreaBottomConstraint.constant = keyboardViewEndFrame.height + 30
         }
     }
 }

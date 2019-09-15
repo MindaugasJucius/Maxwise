@@ -23,6 +23,8 @@
 		5F169BD42325799A007666E9 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F169BD32325799A007666E9 /* InsetTextField.swift */; };
 		5F169BD623257CF4007666E9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F169BD523257CF4007666E9 /* Color.swift */; };
 		5F169BD823257D86007666E9 /* ColorModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F169BD723257D86007666E9 /* ColorModelController.swift */; };
+		5F169BDB232CD4BB007666E9 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F169BD9232CD4BB007666E9 /* ColorCollectionViewCell.swift */; };
+		5F169BDC232CD4BB007666E9 /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F169BDA232CD4BB007666E9 /* ColorCollectionViewCell.xib */; };
 		5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */; };
 		5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B42210281B00BAECF6 /* TextPickViewModel.swift */; };
 		5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B6221034F300BAECF6 /* ExpensesViewController.swift */; };
@@ -190,6 +192,8 @@
 		5F169BD32325799A007666E9 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
 		5F169BD523257CF4007666E9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5F169BD723257D86007666E9 /* ColorModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModelController.swift; sourceTree = "<group>"; };
+		5F169BD9232CD4BB007666E9 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		5F169BDA232CD4BB007666E9 /* ColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCollectionViewCell.xib; sourceTree = "<group>"; };
 		5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Orientation+Extensions.swift"; sourceTree = "<group>"; };
 		5F20E0B02210247C00BAECF6 /* ExpenseEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
 		5F20E0B22210265200BAECF6 /* ExpenseEntryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryModelController.swift; sourceTree = "<group>"; };
@@ -343,6 +347,8 @@
 				5F0FC87923255E7E0083EBA9 /* CategoryCreationView.xib */,
 				5F169BD123256E76007666E9 /* EmojiTextField.swift */,
 				5F169BD32325799A007666E9 /* InsetTextField.swift */,
+				5F169BD9232CD4BB007666E9 /* ColorCollectionViewCell.swift */,
+				5F169BDA232CD4BB007666E9 /* ColorCollectionViewCell.xib */,
 			);
 			name = Categories;
 			path = ..;
@@ -758,6 +764,7 @@
 			files = (
 				5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */,
 				5F0FC870231C284C0083EBA9 /* CategoryCreationViewController.xib in Resources */,
+				5F169BDC232CD4BB007666E9 /* ColorCollectionViewCell.xib in Resources */,
 				5F0FC86C231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib in Resources */,
 				5FC9298622F8A02200CB23DC /* ExpenseCreationInputView.xib in Resources */,
 				5FB59213227DE303005D5208 /* NavigationView.xib in Resources */,
@@ -961,6 +968,7 @@
 				5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */,
 				5F240CA1222721A3009A41AE /* ExpenseCreationViewController.swift in Sources */,
 				5F9E13C5222C33F100805878 /* LocationAccessNotifier.swift in Sources */,
+				5F169BDB232CD4BB007666E9 /* ColorCollectionViewCell.swift in Sources */,
 				5F0FC868231BC55B0083EBA9 /* CategoriesParentViewController.swift in Sources */,
 				5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */,
 				5F56B9992313C50C005AF4AF /* ExpenseCategorySelectionViewController.swift in Sources */,
