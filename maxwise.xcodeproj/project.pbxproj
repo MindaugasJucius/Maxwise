@@ -25,6 +25,7 @@
 		5F169BD823257D86007666E9 /* ColorModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F169BD723257D86007666E9 /* ColorModelController.swift */; };
 		5F169BDB232CD4BB007666E9 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F169BD9232CD4BB007666E9 /* ColorCollectionViewCell.swift */; };
 		5F169BDC232CD4BB007666E9 /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F169BDA232CD4BB007666E9 /* ColorCollectionViewCell.xib */; };
+		5F169BE0232EA672007666E9 /* CategoriesStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F169BDF232EA672007666E9 /* CategoriesStatisticsViewModel.swift */; };
 		5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */; };
 		5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B42210281B00BAECF6 /* TextPickViewModel.swift */; };
 		5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B6221034F300BAECF6 /* ExpensesViewController.swift */; };
@@ -194,6 +195,7 @@
 		5F169BD723257D86007666E9 /* ColorModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModelController.swift; sourceTree = "<group>"; };
 		5F169BD9232CD4BB007666E9 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		5F169BDA232CD4BB007666E9 /* ColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCollectionViewCell.xib; sourceTree = "<group>"; };
+		5F169BDF232EA672007666E9 /* CategoriesStatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesStatisticsViewModel.swift; sourceTree = "<group>"; };
 		5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Orientation+Extensions.swift"; sourceTree = "<group>"; };
 		5F20E0B02210247C00BAECF6 /* ExpenseEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
 		5F20E0B22210265200BAECF6 /* ExpenseEntryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryModelController.swift; sourceTree = "<group>"; };
@@ -339,8 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				5F0FC867231BC55B0083EBA9 /* CategoriesParentViewController.swift */,
-				5F0FC869231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift */,
-				5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */,
+				5F169BDE232EA61D007666E9 /* Stats */,
 				5F0FC86D231C284C0083EBA9 /* CategoryCreationViewController.swift */,
 				5F0FC86E231C284C0083EBA9 /* CategoryCreationViewController.xib */,
 				5F0FC87723255E660083EBA9 /* CategoryCreationView.swift */,
@@ -352,6 +353,16 @@
 			);
 			name = Categories;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		5F169BDE232EA61D007666E9 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				5F0FC869231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift */,
+				5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */,
+				5F169BDF232EA672007666E9 /* CategoriesStatisticsViewModel.swift */,
+			);
+			path = Stats;
 			sourceTree = "<group>";
 		};
 		5F20E0AF2210239400BAECF6 /* Model */ = {
@@ -855,6 +866,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/FoursquareAPIClient/FoursquareAPIClient.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm-iOS13.0/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift-iOS13.0/RealmSwift.framework",
@@ -866,6 +878,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoursquareAPIClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -958,6 +971,7 @@
 				5F56B99023049E1C005AF4AF /* ExpensesSectionHeaderView.swift in Sources */,
 				5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */,
 				5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */,
+				5F169BE0232EA672007666E9 /* CategoriesStatisticsViewModel.swift in Sources */,
 				5F0FC86F231C284C0083EBA9 /* CategoryCreationViewController.swift in Sources */,
 				5F0FC86B231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift in Sources */,
 				5F0FC8762322EEFA0083EBA9 /* BeautifulButton.swift in Sources */,

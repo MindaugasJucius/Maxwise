@@ -11,6 +11,7 @@ target 'maxwise' do
 
   pod 'TesseractOCRiOS'
   pod 'FoursquareAPIClient'
+  pod 'Charts'
   shared_pods
 
   target 'maxwiseTests' do

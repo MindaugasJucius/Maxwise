@@ -6,6 +6,8 @@ import UIKit
 public class ExpenseCategoryModelController {
     
     private let colorModelController = ColorModelController()
+
+    private var expenseCategoryObservationToken: NotificationToken?
     
     private let defaultCategoriesCreatedKey = "defaultCategoriesCreated"
     private let defaultPreselectedCategoryName = "Food"
@@ -83,6 +85,25 @@ public class ExpenseCategoryModelController {
             return []
         }
         return Array(realm.objects(ExpenseCategory.self))
+    }
+    
+    /// Observe changes to expense categories entries.
+    /// Since Realm notifications do not take inverse relationships into account we need to observe ExpenseEntry changes
+    /// and get ExpenseCategories from them
+    /// - Parameter updated: closure called with ExpenseCategories
+    public func observeExpenseCategoryChanges(updated: @escaping ([ExpenseCategory]) -> ()) {
+        let realm = try? Realm.groupRealm()
+        expenseCategoryObservationToken = realm?.objects(ExpenseEntry.self)
+            .observe { change in
+                switch change {
+                case .initial(let value):
+                    updated(Array(Set(value.compactMap { $0.category })))
+                case .update(let value, deletions: _, insertions: _, modifications: _):
+                    updated(Array(Set(value.compactMap { $0.category })))
+                default:
+                    print("huh")
+                }
+            }
     }
     
     public func category(from intentCategory: IntentCategory) -> ExpenseCategory? {
