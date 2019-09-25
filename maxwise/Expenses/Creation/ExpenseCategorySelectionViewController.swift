@@ -29,7 +29,7 @@ class ExpenseCategorySelectionViewController: UIViewController {
     init(categories: [ExpenseCategory], categorySelected: @escaping (ExpenseCategory) -> ()) {
         self.categories = categories
         self.categorySelected = categorySelected
-        let snapshot = NSDiffableDataSourceSnapshot<String, ExpenseCategory>()
+        var snapshot = NSDiffableDataSourceSnapshot<String, ExpenseCategory>()
         snapshot.appendSections([""])
         snapshot.appendItems(categories)
         self.categoriesSnapshot = snapshot

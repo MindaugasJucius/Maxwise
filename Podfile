@@ -2,7 +2,7 @@
 # platform :ios, '9.0'
 
 def shared_pods
-  pod 'RealmSwift'
+  pod 'RealmSwift', '3.18.0'
 end
 
 target 'maxwise' do

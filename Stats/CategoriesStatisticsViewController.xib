@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoriesStatisticsViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
+                <outlet property="monthSelectionView" destination="Hw4-KX-U2G" id="wIn-Zm-Bih"/>
+                <outlet property="pieChartContainer" destination="gLV-o1-n0x" id="3XA-cM-Dvk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,9 +18,31 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLV-o1-n0x">
+                    <rect key="frame" x="0.0" y="44" width="414" height="448"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hw4-KX-U2G" customClass="MonthSelectionView" customModule="maxwise" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="500" width="414" height="35"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="Tuh-Zi-xqh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Hw4-KX-U2G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="G6m-Dx-bwt"/>
+                <constraint firstItem="gLV-o1-n0x" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Pnn-sU-ZAZ"/>
+                <constraint firstItem="Hw4-KX-U2G" firstAttribute="top" secondItem="gLV-o1-n0x" secondAttribute="bottom" constant="8" id="S29-nw-T7g"/>
+                <constraint firstItem="gLV-o1-n0x" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SIh-Ds-AfV"/>
+                <constraint firstItem="Hw4-KX-U2G" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ZgB-i9-ur0"/>
+                <constraint firstItem="gLV-o1-n0x" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="co6-wZ-6We"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gLV-o1-n0x" secondAttribute="trailing" id="t32-pE-H2h"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="132" y="139"/>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </view>
     </objects>
 </document>

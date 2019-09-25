@@ -3,6 +3,10 @@ import Charts
 
 class CategoriesStatisticsViewController: UIViewController {
 
+    @IBOutlet private weak var pieChartContainer: UIView!
+    @IBOutlet private weak var monthSelectionView: MonthSelectionView!
+    
+    
     private let viewModel = CategoriesStatisticsViewModel()
     
     private lazy var pieChartView: PieChartView = {
@@ -20,7 +24,7 @@ class CategoriesStatisticsViewController: UIViewController {
         super.viewDidLoad()
         title = "Categories"
         view.backgroundColor = UIColor.init(named: "background")
-        view.addSubview(pieChartView)
+        pieChartContainer.addSubview(pieChartView)
         pieChartView.fillInSuperview()
         viewModel.observeCategoryTotals { [weak self] data in
             self?.pieChartView.data = data

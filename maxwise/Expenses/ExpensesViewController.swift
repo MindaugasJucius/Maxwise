@@ -45,7 +45,7 @@ class ExpensesViewController: UIViewController {
 
         viewModel.observeExpenseEntries { [weak self] groupedExpenses in
             self?.expenseGroups = groupedExpenses
-            let snapshot = NSDiffableDataSourceSnapshot<Date, ExpensePresentationDTO>()
+            var snapshot = NSDiffableDataSourceSnapshot<Date, ExpensePresentationDTO>()
             snapshot.appendSections(groupedExpenses.map { $0.0 })
             
             groupedExpenses.forEach { (key, value) in
