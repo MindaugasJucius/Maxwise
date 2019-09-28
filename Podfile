@@ -19,6 +19,11 @@ target 'maxwise' do
 
   end
 
+  target 'ExpenseKitTests' do
+    inherit! :search_paths
+
+  end
+
 end
 
 target 'ExpenseKit' do

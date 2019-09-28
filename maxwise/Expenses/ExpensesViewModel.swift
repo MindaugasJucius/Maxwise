@@ -126,19 +126,6 @@ class ExpensesViewModel {
         }
     }
     
-//    private func beginObservingAmountChanges() {
-//        guard let currentUser = try? userModelController.currentUserOrCreate(),
-//            let observationBlock = amountSpentChanged else {
-//            return
-//        }
-//        userModelController.observeAmountSpent(forUser: currentUser) { [weak self] amount in
-//            guard let self = self else {
-//                return
-//            }
-//            observationBlock(self.formatted(amount: amount))
-//        }
-//    }
-    
     private func formatted(amount: Double) -> String {
         let amountNumber = NSNumber(value: amount)
         let formattedAmount = currencyFormatter.string(from: amountNumber) ?? "😬"

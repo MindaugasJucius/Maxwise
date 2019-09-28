@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -16,9 +16,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5F4A3B7B220720880016BCC9"
-               BuildableName = "maxwiseTests.xctest"
-               BlueprintName = "maxwiseTests"
+               BlueprintIdentifier = "5F353A5722DB48C500F96D3D"
+               BuildableName = "ExpenseKitTests.xctest"
+               BlueprintName = "ExpenseKitTests"
                ReferencedContainer = "container:maxwise.xcodeproj">
             </BuildableReference>
          </TestableReference>

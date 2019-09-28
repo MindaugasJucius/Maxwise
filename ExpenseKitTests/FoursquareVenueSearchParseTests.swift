@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import ExpenseKit
 @testable import maxwise
 
 class FoursquareVenueSearchParseTests: XCTestCase {

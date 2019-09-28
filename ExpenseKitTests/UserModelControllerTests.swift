@@ -8,16 +8,13 @@
 
 import XCTest
 import RealmSwift
+import ExpenseKit
 @testable import maxwise
 
 class UserModelControllerTests: XCTestCase {
 
     override func setUp() {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        TestsHelper.clearRealm()
     }
 
     override func tearDown() {
@@ -41,9 +38,9 @@ class UserModelControllerTests: XCTestCase {
             let currentUser = try userModelController.currentUserOrCreate()
             let expensesToCreateCount = 3
             for amount in 0..<expensesToCreateCount {
-                _ = TestsHelper.createExpense(user: currentUser,
-                                              amount: Double(amount),
-                                              title: "test expense")
+                TestsHelper.createExpense(user: currentUser, amount: Double(amount), title: "expense") { _ in
+                    
+                }
             }
             XCTAssert(currentUser.entries.count == expensesToCreateCount)
         } catch let error {
@@ -53,13 +50,20 @@ class UserModelControllerTests: XCTestCase {
     
     func testCreatingExpenseForUserOwnerIsUser() {
         let userModelController = UserModelController()
+        let expectation = XCTestExpectation(description: "owner is user")
         do {
             let currentUser = try userModelController.currentUserOrCreate()
             let amount = 1.9
-            let expense = TestsHelper.createExpense(user: currentUser,
-                                                    amount: amount,
-                                                    title: "test expense")
-            XCTAssert(expense.owners.first?.id == currentUser.id)
+            TestsHelper.createExpense(user: currentUser, amount: Double(amount), title: "expense") { result in
+                switch result {
+                case .failure(let issue):
+                    XCTFail(issue.localizedDescription)
+                case .success(let expense):
+                    XCTAssert(expense.owners.first?.id == currentUser.id)
+                    expectation.fulfill()
+                }
+            }
+            wait(for: [expectation], timeout: 3)
         } catch let error {
             XCTFail("\(error)")
         }

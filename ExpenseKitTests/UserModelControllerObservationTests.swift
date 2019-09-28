@@ -8,16 +8,13 @@
 
 import XCTest
 import RealmSwift
+import ExpenseKit
 @testable import maxwise
 
 class UserModelControllerObservationTests: XCTestCase {
 
     override func setUp() {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        TestsHelper.clearRealm()
     }
 
     func testAddingExpenseInvokesAmountObservationBlock() {
@@ -28,14 +25,28 @@ class UserModelControllerObservationTests: XCTestCase {
             let currentUser = try userModelController.currentUserOrCreate()
             let amount = 1.9
             
+            var invocationCount = 0
             userModelController.observeAmountSpent(forUser: currentUser) { retrievedAmount in
+                //observeAmountSpent calls observation closure immediatelly so we need to
+                //skip first invocation because no expenses are persisted at that time.
+                
+                invocationCount += 1
+                if invocationCount == 1 {
+                    return
+                }
+                print(currentUser.entries)
                 XCTAssert(retrievedAmount == amount)
                 expectation.fulfill()
             }
             
-            _ = TestsHelper.createExpense(user: currentUser,
-                                          amount: amount,
-                                          title: "test expense")
+            TestsHelper.createExpense(user: currentUser, amount: amount, title: "test expense") { result in
+                switch result {
+                case .failure(let issue):
+                    XCTFail(issue.localizedDescription)
+                case .success(let entry):
+                    print("woplia")
+                }
+            }
             
             wait(for: [expectation], timeout: 3)
         } catch let error {

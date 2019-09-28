@@ -36,7 +36,6 @@
 		5F240CA2222721A3009A41AE /* ExpenseCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F240CA0222721A3009A41AE /* ExpenseCreationViewController.xib */; };
 		5F2D4BD7229B266000884FA9 /* ModalBlurTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */; };
 		5F353A5922DB48C500F96D3D /* ExpenseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F353A5022DB48C400F96D3D /* ExpenseKit.framework */; };
-		5F353A6022DB48C500F96D3D /* ExpenseKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F353A5F22DB48C500F96D3D /* ExpenseKitTests.swift */; };
 		5F353A6222DB48C500F96D3D /* ExpenseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F353A5222DB48C400F96D3D /* ExpenseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F353A6522DB48C500F96D3D /* ExpenseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F353A5022DB48C400F96D3D /* ExpenseKit.framework */; };
 		5F353A6622DB48C500F96D3D /* ExpenseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5F353A5022DB48C400F96D3D /* ExpenseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -58,7 +57,6 @@
 		5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B6D220720870016BCC9 /* CameraViewController.swift */; };
 		5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B72220720880016BCC9 /* Assets.xcassets */; };
 		5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B74220720880016BCC9 /* LaunchScreen.storyboard */; };
-		5F4A3B81220720880016BCC9 /* UserModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B80220720880016BCC9 /* UserModelControllerTests.swift */; };
 		5F56B99023049E1C005AF4AF /* ExpensesSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F56B98F23049E1C005AF4AF /* ExpensesSectionHeaderView.swift */; };
 		5F56B99223049E2B005AF4AF /* ExpensesSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F56B99123049E2B005AF4AF /* ExpensesSectionHeaderView.xib */; };
 		5F56B99523101C9B005AF4AF /* ExpenseSelectedCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F56B99323101C9B005AF4AF /* ExpenseSelectedCategoryViewController.swift */; };
@@ -79,11 +77,8 @@
 		5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6878782207728C00F4FE7C /* DigitRecognizer.swift */; };
 		5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F68787A2207744D00F4FE7C /* CameraController.swift */; };
 		5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F86C57122108C9B005CFF9E /* ExpensesViewModel.swift */; };
-		5F9DE37C22189582008CCB94 /* ExpenseEntryModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE37B22189582008CCB94 /* ExpenseEntryModelControllerTests.swift */; };
 		5F9DE37E2218A135008CCB94 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9DE37D2218A135008CCB94 /* CameraViewController.xib */; };
 		5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38122195D7A008CCB94 /* ExpensesParentViewController.swift */; };
-		5F9DE38E2219BF89008CCB94 /* UserModelControllerObservationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38D2219BF88008CCB94 /* UserModelControllerObservationTests.swift */; };
-		5F9DE3902219C282008CCB94 /* TestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38F2219C282008CCB94 /* TestsHelper.swift */; };
 		5F9E13C5222C33F100805878 /* LocationAccessNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C4222C33F100805878 /* LocationAccessNotifier.swift */; };
 		5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */; };
 		5FA3DBB522C8C531009FD189 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA3DBB422C8C531009FD189 /* UIViewController+Extensions.swift */; };
@@ -96,13 +91,18 @@
 		5FD3D85E233BE2F9009042D1 /* MonthSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3D85D233BE2F9009042D1 /* MonthSelectionView.swift */; };
 		5FD3D861233BE8C7009042D1 /* TextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3D85F233BE8C7009042D1 /* TextCollectionViewCell.swift */; };
 		5FD3D862233BE8C7009042D1 /* TextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FD3D860233BE8C7009042D1 /* TextCollectionViewCell.xib */; };
+		5FD3D863233F8A7C009042D1 /* ExpenseEntryModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE37B22189582008CCB94 /* ExpenseEntryModelControllerTests.swift */; };
+		5FD3D864233F8A7C009042D1 /* UserModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B80220720880016BCC9 /* UserModelControllerTests.swift */; };
+		5FD3D865233F8A7C009042D1 /* TestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38F2219C282008CCB94 /* TestsHelper.swift */; };
+		5FD3D866233F8A7C009042D1 /* FoursquareVenueSearchParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEC22222AD4200F087E4 /* FoursquareVenueSearchParseTests.swift */; };
+		5FD3D867233F8A7C009042D1 /* UserModelControllerObservationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38D2219BF88008CCB94 /* UserModelControllerObservationTests.swift */; };
 		5FD95D8922D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */; };
 		5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */; };
 		5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */; };
 		5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */; };
-		5FFACEC32222AD4200F087E4 /* FoursquareVenueSearchParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEC22222AD4200F087E4 /* FoursquareVenueSearchParseTests.swift */; };
 		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
+		B685B79A0FC3283C33E7E112 /* Pods_ExpenseKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2CA953CEB6826F7E039748 /* Pods_ExpenseKitTests.framework */; };
 		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
 		F45D67CE22A3D96B00DB1AE1 /* VibrantContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */; };
 		F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */; };
@@ -180,8 +180,11 @@
 
 /* Begin PBXFileReference section */
 		1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maxwise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C2CA953CEB6826F7E039748 /* Pods_ExpenseKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpenseKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_maxwiseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B84E0E14758B25BF8CD0F5B /* Pods-ExpenseKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExpenseKitTests/Pods-ExpenseKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		51D7441A592E5DAB8FC20E57 /* Pods_ExpenseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpenseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CF9C018FD6CBB8E2E57D6B2 /* Pods-ExpenseKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExpenseKitTests/Pods-ExpenseKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		5F0FC867231BC55B0083EBA9 /* CategoriesParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesParentViewController.swift; sourceTree = "<group>"; };
 		5F0FC869231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesStatisticsViewController.swift; sourceTree = "<group>"; };
 		5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesStatisticsViewController.xib; sourceTree = "<group>"; };
@@ -214,7 +217,6 @@
 		5F353A5222DB48C400F96D3D /* ExpenseKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpenseKit.h; sourceTree = "<group>"; };
 		5F353A5322DB48C400F96D3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F353A5822DB48C500F96D3D /* ExpenseKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpenseKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F353A5F22DB48C500F96D3D /* ExpenseKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseKitTests.swift; sourceTree = "<group>"; };
 		5F353A6122DB48C500F96D3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F4021CD22905DE600B0C60C /* ExpenseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategory.swift; sourceTree = "<group>"; };
 		5F4021CF22912CD100B0C60C /* ExpenseCategoryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategoryModelController.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F353A5922DB48C500F96D3D /* ExpenseKit.framework in Frameworks */,
+				B685B79A0FC3283C33E7E112 /* Pods_ExpenseKitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,7 +429,11 @@
 		5F353A5E22DB48C500F96D3D /* ExpenseKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				5F353A5F22DB48C500F96D3D /* ExpenseKitTests.swift */,
+				5F4A3B80220720880016BCC9 /* UserModelControllerTests.swift */,
+				5F9DE38D2219BF88008CCB94 /* UserModelControllerObservationTests.swift */,
+				5F9DE37B22189582008CCB94 /* ExpenseEntryModelControllerTests.swift */,
+				5F9DE38F2219C282008CCB94 /* TestsHelper.swift */,
+				5FFACEC22222AD4200F087E4 /* FoursquareVenueSearchParseTests.swift */,
 				5F353A6122DB48C500F96D3D /* Info.plist */,
 			);
 			path = ExpenseKitTests;
@@ -501,12 +508,7 @@
 		5F4A3B7F220720880016BCC9 /* maxwiseTests */ = {
 			isa = PBXGroup;
 			children = (
-				5F4A3B80220720880016BCC9 /* UserModelControllerTests.swift */,
-				5F9DE38D2219BF88008CCB94 /* UserModelControllerObservationTests.swift */,
 				5F4A3B82220720880016BCC9 /* Info.plist */,
-				5F9DE37B22189582008CCB94 /* ExpenseEntryModelControllerTests.swift */,
-				5F9DE38F2219C282008CCB94 /* TestsHelper.swift */,
-				5FFACEC22222AD4200F087E4 /* FoursquareVenueSearchParseTests.swift */,
 			);
 			path = maxwiseTests;
 			sourceTree = "<group>";
@@ -573,6 +575,7 @@
 				3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */,
 				5F65CD5A22D27C050040C218 /* IntentsUI.framework */,
 				51D7441A592E5DAB8FC20E57 /* Pods_ExpenseKit.framework */,
+				2C2CA953CEB6826F7E039748 /* Pods_ExpenseKitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -586,6 +589,8 @@
 				F739ED49C2038FB2BE827A0C /* Pods-maxwiseTests.release.xcconfig */,
 				EA1C0C0C4A8FAC6A0B1B4D5E /* Pods-ExpenseKit.debug.xcconfig */,
 				B854ACC99C602D72975C059C /* Pods-ExpenseKit.release.xcconfig */,
+				4B84E0E14758B25BF8CD0F5B /* Pods-ExpenseKitTests.debug.xcconfig */,
+				5CF9C018FD6CBB8E2E57D6B2 /* Pods-ExpenseKitTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -637,9 +642,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F353A6B22DB48C500F96D3D /* Build configuration list for PBXNativeTarget "ExpenseKitTests" */;
 			buildPhases = (
+				13D46C702178D162D8E50CE3 /* [CP] Check Pods Manifest.lock */,
 				5F353A5422DB48C500F96D3D /* Sources */,
 				5F353A5522DB48C500F96D3D /* Frameworks */,
 				5F353A5622DB48C500F96D3D /* Resources */,
+				D2541E6497E269C578CFE650 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -823,6 +830,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		13D46C702178D162D8E50CE3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ExpenseKitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3F0A058842427E97CC28592D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -921,6 +950,30 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D2541E6497E269C578CFE650 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ExpenseKitTests/Pods-ExpenseKitTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm-iOS12.0/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift-iOS12.0/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExpenseKitTests/Pods-ExpenseKitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -947,7 +1000,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F353A6022DB48C500F96D3D /* ExpenseKitTests.swift in Sources */,
+				5FD3D864233F8A7C009042D1 /* UserModelControllerTests.swift in Sources */,
+				5FD3D863233F8A7C009042D1 /* ExpenseEntryModelControllerTests.swift in Sources */,
+				5FD3D867233F8A7C009042D1 /* UserModelControllerObservationTests.swift in Sources */,
+				5FD3D866233F8A7C009042D1 /* FoursquareVenueSearchParseTests.swift in Sources */,
+				5FD3D865233F8A7C009042D1 /* TestsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1007,11 +1064,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F9DE38E2219BF89008CCB94 /* UserModelControllerObservationTests.swift in Sources */,
-				5F4A3B81220720880016BCC9 /* UserModelControllerTests.swift in Sources */,
-				5F9DE37C22189582008CCB94 /* ExpenseEntryModelControllerTests.swift in Sources */,
-				5FFACEC32222AD4200F087E4 /* FoursquareVenueSearchParseTests.swift in Sources */,
-				5F9DE3902219C282008CCB94 /* TestsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1132,8 +1184,10 @@
 		};
 		5F353A6C22DB48C500F96D3D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B84E0E14758B25BF8CD0F5B /* Pods-ExpenseKitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PDR4VQLAH4;
 				INFOPLIST_FILE = ExpenseKitTests/Info.plist;
@@ -1153,8 +1207,10 @@
 		};
 		5F353A6D22DB48C500F96D3D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CF9C018FD6CBB8E2E57D6B2 /* Pods-ExpenseKitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PDR4VQLAH4;
 				INFOPLIST_FILE = ExpenseKitTests/Info.plist;
@@ -1223,7 +1279,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1278,7 +1334,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
