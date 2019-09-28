@@ -24,10 +24,9 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hw4-KX-U2G" customClass="MonthSelectionView" customModule="maxwise" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="500" width="414" height="35"/>
-                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="0.0" y="500" width="414" height="45"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="35" id="Tuh-Zi-xqh"/>
+                        <constraint firstAttribute="height" constant="45" id="Tuh-Zi-xqh"/>
                     </constraints>
                 </view>
             </subviews>
