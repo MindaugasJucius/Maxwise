@@ -25,13 +25,18 @@ class CategoriesStatisticsViewController: UIViewController {
         view.backgroundColor = UIColor.init(named: "background")
         pieChartContainer.addSubview(pieChartView)
         pieChartView.fillInSuperview()
-        viewModel.observeCategoryTotals { [weak self] data in
-            self?.pieChartView.data = data
+  
+        viewModel.categoriesForSelection = { [weak self] categories, pieChartData in
+            self?.pieChartView.data = pieChartData
         }
-        viewModel.timeRangeSelectionRepresentations { [weak self] representations in
+        
+        viewModel.observeRangeSelectionRepresentations { [weak self] representations in
             self?.monthSelectionView.items = representations
         }
-        // Do any additional setup after loading the view.
+        
+        monthSelectionView.selectedItemAtIndex = { [weak self] index in
+            self?.viewModel.selected(index: index)
+        }
     }
     
 }

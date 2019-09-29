@@ -6,9 +6,9 @@ class CategoriesStatisticsViewModel {
 
     private let statsQueue = DispatchQueue(label: "com.maxwise.stats.fetch.queue",
                                            qos: .userInteractive)
-    
+
     private let currentYearFormat = "MMMM"
-    private let previousYearsFormat = "yyyy MMMM"
+    private let previousYearsFormat = "MMM, yyyy"
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
@@ -18,40 +18,43 @@ class CategoriesStatisticsViewModel {
     private let expenseCategoryModelController = ExpenseCategoryModelController()
     private let expenseModelController = ExpenseEntryModelController()
     
-    func observeCategoryTotals(completion: @escaping (PieChartData) -> ()) {
-        // Can only observe on a thread with a run loop (main loop).
-        // Adding run loops to custom threads: https://academy.realm.io/posts/realm-notifications-on-background-threads-with-swift/
-        self.expenseCategoryModelController.observeExpenseCategoryChanges { categories in
-            self.statsQueue.async { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    completion(self.constructPieChartData(from: categories))
-                }
-            }
+    private var currentExpenseCreationDates: [Date] = []
+    
+    var categoriesForSelection: (([ExpenseCategory], PieChartData) -> ())?
+    
+    func selected(index: Int) {
+        guard let date = currentExpenseCreationDates[safe: index] else {
+            return
         }
+        let expensesInDate = expenseModelController.expenses(in: date)
+        let expenseCategories = Array(Set(expensesInDate.compactMap { $0.category }))
+        let pieChartData = constructPieChartData(from: expenseCategories)
+        categoriesForSelection?(expenseCategories, pieChartData)
     }
     
-    func timeRangeSelectionRepresentations(changed: @escaping ([String]) -> ()) {
+    func observeRangeSelectionRepresentations(changed: @escaping ([String]) -> ()) {
         expenseModelController.expensesYearsMonths { [weak self] dates in
             guard let self = self else {
                 return
             }
             
-            let representations = dates.map { date -> String in
-                let comparisonResult = Calendar.current.compare(date, to: Date(), toGranularity: .year)
-                let isPreviousYear = comparisonResult == .orderedAscending
-                if isPreviousYear {
-                    self.dateFormatter.dateFormat = self.previousYearsFormat
-                } else {
-                    self.dateFormatter.dateFormat = self.currentYearFormat
-                }
-                return self.dateFormatter.string(from: date)
-            }
-            changed(representations)
+            self.currentExpenseCreationDates = dates
+            changed(self.timeRangeSelectionRepresentations(from: dates))
         }
+    }
+    
+    private func timeRangeSelectionRepresentations(from dates: [Date]) -> [String] {
+        let representations = dates.map { date -> String in
+            let comparisonResult = Calendar.current.compare(date, to: Date(), toGranularity: .year)
+            let isPreviousYear = comparisonResult == .orderedAscending
+            if isPreviousYear {
+                self.dateFormatter.dateFormat = self.previousYearsFormat
+            } else {
+                self.dateFormatter.dateFormat = self.currentYearFormat
+            }
+            return self.dateFormatter.string(from: date)
+        }
+        return representations
     }
     
     private func constructPieChartData(from categories: [ExpenseCategory]) -> PieChartData {

@@ -59,6 +59,8 @@ public class ExpenseEntryModelController {
         }
     }
 
+    // Can only observe on a thread with a run loop (main loop).
+    // Adding run loops to custom threads: https://academy.realm.io/posts/realm-notifications-on-background-threads-with-swift/
     public func observeExpenseEntries(updated: @escaping ([ExpenseEntry]) -> ()) {
         let realm = try? Realm.groupRealm()
         let expenseEntries = realm?.objects(ExpenseEntry.self)
@@ -76,16 +78,16 @@ public class ExpenseEntryModelController {
         expenseEntryObservationTokens.append(observationToken)
     }
     
+    let componentsToParseFromDate = Set<Calendar.Component>(arrayLiteral: .year, .month, .day)
     
     /// Returns distinct expense creation [Date]s that consist only of year and month.
     public func expensesYearsMonths(updated: @escaping ([Date]) -> ()) {
-        let componentsToGet = Set<Calendar.Component>(arrayLiteral: .year, .month)
         observeExpenseEntries { entries in
             let yearMonthExpenseDates = entries
                 .map { $0.creationDate }
-                .map { Calendar.current.dateComponents(componentsToGet, from: $0) }
+                .map { Calendar.current.dateComponents(self.componentsToParseFromDate, from: $0) }
                 .compactMap { Calendar.current.date(from: $0) }
-            updated(Array(Set(yearMonthExpenseDates)))
+            updated(Array(Set(yearMonthExpenseDates)).sorted(by: <))
         }
     }
     
@@ -93,16 +95,14 @@ public class ExpenseEntryModelController {
     /// Returns expenses created in date matching .year, .month components
     /// - Parameter date: filtering happends based on this value
     public func expenses(in date: Date) -> [ExpenseEntry] {
-        let componentsToGet = Set<Calendar.Component>(arrayLiteral: .year, .month)
-        
-        let filterYearMonth = Calendar.current.dateComponents(componentsToGet, from: date)
+        let filterYearMonth = Calendar.current.dateComponents(componentsToParseFromDate, from: date)
         guard let filterMonthIndex = filterYearMonth.month,
             let filterYear = filterYearMonth.year else {
             return []
         }
 
         let expensesInDate = retrieveAllExpenseEntries().filter { entry in
-            let expenseYearMonth = Calendar.current.dateComponents(componentsToGet, from: entry.creationDate)
+            let expenseYearMonth = Calendar.current.dateComponents(componentsToParseFromDate, from: entry.creationDate)
             guard let expenseMonthIndex = expenseYearMonth.month,
                 let expenseYear = expenseYearMonth.year else {
                 return false

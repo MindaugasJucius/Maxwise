@@ -17,6 +17,8 @@ class TextCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 25, weight: .bold)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.minimumScaleFactor = 0.5
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
