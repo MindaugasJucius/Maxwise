@@ -9,6 +9,7 @@ class CategoriesStatisticsViewModel {
     
     private let expenseCategoryModelController = ExpenseCategoryModelController()
     
+    
     func observeCategoryTotals(completion: @escaping (PieChartData) -> ()) {
         // Can only observe on a thread with a run loop (main loop).
         // Adding run loops to custom threads: https://academy.realm.io/posts/realm-notifications-on-background-threads-with-swift/

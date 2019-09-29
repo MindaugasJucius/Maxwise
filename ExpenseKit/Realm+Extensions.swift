@@ -3,7 +3,7 @@ import RealmSwift
 
 extension Realm {
     
-    static func groupRealm() throws -> Realm {
+    public static func groupRealm() throws -> Realm {
         let fileURL = FileManager.default
             .containerURL(forSecurityApplicationGroupIdentifier: "group.mindaugo.appsai.maxwise")
         guard let groupURL = fileURL else {

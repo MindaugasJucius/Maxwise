@@ -88,7 +88,7 @@ public class ExpenseCategoryModelController {
     }
     
     /// Observe changes to expense categories entries.
-    /// Since Realm notifications do not take inverse relationships into account we need to observe ExpenseEntry changes
+    /// Since Realm notifications do not take inverse relationships (LinkingObjects) into account we need to observe ExpenseEntry changes
     /// and get ExpenseCategories from them
     /// - Parameter updated: closure called with ExpenseCategories
     public func observeExpenseCategoryChanges(updated: @escaping ([ExpenseCategory]) -> ()) {

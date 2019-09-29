@@ -13,14 +13,15 @@ public enum DeletionIssue: Error {
 
 public class ExpenseEntryModelController {
 
-    private var expenseEntryObservationToken: NotificationToken?
+    private var expenseEntryObservationTokens = [NotificationToken?]()
+    
     
     public init() {
         
     }
     
     public func create(expenseDTO: ExpenseDTO,
-                       completion: (Result<Void, CreationIssue>) -> ()) {
+                       completion: (Result<ExpenseEntry, CreationIssue>) -> ()) {
         
         let expenseEntry = ExpenseEntry.init()
         expenseEntry.amount = expenseDTO.amount
@@ -36,7 +37,7 @@ public class ExpenseEntryModelController {
                 expenseDTO.user.entries.append(expenseEntry)
             }
             donateCreateExpense(expense: expenseEntry)
-            completion(.success(()))
+            completion(.success(expenseEntry))
         } catch let error {
             completion(.failure(.alert(error.localizedDescription)))
         }
@@ -62,7 +63,7 @@ public class ExpenseEntryModelController {
         let realm = try? Realm.groupRealm()
         let expenseEntries = realm?.objects(ExpenseEntry.self)
             .sorted(byKeyPath: "creationDate", ascending: false)
-        expenseEntryObservationToken = expenseEntries?.observe { change in
+        let observationToken = expenseEntries?.observe { change in
             switch change {
             case .initial(let value):
                 updated(Array(value))
@@ -72,6 +73,42 @@ public class ExpenseEntryModelController {
                 print("huh")
             }
         }
+        expenseEntryObservationTokens.append(observationToken)
+    }
+    
+    
+    /// Returns distinct expense creation [Date]s that consist only of year and month.
+    public func expensesYearsMonths() -> [Date] {
+        let componentsToGet = Set<Calendar.Component>(arrayLiteral: .year, .month)
+        let yearMonthExpenseDates = retrieveAllExpenseEntries()
+            .map { $0.creationDate }
+            .map { Calendar.current.dateComponents(componentsToGet, from: $0) }
+            .compactMap { Calendar.current.date(from: $0) }
+        return Array(Set(yearMonthExpenseDates))
+    }
+    
+    
+    /// Returns expenses created in date matching .year, .month components
+    /// - Parameter date: filtering happends based on this value
+    public func expenses(in date: Date) -> [ExpenseEntry] {
+        let componentsToGet = Set<Calendar.Component>(arrayLiteral: .year, .month)
+        
+        let filterYearMonth = Calendar.current.dateComponents(componentsToGet, from: date)
+        guard let filterMonthIndex = filterYearMonth.month,
+            let filterYear = filterYearMonth.year else {
+            return []
+        }
+
+        let expensesInDate = retrieveAllExpenseEntries().filter { entry in
+            let expenseYearMonth = Calendar.current.dateComponents(componentsToGet, from: entry.creationDate)
+            guard let expenseMonthIndex = expenseYearMonth.month,
+                let expenseYear = expenseYearMonth.year else {
+                return false
+            }
+            return expenseMonthIndex == filterMonthIndex && expenseYear == filterYear
+        }
+        
+        return expensesInDate
     }
     
     public func retrieveAllExpenseEntries() -> [ExpenseEntry] {
