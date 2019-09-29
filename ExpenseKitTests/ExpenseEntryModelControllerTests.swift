@@ -12,6 +12,8 @@ class ExpenseEntryModelControllerTests: XCTestCase {
     }
     
     func testCreateExpenseReturnsYearMonthMatchingSection() {
+        let expectation = XCTestExpectation(description: "distinct expense creation dates fetched")
+        
         let date = Date()
         let components = getYearMonth(from: date)
         
@@ -24,16 +26,22 @@ class ExpenseEntryModelControllerTests: XCTestCase {
             case .failure(let issue):
                 XCTFail(issue.localizedDescription)
             case .success(_) :
-                let distinctYearsMonths = expenseEntryModelController.expensesYearsMonths()
-                let firstDate = distinctYearsMonths.first!
-                let entryComponents = self.getYearMonth(from: firstDate)
-                XCTAssert(components.year == entryComponents.year
-                    && components.month == components.month)
+                expenseEntryModelController.expensesYearsMonths { dates in
+                    let firstDate = dates.first!
+                    let entryComponents = self.getYearMonth(from: firstDate)
+                    XCTAssert(components.year == entryComponents.year
+                        && components.month == components.month)
+                    expectation.fulfill()
+                }
             }
         }
+        
+        wait(for: [expectation], timeout: 3)
     }
     
     func testCreateMultipleExpensesWithRepeatingDatesReturnsCorrectCountOfDistinctDates() {
+        let expectation = XCTestExpectation(description: "correct count of dates fetched")
+        
         let dateStringsToTest = ["2019 09 03", "2019 09 01", "2019 09 05",
                                  "2017 09 15",
                                  "2016 09 08",
@@ -47,7 +55,11 @@ class ExpenseEntryModelControllerTests: XCTestCase {
         }
         
         let expenseEntryModelController = ExpenseEntryModelController()
-        XCTAssert(expenseEntryModelController.expensesYearsMonths().count == 4)
+        expenseEntryModelController.expensesYearsMonths { dates in
+            XCTAssert(dates.count == 4)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 3)
     }
     
     func testFilteringExpensesByYearAndMonthReturnsExpensesWithMatchingCreationDates() {

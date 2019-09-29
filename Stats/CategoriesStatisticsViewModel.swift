@@ -7,8 +7,16 @@ class CategoriesStatisticsViewModel {
     private let statsQueue = DispatchQueue(label: "com.maxwise.stats.fetch.queue",
                                            qos: .userInteractive)
     
-    private let expenseCategoryModelController = ExpenseCategoryModelController()
+    private let currentYearFormat = "MMMM"
+    private let previousYearsFormat = "yyyy MMMM"
+    private lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        return formatter
+    }()
     
+    private let expenseCategoryModelController = ExpenseCategoryModelController()
+    private let expenseModelController = ExpenseEntryModelController()
     
     func observeCategoryTotals(completion: @escaping (PieChartData) -> ()) {
         // Can only observe on a thread with a run loop (main loop).
@@ -22,8 +30,27 @@ class CategoriesStatisticsViewModel {
                 DispatchQueue.main.async {
                     completion(self.constructPieChartData(from: categories))
                 }
-
             }
+        }
+    }
+    
+    func timeRangeSelectionRepresentations(changed: @escaping ([String]) -> ()) {
+        expenseModelController.expensesYearsMonths { [weak self] dates in
+            guard let self = self else {
+                return
+            }
+            
+            let representations = dates.map { date -> String in
+                let comparisonResult = Calendar.current.compare(date, to: Date(), toGranularity: .year)
+                let isPreviousYear = comparisonResult == .orderedAscending
+                if isPreviousYear {
+                    self.dateFormatter.dateFormat = self.previousYearsFormat
+                } else {
+                    self.dateFormatter.dateFormat = self.currentYearFormat
+                }
+                return self.dateFormatter.string(from: date)
+            }
+            changed(representations)
         }
     }
     

@@ -90,7 +90,6 @@ class ExpensesViewModel {
             fatalError()
         }
 
-        
         let shareAmount = expenseEntry.amount * expenseEntry.sharePercentage
         
         return ExpensePresentationDTO(id: expenseEntry.id,

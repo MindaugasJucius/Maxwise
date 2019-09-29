@@ -28,6 +28,9 @@ class CategoriesStatisticsViewController: UIViewController {
         viewModel.observeCategoryTotals { [weak self] data in
             self?.pieChartView.data = data
         }
+        viewModel.timeRangeSelectionRepresentations { [weak self] representations in
+            self?.monthSelectionView.items = representations
+        }
         // Do any additional setup after loading the view.
     }
     

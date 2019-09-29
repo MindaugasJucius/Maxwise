@@ -78,13 +78,15 @@ public class ExpenseEntryModelController {
     
     
     /// Returns distinct expense creation [Date]s that consist only of year and month.
-    public func expensesYearsMonths() -> [Date] {
+    public func expensesYearsMonths(updated: @escaping ([Date]) -> ()) {
         let componentsToGet = Set<Calendar.Component>(arrayLiteral: .year, .month)
-        let yearMonthExpenseDates = retrieveAllExpenseEntries()
-            .map { $0.creationDate }
-            .map { Calendar.current.dateComponents(componentsToGet, from: $0) }
-            .compactMap { Calendar.current.date(from: $0) }
-        return Array(Set(yearMonthExpenseDates))
+        observeExpenseEntries { entries in
+            let yearMonthExpenseDates = entries
+                .map { $0.creationDate }
+                .map { Calendar.current.dateComponents(componentsToGet, from: $0) }
+                .compactMap { Calendar.current.date(from: $0) }
+            updated(Array(Set(yearMonthExpenseDates)))
+        }
     }
     
     

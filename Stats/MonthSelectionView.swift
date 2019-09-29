@@ -26,14 +26,15 @@ class MonthSelectionView: UIView {
         layout.configuration = layoutConfiguration
         return layout
     }()
-    
-    private let dateFormatter = DateFormatter()
-    private var monthSymbols: [String] {
-        dateFormatter.monthSymbols
-    }
-    
+        
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
+    var items: [String] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     init() {
         super.init(frame: .zero)
         configure()
@@ -91,7 +92,7 @@ extension MonthSelectionView: UICollectionViewDelegate {
 extension MonthSelectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return monthSymbols.count
+        return items.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -104,7 +105,7 @@ extension MonthSelectionView: UICollectionViewDataSource {
         guard let textCell = cell as? TextCollectionViewCell else {
             return cell
         }
-        textCell.configure(text: monthSymbols[indexPath.row])
+        textCell.configure(text: items[indexPath.row])
         return textCell
     }
     
