@@ -28,10 +28,25 @@ class MonthSelectionView: UIView {
     }()
         
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    
+    var selectedItemAtIndex: ((Int) -> ())?
 
     var items: [String] = [] {
         didSet {
-            collectionView.reloadData()
+            // If reloading and previously there was an item selected, keep selection
+            let rowIndexToPreselect: Int
+            if let selectedRow = collectionView.indexPathsForSelectedItems?.first?.row,
+                let selectedRowValue = oldValue[safe: selectedRow],
+                let indexInNewItems = items.firstIndex(of: selectedRowValue) {
+                rowIndexToPreselect = indexInNewItems
+            } else {
+                rowIndexToPreselect = items.count - 1
+            }
+            
+            self.collectionView.reloadData()
+            self.collectionView.selectItem(at: .init(row: rowIndexToPreselect, section: 0),
+                                           animated: false,
+                                           scrollPosition: .centeredHorizontally)
         }
     }
     
@@ -70,6 +85,7 @@ extension MonthSelectionView: UICollectionViewDelegate {
         collectionView.scrollToItem(at: indexPath,
                                     at: .centeredHorizontally,
                                     animated: true)
+        selectedItemAtIndex?(indexPath.row)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
