@@ -19,17 +19,19 @@ class CategoriesStatisticsViewModel {
     private let expenseModelController = ExpenseEntryModelController()
     
     private var currentExpenseCreationDates: [Date] = []
+    private var currentSelectedIndex: Int?
+
+    typealias StatsData = (categories: [ExpenseCategory], chartData: PieChartData)
     
-    var categoriesForSelection: (([ExpenseCategory], PieChartData) -> ())?
+    var categoriesForSelection: ((StatsData) -> ())?
     
     func selected(index: Int) {
         guard let date = currentExpenseCreationDates[safe: index] else {
             return
         }
-        let expensesInDate = expenseModelController.expenses(in: date)
-        let expenseCategories = Array(Set(expensesInDate.compactMap { $0.category }))
-        let pieChartData = constructPieChartData(from: expenseCategories)
-        categoriesForSelection?(expenseCategories, pieChartData)
+        currentSelectedIndex = index
+        let allData = data(for: date)
+        categoriesForSelection?(allData)
     }
     
     func observeRangeSelectionRepresentations(changed: @escaping ([String]) -> ()) {
@@ -40,6 +42,12 @@ class CategoriesStatisticsViewModel {
             
             self.currentExpenseCreationDates = dates
             changed(self.timeRangeSelectionRepresentations(from: dates))
+            
+            guard let currentIndex = self.currentSelectedIndex else {
+                return
+            }
+            
+            self.selected(index: currentIndex)
         }
     }
     
@@ -55,6 +63,13 @@ class CategoriesStatisticsViewModel {
             return self.dateFormatter.string(from: date)
         }
         return representations
+    }
+    
+    private func data(for date: Date) -> StatsData {
+        let expensesInDate = expenseModelController.expenses(in: date)
+        let expenseCategories = Array(Set(expensesInDate.compactMap { $0.category }))
+        let pieChartData = constructPieChartData(from: expenseCategories)
+        return (expenseCategories, pieChartData)
     }
     
     private func constructPieChartData(from categories: [ExpenseCategory]) -> PieChartData {

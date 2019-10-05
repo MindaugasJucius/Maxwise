@@ -27,9 +27,9 @@ class CategoriesStatisticsViewController: UIViewController {
         pieChartContainer.addSubview(pieChartView)
         pieChartView.fillInSuperview()
   
-        viewModel.categoriesForSelection = { [weak self] categories, pieChartData in
+        viewModel.categoriesForSelection = { [weak self] data in
             self?.pieChartView.animate(yAxisDuration: 0.3, easingOption: .easeInOutQuad)
-            self?.pieChartView.data = pieChartData
+            self?.pieChartView.data = data.chartData
         }
         
         viewModel.observeRangeSelectionRepresentations { [weak self] representations in
