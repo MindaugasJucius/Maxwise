@@ -1,34 +1,46 @@
 import UIKit
+import UPCarouselFlowLayout
 
 class MonthSelectionView: UIView {
 
-    private lazy var layout: UICollectionViewLayout = {
-        let layout = UICollectionViewCompositionalLayout { (section, environment) -> NSCollectionLayoutSection? in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                  heightDimension: .fractionalHeight(1))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-            let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(150),
-                                                   heightDimension: .absolute(45))
-
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                           subitem: item,
-                                                           count: 1)
-
-            let section = NSCollectionLayoutSection(group: group)
-            section.orthogonalScrollingBehavior = .groupPagingCentered
-            section.interGroupSpacing = 0
-            return section
-        }
+//    private lazy var layout: UICollectionViewLayout = {
+//        let layout = UICollectionViewCompositionalLayout { (section, environment) -> NSCollectionLayoutSection? in
+//            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+//                                                  heightDimension: .fractionalHeight(1))
+//            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+//
+//            let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(150),
+//                                                   heightDimension: .absolute(45))
+//
+//            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+//                                                           subitem: item,
+//                                                           count: 1)
+//
+//            let section = NSCollectionLayoutSection(group: group)
+//            section.orthogonalScrollingBehavior = .groupPagingCentered
+//            section.interGroupSpacing = 0
+//            return section
+//        }
+//
+//        let layoutConfiguration = UICollectionViewCompositionalLayoutConfiguration()
+//        layoutConfiguration.scrollDirection = .vertical
+//        layout.configuration = layoutConfiguration
+//        return layout
+//    }()
         
-        let layoutConfiguration = UICollectionViewCompositionalLayoutConfiguration()
-        layoutConfiguration.scrollDirection = .vertical
-        layout.configuration = layoutConfiguration
+    lazy var layout: UPCarouselFlowLayout = {
+        let layout = UPCarouselFlowLayout()
+        layout.itemSize = .init(width: 150, height: 45)
+        layout.scrollDirection = .horizontal
+        layout.sideItemAlpha = 1
+        layout.sideItemScale = 0.8
         return layout
     }()
-        
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    private var childSubviewContentOffsetObservation: NSKeyValueObservation?
+    
+    private var previousSelectedIndexPath: IndexPath?
     var selectedItemAtIndex: ((Int) -> ())?
 
     var items: [String] = [] {
@@ -47,6 +59,9 @@ class MonthSelectionView: UIView {
             self.collectionView.selectItem(at: .init(row: rowIndexToPreselect, section: 0),
                                            animated: false,
                                            scrollPosition: .centeredHorizontally)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.performHackityHack()
+            }
         }
     }
     
@@ -75,6 +90,32 @@ class MonthSelectionView: UIView {
         collectionView.allowsSelection = true
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+    }
+    
+    private func performHackityHack() {
+        let scrollViews = collectionView.subviews.filter { $0 is UIScrollView }
+        let scrollViewWithCells = scrollViews.filter { $0.subviews.first is UICollectionViewCell }
+        guard let scrollView = scrollViewWithCells.first as? UIScrollView else {
+            print("No hak :(")
+            return
+        }
+
+        let halfViewWidth = frame.width / 2
+        childSubviewContentOffsetObservation = scrollView.observe(\.contentOffset) { [weak self] (scrollView, change) in
+            guard let self = self else {
+                return
+            }
+            let offset = CGPoint.init(x: scrollView.contentOffset.x + halfViewWidth,
+                                      y: scrollView.contentOffset.y)
+            print(self.collectionView.indexPathForItem(at: offset))
+        }
+    }
+    
+    private func itemAtCenter() -> IndexPath? {
+        let point = CGPoint.init(x: collectionView.bounds.midX,
+                                 y: collectionView.bounds.midY)
+        return collectionView.indexPathForItem(at: point)
     }
     
 }
@@ -82,6 +123,10 @@ class MonthSelectionView: UIView {
 extension MonthSelectionView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard indexPath.row != previousSelectedIndexPath?.row else {
+            return
+        }
+        previousSelectedIndexPath = indexPath
         collectionView.scrollToItem(at: indexPath,
                                     at: .centeredHorizontally,
                                     animated: true)
@@ -90,6 +135,15 @@ extension MonthSelectionView: UICollectionViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         print("scrollViewDidEndDecelerating")
+        guard let item = itemAtCenter(),
+            let currentlySelectedItem = collectionView.indexPathsForSelectedItems?.first,
+            item.row != currentlySelectedItem.row else {
+            return
+        }
+        collectionView.selectItem(at: item,
+                                  animated: false,
+                                  scrollPosition: .centeredHorizontally)
+        selectedItemAtIndex?(item.row)
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
@@ -97,10 +151,6 @@ extension MonthSelectionView: UICollectionViewDelegate {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("scrollViewDidEndDragging")
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("scrollViewDidEndDragging")
     }
 }

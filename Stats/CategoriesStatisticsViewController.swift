@@ -16,6 +16,7 @@ class CategoriesStatisticsViewController: UIViewController {
         pieChart.holeColor = UIColor.init(named: "background")
         pieChart.setExtraOffsets(left: 20, top: 0, right: 20, bottom: 0)
         pieChart.drawEntryLabelsEnabled = false
+        pieChart.legend.enabled = false
         return pieChart
     }()
     
@@ -27,6 +28,7 @@ class CategoriesStatisticsViewController: UIViewController {
         pieChartView.fillInSuperview()
   
         viewModel.categoriesForSelection = { [weak self] categories, pieChartData in
+            self?.pieChartView.animate(yAxisDuration: 0.3, easingOption: .easeInOutQuad)
             self?.pieChartView.data = pieChartData
         }
         

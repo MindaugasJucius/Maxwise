@@ -49,6 +49,7 @@
 		5F353A7922DB4ACA00F96D3D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */; };
 		5F353A7A22DB4BB100F96D3D /* ExpenseCreation.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */; };
 		5F353A8F22DB5A8E00F96D3D /* ExpenseCreationIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */; };
+		5F41C4262341096700126E5C /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F41C4252341096700126E5C /* Array+Extensions.swift */; };
 		5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD5220C6011002CD12D /* TextDetectionController.swift */; };
 		5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD7220C62E0002CD12D /* TextPickViewController.swift */; };
 		5F470BDA220C62E0002CD12D /* TextPickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F470BD8220C62E0002CD12D /* TextPickViewController.xib */; };
@@ -220,6 +221,7 @@
 		5F353A6122DB48C500F96D3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F4021CD22905DE600B0C60C /* ExpenseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategory.swift; sourceTree = "<group>"; };
 		5F4021CF22912CD100B0C60C /* ExpenseCategoryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategoryModelController.swift; sourceTree = "<group>"; };
+		5F41C4252341096700126E5C /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		5F470BD5220C6011002CD12D /* TextDetectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetectionController.swift; sourceTree = "<group>"; };
 		5F470BD7220C62E0002CD12D /* TextPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPickViewController.swift; sourceTree = "<group>"; };
 		5F470BD8220C62E0002CD12D /* TextPickViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPickViewController.xib; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 				5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */,
 				5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */,
 				5FA3DBB422C8C531009FD189 /* UIViewController+Extensions.swift */,
+				5F41C4252341096700126E5C /* Array+Extensions.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -910,6 +913,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm-iOS13.0/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift-iOS13.0/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
+				"${BUILT_PRODUCTS_DIR}/UPCarouselFlowLayout/UPCarouselFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm-iOS12.0/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift-iOS12.0/RealmSwift.framework",
 			);
@@ -922,6 +926,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UPCarouselFlowLayout.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1029,6 +1034,7 @@
 				5F56B99D2313C78E005AF4AF /* ExpenseCategoryTableViewCell.swift in Sources */,
 				5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */,
 				5F20E0BD2210352F00BAECF6 /* ExpenseTableViewCell.swift in Sources */,
+				5F41C4262341096700126E5C /* Array+Extensions.swift in Sources */,
 				5F65C345222A6DAF00E10F92 /* VenueCollectionViewCell.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
 				5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */,

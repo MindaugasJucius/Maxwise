@@ -1,30 +1,40 @@
 PODS:
+  - Charts (3.3.0):
+    - Charts/Core (= 3.3.0)
+  - Charts/Core (3.3.0)
   - FoursquareAPIClient (4.2.0)
-  - Realm (3.17.0):
-    - Realm/Headers (= 3.17.0)
-  - Realm/Headers (3.17.0)
-  - RealmSwift (3.17.0):
-    - Realm (= 3.17.0)
+  - Realm (3.18.0):
+    - Realm/Headers (= 3.18.0)
+  - Realm/Headers (3.18.0)
+  - RealmSwift (3.18.0):
+    - Realm (= 3.18.0)
   - TesseractOCRiOS (5.0.1)
+  - UPCarouselFlowLayout (1.1.2)
 
 DEPENDENCIES:
+  - Charts
   - FoursquareAPIClient
-  - RealmSwift
+  - RealmSwift (= 3.18.0)
   - TesseractOCRiOS
+  - UPCarouselFlowLayout
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Charts
     - FoursquareAPIClient
     - Realm
     - RealmSwift
     - TesseractOCRiOS
+    - UPCarouselFlowLayout
 
 SPEC CHECKSUMS:
+  Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
   FoursquareAPIClient: 3cb02bb68cfdbc524741bf3ba110f94679082b46
-  Realm: b30db41ff34fc858ffc25ba8d44a82c164e7ccd0
-  RealmSwift: fe733e459d60dc7b6971d4cbee2eb4854097d12c
+  Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
+  RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
   TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
+  UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
 
-PODFILE CHECKSUM: f61db38761094f245ddfb00531ecf59b124fc7c9
+PODFILE CHECKSUM: d2d2ed527d4fe5a2fbd36f756ceabcf39a5fc420
 
 COCOAPODS: 1.5.3

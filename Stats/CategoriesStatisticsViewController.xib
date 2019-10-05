@@ -20,11 +20,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLV-o1-n0x">
-                    <rect key="frame" x="0.0" y="44" width="414" height="448"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="269"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hw4-KX-U2G" customClass="MonthSelectionView" customModule="maxwise" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="500" width="414" height="45"/>
+                    <rect key="frame" x="0.0" y="321" width="414" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="Tuh-Zi-xqh"/>
                     </constraints>
@@ -36,7 +35,7 @@
                 <constraint firstItem="Hw4-KX-U2G" firstAttribute="top" secondItem="gLV-o1-n0x" secondAttribute="bottom" constant="8" id="S29-nw-T7g"/>
                 <constraint firstItem="gLV-o1-n0x" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SIh-Ds-AfV"/>
                 <constraint firstItem="Hw4-KX-U2G" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ZgB-i9-ur0"/>
-                <constraint firstItem="gLV-o1-n0x" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="co6-wZ-6We"/>
+                <constraint firstItem="gLV-o1-n0x" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.3" id="co6-wZ-6We"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gLV-o1-n0x" secondAttribute="trailing" id="t32-pE-H2h"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
