@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoriesStatisticsViewController" customModule="maxwise" customModuleProvider="target">
             <connections>
-                <outlet property="monthSelectionView" destination="Hw4-KX-U2G" id="wIn-Zm-Bih"/>
+                <outlet property="dateRangeSelectionView" destination="Hw4-KX-U2G" id="wIn-Zm-Bih"/>
                 <outlet property="pieChartContainer" destination="gLV-o1-n0x" id="3XA-cM-Dvk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

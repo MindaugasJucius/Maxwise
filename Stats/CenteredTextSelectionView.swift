@@ -16,24 +16,23 @@ class CenteredTextSelectionView: UIView {
     private var childSubviewContentOffsetObservation: NSKeyValueObservation?
     
     private var previousSelectedIndexPath: IndexPath?
-    var selectedItemAtIndex: ((Int) -> ())?
+    var hasChangedSelectionToItemAtIndex: ((Int) -> ())?
 
     var items: [String] = [] {
         didSet {
             // If reloading and previously there was an item selected, keep selection
-            let rowIndexToPreselect: Int
+            var rowIndexToPreselect: Int?
             if let selectedRow = collectionView.indexPathsForSelectedItems?.first?.row,
                 let selectedRowValue = oldValue[safe: selectedRow],
                 let indexInNewItems = items.firstIndex(of: selectedRowValue) {
                 rowIndexToPreselect = indexInNewItems
-            } else {
-                rowIndexToPreselect = items.count - 1
             }
             
             self.collectionView.reloadData()
-            self.collectionView.selectItem(at: .init(row: rowIndexToPreselect, section: 0),
-                                           animated: false,
-                                           scrollPosition: .centeredHorizontally)
+            
+            if let rowIndexToPreselect = rowIndexToPreselect {
+                selectItem(at: rowIndexToPreselect)
+            }
         }
     }
     
@@ -65,12 +64,17 @@ class CenteredTextSelectionView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
     }
     
+    func selectItem(at index: Int) {
+        collectionView.selectItem(at: .init(row: index, section: 0),
+                                  animated: false,
+                                  scrollPosition: .centeredHorizontally)
+    }
+    
     private func itemAtCenter() -> IndexPath? {
         let point = CGPoint.init(x: collectionView.bounds.midX,
                                  y: collectionView.bounds.midY)
         return collectionView.indexPathForItem(at: point)
     }
-    
 }
 
 extension CenteredTextSelectionView: UICollectionViewDelegate {
@@ -83,7 +87,7 @@ extension CenteredTextSelectionView: UICollectionViewDelegate {
         collectionView.scrollToItem(at: indexPath,
                                     at: .centeredHorizontally,
                                     animated: true)
-        selectedItemAtIndex?(indexPath.row)
+        hasChangedSelectionToItemAtIndex?(indexPath.row)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -93,10 +97,8 @@ extension CenteredTextSelectionView: UICollectionViewDelegate {
             return
         }
         previousSelectedIndexPath = item
-        collectionView.selectItem(at: item,
-                                  animated: false,
-                                  scrollPosition: .centeredHorizontally)
-        selectedItemAtIndex?(item.row)
+        selectItem(at: item.row)
+        hasChangedSelectionToItemAtIndex?(item.row)
     }
 
 }

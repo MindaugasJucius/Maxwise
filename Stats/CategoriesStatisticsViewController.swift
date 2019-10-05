@@ -4,7 +4,7 @@ import Charts
 class CategoriesStatisticsViewController: UIViewController {
 
     @IBOutlet private weak var pieChartContainer: UIView!
-    @IBOutlet private weak var monthSelectionView: CenteredTextSelectionView!
+    @IBOutlet private weak var dateRangeSelectionView: CenteredTextSelectionView!
     
     private let viewModel = CategoriesStatisticsViewModel()
     
@@ -27,16 +27,20 @@ class CategoriesStatisticsViewController: UIViewController {
         pieChartContainer.addSubview(pieChartView)
         pieChartView.fillInSuperview()
   
+        viewModel.shouldUpdateSelection = { [weak self] indexToSelect in
+            self?.dateRangeSelectionView.selectItem(at: indexToSelect)
+        }
+        
         viewModel.categoriesForSelection = { [weak self] data in
             self?.pieChartView.animate(yAxisDuration: 0.3, easingOption: .easeInOutQuad)
             self?.pieChartView.data = data.chartData
         }
         
-        viewModel.observeRangeSelectionRepresentations { [weak self] representations in
-            self?.monthSelectionView.items = representations
+        viewModel.observeDateRangeSelectionRepresentations { [weak self] representations in
+            self?.dateRangeSelectionView.items = representations
         }
         
-        monthSelectionView.selectedItemAtIndex = { [weak self] index in
+        dateRangeSelectionView.hasChangedSelectionToItemAtIndex = { [weak self] index in
             self?.viewModel.selected(index: index)
         }
     }

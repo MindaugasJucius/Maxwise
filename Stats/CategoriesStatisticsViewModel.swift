@@ -18,12 +18,23 @@ class CategoriesStatisticsViewModel {
     private let expenseCategoryModelController = ExpenseCategoryModelController()
     private let expenseModelController = ExpenseEntryModelController()
     
-    private var currentExpenseCreationDates: [Date] = []
+    private var currentExpenseCreationDates: [Date] = [] {
+        didSet {
+            // If there's nothing selected it means that we're loading data initially
+            // Pre select the last item
+            if self.currentSelectedIndex == nil {
+                let preselectionIndex = currentExpenseCreationDates.count - 1
+                self.currentSelectedIndex = preselectionIndex
+                shouldUpdateSelection?(preselectionIndex)
+            }
+        }
+    }
     private var currentSelectedIndex: Int?
 
     typealias StatsData = (categories: [ExpenseCategory], chartData: PieChartData)
     
     var categoriesForSelection: ((StatsData) -> ())?
+    var shouldUpdateSelection: ((Int) -> ())?
     
     func selected(index: Int) {
         guard let date = currentExpenseCreationDates[safe: index] else {
@@ -34,20 +45,21 @@ class CategoriesStatisticsViewModel {
         categoriesForSelection?(allData)
     }
     
-    func observeRangeSelectionRepresentations(changed: @escaping ([String]) -> ()) {
+    func observeDateRangeSelectionRepresentations(changed: @escaping ([String]) -> ()) {
         expenseModelController.expensesYearsMonths { [weak self] dates in
             guard let self = self else {
                 return
             }
-            
-            self.currentExpenseCreationDates = dates
+        
             changed(self.timeRangeSelectionRepresentations(from: dates))
             
-            guard let currentIndex = self.currentSelectedIndex else {
+            self.currentExpenseCreationDates = dates
+
+            // Update data for current selection when changes occur
+            guard let currentSelectedIndex = self.currentSelectedIndex else {
                 return
             }
-            
-            self.selected(index: currentIndex)
+            self.selected(index: currentSelectedIndex)
         }
     }
     
