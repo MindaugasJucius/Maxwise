@@ -1,7 +1,7 @@
 import UIKit
 import UPCarouselFlowLayout
 
-class MonthSelectionView: UIView {
+class CenteredTextSelectionView: UIView {
 
 //    private lazy var layout: UICollectionViewLayout = {
 //        let layout = UICollectionViewCompositionalLayout { (section, environment) -> NSCollectionLayoutSection? in
@@ -120,7 +120,7 @@ class MonthSelectionView: UIView {
     
 }
 
-extension MonthSelectionView: UICollectionViewDelegate {
+extension CenteredTextSelectionView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard indexPath.row != previousSelectedIndexPath?.row else {
@@ -148,7 +148,7 @@ extension MonthSelectionView: UICollectionViewDelegate {
 
 }
 
-extension MonthSelectionView: UICollectionViewDataSource {
+extension CenteredTextSelectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count

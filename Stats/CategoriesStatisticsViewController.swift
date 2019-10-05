@@ -4,7 +4,7 @@ import Charts
 class CategoriesStatisticsViewController: UIViewController {
 
     @IBOutlet private weak var pieChartContainer: UIView!
-    @IBOutlet private weak var monthSelectionView: MonthSelectionView!
+    @IBOutlet private weak var monthSelectionView: CenteredTextSelectionView!
     
     private let viewModel = CategoriesStatisticsViewModel()
     

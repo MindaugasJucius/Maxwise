@@ -89,7 +89,7 @@
 		5FC9298222DB83F000CB23DC /* Realm+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9298122DB83F000CB23DC /* Realm+Extensions.swift */; };
 		5FC9298422F89FFF00CB23DC /* ExpenseCreationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9298322F89FFF00CB23DC /* ExpenseCreationInputView.swift */; };
 		5FC9298622F8A02200CB23DC /* ExpenseCreationInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FC9298522F8A02200CB23DC /* ExpenseCreationInputView.xib */; };
-		5FD3D85E233BE2F9009042D1 /* MonthSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3D85D233BE2F9009042D1 /* MonthSelectionView.swift */; };
+		5FD3D85E233BE2F9009042D1 /* CenteredTextSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3D85D233BE2F9009042D1 /* CenteredTextSelectionView.swift */; };
 		5FD3D861233BE8C7009042D1 /* TextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3D85F233BE8C7009042D1 /* TextCollectionViewCell.swift */; };
 		5FD3D862233BE8C7009042D1 /* TextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FD3D860233BE8C7009042D1 /* TextCollectionViewCell.xib */; };
 		5FD3D863233F8A7C009042D1 /* ExpenseEntryModelControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE37B22189582008CCB94 /* ExpenseEntryModelControllerTests.swift */; };
@@ -275,7 +275,7 @@
 		5FC9298122DB83F000CB23DC /* Realm+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extensions.swift"; sourceTree = "<group>"; };
 		5FC9298322F89FFF00CB23DC /* ExpenseCreationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationInputView.swift; sourceTree = "<group>"; };
 		5FC9298522F8A02200CB23DC /* ExpenseCreationInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseCreationInputView.xib; sourceTree = "<group>"; };
-		5FD3D85D233BE2F9009042D1 /* MonthSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSelectionView.swift; sourceTree = "<group>"; };
+		5FD3D85D233BE2F9009042D1 /* CenteredTextSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredTextSelectionView.swift; sourceTree = "<group>"; };
 		5FD3D85F233BE8C7009042D1 /* TextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCollectionViewCell.swift; sourceTree = "<group>"; };
 		5FD3D860233BE8C7009042D1 /* TextCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCollectionViewCell.xib; sourceTree = "<group>"; };
 		5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationIntentHandler.swift; sourceTree = "<group>"; };
@@ -372,7 +372,7 @@
 				5F0FC869231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift */,
 				5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */,
 				5F169BDF232EA672007666E9 /* CategoriesStatisticsViewModel.swift */,
-				5FD3D85D233BE2F9009042D1 /* MonthSelectionView.swift */,
+				5FD3D85D233BE2F9009042D1 /* CenteredTextSelectionView.swift */,
 				5FD3D85F233BE8C7009042D1 /* TextCollectionViewCell.swift */,
 				5FD3D860233BE8C7009042D1 /* TextCollectionViewCell.xib */,
 			);
@@ -1019,7 +1019,7 @@
 			files = (
 				5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */,
 				5F470BDF220CA765002CD12D /* BlurView.swift in Sources */,
-				5FD3D85E233BE2F9009042D1 /* MonthSelectionView.swift in Sources */,
+				5FD3D85E233BE2F9009042D1 /* CenteredTextSelectionView.swift in Sources */,
 				5F56B99523101C9B005AF4AF /* ExpenseSelectedCategoryViewController.swift in Sources */,
 				F45D67CE22A3D96B00DB1AE1 /* VibrantContentView.swift in Sources */,
 				5F169BD223256E76007666E9 /* EmojiTextField.swift in Sources */,
