@@ -134,25 +134,18 @@ extension MonthSelectionView: UICollectionViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("scrollViewDidEndDecelerating")
         guard let item = itemAtCenter(),
             let currentlySelectedItem = collectionView.indexPathsForSelectedItems?.first,
             item.row != currentlySelectedItem.row else {
             return
         }
+        previousSelectedIndexPath = item
         collectionView.selectItem(at: item,
                                   animated: false,
                                   scrollPosition: .centeredHorizontally)
         selectedItemAtIndex?(item.row)
     }
-    
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        print("scrollViewDidEndScrollingAnimation")
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("scrollViewDidEndDragging")
-    }
+
 }
 
 extension MonthSelectionView: UICollectionViewDataSource {
