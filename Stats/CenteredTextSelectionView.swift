@@ -2,31 +2,6 @@ import UIKit
 import UPCarouselFlowLayout
 
 class CenteredTextSelectionView: UIView {
-
-//    private lazy var layout: UICollectionViewLayout = {
-//        let layout = UICollectionViewCompositionalLayout { (section, environment) -> NSCollectionLayoutSection? in
-//            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-//                                                  heightDimension: .fractionalHeight(1))
-//            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//
-//            let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(150),
-//                                                   heightDimension: .absolute(45))
-//
-//            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-//                                                           subitem: item,
-//                                                           count: 1)
-//
-//            let section = NSCollectionLayoutSection(group: group)
-//            section.orthogonalScrollingBehavior = .groupPagingCentered
-//            section.interGroupSpacing = 0
-//            return section
-//        }
-//
-//        let layoutConfiguration = UICollectionViewCompositionalLayoutConfiguration()
-//        layoutConfiguration.scrollDirection = .vertical
-//        layout.configuration = layoutConfiguration
-//        return layout
-//    }()
         
     lazy var layout: UPCarouselFlowLayout = {
         let layout = UPCarouselFlowLayout()
@@ -59,9 +34,6 @@ class CenteredTextSelectionView: UIView {
             self.collectionView.selectItem(at: .init(row: rowIndexToPreselect, section: 0),
                                            animated: false,
                                            scrollPosition: .centeredHorizontally)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.performHackityHack()
-            }
         }
     }
     
@@ -91,25 +63,6 @@ class CenteredTextSelectionView: UIView {
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
-    }
-    
-    private func performHackityHack() {
-        let scrollViews = collectionView.subviews.filter { $0 is UIScrollView }
-        let scrollViewWithCells = scrollViews.filter { $0.subviews.first is UICollectionViewCell }
-        guard let scrollView = scrollViewWithCells.first as? UIScrollView else {
-            print("No hak :(")
-            return
-        }
-
-        let halfViewWidth = frame.width / 2
-        childSubviewContentOffsetObservation = scrollView.observe(\.contentOffset) { [weak self] (scrollView, change) in
-            guard let self = self else {
-                return
-            }
-            let offset = CGPoint.init(x: scrollView.contentOffset.x + halfViewWidth,
-                                      y: scrollView.contentOffset.y)
-            print(self.collectionView.indexPathForItem(at: offset))
-        }
     }
     
     private func itemAtCenter() -> IndexPath? {
