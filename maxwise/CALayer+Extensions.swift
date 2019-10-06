@@ -5,7 +5,7 @@ extension CALayer {
         shadowRadius = 5
         shadowOffset = CGSize.init(width: 0, height: 2)
         shadowColor = color.cgColor
-        shadowOpacity = 0.3
+        shadowOpacity = 0.5
         masksToBounds = false
     }
     

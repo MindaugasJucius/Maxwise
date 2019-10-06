@@ -10,6 +10,15 @@ import UIKit
 
 extension UIView {
     
+    func loadNib() {
+       let nib = Bundle.main.loadNibNamed(Self.nibName, owner: self, options: nil)
+       guard let contentView = nib?.first as? UIView else {
+           fatalError("view in nib not found")
+       }
+       addSubview(contentView)
+       contentView.fill(in: self)
+    }
+    
     func fill(in view: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         guard view == superview,

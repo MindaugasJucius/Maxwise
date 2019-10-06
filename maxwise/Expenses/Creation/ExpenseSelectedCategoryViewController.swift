@@ -2,12 +2,11 @@ import UIKit
 import ExpenseKit
 
 class ExpenseSelectedCategoryViewController: UIViewController {
-
-    @IBOutlet private weak var containerView: UIView!
-    @IBOutlet private weak var emojiLabel: UILabel!
     
     private let categories: [ExpenseCategory]
     private let selectedCategory: (ExpenseCategory) -> ()
+    
+    @IBOutlet private weak var categoryRepresentationView: CategoryRepresentationView!
     
     init(categories: [ExpenseCategory], selectedCategory: @escaping (ExpenseCategory) -> ()) {
         self.categories = categories
@@ -21,13 +20,10 @@ class ExpenseSelectedCategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.layer.applyBorder()
-        view.layer.borderColor = UIColor.clear.cgColor
-        containerView.layer.applyBorder()
-
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
-        containerView.addGestureRecognizer(tapGesture)
-
+        categoryRepresentationView.addGestureRecognizer(tapGesture)
+        categoryRepresentationView.emojiTextField.isEnabled = false
+        
         guard let preselectedCategoryID = UserDefaults.standard.string(forKey: ExpenseCategoryModelController.preselectedCategoryKey),
             let category = categories.filter ({ $0.id == preselectedCategoryID }).first else {
                 fatalError()
@@ -51,11 +47,10 @@ class ExpenseSelectedCategoryViewController: UIViewController {
     }
     
     private func configure(for category: ExpenseCategory) {
-        containerView.backgroundColor = category.color?.uiColor?.withAlphaComponent(0.1)
-        containerView.layer.borderColor = category.color?.uiColor?.cgColor
-        emojiLabel.text = category.emojiValue
-        if let shadowColor = category.color?.uiColor {
-            view.layer.applyShadow(color: shadowColor)
+        categoryRepresentationView.emojiTextField.text = category.emojiValue
+        guard let categoryColor = category.color else {
+            return
         }
+        categoryRepresentationView.update(for: categoryColor)
     }
 }

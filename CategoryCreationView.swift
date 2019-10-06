@@ -12,8 +12,7 @@ class CategoryCreationView: UIView {
     private let changedColorSelection: (Color) -> Void
     
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet private weak var categoryEmojiTextFieldContainer: UIView!
-    @IBOutlet private weak var categoryEmojiTextField: UITextField!
+    @IBOutlet private weak var categoryRepresentationView: CategoryRepresentationView!
     @IBOutlet private weak var colorSelectionCollectionView: UICollectionView!
     
     init(expenseCategory: ExpenseCategory,
@@ -40,9 +39,10 @@ class CategoryCreationView: UIView {
     }
     
     private func configure(expenseCategory: ExpenseCategory) {
-        categoryEmojiTextField.layer.applyBorder()
-        
-        categoryEmojiTextFieldContainer.layer.cornerRadius = 6
+        // cia tas ka paloadinam is nibo hehe
+        subviews.first?.layer.cornerCurve = .continuous
+        subviews.first?.layer.cornerRadius = 6
+        subviews.first?.backgroundColor = UIColor.systemBackground
         
         layer.masksToBounds = true
         layer.applyShadow(color: .tertiaryLabel)
@@ -58,24 +58,11 @@ class CategoryCreationView: UIView {
         
         if !expenseCategory.isEmpty() {
             titleTextField.text = expenseCategory.title
-            categoryEmojiTextField.text = expenseCategory.emojiValue
+            categoryRepresentationView.emojiTextField.text = expenseCategory.emojiValue
         }
         configureCollectionView()
     }
     
-    private func loadNib() {
-        let nib = Bundle.main.loadNibNamed(CategoryCreationView.nibName, owner: self, options: nil)
-        guard let contentView = nib?.first as? UIView else {
-            fatalError("view in nib not found")
-        }
-        addSubview(contentView)
-        contentView.fill(in: self)
-        
-        contentView.layer.cornerCurve = .continuous
-        contentView.layer.cornerRadius = 6
-        contentView.backgroundColor = UIColor.systemBackground
-    }
-
     func categoryDataIfValid() -> ExpenseCategoryModelController.Category? {
         guard let titleText = titleTextField.text, !titleText.isEmpty else {
             titleTextField.layer.borderColor = UIColor.red.cgColor
@@ -83,7 +70,7 @@ class CategoryCreationView: UIView {
             return nil
         }
         
-        guard let emojiText = categoryEmojiTextField.text else {
+        guard let emojiText = categoryRepresentationView.emojiTextField.text else {
             return nil
         }
         
@@ -147,12 +134,7 @@ class CategoryCreationView: UIView {
         guard let uiColor = color.uiColor else {
             return
         }
-        categoryEmojiTextField.layer.applyBorder()
-        categoryEmojiTextField.backgroundColor = uiColor.withAlphaComponent(0.1)
-        categoryEmojiTextField.layer.borderColor = uiColor.cgColor
-        categoryEmojiTextFieldContainer.layer.applyShadow(color: uiColor)
-
-        categoryEmojiTextField.tintColor = uiColor
+        categoryRepresentationView.update(for: color)
         titleTextField.tintColor = uiColor
     }
 }

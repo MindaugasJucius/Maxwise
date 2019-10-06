@@ -13,6 +13,12 @@ class NoExpensesView: UIView {
         configure()
     }
    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        loadNib()
+        configure()
+    }
+    
     private func configure() {
         isUserInteractionEnabled = false
         topLabel.font = .systemFont(ofSize: 25, weight: .medium)
@@ -25,18 +31,5 @@ class NoExpensesView: UIView {
         
         imageView.tintColor = .secondaryLabel
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func loadNib() {
-        let nib = Bundle.main.loadNibNamed(NoExpensesView.nibName, owner: self, options: nil)
-        guard let contentView = nib?.first as? UIView else {
-            fatalError("view in nib not found")
-        }
-        addSubview(contentView)
-        contentView.fill(in: self)
-    }
-    
+        
 }

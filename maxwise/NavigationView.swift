@@ -18,15 +18,6 @@ class NavigationView: UIView {
         configureButtons()
     }
     
-    private func loadNib() {
-        let nib = Bundle.main.loadNibNamed(NavigationView.nibName, owner: self, options: nil)
-        guard let contentView = nib?.first as? UIView else {
-            fatalError("view in nib not found")
-        }
-        addSubview(contentView)
-        contentView.fill(in: self)
-    }
-    
     private func configureButtons() {
         centeredButton.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
         centeredButton.setTitle("", for: .normal)

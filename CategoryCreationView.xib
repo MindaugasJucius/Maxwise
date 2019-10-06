@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryCreationView" customModule="maxwise" customModuleProvider="target">
             <connections>
-                <outlet property="categoryEmojiTextField" destination="Tjv-Xe-l0c" id="v5a-5n-oCK"/>
-                <outlet property="categoryEmojiTextFieldContainer" destination="pUL-yt-TzU" id="4O6-4G-MzB"/>
+                <outlet property="categoryRepresentationView" destination="pUL-yt-TzU" id="0ca-gm-1Kl"/>
                 <outlet property="colorSelectionCollectionView" destination="yAo-RJ-HGQ" id="QS5-7V-If5"/>
                 <outlet property="titleTextField" destination="gKP-5J-1aq" id="WSR-fr-lUb"/>
             </connections>
@@ -26,21 +25,10 @@
                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mEP-WU-lOq">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUL-yt-TzU">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUL-yt-TzU" customClass="CategoryRepresentationView" customModule="maxwise" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.5" width="65" height="43.5"/>
-                                    <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="🤑" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tjv-Xe-l0c" customClass="EmojiTextField" customModule="maxwise" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="65" height="43.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                    <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="Tjv-Xe-l0c" secondAttribute="bottom" id="11K-Ff-9kl"/>
-                                        <constraint firstItem="Tjv-Xe-l0c" firstAttribute="top" secondItem="pUL-yt-TzU" secondAttribute="top" id="5rO-FJ-WbT"/>
-                                        <constraint firstAttribute="trailing" secondItem="Tjv-Xe-l0c" secondAttribute="trailing" id="89g-Lg-NxG"/>
-                                        <constraint firstItem="Tjv-Xe-l0c" firstAttribute="leading" secondItem="pUL-yt-TzU" secondAttribute="leading" id="LNa-O6-HRU"/>
                                         <constraint firstAttribute="width" constant="65" id="vJo-47-RNM"/>
                                     </constraints>
                                 </view>
@@ -59,7 +47,7 @@
                         </stackView>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yAo-RJ-HGQ">
                             <rect key="frame" x="0.0" y="60" width="382" height="35"/>
-                            <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="LjH-UF-nYk"/>
                             </constraints>

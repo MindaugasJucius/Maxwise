@@ -111,6 +111,8 @@
 		F4A9847A2349F6F600A69F79 /* SectionBackgroundDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A984792349F6F600A69F79 /* SectionBackgroundDecorationView.swift */; };
 		F4A9847F2349FAF000A69F79 /* CategoryListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9847D2349FAF000A69F79 /* CategoryListCollectionViewCell.swift */; };
 		F4A984802349FAF000A69F79 /* CategoryListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */; };
+		F4A984822349FC0F00A69F79 /* CategoryRepresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A984812349FC0F00A69F79 /* CategoryRepresentationView.swift */; };
+		F4A984842349FC2C00A69F79 /* CategoryRepresentationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A984832349FC2C00A69F79 /* CategoryRepresentationView.xib */; };
 		F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -305,6 +307,8 @@
 		F4A984792349F6F600A69F79 /* SectionBackgroundDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionBackgroundDecorationView.swift; sourceTree = "<group>"; };
 		F4A9847D2349FAF000A69F79 /* CategoryListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListCollectionViewCell.swift; sourceTree = "<group>"; };
 		F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryListCollectionViewCell.xib; sourceTree = "<group>"; };
+		F4A984812349FC0F00A69F79 /* CategoryRepresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepresentationView.swift; sourceTree = "<group>"; };
+		F4A984832349FC2C00A69F79 /* CategoryRepresentationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryRepresentationView.xib; sourceTree = "<group>"; };
 		F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		F739ED49C2038FB2BE827A0C /* Pods-maxwiseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -370,6 +374,8 @@
 				5F169BD9232CD4BB007666E9 /* ColorCollectionViewCell.swift */,
 				5F169BDA232CD4BB007666E9 /* ColorCollectionViewCell.xib */,
 				F4A9847C2349FACA00A69F79 /* Categories List */,
+				F4A984812349FC0F00A69F79 /* CategoryRepresentationView.swift */,
+				F4A984832349FC2C00A69F79 /* CategoryRepresentationView.xib */,
 			);
 			name = Categories;
 			path = ..;
@@ -818,6 +824,7 @@
 				5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */,
 				5F0FC870231C284C0083EBA9 /* CategoryCreationViewController.xib in Resources */,
 				5F169BDC232CD4BB007666E9 /* ColorCollectionViewCell.xib in Resources */,
+				F4A984842349FC2C00A69F79 /* CategoryRepresentationView.xib in Resources */,
 				5F0FC86C231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib in Resources */,
 				5FC9298622F8A02200CB23DC /* ExpenseCreationInputView.xib in Resources */,
 				5FB59213227DE303005D5208 /* NavigationView.xib in Resources */,
@@ -1052,6 +1059,7 @@
 				5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */,
 				5F169BE0232EA672007666E9 /* CategoriesStatisticsViewModel.swift in Sources */,
 				5F0FC86F231C284C0083EBA9 /* CategoryCreationViewController.swift in Sources */,
+				F4A984822349FC0F00A69F79 /* CategoryRepresentationView.swift in Sources */,
 				5F0FC86B231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift in Sources */,
 				5F0FC8762322EEFA0083EBA9 /* BeautifulButton.swift in Sources */,
 				5FD95D8922D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */,
