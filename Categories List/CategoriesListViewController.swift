@@ -17,7 +17,7 @@ class CategoriesListViewController: UIViewController {
                                                   heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                   heightDimension: .absolute(50))
+                                                   heightDimension: .absolute(65))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             
             let contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
@@ -42,12 +42,16 @@ class CategoriesListViewController: UIViewController {
         return layout
     }()
     
-    private lazy var dataSource = UICollectionViewDiffableDataSource<Section, Int>(
+    private lazy var dataSource = UICollectionViewDiffableDataSource<Section, ExpenseCategory>(
         collectionView: collectionView,
         cellProvider: { (collectionView, indexPath, smth) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-            cell.backgroundColor = .blue
-            return cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryListCollectionViewCell.nibName,
+                                                          for: indexPath)
+            guard let categoryListCell = cell as? CategoryListCollectionViewCell else {
+                return cell
+            }
+            categoryListCell.update(for: smth)
+            return categoryListCell
         }
     )
 
@@ -55,15 +59,16 @@ class CategoriesListViewController: UIViewController {
         super.viewDidLoad()
         collectionView.setCollectionViewLayout(layout, animated: false)
         collectionView.dataSource = dataSource
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Int>.init()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(Array(0...10))
-        dataSource.apply(snapshot)
+        let nib = UINib(nibName: CategoryListCollectionViewCell.nibName, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: CategoryListCollectionViewCell.nibName)
+        collectionView.backgroundColor = UIColor.init(named: "background")
     }
 
     func update(for categories: [ExpenseCategory]) {
-        
+        var snapshot = NSDiffableDataSourceSnapshot<Section, ExpenseCategory>.init()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(categories)
+        dataSource.apply(snapshot)
     }
     
 }

@@ -31,7 +31,7 @@ class CategoriesStatisticsViewController: UIViewController {
         pieChartView.fillInSuperview()
   
         addChild(categoriesListViewController)
-        categoriesListContainer.addSubview(        categoriesListViewController.view)
+        categoriesListContainer.addSubview(categoriesListViewController.view)
         categoriesListViewController.view.translatesAutoresizingMaskIntoConstraints = false
         categoriesListViewController.view.fillInSuperview()
 
@@ -43,6 +43,7 @@ class CategoriesStatisticsViewController: UIViewController {
         viewModel.categoriesForSelection = { [weak self] data in
             self?.pieChartView.animate(yAxisDuration: 0.3, easingOption: .easeInOutQuad)
             self?.pieChartView.data = data.chartData
+            self?.categoriesListViewController.update(for: data.categories)
         }
         
         viewModel.observeDateRangeSelectionRepresentations { [weak self] representations in

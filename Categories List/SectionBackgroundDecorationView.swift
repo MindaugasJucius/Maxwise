@@ -6,6 +6,7 @@ class SectionBackgroundDecorationView: UICollectionReusableView {
         super.init(frame: frame)
         configure()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("not implemented")
     }
@@ -13,9 +14,9 @@ class SectionBackgroundDecorationView: UICollectionReusableView {
 
 extension SectionBackgroundDecorationView {
     func configure() {
-        backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-        layer.borderColor = UIColor.black.cgColor
+        backgroundColor = .white
+        layer.borderColor = UIColor.clear.cgColor
         layer.borderWidth = 1
-        layer.cornerRadius = 12
+        layer.cornerRadius = 6
     }
 }
