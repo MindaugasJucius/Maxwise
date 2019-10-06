@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -106,6 +106,11 @@
 		B685B79A0FC3283C33E7E112 /* Pods_ExpenseKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2CA953CEB6826F7E039748 /* Pods_ExpenseKitTests.framework */; };
 		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
 		F45D67CE22A3D96B00DB1AE1 /* VibrantContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */; };
+		F4A984772349EAAD00A69F79 /* CategoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A984752349EAAD00A69F79 /* CategoriesListViewController.swift */; };
+		F4A984782349EAAD00A69F79 /* CategoriesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A984762349EAAD00A69F79 /* CategoriesListViewController.xib */; };
+		F4A9847A2349F6F600A69F79 /* SectionBackgroundDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A984792349F6F600A69F79 /* SectionBackgroundDecorationView.swift */; };
+		F4A9847F2349FAF000A69F79 /* CategoryListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A9847D2349FAF000A69F79 /* CategoryListCollectionViewCell.swift */; };
+		F4A984802349FAF000A69F79 /* CategoryListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */; };
 		F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -295,6 +300,11 @@
 		EA1C0C0C4A8FAC6A0B1B4D5E /* Pods-ExpenseKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExpenseKit/Pods-ExpenseKit.debug.xcconfig"; sourceTree = "<group>"; };
 		F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantContentView.swift; sourceTree = "<group>"; };
+		F4A984752349EAAD00A69F79 /* CategoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewController.swift; sourceTree = "<group>"; };
+		F4A984762349EAAD00A69F79 /* CategoriesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesListViewController.xib; sourceTree = "<group>"; };
+		F4A984792349F6F600A69F79 /* SectionBackgroundDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionBackgroundDecorationView.swift; sourceTree = "<group>"; };
+		F4A9847D2349FAF000A69F79 /* CategoryListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListCollectionViewCell.swift; sourceTree = "<group>"; };
+		F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryListCollectionViewCell.xib; sourceTree = "<group>"; };
 		F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		F739ED49C2038FB2BE827A0C /* Pods-maxwiseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -357,10 +367,9 @@
 				5F0FC86E231C284C0083EBA9 /* CategoryCreationViewController.xib */,
 				5F0FC87723255E660083EBA9 /* CategoryCreationView.swift */,
 				5F0FC87923255E7E0083EBA9 /* CategoryCreationView.xib */,
-				5F169BD123256E76007666E9 /* EmojiTextField.swift */,
-				5F169BD32325799A007666E9 /* InsetTextField.swift */,
 				5F169BD9232CD4BB007666E9 /* ColorCollectionViewCell.swift */,
 				5F169BDA232CD4BB007666E9 /* ColorCollectionViewCell.xib */,
+				F4A9847C2349FACA00A69F79 /* Categories List */,
 			);
 			name = Categories;
 			path = ..;
@@ -601,11 +610,25 @@
 		F45D67CF22A3E0BB00DB1AE1 /* Custom subclasses */ = {
 			isa = PBXGroup;
 			children = (
+				5F169BD123256E76007666E9 /* EmojiTextField.swift */,
+				5F169BD32325799A007666E9 /* InsetTextField.swift */,
 				5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */,
 				F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */,
 				5F0FC8752322EEFA0083EBA9 /* BeautifulButton.swift */,
 			);
 			path = "Custom subclasses";
+			sourceTree = "<group>";
+		};
+		F4A9847C2349FACA00A69F79 /* Categories List */ = {
+			isa = PBXGroup;
+			children = (
+				F4A984752349EAAD00A69F79 /* CategoriesListViewController.swift */,
+				F4A984762349EAAD00A69F79 /* CategoriesListViewController.xib */,
+				F4A984792349F6F600A69F79 /* SectionBackgroundDecorationView.swift */,
+				F4A9847D2349FAF000A69F79 /* CategoryListCollectionViewCell.swift */,
+				F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */,
+			);
+			path = "Categories List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -804,11 +827,13 @@
 				5FD3D862233BE8C7009042D1 /* TextCollectionViewCell.xib in Resources */,
 				5F240CA2222721A3009A41AE /* ExpenseCreationViewController.xib in Resources */,
 				5F9DE37E2218A135008CCB94 /* CameraViewController.xib in Resources */,
+				F4A984782349EAAD00A69F79 /* CategoriesListViewController.xib in Resources */,
 				5F56B99223049E2B005AF4AF /* ExpensesSectionHeaderView.xib in Resources */,
 				5F56B99623101C9B005AF4AF /* ExpenseSelectedCategoryViewController.xib in Resources */,
 				5F0FC874231C2ABA0083EBA9 /* NoExpensesView.xib in Resources */,
 				5F6878772207425400F4FE7C /* tessdata in Resources */,
 				5F0FC87A23255E7E0083EBA9 /* CategoryCreationView.xib in Resources */,
+				F4A984802349FAF000A69F79 /* CategoryListCollectionViewCell.xib in Resources */,
 				5F65C346222A6DAF00E10F92 /* VenueCollectionViewCell.xib in Resources */,
 				5F20E0BE2210352F00BAECF6 /* ExpenseTableViewCell.xib in Resources */,
 				5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */,
@@ -905,32 +930,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/FoursquareAPIClient/FoursquareAPIClient.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm-iOS13.0/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift-iOS13.0/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
-				"${BUILT_PRODUCTS_DIR}/UPCarouselFlowLayout/UPCarouselFlowLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm-iOS12.0/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift-iOS12.0/RealmSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoursquareAPIClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UPCarouselFlowLayout.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-maxwise/Pods-maxwise-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C44BF7B71AA5AC9A68C83A93 /* [CP] Check Pods Manifest.lock */ = {
@@ -961,22 +969,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ExpenseKitTests/Pods-ExpenseKitTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Realm-iOS12.0/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift-iOS12.0/RealmSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-ExpenseKitTests/Pods-ExpenseKitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-ExpenseKitTests/Pods-ExpenseKitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExpenseKitTests/Pods-ExpenseKitTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExpenseKitTests/Pods-ExpenseKitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1030,6 +1031,7 @@
 				5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */,
 				5F169BD42325799A007666E9 /* InsetTextField.swift in Sources */,
 				5F0FC87823255E660083EBA9 /* CategoryCreationView.swift in Sources */,
+				F4A984772349EAAD00A69F79 /* CategoriesListViewController.swift in Sources */,
 				5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */,
 				5F56B99D2313C78E005AF4AF /* ExpenseCategoryTableViewCell.swift in Sources */,
 				5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */,
@@ -1041,8 +1043,10 @@
 				5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */,
 				5F0FC872231C2A9C0083EBA9 /* NoExpensesView.swift in Sources */,
 				5FC9298422F89FFF00CB23DC /* ExpenseCreationInputView.swift in Sources */,
+				F4A9847F2349FAF000A69F79 /* CategoryListCollectionViewCell.swift in Sources */,
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 				5F56B99023049E1C005AF4AF /* ExpensesSectionHeaderView.swift in Sources */,
+				F4A9847A2349F6F600A69F79 /* SectionBackgroundDecorationView.swift in Sources */,
 				5FD3D861233BE8C7009042D1 /* TextCollectionViewCell.swift in Sources */,
 				5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */,
 				5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */,

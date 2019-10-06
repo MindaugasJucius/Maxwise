@@ -5,6 +5,9 @@ class CategoriesStatisticsViewController: UIViewController {
 
     @IBOutlet private weak var pieChartContainer: UIView!
     @IBOutlet private weak var dateRangeSelectionView: CenteredTextSelectionView!
+    @IBOutlet private weak var categoriesListContainer: UIView!
+
+    private lazy var categoriesListViewController = CategoriesListViewController()
     
     private let viewModel = CategoriesStatisticsViewModel()
     
@@ -27,6 +30,12 @@ class CategoriesStatisticsViewController: UIViewController {
         pieChartContainer.addSubview(pieChartView)
         pieChartView.fillInSuperview()
   
+        addChild(categoriesListViewController)
+        categoriesListContainer.addSubview(        categoriesListViewController.view)
+        categoriesListViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        categoriesListViewController.view.fillInSuperview()
+
+        
         viewModel.shouldUpdateSelection = { [weak self] indexToSelect in
             self?.dateRangeSelectionView.selectItem(at: indexToSelect)
         }
