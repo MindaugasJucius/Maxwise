@@ -2,6 +2,20 @@ import UIKit
 import ExpenseKit
 import Charts
 
+struct ExpenseCategoryStatsDTO: Hashable {
+    let amountSpentFormatted: String
+    let amountSpentDouble: Double
+    let percentageOfAmountInDateRange: Double
+    let categoryTitle: String
+    let categoryID: String
+    let emojiValue: String
+    let color: UIColor
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(categoryID)
+    }
+}
+
 class CategoriesStatisticsViewModel {
 
     private let statsQueue = DispatchQueue(label: "com.maxwise.stats.fetch.queue",
@@ -12,6 +26,13 @@ class CategoriesStatisticsViewModel {
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
+        return formatter
+    }()
+    
+    private lazy var currencyFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
         return formatter
     }()
     
@@ -31,7 +52,7 @@ class CategoriesStatisticsViewModel {
     }
     private var currentSelectedIndex: Int?
 
-    typealias StatsData = (categories: [ExpenseCategory], chartData: PieChartData)
+    typealias StatsData = (categories: [ExpenseCategoryStatsDTO], chartData: PieChartData)
     
     var categoriesForSelection: ((StatsData) -> ())?
     var shouldUpdateSelection: ((Int) -> ())?
@@ -77,27 +98,61 @@ class CategoriesStatisticsViewModel {
         return representations
     }
     
-    private func data(for date: Date) -> StatsData {
-        let expensesInDate = expenseModelController.expenses(in: date)
-        let expenseCategories = Array(Set(expensesInDate.compactMap { $0.category }))
-        let pieChartData = constructPieChartData(from: expenseCategories)
-        return (expenseCategories, pieChartData)
-    }
-    
-    private func constructPieChartData(from categories: [ExpenseCategory]) -> PieChartData {
-        let titlesAndAmounts = categories.map { category -> (String, Double) in
-            let totalAmountSpentInCategory = category.expenses.reduce(0.0) { result, entry in
+    private func expenseCategoryStatsDTOs(from categoriesExpenses: [ExpenseCategory: [ExpenseEntry]]) -> [ExpenseCategoryStatsDTO] {
+        let categoriesAndAmounts = categoriesExpenses.map { categoryWithExpenses -> (ExpenseCategory, Double) in
+            let totalAmountSpentInCategory = categoryWithExpenses.value.reduce(0.0) { result, entry in
                 result + entry.amount
             }
-            return (category.title, totalAmountSpentInCategory)
+            return (categoryWithExpenses.key, totalAmountSpentInCategory)
         }
 
-        let dataEntries = titlesAndAmounts.map {
-            PieChartDataEntry.init(value: $0.1, label: $0.0)
+        let allAmount = categoriesAndAmounts.reduce(0.0, { $0 + $1.1 })
+        
+        let categoryStatsDTOs = categoriesAndAmounts.compactMap { (category, amountSpent) -> ExpenseCategoryStatsDTO? in
+            let percentage = amountSpent / allAmount
+            let numberAmountSpent = NSNumber.init(value: amountSpent)
+            guard let color = category.color?.uiColor,
+                let amountSpentCurrency = currencyFormatter.string(from: numberAmountSpent) else {
+                return nil
+            }
+
+            return ExpenseCategoryStatsDTO(amountSpentFormatted: amountSpentCurrency,
+                                           amountSpentDouble: amountSpent,
+                                           percentageOfAmountInDateRange: percentage,
+                                           categoryTitle: category.title,
+                                           categoryID: category.id,
+                                           emojiValue: category.emojiValue,
+                                           color: color)
+        }.sorted { $0.amountSpentDouble > $1.amountSpentDouble }
+
+        return categoryStatsDTOs
+    }
+    
+    private func data(for date: Date) -> StatsData {
+        let expensesInDate = expenseModelController.expenses(in: date)
+        var categoryExpensesInDate = [ExpenseCategory: [ExpenseEntry]]()
+        expensesInDate.forEach { entry in
+            guard let category = entry.category else {
+                return
+            }
+            var expenses = categoryExpensesInDate[category] ?? []
+            expenses.append(entry)
+            categoryExpensesInDate[category] = expenses
+        }
+        
+        let statsDTOs = expenseCategoryStatsDTOs(from: categoryExpensesInDate)
+        
+        let pieChartData = constructPieChartData(from: statsDTOs)
+        return (statsDTOs, pieChartData)
+    }
+    
+    private func constructPieChartData(from dtos: [ExpenseCategoryStatsDTO]) -> PieChartData {
+        let dataEntries = dtos.map {
+            PieChartDataEntry.init(value: $0.amountSpentDouble, label: $0.categoryTitle)
         }
 
         let dataSet = PieChartDataSet(entries: dataEntries, label: nil)
-        dataSet.colors = categories.compactMap { $0.color?.uiColor }
+        dataSet.colors = dtos.compactMap { $0.color }
         dataSet.yValuePosition = .outsideSlice
         dataSet.xValuePosition = .outsideSlice
         dataSet.valueLineColor = .label
