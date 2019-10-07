@@ -134,7 +134,7 @@ class CategoryCreationView: UIView {
         guard let uiColor = color.uiColor else {
             return
         }
-        categoryRepresentationView.update(for: color)
+        categoryRepresentationView.update(for: uiColor)
         titleTextField.tintColor = uiColor
     }
 }

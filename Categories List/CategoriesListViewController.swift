@@ -42,7 +42,7 @@ class CategoriesListViewController: UIViewController {
         return layout
     }()
     
-    private lazy var dataSource = UICollectionViewDiffableDataSource<Section, ExpenseCategory>(
+    private lazy var dataSource = UICollectionViewDiffableDataSource<Section, ExpenseCategoryStatsDTO>(
         collectionView: collectionView,
         cellProvider: { (collectionView, indexPath, smth) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryListCollectionViewCell.nibName,
@@ -64,11 +64,30 @@ class CategoriesListViewController: UIViewController {
         collectionView.backgroundColor = UIColor.init(named: "background")
     }
 
-    func update(for categories: [ExpenseCategory]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, ExpenseCategory>.init()
+    func update(for categories: [ExpenseCategoryStatsDTO]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, ExpenseCategoryStatsDTO>.init()
         snapshot.appendSections([.main])
         snapshot.appendItems(categories)
         dataSource.apply(snapshot)
+//        dataSource.apply(<#T##snapshot: NSDiffableDataSourceSnapshot<CategoriesListViewController.Section, ExpenseCategoryStatsDTO>##NSDiffableDataSourceSnapshot<CategoriesListViewController.Section, ExpenseCategoryStatsDTO>#>, animatingDifferences: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.performAnimation()
+        }
+    }
+    
+    private func performAnimation() {
+        let animator = UIViewPropertyAnimator.init(duration: 0.3, curve: .easeInOut)
+        
+        collectionView.visibleCells.forEach { cell in
+            guard let categoryListCell = cell as? CategoryListCollectionViewCell else {
+                return
+            }
+            categoryListCell.setWidth()
+            animator.addAnimations({
+                categoryListCell.layoutIfNeeded()
+            }, delayFactor: 0.1)
+        }
+        animator.startAnimation()
     }
     
 }

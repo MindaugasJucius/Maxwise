@@ -48,7 +48,7 @@ class ExpenseSelectedCategoryViewController: UIViewController {
     
     private func configure(for category: ExpenseCategory) {
         categoryRepresentationView.emojiTextField.text = category.emojiValue
-        guard let categoryColor = category.color else {
+        guard let categoryColor = category.color?.uiColor else {
             return
         }
         categoryRepresentationView.update(for: categoryColor)

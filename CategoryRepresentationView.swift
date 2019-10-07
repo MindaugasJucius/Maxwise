@@ -22,14 +22,10 @@ class CategoryRepresentationView: UIView {
         emojiTextField.layer.applyBorder()
         containerView.layer.cornerRadius = 6
         containerView.layer.cornerCurve = .continuous
+        emojiTextField.layer.applyBorder()
     }
 
-    func update(for color: Color) {
-        guard let uiColor = color.uiColor else {
-            return
-        }
-        
-        emojiTextField.layer.applyBorder()
+    func update(for uiColor: UIColor) {
         emojiTextField.tintColor = uiColor
         emojiTextField.backgroundColor = uiColor.withAlphaComponent(0.1)
         emojiTextField.layer.borderColor = uiColor.cgColor
