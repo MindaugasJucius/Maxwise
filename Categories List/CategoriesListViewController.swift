@@ -79,9 +79,6 @@ class CategoriesListViewController: UIViewController {
                 return
             }
             self.dataSource.apply(snapshot)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.performAnimation()
-            }
         }
     }
     
@@ -101,8 +98,13 @@ class CategoriesListViewController: UIViewController {
     }
     
     func scroll(to section: Int) {
-        let indexPath = IndexPath.init(item: 0, section: section)
-        collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
+        let xOffset = collectionView.bounds.width * CGFloat(section)
+        let visibleRect = CGRect.init(x: xOffset,
+                    y: 0,
+                    width: collectionView.bounds.width,
+                    height: collectionView.bounds.height)
+        collectionView.scrollRectToVisible(visibleRect, animated: true)
+        performAnimation()
     }
     
 }
@@ -110,12 +112,13 @@ class CategoriesListViewController: UIViewController {
 extension CategoriesListViewController: UICollectionViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        guard let visibleItem = collectionView.itemAtCenter() else {
+        guard let visibleItem = collectionView.indexPathsForVisibleItems.first else {
             print("no visible item after category list ended scrolling")
             return
         }
 
         viewModel.listSelectionChanged(visibleItem.section)
+        performAnimation()
     }
     
 }
