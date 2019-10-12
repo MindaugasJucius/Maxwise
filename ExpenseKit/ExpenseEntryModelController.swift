@@ -78,30 +78,31 @@ public class ExpenseEntryModelController {
         expenseEntryObservationTokens.append(observationToken)
     }
     
-    let componentsToParseFromDate = Set<Calendar.Component>(arrayLiteral: .year, .month, .day)
+    let componentsToParseFromDate = Set<Calendar.Component>(arrayLiteral: .year, .month)
     
     /// Returns distinct expense creation [Date]s that consist only of year and month.
-    public func expensesYearsMonths(updated: @escaping ([Date]) -> ()) {
+    public func expensesYearsMonths(updated: @escaping (([ExpenseEntry], [Date])) -> ()) {
         observeExpenseEntries { entries in
             let yearMonthExpenseDates = entries
                 .map { $0.creationDate }
                 .map { Calendar.current.dateComponents(self.componentsToParseFromDate, from: $0) }
                 .compactMap { Calendar.current.date(from: $0) }
-            updated(Array(Set(yearMonthExpenseDates)).sorted(by: <))
+            let dates = Array(Set(yearMonthExpenseDates)).sorted(by: <)
+            updated((entries, dates))
         }
     }
     
     
     /// Returns expenses created in date matching .year, .month components
     /// - Parameter date: filtering happends based on this value
-    public func expenses(in date: Date) -> [ExpenseEntry] {
+    public func filter(expenses: [ExpenseEntry], by date: Date) -> [ExpenseEntry] {
         let filterYearMonth = Calendar.current.dateComponents(componentsToParseFromDate, from: date)
         guard let filterMonthIndex = filterYearMonth.month,
             let filterYear = filterYearMonth.year else {
             return []
         }
-
-        let expensesInDate = retrieveAllExpenseEntries().filter { entry in
+        
+        let expensesInDate = expenses.filter { entry in
             let expenseYearMonth = Calendar.current.dateComponents(componentsToParseFromDate, from: entry.creationDate)
             guard let expenseMonthIndex = expenseYearMonth.month,
                 let expenseYear = expenseYearMonth.year else {

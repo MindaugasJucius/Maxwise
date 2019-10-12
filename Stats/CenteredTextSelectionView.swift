@@ -66,15 +66,10 @@ class CenteredTextSelectionView: UIView {
     
     func selectItem(at index: Int) {
         collectionView.selectItem(at: .init(row: index, section: 0),
-                                  animated: false,
+                                  animated: true,
                                   scrollPosition: .centeredHorizontally)
     }
     
-    private func itemAtCenter() -> IndexPath? {
-        let point = CGPoint.init(x: collectionView.bounds.midX,
-                                 y: collectionView.bounds.midY)
-        return collectionView.indexPathForItem(at: point)
-    }
 }
 
 extension CenteredTextSelectionView: UICollectionViewDelegate {
@@ -91,7 +86,7 @@ extension CenteredTextSelectionView: UICollectionViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        guard let item = itemAtCenter(),
+        guard let item = collectionView.itemAtCenter(),
             let currentlySelectedItem = collectionView.indexPathsForSelectedItems?.first,
             item.row != currentlySelectedItem.row else {
             return

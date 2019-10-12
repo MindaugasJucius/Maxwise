@@ -7,7 +7,9 @@ class CategoriesStatisticsViewController: UIViewController {
     @IBOutlet private weak var dateRangeSelectionView: CenteredTextSelectionView!
     @IBOutlet private weak var categoriesListContainer: UIView!
 
-    private lazy var categoriesListViewController = CategoriesListViewController()
+    private lazy var categoriesListViewController = CategoriesListViewController.init(
+        viewModel: viewModel.categoriesListViewModel
+    )
     
     private let viewModel = CategoriesStatisticsViewModel()
     
@@ -40,19 +42,26 @@ class CategoriesStatisticsViewController: UIViewController {
             self?.dateRangeSelectionView.selectItem(at: indexToSelect)
         }
         
-        viewModel.categoriesForSelection = { [weak self] data in
-            self?.pieChartView.animate(yAxisDuration: 0.3, easingOption: .easeInOutQuad)
-            self?.pieChartView.data = data.chartData
-            self?.categoriesListViewController.update(for: data.categories)
-        }
-        
         viewModel.observeDateRangeSelectionRepresentations { [weak self] representations in
             self?.dateRangeSelectionView.items = representations
         }
+                
+        viewModel.selectedCategoryChartData = { [weak self] data in
+            self?.animateChart(to: data)
+        }
         
         dateRangeSelectionView.hasChangedSelectionToItemAtIndex = { [weak self] index in
-            self?.viewModel.selected(index: index)
+            guard let chartData = self?.viewModel.chartDataForSelectedCategory(at: index) else {
+                return
+            }
+            self?.animateChart(to: chartData)
+            self?.categoriesListViewController.scroll(to: index)
         }
+    }
+    
+    func animateChart(to data: PieChartData) {
+        pieChartView.animate(yAxisDuration: 0.3, easingOption: .easeInOutQuad)
+        pieChartView.data = data
     }
     
 }

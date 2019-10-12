@@ -113,6 +113,8 @@
 		F4A984802349FAF000A69F79 /* CategoryListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */; };
 		F4A984822349FC0F00A69F79 /* CategoryRepresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A984812349FC0F00A69F79 /* CategoryRepresentationView.swift */; };
 		F4A984842349FC2C00A69F79 /* CategoryRepresentationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A984832349FC2C00A69F79 /* CategoryRepresentationView.xib */; };
+		F4D3B2282352009200836FB0 /* CategoriesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3B2272352009200836FB0 /* CategoriesListViewModel.swift */; };
+		F4D3B22B23523FB400836FB0 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3B22A23523FB400836FB0 /* UICollectionView+Extensions.swift */; };
 		F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -309,6 +311,8 @@
 		F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryListCollectionViewCell.xib; sourceTree = "<group>"; };
 		F4A984812349FC0F00A69F79 /* CategoryRepresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepresentationView.swift; sourceTree = "<group>"; };
 		F4A984832349FC2C00A69F79 /* CategoryRepresentationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryRepresentationView.xib; sourceTree = "<group>"; };
+		F4D3B2272352009200836FB0 /* CategoriesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewModel.swift; sourceTree = "<group>"; };
+		F4D3B22A23523FB400836FB0 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		F739ED49C2038FB2BE827A0C /* Pods-maxwiseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -519,6 +523,7 @@
 				5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */,
 				5FA3DBB422C8C531009FD189 /* UIViewController+Extensions.swift */,
 				5F41C4252341096700126E5C /* Array+Extensions.swift */,
+				F4D3B22A23523FB400836FB0 /* UICollectionView+Extensions.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -633,6 +638,7 @@
 				F4A984792349F6F600A69F79 /* SectionBackgroundDecorationView.swift */,
 				F4A9847D2349FAF000A69F79 /* CategoryListCollectionViewCell.swift */,
 				F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */,
+				F4D3B2272352009200836FB0 /* CategoriesListViewModel.swift */,
 			);
 			path = "Categories List";
 			sourceTree = "<group>";
@@ -1051,6 +1057,7 @@
 				5F0FC872231C2A9C0083EBA9 /* NoExpensesView.swift in Sources */,
 				5FC9298422F89FFF00CB23DC /* ExpenseCreationInputView.swift in Sources */,
 				F4A9847F2349FAF000A69F79 /* CategoryListCollectionViewCell.swift in Sources */,
+				F4D3B2282352009200836FB0 /* CategoriesListViewModel.swift in Sources */,
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 				5F56B99023049E1C005AF4AF /* ExpensesSectionHeaderView.swift in Sources */,
 				F4A9847A2349F6F600A69F79 /* SectionBackgroundDecorationView.swift in Sources */,
@@ -1060,6 +1067,7 @@
 				5F169BE0232EA672007666E9 /* CategoriesStatisticsViewModel.swift in Sources */,
 				5F0FC86F231C284C0083EBA9 /* CategoryCreationViewController.swift in Sources */,
 				F4A984822349FC0F00A69F79 /* CategoryRepresentationView.swift in Sources */,
+				F4D3B22B23523FB400836FB0 /* UICollectionView+Extensions.swift in Sources */,
 				5F0FC86B231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift in Sources */,
 				5F0FC8762322EEFA0083EBA9 /* BeautifulButton.swift in Sources */,
 				5FD95D8922D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */,

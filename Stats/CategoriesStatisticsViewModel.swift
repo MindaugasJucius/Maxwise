@@ -39,35 +39,39 @@ class CategoriesStatisticsViewModel {
     private let expenseCategoryModelController = ExpenseCategoryModelController()
     private let expenseModelController = ExpenseEntryModelController()
     
-    private var currentExpenseCreationDates: [Date] = [] {
-        didSet {
-            // If there's nothing selected it means that we're loading data initially
-            // Pre select the last item
-            if self.currentSelectedIndex == nil {
-                let preselectionIndex = currentExpenseCreationDates.count - 1
-                self.currentSelectedIndex = preselectionIndex
-                shouldUpdateSelection?(preselectionIndex)
+    lazy var categoriesListViewModel = CategoriesListViewModel(
+        listSelectionChanged: { [weak self] selectedSectionIndex in
+            guard self?.currentSelectedIndex != selectedSectionIndex else {
+                return
             }
+            self?.currentSelectedIndex = selectedSectionIndex
+            self?.invokeChartDataChangeForSelectionIndex()
+            self?.shouldUpdateSelection?(selectedSectionIndex)
         }
-    }
+    )
+    
+    private var currentExpenseCreationDates: [Date] = []
     private var currentSelectedIndex: Int?
 
     typealias StatsData = (categories: [ExpenseCategoryStatsDTO], chartData: PieChartData)
     
-    var categoriesForSelection: ((StatsData) -> ())?
+    private var currentStatsData = [(Date, StatsData)]()
+    
     var shouldUpdateSelection: ((Int) -> ())?
     
-    func selected(index: Int) {
-        guard let date = currentExpenseCreationDates[safe: index] else {
-            return
-        }
+    var selectedCategoryChartData: ((PieChartData) -> ())?
+    
+    func chartDataForSelectedCategory(at index: Int) -> PieChartData? {
         currentSelectedIndex = index
-        let allData = data(for: date)
-        categoriesForSelection?(allData)
+        guard let date = currentExpenseCreationDates[safe: index] else {
+            return .none
+        }
+
+        return currentStatsData.first(where: { $0.0 == date })?.1.chartData
     }
     
     func observeDateRangeSelectionRepresentations(changed: @escaping ([String]) -> ()) {
-        expenseModelController.expensesYearsMonths { [weak self] dates in
+        expenseModelController.expensesYearsMonths { [weak self] expenses, dates in
             guard let self = self else {
                 return
             }
@@ -75,14 +79,57 @@ class CategoriesStatisticsViewModel {
             changed(self.timeRangeSelectionRepresentations(from: dates))
             
             self.currentExpenseCreationDates = dates
-
-            // Update data for current selection when changes occur
-            guard let currentSelectedIndex = self.currentSelectedIndex else {
-                return
+            
+            self.currentStatsData = dates.map { date in
+                return (date, self.data(from: expenses, for: date))
             }
-            self.selected(index: currentSelectedIndex)
+            
+            self.categoriesListViewModel.updateList(with: self.currentStatsData.map { ($0, $1.categories) })
+            
+            // If there's nothing selected it means that we're loading data initially
+            // Pre select the last item
+            if self.currentSelectedIndex == nil {
+                let preselectionIndex = dates.count - 1
+                self.currentSelectedIndex = preselectionIndex
+                self.shouldUpdateSelection?(preselectionIndex)
+            }
+
+            self.invokeChartDataChangeForSelectionIndex()
         }
     }
+    
+    private func data(from expenses: [ExpenseEntry], for date: Date) -> StatsData {
+        let expensesInDate = expenseModelController.filter(expenses: expenses, by: date)
+
+        var categoryExpensesInDate = [ExpenseCategory: [ExpenseEntry]]()
+        expensesInDate.forEach { entry in
+            guard let category = entry.category else {
+                return
+            }
+            var expenses = categoryExpensesInDate[category] ?? []
+            expenses.append(entry)
+            categoryExpensesInDate[category] = expenses
+        }
+        
+        let statsDTOs = expenseCategoryStatsDTOs(from: categoryExpensesInDate)
+        
+        let pieChartData = constructPieChartData(from: statsDTOs)
+        return (statsDTOs, pieChartData)
+    }
+    
+    private func invokeChartDataChangeForSelectionIndex() {
+        guard let currentSelectedIndex = self.currentSelectedIndex,
+            let chartData = self.chartDataForSelectedCategory(at: currentSelectedIndex) else {
+            return
+        }
+
+        self.selectedCategoryChartData?(chartData)
+    }
+
+}
+
+// MARK: - UI data mapping
+extension CategoriesStatisticsViewModel {
     
     private func timeRangeSelectionRepresentations(from dates: [Date]) -> [String] {
         let representations = dates.map { date -> String in
@@ -126,24 +173,6 @@ class CategoriesStatisticsViewModel {
         }.sorted { $0.amountSpentDouble > $1.amountSpentDouble }
 
         return categoryStatsDTOs
-    }
-    
-    private func data(for date: Date) -> StatsData {
-        let expensesInDate = expenseModelController.expenses(in: date)
-        var categoryExpensesInDate = [ExpenseCategory: [ExpenseEntry]]()
-        expensesInDate.forEach { entry in
-            guard let category = entry.category else {
-                return
-            }
-            var expenses = categoryExpensesInDate[category] ?? []
-            expenses.append(entry)
-            categoryExpensesInDate[category] = expenses
-        }
-        
-        let statsDTOs = expenseCategoryStatsDTOs(from: categoryExpensesInDate)
-        
-        let pieChartData = constructPieChartData(from: statsDTOs)
-        return (statsDTOs, pieChartData)
     }
     
     private func constructPieChartData(from dtos: [ExpenseCategoryStatsDTO]) -> PieChartData {
