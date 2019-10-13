@@ -1,13 +1,21 @@
 import UIKit
 
+class ExpensesDataSource: UITableViewDiffableDataSource<Date, ExpensePresentationDTO> {
+    
+    // No other way to provide custom behaviour to data source methods
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+}
+
 class ExpensesViewController: UIViewController {
     
     private let viewModel: ExpensesViewModel
     private weak var presentationDelegate: PresentationViewControllerDelegate?
     private var expenseGroups = [(Date, [ExpensePresentationDTO])]()
     
-    private lazy var dataSource: UITableViewDiffableDataSource<Date, ExpensePresentationDTO> = {
-        return UITableViewDiffableDataSource(tableView: tableView) { [weak self] (tableView, indexPath, expenseEntryDTO) in
+    private lazy var dataSource: ExpensesDataSource = {
+        return ExpensesDataSource(tableView: tableView) { [weak self] (tableView, indexPath, expenseEntryDTO) in
             guard let self = self else {
                 return nil
             }
@@ -86,6 +94,7 @@ class ExpensesViewController: UIViewController {
                            forHeaderFooterViewReuseIdentifier: ExpensesSectionHeaderView.nibName)
         tableView.dataSource = dataSource
         dataSource.defaultRowAnimation = .fade
+
         tableView.delegate = self
         tableView.estimatedRowHeight = 67
         tableView.estimatedSectionHeaderHeight = 60
