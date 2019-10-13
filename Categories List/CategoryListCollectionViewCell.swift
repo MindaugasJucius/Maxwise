@@ -9,8 +9,14 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryTitleLabel: UILabel!
     @IBOutlet weak var amountSpentInCategoryLabel: UILabel!
     
+    @IBOutlet private weak var cellSeparatorView: UIView!
+    @IBOutlet private weak var cellSeparatorViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var cellBackgroundView: UIView!
+    
     private var representedDTO: ExpenseCategoryStatsDTO?
     private var newWidth: CGFloat = 0
+    
+    var shouldSetWidthImmediatelly = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,6 +24,13 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
         categoryTitleLabel.textColor = .label
         amountSpentInCategoryLabel.textColor = .secondaryLabel
         percentageAmountSpentViewWidthConstraint.constant = 0
+        categoryRepresentationView.emojiTextField.isEnabled = false
+        cellBackgroundView.backgroundColor = .secondarySystemGroupedBackground
+        cellSeparatorView.backgroundColor = .separator
+        layer.cornerCurve = .continuous
+        layer.cornerRadius = 12
+        layer.maskedCorners = []
+        cellSeparatorViewHeightConstraint.constant = 0.5
     }
     
     override func layoutSubviews() {
@@ -27,11 +40,16 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
         }
         let width = frame.width * CGFloat(dto.percentageOfAmountInDateRange)
         newWidth = width
+        if shouldSetWidthImmediatelly {
+            percentageAmountSpentViewWidthConstraint.constant = width
+        }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         percentageAmountSpentViewWidthConstraint.constant = 0
+        layer.maskedCorners = []
+        cellSeparatorView.isHidden = false
     }
     
     func setWidth() {
@@ -46,5 +64,13 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
         representedDTO = category
         percentageAmountSpentView.backgroundColor = category.color.withAlphaComponent(0.3)
     }
+
+    func roundTop() {
+        layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+    }
     
+    func roundBottom() {
+        layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        cellSeparatorView.isHidden = true
+    }
 }

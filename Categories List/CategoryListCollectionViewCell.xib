@@ -16,6 +16,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="301" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bsn-zb-sBa">
+                        <rect key="frame" x="0.0" y="0.0" width="301" height="50"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="86t-W1-7N7">
+                        <rect key="frame" x="0.0" y="49" width="301" height="1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="en8-nW-te3"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFl-j6-7Xp">
                         <rect key="frame" x="0.0" y="0.0" width="301" height="50"/>
                         <constraints>
@@ -47,13 +58,20 @@
                 <constraint firstAttribute="bottom" secondItem="YFl-j6-7Xp" secondAttribute="bottom" id="74x-F2-NCc"/>
                 <constraint firstItem="6Ca-AI-alR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PaZ-fu-i9H" secondAttribute="trailing" constant="8" id="8rL-ui-HLB"/>
                 <constraint firstItem="6Ca-AI-alR" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="9Zk-fi-ews"/>
+                <constraint firstAttribute="bottom" secondItem="Bsn-zb-sBa" secondAttribute="bottom" id="ECM-3n-DTo"/>
+                <constraint firstItem="Bsn-zb-sBa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ine-bk-N7I"/>
                 <constraint firstAttribute="trailing" secondItem="6Ca-AI-alR" secondAttribute="trailing" constant="16" id="Ku5-fV-KFR"/>
                 <constraint firstItem="YFl-j6-7Xp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MxS-uO-KcQ"/>
+                <constraint firstItem="Bsn-zb-sBa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="P6Z-AA-AF7"/>
                 <constraint firstItem="PaZ-fu-i9H" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="QkE-jg-JNe"/>
+                <constraint firstAttribute="bottom" secondItem="86t-W1-7N7" secondAttribute="bottom" id="TfR-5J-Lro"/>
                 <constraint firstItem="PaZ-fu-i9H" firstAttribute="leading" secondItem="pOm-vC-kyg" secondAttribute="trailing" constant="15" id="WNw-5r-twh"/>
                 <constraint firstAttribute="bottom" secondItem="pOm-vC-kyg" secondAttribute="bottom" constant="8" id="Yfb-1Z-Gy1"/>
                 <constraint firstItem="pOm-vC-kyg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="bgG-nD-LtM"/>
+                <constraint firstItem="86t-W1-7N7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dgh-01-Gfa"/>
+                <constraint firstAttribute="trailing" secondItem="Bsn-zb-sBa" secondAttribute="trailing" id="gRH-4S-LHk"/>
                 <constraint firstItem="pOm-vC-kyg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="gVg-EK-e2O"/>
+                <constraint firstAttribute="trailing" secondItem="86t-W1-7N7" secondAttribute="trailing" id="vm1-Nl-reY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="301" height="50"/>
@@ -61,6 +79,9 @@
                 <outlet property="amountSpentInCategoryLabel" destination="6Ca-AI-alR" id="bxn-Pa-lne"/>
                 <outlet property="categoryRepresentationView" destination="pOm-vC-kyg" id="qMb-oM-WeF"/>
                 <outlet property="categoryTitleLabel" destination="PaZ-fu-i9H" id="xQK-ti-XHs"/>
+                <outlet property="cellBackgroundView" destination="Bsn-zb-sBa" id="fO1-GH-8WB"/>
+                <outlet property="cellSeparatorView" destination="86t-W1-7N7" id="udp-2v-buR"/>
+                <outlet property="cellSeparatorViewHeightConstraint" destination="en8-nW-te3" id="o9A-UZ-NbB"/>
                 <outlet property="percentageAmountSpentView" destination="YFl-j6-7Xp" id="S8g-Nv-fwF"/>
                 <outlet property="percentageAmountSpentViewWidthConstraint" destination="WSM-Cc-bm6" id="2nv-rn-ejb"/>
             </connections>

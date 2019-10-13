@@ -9,6 +9,8 @@ class CategoriesListViewController: UIViewController {
 
     private let viewModel: CategoriesListViewModel
     
+    private var currentSnapshot: CategoriesListViewModel.CategoryListSnapshot?
+    
     private lazy var layout: UICollectionViewCompositionalLayout = {
         let layout = UICollectionViewCompositionalLayout { (section, environment) -> NSCollectionLayoutSection? in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
@@ -22,35 +24,39 @@ class CategoriesListViewController: UIViewController {
             
             let section = NSCollectionLayoutSection.init(group: group)
             section.contentInsets = contentInsets
-            
-            let sectionBackgroundDecoration = NSCollectionLayoutDecorationItem.background(
-                elementKind: CategoriesListViewController.backgroundDecorationElementKind
-            )
-            sectionBackgroundDecoration.contentInsets = contentInsets
-            section.decorationItems = [sectionBackgroundDecoration]
             section.orthogonalScrollingBehavior = .paging
             return section
         }
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
         configuration.scrollDirection = .horizontal
         layout.configuration = configuration
-        layout.register(
-            SectionBackgroundDecorationView.self,
-            forDecorationViewOfKind: CategoriesListViewController.backgroundDecorationElementKind
-        )
         
         return layout
     }()
     
     private lazy var dataSource = UICollectionViewDiffableDataSource<Date, ExpenseCategoryStatsDTO>(
         collectionView: collectionView,
-        cellProvider: { (collectionView, indexPath, smth) -> UICollectionViewCell? in
+        cellProvider: { [weak self] (collectionView, indexPath, categoryDTO) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryListCollectionViewCell.nibName,
                                                           for: indexPath)
             guard let categoryListCell = cell as? CategoryListCollectionViewCell else {
                 return cell
             }
-            categoryListCell.update(for: smth)
+            categoryListCell.update(for: categoryDTO)
+            
+            guard let sectionIdentifier = self?.currentSnapshot?.sectionIdentifiers[indexPath.section],
+                let itemsInSection = self?.currentSnapshot?.numberOfItems(inSection: sectionIdentifier) else {
+                return categoryListCell
+            }
+                
+            let isLastCell = indexPath.item + 1 == itemsInSection
+            
+            if isLastCell {
+                categoryListCell.roundBottom()
+            } else if indexPath.item == 0 {
+                categoryListCell.roundTop()
+            }
+
             return categoryListCell
         }
     )
@@ -78,23 +84,25 @@ class CategoriesListViewController: UIViewController {
             guard let self = self else {
                 return
             }
+            self.currentSnapshot = snapshot
             self.dataSource.apply(snapshot)
         }
     }
     
     private func performAnimation() {
-        let animator = UIViewPropertyAnimator.init(duration: 0.3, curve: .easeInOut)
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut)
 
         collectionView.visibleCells.forEach { cell in
             guard let categoryListCell = cell as? CategoryListCollectionViewCell else {
                 return
             }
+
             categoryListCell.setWidth()
             animator.addAnimations({
                 categoryListCell.layoutIfNeeded()
-            }, delayFactor: 0.1)
+            }, delayFactor: 0.3)
         }
-        animator.startAnimation()
+        animator.startAnimation(afterDelay: 0.2)
     }
     
     func scroll(to section: Int) {
@@ -120,5 +128,5 @@ extension CategoriesListViewController: UICollectionViewDelegate {
         viewModel.listSelectionChanged(visibleItem.section)
         performAnimation()
     }
-    
+
 }
