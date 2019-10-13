@@ -33,7 +33,8 @@ class EmojiTextField: UITextField {
 extension EmojiTextField: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if !string.isEmpty, let firstChar = string.first {
+        let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !trimmed.isEmpty, let firstChar = trimmed.first {
             textField.text = String(firstChar)
         }
         return false

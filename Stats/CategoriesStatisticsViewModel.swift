@@ -182,6 +182,7 @@ extension CategoriesStatisticsViewModel {
 
         let dataSet = PieChartDataSet(entries: dataEntries, label: nil)
         dataSet.colors = dtos.compactMap { $0.color }
+        dataSet.automaticallyDisableSliceSpacing = true
         dataSet.yValuePosition = .outsideSlice
         dataSet.xValuePosition = .outsideSlice
         dataSet.valueLineColor = .label
