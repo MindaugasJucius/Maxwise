@@ -21,7 +21,7 @@ class CategoryCreationViewController: UIViewController {
         return CategoryCreationView(
             expenseCategory: expenseCategory,
             colors: notTakenColors + colorModelController.takenColors(),
-            selectedColor: initialColor,
+            selectedColor: expenseCategory.color ?? initialColor,
             changedColorSelection: { [weak self] color in
                 guard let uiColor = color.uiColor else {
                     return
@@ -53,8 +53,13 @@ class CategoryCreationViewController: UIViewController {
         creationView.fillInSuperview()
         
         creationButton.addTarget(self, action: #selector(persistCategory), for: .touchUpInside)
-        creationButton.setTitle("Add category", for: .normal)
-        
+    
+        if expenseCategory.isEmpty() {
+            creationButton.setTitle("Add category", for: .normal)
+        } else {
+            creationButton.setTitle("Edit category", for: .normal)
+        }
+
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
@@ -81,8 +86,8 @@ class CategoryCreationViewController: UIViewController {
     }
     
     @objc private func persistCategory() {
-        if let data = creationView.categoryDataIfValid() {
-            expenseCategoryModelController.store(category: data)
+        if let expenseCategory = creationView.categoryDataIfValid() {
+            expenseCategoryModelController.persist(category: expenseCategory)
             dismiss(animated: true, completion: nil)
         }
     }

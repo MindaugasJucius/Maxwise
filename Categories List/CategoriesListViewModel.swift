@@ -9,10 +9,10 @@ class CategoriesListViewModel {
     var updateToSnapshot: (CategoryListSnapshot) -> () = { _ in }
     
     // When selected section in list VC changes
-    let listSelectionChanged: (Int) -> ()
+    let listSectionSelectionChanged: (Int) -> ()
     
-    init(listSelectionChanged: @escaping (Int) -> ()) {
-        self.listSelectionChanged = listSelectionChanged
+    init(listSectionSelectionChanged: @escaping (Int) -> ()) {
+        self.listSectionSelectionChanged = listSectionSelectionChanged
     }
     
     func updateList(with dateCategories: [(Date, [ExpenseCategoryStatsDTO])]) {

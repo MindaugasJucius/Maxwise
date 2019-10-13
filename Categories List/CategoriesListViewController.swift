@@ -9,6 +9,9 @@ class CategoriesListViewController: UIViewController {
 
     private let viewModel: CategoriesListViewModel
     
+    private let choseToDeleteCategory: (String) -> ()
+    private let choseToEditCategory: (String) -> ()
+
     private var currentSnapshot: CategoriesListViewModel.CategoryListSnapshot?
     
     private lazy var layout: UICollectionViewCompositionalLayout = {
@@ -61,8 +64,12 @@ class CategoriesListViewController: UIViewController {
         }
     )
     
-    init(viewModel: CategoriesListViewModel) {
+    init(viewModel: CategoriesListViewModel,
+         choseToEditCategory: @escaping (String) -> (),
+         choseToDeleteCategory: @escaping (String) -> ()) {
         self.viewModel = viewModel
+        self.choseToDeleteCategory = choseToDeleteCategory
+        self.choseToEditCategory = choseToEditCategory
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -125,19 +132,23 @@ extension CategoriesListViewController: UICollectionViewDelegate {
             return
         }
 
-        viewModel.listSelectionChanged(visibleItem.section)
+        viewModel.listSectionSelectionChanged(visibleItem.section)
         performAnimation()
     }
 
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: nil) { suggestedActions in
+        return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: nil) { [weak self] suggestedActions in
 
+            guard let categoryStatsDTO = self?.dataSource.itemIdentifier(for: indexPath) else {
+                return nil
+            }
+            
             let edit = UIAction(title: "Edit category", image: UIImage(systemName: "square.and.pencil")) { action in
-                // Perform renaming
+                self?.choseToEditCategory(categoryStatsDTO.categoryID)
             }
             
             let delete = UIAction(title: "Remove category", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
-                // Perform delete
+                self?.choseToDeleteCategory(categoryStatsDTO.categoryID)
             }
             
             return UIMenu(title: "", children: [edit, delete])
