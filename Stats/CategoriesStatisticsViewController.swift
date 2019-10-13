@@ -27,7 +27,7 @@ class CategoriesStatisticsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Categories"
+        title = "Analytics"
         view.backgroundColor = UIColor.init(named: "background")
         pieChartContainer.addSubview(pieChartView)
         pieChartView.fillInSuperview()

@@ -20,7 +20,7 @@ class ContainerViewController: UITabBarController {
 
         let categoriesViewController = CategoriesParentViewController()
 
-        categoriesViewController.tabBarItem = UITabBarItem.init(title: "Categories",
+        categoriesViewController.tabBarItem = UITabBarItem.init(title: "Analytics",
                                                                 image: UIImage(systemName: "chart.pie.fill"),
                                                                 tag: 0)
         expensesViewController.tabBarItem = UITabBarItem.init(title: "Expenses",

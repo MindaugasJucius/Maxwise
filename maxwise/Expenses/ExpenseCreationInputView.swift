@@ -8,7 +8,7 @@ class ExpenseCreationInputView: UIInputView {
         button.updateAppearances(backgroundColor: .confirmationGreen, textColor: .confirmationGreen)
         let font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.titleLabel?.font = font
-        button.setTitle("CREATE", for: .normal)
+        button.setTitle("Add expense", for: .normal)
         button.tintColor = .white
         
         let image = UIImage(systemName: "checkmark.circle.fill",
