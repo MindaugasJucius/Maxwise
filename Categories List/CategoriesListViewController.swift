@@ -54,12 +54,13 @@ class CategoriesListViewController: UIViewController {
                 
             let isLastCell = indexPath.item + 1 == itemsInSection
             
-            if isLastCell {
+            if itemsInSection == 1 {
+                categoryListCell.roundEverything()
+            } else if isLastCell {
                 categoryListCell.roundBottom()
             } else if indexPath.item == 0 {
                 categoryListCell.roundTop()
             }
-
             return categoryListCell
         }
     )

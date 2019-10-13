@@ -74,4 +74,13 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
         layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         cellSeparatorView.isHidden = true
     }
+    
+    // When section has a single cell
+    func roundEverything() {
+        layer.maskedCorners = [.layerMaxXMinYCorner,
+                               .layerMinXMinYCorner,
+                               .layerMinXMaxYCorner,
+                               .layerMaxXMaxYCorner]
+        cellSeparatorView.isHidden = true
+    }
 }
