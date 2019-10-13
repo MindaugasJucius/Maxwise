@@ -25,6 +25,14 @@ public class ExpenseCategoryModelController {
             self.emojiValue = emojiValue
             self.color = color
         }
+
+        func mapCategory() -> ExpenseCategory {
+            let category = ExpenseCategory()
+            category.title = title
+            category.emojiValue = emojiValue
+            category.color = color
+            return category
+        }
     }
     
     public init() {
@@ -58,28 +66,19 @@ public class ExpenseCategoryModelController {
             }
             
             nonNilCategories.map { properties in
-                let mappedCategory = mapCategory(from: properties)
+                let mappedCategory = properties.mapCategory()
                 if mappedCategory.title == defaultPreselectedCategoryName {
                     UserDefaults.standard.set(mappedCategory.id, forKey: ExpenseCategoryModelController.preselectedCategoryKey)
                 }
                 return mappedCategory
             }.forEach {
-                persist(category: $0)
+                persist(expenseCategory: $0)
             }
             
             UserDefaults.standard.set(true, forKey: defaultCategoriesCreatedKey)
         }
     }
-    
-    private func mapCategory(from properties: Category) -> ExpenseCategory {
-        let category = ExpenseCategory()
-        category.title = properties.title
-        category.emojiValue = properties.emojiValue
-        category.color = properties.color
-        category.id = NSUUID.init().uuidString
-        return category
-    }
-    
+        
     public func storedCategories() -> [ExpenseCategory] {
         guard let realm = try? Realm.groupRealm() else {
             return []
@@ -110,18 +109,42 @@ public class ExpenseCategoryModelController {
         return storedCategories().filter { $0.id == intentCategory.identifier }.first
     }
     
-    public func store(category properties: Category) {
-        let mapped = mapCategory(from: properties)
-        persist(category: mapped)
+    public func category(from id: String) -> ExpenseCategory? {
+        let realm = try? Realm.groupRealm()
+        return realm?.objects(ExpenseCategory.self).filter("id == %@", id).first
     }
     
-    private func persist(category: ExpenseCategory) {
+    public func edit(expenseCategory: ExpenseCategory, newValues properties: Category) {
         guard let realm = try? Realm.groupRealm() else {
             return
         }
         try? realm.write {
-            category.color?.taken = true
-            realm.add(category)
+            expenseCategory.emojiValue = properties.emojiValue
+            expenseCategory.title = properties.title
+
+            // Free old selected color
+            expenseCategory.color?.taken = false
+            
+            expenseCategory.color = properties.color
+            expenseCategory.color?.taken = true
+
+            realm.add(expenseCategory, update: .all)
+        }
+    }
+    
+    public func persist(category: Category) {
+        let mapped = category.mapCategory()
+        persist(expenseCategory: mapped)
+    }
+
+    private func persist(expenseCategory: ExpenseCategory) {
+        guard let realm = try? Realm.groupRealm() else {
+            return
+        }
+        try? realm.write {
+            expenseCategory.id = NSUUID.init().uuidString
+            expenseCategory.color?.taken = true
+            realm.add(expenseCategory, update: .all)
         }
     }
 }

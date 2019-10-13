@@ -80,9 +80,9 @@ class CategoryCreationView: UIView {
 
         notificationFeedback.notificationOccurred(.success)
 
-        return ExpenseCategoryModelController.Category.init(title: titleText,
-                                                            emojiValue: emojiText,
-                                                            color: colors[selectedItemIndexPath.row])
+        return ExpenseCategoryModelController.Category(title: titleText,
+                                                       emojiValue: emojiText,
+                                                       color: colors[selectedItemIndexPath.row])
     }
     
     @objc private func resetErrorStates() {

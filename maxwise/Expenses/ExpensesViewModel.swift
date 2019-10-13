@@ -2,9 +2,6 @@ import UIKit
 import ExpenseKit
 
 struct ExpensePresentationDTO: Hashable {
-    static func == (lhs: ExpensePresentationDTO, rhs: ExpensePresentationDTO) -> Bool {
-        return lhs.id == rhs.id
-    }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

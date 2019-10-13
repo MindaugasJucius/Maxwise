@@ -40,7 +40,7 @@ class CategoriesStatisticsViewModel {
     private let expenseModelController = ExpenseEntryModelController()
     
     lazy var categoriesListViewModel = CategoriesListViewModel(
-        listSelectionChanged: { [weak self] selectedSectionIndex in
+        listSectionSelectionChanged: { [weak self] selectedSectionIndex in
             guard self?.currentSelectedIndex != selectedSectionIndex else {
                 return
             }

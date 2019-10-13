@@ -86,8 +86,15 @@ class CategoryCreationViewController: UIViewController {
     }
     
     @objc private func persistCategory() {
-        if let expenseCategory = creationView.categoryDataIfValid() {
-            expenseCategoryModelController.persist(category: expenseCategory)
+        if let categoryDTO = creationView.categoryDataIfValid() {
+            if expenseCategory.isEmpty() {
+                expenseCategoryModelController.persist(category: categoryDTO)
+            } else {
+                expenseCategoryModelController.edit(
+                    expenseCategory: expenseCategory,
+                    newValues: categoryDTO)
+            }
+
             dismiss(animated: true, completion: nil)
         }
     }
