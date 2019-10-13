@@ -33,18 +33,31 @@
                             <constraint firstAttribute="width" constant="301" id="WSM-Cc-bm6"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOm-vC-kyg" customClass="CategoryRepresentationView" customModule="maxwise" customModuleProvider="target">
-                        <rect key="frame" x="16" y="8" width="49" height="34"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bpz-8c-0ek">
+                        <rect key="frame" x="8" y="0.0" width="122" height="50"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOm-vC-kyg" customClass="CategoryRepresentationView" customModule="maxwise" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="49" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="atP-Bf-gSH"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaZ-fu-i9H">
+                                <rect key="frame" x="72" y="14.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="49" id="atP-Bf-gSH"/>
+                            <constraint firstItem="PaZ-fu-i9H" firstAttribute="leading" secondItem="pOm-vC-kyg" secondAttribute="trailing" constant="15" id="JrO-hp-yMR"/>
+                            <constraint firstItem="pOm-vC-kyg" firstAttribute="leading" secondItem="Bpz-8c-0ek" secondAttribute="leading" constant="8" id="NXL-xa-Hhr"/>
+                            <constraint firstItem="PaZ-fu-i9H" firstAttribute="centerY" secondItem="Bpz-8c-0ek" secondAttribute="centerY" id="Uk9-aA-Sq0"/>
+                            <constraint firstAttribute="trailing" secondItem="PaZ-fu-i9H" secondAttribute="trailing" constant="8" id="Wgx-kR-5cz"/>
+                            <constraint firstAttribute="bottom" secondItem="pOm-vC-kyg" secondAttribute="bottom" constant="8" id="cMP-12-8EJ"/>
+                            <constraint firstItem="pOm-vC-kyg" firstAttribute="top" secondItem="Bpz-8c-0ek" secondAttribute="top" constant="8" id="zJl-Ad-63H"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaZ-fu-i9H">
-                        <rect key="frame" x="80" y="14.5" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ca-AI-alR">
                         <rect key="frame" x="243" y="14.5" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -56,21 +69,19 @@
             <constraints>
                 <constraint firstItem="YFl-j6-7Xp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1yq-Zh-CbX"/>
                 <constraint firstAttribute="bottom" secondItem="YFl-j6-7Xp" secondAttribute="bottom" id="74x-F2-NCc"/>
-                <constraint firstItem="6Ca-AI-alR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PaZ-fu-i9H" secondAttribute="trailing" constant="8" id="8rL-ui-HLB"/>
+                <constraint firstAttribute="bottom" secondItem="Bpz-8c-0ek" secondAttribute="bottom" id="86S-SH-l2O"/>
                 <constraint firstItem="6Ca-AI-alR" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="9Zk-fi-ews"/>
                 <constraint firstAttribute="bottom" secondItem="Bsn-zb-sBa" secondAttribute="bottom" id="ECM-3n-DTo"/>
                 <constraint firstItem="Bsn-zb-sBa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ine-bk-N7I"/>
+                <constraint firstItem="6Ca-AI-alR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bpz-8c-0ek" secondAttribute="trailing" constant="8" id="KbF-2b-dGK"/>
                 <constraint firstAttribute="trailing" secondItem="6Ca-AI-alR" secondAttribute="trailing" constant="16" id="Ku5-fV-KFR"/>
+                <constraint firstItem="Bpz-8c-0ek" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MHq-0E-zWH"/>
                 <constraint firstItem="YFl-j6-7Xp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MxS-uO-KcQ"/>
                 <constraint firstItem="Bsn-zb-sBa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="P6Z-AA-AF7"/>
-                <constraint firstItem="PaZ-fu-i9H" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="QkE-jg-JNe"/>
                 <constraint firstAttribute="bottom" secondItem="86t-W1-7N7" secondAttribute="bottom" id="TfR-5J-Lro"/>
-                <constraint firstItem="PaZ-fu-i9H" firstAttribute="leading" secondItem="pOm-vC-kyg" secondAttribute="trailing" constant="15" id="WNw-5r-twh"/>
-                <constraint firstAttribute="bottom" secondItem="pOm-vC-kyg" secondAttribute="bottom" constant="8" id="Yfb-1Z-Gy1"/>
-                <constraint firstItem="pOm-vC-kyg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="bgG-nD-LtM"/>
                 <constraint firstItem="86t-W1-7N7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dgh-01-Gfa"/>
                 <constraint firstAttribute="trailing" secondItem="Bsn-zb-sBa" secondAttribute="trailing" id="gRH-4S-LHk"/>
-                <constraint firstItem="pOm-vC-kyg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="gVg-EK-e2O"/>
+                <constraint firstItem="Bpz-8c-0ek" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="tAI-ep-6UJ"/>
                 <constraint firstAttribute="trailing" secondItem="86t-W1-7N7" secondAttribute="trailing" id="vm1-Nl-reY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -84,6 +95,7 @@
                 <outlet property="cellSeparatorViewHeightConstraint" destination="en8-nW-te3" id="o9A-UZ-NbB"/>
                 <outlet property="percentageAmountSpentView" destination="YFl-j6-7Xp" id="S8g-Nv-fwF"/>
                 <outlet property="percentageAmountSpentViewWidthConstraint" destination="WSM-Cc-bm6" id="2nv-rn-ejb"/>
+                <outlet property="targetedPreviewView" destination="Bpz-8c-0ek" id="KUk-9n-ALJ"/>
             </connections>
             <point key="canvasLocation" x="313.768115942029" y="130.58035714285714"/>
         </collectionViewCell>

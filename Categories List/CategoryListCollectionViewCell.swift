@@ -3,9 +3,10 @@ import ExpenseKit
 
 class CategoryListCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var targetedPreviewView: UIView!
     @IBOutlet weak var percentageAmountSpentViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var percentageAmountSpentView: UIView!
-    @IBOutlet weak var categoryRepresentationView: CategoryRepresentationView!
+    @IBOutlet private weak var categoryRepresentationView: CategoryRepresentationView!
     @IBOutlet weak var categoryTitleLabel: UILabel!
     @IBOutlet weak var amountSpentInCategoryLabel: UILabel!
     

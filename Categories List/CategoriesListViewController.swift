@@ -129,4 +129,43 @@ extension CategoriesListViewController: UICollectionViewDelegate {
         performAnimation()
     }
 
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: indexPath as NSIndexPath, previewProvider: nil) { suggestedActions in
+
+            let edit = UIAction(title: "Edit category", image: UIImage(systemName: "square.and.pencil")) { action in
+                // Perform renaming
+            }
+            
+            let delete = UIAction(title: "Remove category", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
+                // Perform delete
+            }
+            
+            return UIMenu(title: "", children: [edit, delete])
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        return targetedPreview(for: configuration)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        return targetedPreview(for: configuration)
+    }
+    
+    func targetedPreview(for configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        guard let indexPath = configuration.identifier as? IndexPath else {
+            return nil
+        }
+
+        guard let categoryListCell = collectionView.cellForItem(at: indexPath) as? CategoryListCollectionViewCell else {
+            return nil
+        }
+
+        let parameters = UIPreviewParameters.init()
+        parameters.backgroundColor = .clear
+        
+        let preview = UITargetedPreview.init(view: categoryListCell.targetedPreviewView, parameters: parameters)
+        return preview
+    }
+    
 }

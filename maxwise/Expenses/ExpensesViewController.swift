@@ -139,7 +139,7 @@ extension ExpensesViewController: UITableViewDelegate {
         let action = UIContextualAction.init(style: .destructive, title: nil) { [weak self] (action, view, completion) in
             self?.deleteExpense(at: indexPath, completion: completion)
         }
-        action.image = UIImage.init(systemName: "bin.xmark.fill")
+        action.image = UIImage.init(systemName: "trash")
         return UISwipeActionsConfiguration.init(actions: [action])
     }
 }
