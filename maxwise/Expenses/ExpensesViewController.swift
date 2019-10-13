@@ -136,9 +136,10 @@ extension ExpensesViewController: UITableViewDelegate {
 
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction.init(style: .destructive, title: "Delete") { [weak self] (action, view, completion) in
+        let action = UIContextualAction.init(style: .destructive, title: nil) { [weak self] (action, view, completion) in
             self?.deleteExpense(at: indexPath, completion: completion)
         }
+        action.image = UIImage.init(systemName: "bin.xmark.fill")
         return UISwipeActionsConfiguration.init(actions: [action])
     }
 }
