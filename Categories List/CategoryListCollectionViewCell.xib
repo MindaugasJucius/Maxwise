@@ -59,11 +59,17 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ca-AI-alR">
-                        <rect key="frame" x="243" y="14.5" width="42" height="21"/>
+                        <rect key="frame" x="225" y="14.5" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eja-0n-vRt">
+                        <rect key="frame" x="275" y="17" width="10" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="d9W-tR-CWS"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
@@ -72,11 +78,13 @@
                 <constraint firstAttribute="bottom" secondItem="Bpz-8c-0ek" secondAttribute="bottom" id="86S-SH-l2O"/>
                 <constraint firstItem="6Ca-AI-alR" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="9Zk-fi-ews"/>
                 <constraint firstAttribute="bottom" secondItem="Bsn-zb-sBa" secondAttribute="bottom" id="ECM-3n-DTo"/>
+                <constraint firstItem="eja-0n-vRt" firstAttribute="centerY" secondItem="6Ca-AI-alR" secondAttribute="centerY" id="Hjn-0b-rqA"/>
                 <constraint firstItem="Bsn-zb-sBa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ine-bk-N7I"/>
+                <constraint firstItem="eja-0n-vRt" firstAttribute="leading" secondItem="6Ca-AI-alR" secondAttribute="trailing" constant="8" id="J4w-H1-Szo"/>
                 <constraint firstItem="6Ca-AI-alR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bpz-8c-0ek" secondAttribute="trailing" constant="8" id="KbF-2b-dGK"/>
-                <constraint firstAttribute="trailing" secondItem="6Ca-AI-alR" secondAttribute="trailing" constant="16" id="Ku5-fV-KFR"/>
                 <constraint firstItem="Bpz-8c-0ek" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MHq-0E-zWH"/>
                 <constraint firstItem="YFl-j6-7Xp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MxS-uO-KcQ"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="eja-0n-vRt" secondAttribute="trailing" constant="16" id="NVF-5W-24Z"/>
                 <constraint firstItem="Bsn-zb-sBa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="P6Z-AA-AF7"/>
                 <constraint firstAttribute="bottom" secondItem="86t-W1-7N7" secondAttribute="bottom" id="TfR-5J-Lro"/>
                 <constraint firstItem="86t-W1-7N7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dgh-01-Gfa"/>
@@ -93,6 +101,7 @@
                 <outlet property="cellBackgroundView" destination="Bsn-zb-sBa" id="fO1-GH-8WB"/>
                 <outlet property="cellSeparatorView" destination="86t-W1-7N7" id="udp-2v-buR"/>
                 <outlet property="cellSeparatorViewHeightConstraint" destination="en8-nW-te3" id="o9A-UZ-NbB"/>
+                <outlet property="chevronImageView" destination="eja-0n-vRt" id="TcP-On-fYB"/>
                 <outlet property="percentageAmountSpentView" destination="YFl-j6-7Xp" id="S8g-Nv-fwF"/>
                 <outlet property="percentageAmountSpentViewWidthConstraint" destination="WSM-Cc-bm6" id="2nv-rn-ejb"/>
                 <outlet property="targetedPreviewView" destination="Bpz-8c-0ek" id="KUk-9n-ALJ"/>
@@ -100,4 +109,7 @@
             <point key="canvasLocation" x="313.768115942029" y="130.58035714285714"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="chevron.right" catalog="system" width="46" height="64"/>
+    </resources>
 </document>

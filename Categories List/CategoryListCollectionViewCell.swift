@@ -13,6 +13,7 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var cellSeparatorView: UIView!
     @IBOutlet private weak var cellSeparatorViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var cellBackgroundView: UIView!
+    @IBOutlet weak var chevronImageView: UIImageView!
     
     private var representedDTO: ExpenseCategoryStatsDTO?
     private var newWidth: CGFloat = 0
@@ -32,6 +33,7 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 12
         layer.maskedCorners = []
         cellSeparatorViewHeightConstraint.constant = 0.5
+        chevronImageView.tintColor = UIColor.lightGray.withAlphaComponent(0.7)
     }
     
     override func layoutSubviews() {
