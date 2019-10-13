@@ -94,7 +94,6 @@ class CategoryCreationViewController: UIViewController {
                     expenseCategory: expenseCategory,
                     newValues: categoryDTO)
             }
-
             dismiss(animated: true, completion: nil)
         }
     }

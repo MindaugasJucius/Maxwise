@@ -22,8 +22,8 @@ class CategoriesParentViewController: UINavigationController {
             }
             self?.presentCategoryCreation(for: category)
         },
-        choseToDeleteCategory: { categoryID in
-            print("Delete")
+        choseToDeleteCategory: { [weak self] categoryID in
+            self?.presentAreYouSure(categoryID: categoryID)
         }
     )
     
@@ -48,5 +48,16 @@ class CategoriesParentViewController: UINavigationController {
     private func presentCategoryCreation(for category: ExpenseCategory) {
         let creationVC = CategoryCreationViewController(category: category)
         present(creationVC, animated: true, completion: nil)
+    }
+
+    private func presentAreYouSure(categoryID: String) {
+        showAlert(
+            title: "Are you sure?",
+            message: "Deleting this category will delete it's expenses.",
+            ok: { [weak self] _ in
+                self?.expenseCategoryModelController.removeCategory(with: categoryID)
+            },
+            cancel: { _ in }
+        )
     }
 }

@@ -108,6 +108,18 @@ public class ExpenseCategoryModelController {
     public func category(from intentCategory: IntentCategory) -> ExpenseCategory? {
         return storedCategories().filter { $0.id == intentCategory.identifier }.first
     }
+
+    public func removeCategory(with id: String) {
+        guard let expenseCategory = category(from: id) else {
+            print("failed to delete category")
+            return
+        }
+        let realm = try? Realm.groupRealm()
+        try? realm?.write {
+            realm?.delete(expenseCategory.expenses)
+            realm?.delete(expenseCategory)
+        }
+    }
     
     public func category(from id: String) -> ExpenseCategory? {
         let realm = try? Realm.groupRealm()
