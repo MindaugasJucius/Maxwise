@@ -11,7 +11,6 @@ class ExpensesDataSource: UITableViewDiffableDataSource<Date, ExpensePresentatio
 class ExpensesViewController: UIViewController {
     
     private let viewModel: ExpensesViewModel
-    private weak var presentationDelegate: PresentationViewControllerDelegate?
     private var expenseGroups = [(Date, [ExpensePresentationDTO])]()
     
     private lazy var dataSource: ExpensesDataSource = {
@@ -34,10 +33,8 @@ class ExpensesViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
 
-    init(viewModel: ExpensesViewModel,
-         presentationDelegate: PresentationViewControllerDelegate?) {
+    init(viewModel: ExpensesViewModel) {
         self.viewModel = viewModel
-        self.presentationDelegate = presentationDelegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -50,7 +47,11 @@ class ExpensesViewController: UIViewController {
         configureTableView()
         title = "Expenses"
         view.backgroundColor = UIColor.init(named: "background")
-
+        
+        viewModel.toggleNoExpensesView = { [weak self] show in
+            self?.toggleNoExpensesView(show: show)
+        }
+        
         viewModel.observeExpenseEntries { [weak self] groupedExpenses in
             self?.expenseGroups = groupedExpenses
             var snapshot = NSDiffableDataSourceSnapshot<Date, ExpensePresentationDTO>()
@@ -65,24 +66,10 @@ class ExpensesViewController: UIViewController {
         noExpensesView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(noExpensesView)
         noExpensesView.fillInSuperview()
-        
-        viewModel.toggleNoExpensesView = { [weak self] show in
-            self?.toggleNoExpensesView(show: show)
-        }
-        
-        addNavigationView()
     }
     
     private func toggleNoExpensesView(show: Bool) {
         noExpensesView.alpha = show ? 1 : 0
-    }
-    
-    private func addNavigationView() {
-        let navigationView = NavigationView()
-        navigationView.buttonTapped = { [weak self] in
-            self?.presentationDelegate?.show(screen: .expenseCreation)
-        }
-        navigationView.move(to: view)
     }
     
     private func configureTableView() {

@@ -100,9 +100,17 @@ class CategoriesStatisticsViewModel {
     
     private func data(from expenses: [ExpenseEntry], for date: Date) -> StatsData {
         let expensesInDate = expenseModelController.filter(expenses: expenses, by: date)
-
+        let expensesByCategoryInDate = expensesByCategory(expenses: expensesInDate)
+        
+        let statsDTOs = expenseCategoryStatsDTOs(from: expensesByCategoryInDate)
+        
+        let pieChartData = constructPieChartData(from: statsDTOs)
+        return (statsDTOs, pieChartData)
+    }
+    
+    private func expensesByCategory(expenses: [ExpenseEntry]) ->  [ExpenseCategory: [ExpenseEntry]] {
         var categoryExpensesInDate = [ExpenseCategory: [ExpenseEntry]]()
-        expensesInDate.forEach { entry in
+        expenses.forEach { entry in
             guard let category = entry.category else {
                 return
             }
@@ -110,11 +118,7 @@ class CategoriesStatisticsViewModel {
             expenses.append(entry)
             categoryExpensesInDate[category] = expenses
         }
-        
-        let statsDTOs = expenseCategoryStatsDTOs(from: categoryExpensesInDate)
-        
-        let pieChartData = constructPieChartData(from: statsDTOs)
-        return (statsDTOs, pieChartData)
+        return categoryExpensesInDate
     }
     
     private func invokeChartDataChangeForSelectionIndex() {

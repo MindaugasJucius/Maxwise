@@ -87,6 +87,7 @@ class CategoriesListViewController: UIViewController {
         collectionView.register(nib, forCellWithReuseIdentifier: CategoryListCollectionViewCell.nibName)
         collectionView.backgroundColor = UIColor.init(named: "background")
         collectionView.isPagingEnabled = true
+        collectionView.allowsSelection = true
 
         viewModel.updateToSnapshot = { [weak self] snapshot in
             guard let self = self else {
@@ -126,6 +127,19 @@ class CategoriesListViewController: UIViewController {
 }
 
 extension CategoriesListViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let categoryStatsDTO = dataSource.itemIdentifier(for: indexPath),
+            let sectionIdentifier = currentSnapshot?.sectionIdentifier(containingItem: categoryStatsDTO) else {
+            return
+        }
+
+        let expenses = viewModel.expenses(for: categoryStatsDTO.categoryID, date: sectionIdentifier)
+        let viewModel = HardcodedExpensesViewModel(expensesToShow: expenses)
+        let expensesVC = ExpensesViewController(viewModel: viewModel)
+        show(expensesVC, sender: self)
+    }
+    
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard let visibleItem = collectionView.indexPathsForVisibleItems.first else {

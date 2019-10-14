@@ -113,6 +113,7 @@
 		F4A984802349FAF000A69F79 /* CategoryListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */; };
 		F4A984822349FC0F00A69F79 /* CategoryRepresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A984812349FC0F00A69F79 /* CategoryRepresentationView.swift */; };
 		F4A984842349FC2C00A69F79 /* CategoryRepresentationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A984832349FC2C00A69F79 /* CategoryRepresentationView.xib */; };
+		F4B5CC0123538B4300787791 /* HardcodedExpensesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5CC0023538B4300787791 /* HardcodedExpensesViewModel.swift */; };
 		F4D3B2282352009200836FB0 /* CategoriesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3B2272352009200836FB0 /* CategoriesListViewModel.swift */; };
 		F4D3B22B23523FB400836FB0 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3B22A23523FB400836FB0 /* UICollectionView+Extensions.swift */; };
 		F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */; };
@@ -311,6 +312,7 @@
 		F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryListCollectionViewCell.xib; sourceTree = "<group>"; };
 		F4A984812349FC0F00A69F79 /* CategoryRepresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepresentationView.swift; sourceTree = "<group>"; };
 		F4A984832349FC2C00A69F79 /* CategoryRepresentationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryRepresentationView.xib; sourceTree = "<group>"; };
+		F4B5CC0023538B4300787791 /* HardcodedExpensesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardcodedExpensesViewModel.swift; sourceTree = "<group>"; };
 		F4D3B2272352009200836FB0 /* CategoriesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewModel.swift; sourceTree = "<group>"; };
 		F4D3B22A23523FB400836FB0 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 		5F20E0BA2210350000BAECF6 /* Expenses */ = {
 			isa = PBXGroup;
 			children = (
+				F4B5CC0023538B4300787791 /* HardcodedExpensesViewModel.swift */,
 				5F9DE38122195D7A008CCB94 /* ExpensesParentViewController.swift */,
 				5F20E0B6221034F300BAECF6 /* ExpensesViewController.swift */,
 				5F20E0B7221034F300BAECF6 /* ExpensesViewController.xib */,
@@ -635,10 +638,10 @@
 			children = (
 				F4A984752349EAAD00A69F79 /* CategoriesListViewController.swift */,
 				F4A984762349EAAD00A69F79 /* CategoriesListViewController.xib */,
+				F4D3B2272352009200836FB0 /* CategoriesListViewModel.swift */,
 				F4A984792349F6F600A69F79 /* SectionBackgroundDecorationView.swift */,
 				F4A9847D2349FAF000A69F79 /* CategoryListCollectionViewCell.swift */,
 				F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */,
-				F4D3B2272352009200836FB0 /* CategoriesListViewModel.swift */,
 			);
 			path = "Categories List";
 			sourceTree = "<group>";
@@ -1061,6 +1064,7 @@
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 				5F56B99023049E1C005AF4AF /* ExpensesSectionHeaderView.swift in Sources */,
 				F4A9847A2349F6F600A69F79 /* SectionBackgroundDecorationView.swift in Sources */,
+				F4B5CC0123538B4300787791 /* HardcodedExpensesViewModel.swift in Sources */,
 				5FD3D861233BE8C7009042D1 /* TextCollectionViewCell.swift in Sources */,
 				5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */,
 				5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */,

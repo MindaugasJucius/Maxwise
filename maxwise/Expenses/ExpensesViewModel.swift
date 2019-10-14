@@ -103,7 +103,7 @@ class ExpensesViewModel {
         modelController.delete(expenseWithID: expense.id, deleted: completion)
     }
     
-    private func groupedByDay(expenses: [ExpenseEntry]) -> GroupedExpenses {
+    func groupedByDay(expenses: [ExpenseEntry]) -> GroupedExpenses {
         let dictionary = [Date: [ExpensePresentationDTO]]()
         let components = Set<Calendar.Component>(arrayLiteral: .year, .month, .weekOfMonth, .weekday)
         return expenses.reduce(into: dictionary) { [weak self] (result, entry) in

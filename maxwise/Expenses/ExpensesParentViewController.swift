@@ -13,6 +13,8 @@ class ExpensesParentViewController: UINavigationController {
     private let expensesViewModel = ExpensesViewModel()
     private weak var presentationDelegate: PresentationViewControllerDelegate?
     
+    private lazy var expensesVC = ExpensesViewController(viewModel: expensesViewModel)
+    
     init(presentationDelegate: PresentationViewControllerDelegate) {
         self.presentationDelegate = presentationDelegate
         super.init(nibName: nil, bundle: nil)
@@ -25,8 +27,17 @@ class ExpensesParentViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.prefersLargeTitles = true
-        viewControllers = [ExpensesViewController(viewModel: expensesViewModel,
-                                                  presentationDelegate: presentationDelegate)]
+        viewControllers = [expensesVC]
+        addNavigationView()
+    }
+    
+    
+    private func addNavigationView() {
+        let navigationView = NavigationView()
+        navigationView.buttonTapped = { [weak self] in
+            self?.presentationDelegate?.show(screen: .expenseCreation)
+        }
+        navigationView.move(to: expensesVC.view)
     }
 
 }
