@@ -108,6 +108,10 @@ class ExpenseCreationViewController: UIViewController {
     private let transitionDelegate = ModalBlurTransitionController()
     
     private lazy var cameraViewController = CameraViewController(captureDelegate: self)
+    
+    private lazy var categorySelectedController = ExpenseSelectedCategoryViewController(categories: viewModel.categories) { [weak self] selectedCategory in
+        self?.handleCategorySelection(category: selectedCategory)
+    }
 
     init(viewModel: ExpenseCreationViewModel) {
         self.nearbyPlaces = viewModel.nearbyPlaces
@@ -186,9 +190,6 @@ class ExpenseCreationViewController: UIViewController {
     }
     
     private func addCategorySelectionController() {
-        let categorySelectedController = ExpenseSelectedCategoryViewController(categories: viewModel.categories) { [weak self] selectedCategory in
-            self?.handleCategorySelection(category: selectedCategory)
-        }
         addChild(categorySelectedController)
         categorySelectionContainerView.addSubview(categorySelectedController.view)
         categorySelectedController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -239,7 +240,7 @@ class ExpenseCreationViewController: UIViewController {
             case .noAmount:
                 amountTextFieldContainerView.layer.borderColor = UIColor.red.cgColor
             case .noCategory:
-                print("no category")
+                categorySelectedController.categoryRepresentationView.update(for: .red)
             case .alert(let message):
                 showAlert(for: message)
             }

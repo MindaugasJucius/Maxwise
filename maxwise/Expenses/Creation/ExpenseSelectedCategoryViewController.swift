@@ -6,7 +6,7 @@ class ExpenseSelectedCategoryViewController: UIViewController {
     private let categories: [ExpenseCategory]
     private let selectedCategory: (ExpenseCategory) -> ()
     
-    @IBOutlet private weak var categoryRepresentationView: CategoryRepresentationView!
+    @IBOutlet weak var categoryRepresentationView: CategoryRepresentationView!
     
     init(categories: [ExpenseCategory], selectedCategory: @escaping (ExpenseCategory) -> ()) {
         self.categories = categories

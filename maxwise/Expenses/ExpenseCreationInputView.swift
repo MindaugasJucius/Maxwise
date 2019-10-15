@@ -50,21 +50,7 @@ class ExpenseCreationInputView: UIInputView {
     func update(for color: UIColor) {
         createButton.updateAppearances(backgroundColor: color, textColor: color)
     }
-    
-    private func button(imageName: String, title: String) -> UIButton {
-        let button = UIButton.init(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(title.uppercased(), for: .normal)
-        let font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        button.titleLabel?.font = font
-        
-        let image = UIImage(systemName: imageName,
-                            withConfiguration: UIImage.SymbolConfiguration(font: font))
-        button.setImage(image, for: .normal)
 
-        return button
-    }
-    
     @objc private func closeAction() {
         closeButtonAction?()
     }

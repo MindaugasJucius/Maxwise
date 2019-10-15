@@ -13,10 +13,7 @@ class DigitRecognizer {
 
     let operationQueue = OperationQueue()
     
-    func recognize(image: UIImage?, completion: @escaping (String?) -> ()) {
-        guard let image = image else {
-            fatalError("No image")
-        }
+    func recognize(image: UIImage, completion: @escaping (String?) -> ()) {
         guard let operation = G8RecognitionOperation(language: "eng",
                                                      configDictionary: nil,
                                                      configFileNames: nil,
