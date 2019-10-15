@@ -26,7 +26,9 @@ class CategoriesStatisticsViewController: UIViewController {
         pieChart.holeColor = UIColor.init(named: "background")
         pieChart.setExtraOffsets(left: 20, top: 0, right: 20, bottom: 0)
         pieChart.drawEntryLabelsEnabled = false
+        pieChart.usePercentValuesEnabled = true
         pieChart.legend.enabled = false
+        
         return pieChart
     }()
     

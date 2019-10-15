@@ -191,13 +191,21 @@ extension CategoriesStatisticsViewModel {
         dataSet.yValuePosition = .outsideSlice
         dataSet.xValuePosition = .outsideSlice
         dataSet.valueLineColor = .label
-        dataSet.drawValuesEnabled = false
+        dataSet.drawValuesEnabled = true
+        dataSet.valueFormatter = Formatter()
         dataSet.entryLabelColor = .label
         dataSet.sliceSpace = 3
         let data = PieChartData(dataSet: dataSet)
         data.setValueTextColor(.label)
         
         return data
+    }
+    
+}
+
+private class Formatter: IValueFormatter {
+    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+        return "\(Int(round(value)))%"
     }
     
 }
