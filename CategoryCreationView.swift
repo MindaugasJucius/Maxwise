@@ -153,7 +153,11 @@ extension CategoryCreationView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         let color = colors[indexPath.row]
-        return !color.taken
+        // If editing a category and wants to select the color that is currently assigned to category
+        if color.taken {
+            return color == preselectedColor
+        }
+        return true
     }
     
 }

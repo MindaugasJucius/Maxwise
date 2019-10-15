@@ -37,7 +37,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
     private lazy var alreadyTakenView: UIView = {
         let view = UIView.init(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.9)
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         return view
     }()
     
