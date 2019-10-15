@@ -27,6 +27,7 @@ class ExpensesParentViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.prefersLargeTitles = true
+        expensesVC.title = "Expenses"
         viewControllers = [expensesVC]
         addNavigationView()
     }

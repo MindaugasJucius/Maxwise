@@ -59,7 +59,7 @@ class CategoriesStatisticsViewModel {
     
     var shouldUpdateSelection: ((Int) -> ())?
     
-    var selectedCategoryChartData: ((PieChartData) -> ())?
+    var selectedCategoryChartData: ((PieChartData?) -> ())?
     
     func chartDataForSelectedCategory(at index: Int) -> PieChartData? {
         currentSelectedIndex = index
@@ -122,11 +122,12 @@ class CategoriesStatisticsViewModel {
     }
     
     private func invokeChartDataChangeForSelectionIndex() {
-        guard let currentSelectedIndex = self.currentSelectedIndex,
-            let chartData = self.chartDataForSelectedCategory(at: currentSelectedIndex) else {
+        guard let currentSelectedIndex = self.currentSelectedIndex else {
             return
         }
 
+        let chartData = self.chartDataForSelectedCategory(at: currentSelectedIndex)
+        
         self.selectedCategoryChartData?(chartData)
     }
 

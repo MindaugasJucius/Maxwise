@@ -22,7 +22,7 @@ class NoExpensesView: UIView {
     private func configure() {
         isUserInteractionEnabled = false
         topLabel.font = .systemFont(ofSize: 25, weight: .medium)
-        topLabel.text = "You have no expenses"
+        topLabel.text = "There's nothing added!"
         topLabel.textColor = .secondaryLabel
         
         bottomLabel.textColor = .tertiaryLabel

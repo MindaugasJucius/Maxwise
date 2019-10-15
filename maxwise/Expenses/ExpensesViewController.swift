@@ -45,7 +45,6 @@ class ExpensesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        title = "Expenses"
         view.backgroundColor = UIColor.init(named: "background")
         
         viewModel.toggleNoExpensesView = { [weak self] show in

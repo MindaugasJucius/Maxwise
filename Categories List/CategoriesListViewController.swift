@@ -133,10 +133,11 @@ extension CategoriesListViewController: UICollectionViewDelegate {
             let sectionIdentifier = currentSnapshot?.sectionIdentifier(containingItem: categoryStatsDTO) else {
             return
         }
-
-        let expenses = viewModel.expenses(for: categoryStatsDTO.categoryID, date: sectionIdentifier)
-        let viewModel = HardcodedExpensesViewModel(expensesToShow: expenses)
+        
+        let viewModel = HardcodedExpensesViewModel.init(categoryID: categoryStatsDTO.categoryID,
+                                                        date: sectionIdentifier)
         let expensesVC = ExpensesViewController(viewModel: viewModel)
+        expensesVC.title = categoryStatsDTO.categoryTitle
         show(expensesVC, sender: self)
     }
     

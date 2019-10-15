@@ -75,7 +75,7 @@ class CategoriesStatisticsViewController: UIViewController {
         }
     }
     
-    func animateChart(to data: PieChartData) {
+    func animateChart(to data: PieChartData?) {
         pieChartView.animate(yAxisDuration: 0.3, easingOption: .easeInOutQuad)
         pieChartView.data = data
     }
