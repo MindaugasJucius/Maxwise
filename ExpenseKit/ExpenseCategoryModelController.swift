@@ -11,7 +11,6 @@ public class ExpenseCategoryModelController {
     
     private let defaultCategoriesCreatedKey = "defaultCategoriesCreated"
     private let defaultPreselectedCategoryName = "Food"
-    public static let preselectedCategoryKey = "preselectedCategoryKey"
 
     public struct Category {
         let title: String
@@ -32,6 +31,21 @@ public class ExpenseCategoryModelController {
             category.emojiValue = emojiValue
             category.color = color
             return category
+        }
+    }
+
+    private static let preselectedCategoryKey = "preselectedCategoryKey"
+    
+    public static var preselectedCategoryID: String? {
+        get {
+            return UserDefaults.standard.string(
+                forKey: ExpenseCategoryModelController.preselectedCategoryKey
+            )
+        }
+        set {
+            UserDefaults.standard.set(
+                newValue, forKey: ExpenseCategoryModelController.preselectedCategoryKey
+            )
         }
     }
     
@@ -65,14 +79,14 @@ public class ExpenseCategoryModelController {
                 return nil
             }
             
-            nonNilCategories.map { properties in
-                let mappedCategory = properties.mapCategory()
-                if mappedCategory.title == defaultPreselectedCategoryName {
-                    UserDefaults.standard.set(mappedCategory.id, forKey: ExpenseCategoryModelController.preselectedCategoryKey)
+            nonNilCategories.map {
+                $0.mapCategory()
+            }
+            .forEach { category in
+                persist(expenseCategory: category)
+                if category.title == defaultPreselectedCategoryName {
+                    ExpenseCategoryModelController.preselectedCategoryID = category.id
                 }
-                return mappedCategory
-            }.forEach {
-                persist(expenseCategory: $0)
             }
             
             UserDefaults.standard.set(true, forKey: defaultCategoriesCreatedKey)
@@ -118,6 +132,11 @@ public class ExpenseCategoryModelController {
         try? realm?.write {
             realm?.delete(expenseCategory.expenses)
             realm?.delete(expenseCategory)
+        }
+        
+        // If preselected category is deleted set another one
+        if id == ExpenseCategoryModelController.preselectedCategoryID {
+            ExpenseCategoryModelController.preselectedCategoryID = realm?.objects(ExpenseCategory.self).first?.id
         }
     }
     

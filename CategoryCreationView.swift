@@ -70,7 +70,10 @@ class CategoryCreationView: UIView {
             return nil
         }
         
-        guard let emojiText = categoryRepresentationView.emojiTextField.text else {
+        guard let emojiText = categoryRepresentationView.emojiTextField.text,
+            !emojiText.isEmpty else {
+            categoryRepresentationView.update(for: .red)
+            notificationFeedback.notificationOccurred(.error)
             return nil
         }
         

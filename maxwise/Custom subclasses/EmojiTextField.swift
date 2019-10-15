@@ -22,20 +22,18 @@ class EmojiTextField: UITextField {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         delegate = self
-        clearsOnInsertion = true
     }
     
-    override func caretRect(for position: UITextPosition) -> CGRect {
-        return .zero
-    }
 }
 
 extension EmojiTextField: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
-        if !trimmed.isEmpty, let firstChar = trimmed.first {
+        if let firstChar = trimmed.first {
             textField.text = String(firstChar)
+        } else {
+            textField.text = ""
         }
         return false
     }

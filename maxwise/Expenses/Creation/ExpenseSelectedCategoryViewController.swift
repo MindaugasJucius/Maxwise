@@ -24,9 +24,10 @@ class ExpenseSelectedCategoryViewController: UIViewController {
         categoryRepresentationView.addGestureRecognizer(tapGesture)
         categoryRepresentationView.emojiTextField.isEnabled = false
         
-        guard let preselectedCategoryID = UserDefaults.standard.string(forKey: ExpenseCategoryModelController.preselectedCategoryKey),
+        guard let preselectedCategoryID = ExpenseCategoryModelController.preselectedCategoryID,
             let category = categories.filter ({ $0.id == preselectedCategoryID }).first else {
-                fatalError()
+                print("failed to find preselected category")
+                return
         }
         configure(for: category)
         selectedCategory(category)
@@ -37,8 +38,7 @@ class ExpenseSelectedCategoryViewController: UIViewController {
             self?.dismiss(animated: true, completion: nil)
             self?.configure(for: selectedCategory)
             self?.selectedCategory(selectedCategory)
-            UserDefaults.standard.setValue(selectedCategory.id,
-                                           forKey: ExpenseCategoryModelController.preselectedCategoryKey)
+            ExpenseCategoryModelController.preselectedCategoryID = selectedCategory.id
         }
         
         let navigationController = UINavigationController(rootViewController: selectionVC)
