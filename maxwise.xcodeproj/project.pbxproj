@@ -114,6 +114,13 @@
 		F4A984822349FC0F00A69F79 /* CategoryRepresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A984812349FC0F00A69F79 /* CategoryRepresentationView.swift */; };
 		F4A984842349FC2C00A69F79 /* CategoryRepresentationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A984832349FC2C00A69F79 /* CategoryRepresentationView.xib */; };
 		F4B5CC0123538B4300787791 /* HardcodedExpensesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5CC0023538B4300787791 /* HardcodedExpensesViewModel.swift */; };
+		F4C29AB6235645A000C32529 /* CategoriesChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C29AB4235645A000C32529 /* CategoriesChartsViewController.swift */; };
+		F4C29AB7235645A000C32529 /* CategoriesChartsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C29AB5235645A000C32529 /* CategoriesChartsViewController.xib */; };
+		F4C29ABE2356491F00C32529 /* CategoriesChartsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C29ABD2356491F00C32529 /* CategoriesChartsViewModel.swift */; };
+		F4C29AC42358487F00C32529 /* PieChartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C29AC22358487F00C32529 /* PieChartCollectionViewCell.swift */; };
+		F4C29AC52358487F00C32529 /* PieChartCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C29AC32358487F00C32529 /* PieChartCollectionViewCell.xib */; };
+		F4C29AC82358489000C32529 /* LineChartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C29AC62358489000C32529 /* LineChartCollectionViewCell.swift */; };
+		F4C29AC92358489000C32529 /* LineChartCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C29AC72358489000C32529 /* LineChartCollectionViewCell.xib */; };
 		F4D3B2282352009200836FB0 /* CategoriesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3B2272352009200836FB0 /* CategoriesListViewModel.swift */; };
 		F4D3B22B23523FB400836FB0 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3B22A23523FB400836FB0 /* UICollectionView+Extensions.swift */; };
 		F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */; };
@@ -313,6 +320,13 @@
 		F4A984812349FC0F00A69F79 /* CategoryRepresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepresentationView.swift; sourceTree = "<group>"; };
 		F4A984832349FC2C00A69F79 /* CategoryRepresentationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryRepresentationView.xib; sourceTree = "<group>"; };
 		F4B5CC0023538B4300787791 /* HardcodedExpensesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardcodedExpensesViewModel.swift; sourceTree = "<group>"; };
+		F4C29AB4235645A000C32529 /* CategoriesChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesChartsViewController.swift; sourceTree = "<group>"; };
+		F4C29AB5235645A000C32529 /* CategoriesChartsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesChartsViewController.xib; sourceTree = "<group>"; };
+		F4C29ABD2356491F00C32529 /* CategoriesChartsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesChartsViewModel.swift; sourceTree = "<group>"; };
+		F4C29AC22358487F00C32529 /* PieChartCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCollectionViewCell.swift; sourceTree = "<group>"; };
+		F4C29AC32358487F00C32529 /* PieChartCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieChartCollectionViewCell.xib; sourceTree = "<group>"; };
+		F4C29AC62358489000C32529 /* LineChartCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartCollectionViewCell.swift; sourceTree = "<group>"; };
+		F4C29AC72358489000C32529 /* LineChartCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LineChartCollectionViewCell.xib; sourceTree = "<group>"; };
 		F4D3B2272352009200836FB0 /* CategoriesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewModel.swift; sourceTree = "<group>"; };
 		F4D3B22A23523FB400836FB0 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		F4F0C5F32213FFCE00407493 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -396,6 +410,7 @@
 				5FD3D85D233BE2F9009042D1 /* CenteredTextSelectionView.swift */,
 				5FD3D85F233BE8C7009042D1 /* TextCollectionViewCell.swift */,
 				5FD3D860233BE8C7009042D1 /* TextCollectionViewCell.xib */,
+				F4C29AB82356463000C32529 /* Charts */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -646,6 +661,20 @@
 			path = "Categories List";
 			sourceTree = "<group>";
 		};
+		F4C29AB82356463000C32529 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				F4C29AB4235645A000C32529 /* CategoriesChartsViewController.swift */,
+				F4C29AB5235645A000C32529 /* CategoriesChartsViewController.xib */,
+				F4C29ABD2356491F00C32529 /* CategoriesChartsViewModel.swift */,
+				F4C29AC22358487F00C32529 /* PieChartCollectionViewCell.swift */,
+				F4C29AC32358487F00C32529 /* PieChartCollectionViewCell.xib */,
+				F4C29AC62358489000C32529 /* LineChartCollectionViewCell.swift */,
+				F4C29AC72358489000C32529 /* LineChartCollectionViewCell.xib */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -832,6 +861,7 @@
 			files = (
 				5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */,
 				5F0FC870231C284C0083EBA9 /* CategoryCreationViewController.xib in Resources */,
+				F4C29AB7235645A000C32529 /* CategoriesChartsViewController.xib in Resources */,
 				5F169BDC232CD4BB007666E9 /* ColorCollectionViewCell.xib in Resources */,
 				F4A984842349FC2C00A69F79 /* CategoryRepresentationView.xib in Resources */,
 				5F0FC86C231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib in Resources */,
@@ -842,8 +872,10 @@
 				5F56B99A2313C50C005AF4AF /* ExpenseCategorySelectionViewController.xib in Resources */,
 				5FD3D862233BE8C7009042D1 /* TextCollectionViewCell.xib in Resources */,
 				5F240CA2222721A3009A41AE /* ExpenseCreationViewController.xib in Resources */,
+				F4C29AC92358489000C32529 /* LineChartCollectionViewCell.xib in Resources */,
 				5F9DE37E2218A135008CCB94 /* CameraViewController.xib in Resources */,
 				F4A984782349EAAD00A69F79 /* CategoriesListViewController.xib in Resources */,
+				F4C29AC52358487F00C32529 /* PieChartCollectionViewCell.xib in Resources */,
 				5F56B99223049E2B005AF4AF /* ExpensesSectionHeaderView.xib in Resources */,
 				5F56B99623101C9B005AF4AF /* ExpenseSelectedCategoryViewController.xib in Resources */,
 				5F0FC874231C2ABA0083EBA9 /* NoExpensesView.xib in Resources */,
@@ -1051,7 +1083,9 @@
 				5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */,
 				5F56B99D2313C78E005AF4AF /* ExpenseCategoryTableViewCell.swift in Sources */,
 				5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */,
+				F4C29AB6235645A000C32529 /* CategoriesChartsViewController.swift in Sources */,
 				5F20E0BD2210352F00BAECF6 /* ExpenseTableViewCell.swift in Sources */,
+				F4C29AC42358487F00C32529 /* PieChartCollectionViewCell.swift in Sources */,
 				5F41C4262341096700126E5C /* Array+Extensions.swift in Sources */,
 				5F65C345222A6DAF00E10F92 /* VenueCollectionViewCell.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
@@ -1081,10 +1115,12 @@
 				5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */,
 				5F240CA1222721A3009A41AE /* ExpenseCreationViewController.swift in Sources */,
 				5F9E13C5222C33F100805878 /* LocationAccessNotifier.swift in Sources */,
+				F4C29ABE2356491F00C32529 /* CategoriesChartsViewModel.swift in Sources */,
 				5F169BDB232CD4BB007666E9 /* ColorCollectionViewCell.swift in Sources */,
 				5F0FC868231BC55B0083EBA9 /* CategoriesParentViewController.swift in Sources */,
 				5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */,
 				5F56B9992313C50C005AF4AF /* ExpenseCategorySelectionViewController.swift in Sources */,
+				F4C29AC82358489000C32529 /* LineChartCollectionViewCell.swift in Sources */,
 				5F2D4BD7229B266000884FA9 /* ModalBlurTransitionController.swift in Sources */,
 				5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */,
 			);

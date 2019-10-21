@@ -49,26 +49,15 @@ class CategoriesStatisticsViewModel {
             self?.shouldUpdateSelection?(selectedSectionIndex)
         }
     )
+
+    lazy var categoriesChartsViewModel = CategoriesChartsViewModel()
     
     private var currentExpenseCreationDates: [Date] = []
     private var currentSelectedIndex: Int?
 
-    typealias StatsData = (categories: [ExpenseCategoryStatsDTO], chartData: PieChartData)
-    
-    private var currentStatsData = [(Date, StatsData)]()
+    private var currentStatsData = [(Date, [ExpenseCategoryStatsDTO])]()
     
     var shouldUpdateSelection: ((Int) -> ())?
-    
-    var selectedCategoryChartData: ((PieChartData?) -> ())?
-    
-    func chartDataForSelectedCategory(at index: Int) -> PieChartData? {
-        currentSelectedIndex = index
-        guard let date = currentExpenseCreationDates[safe: index] else {
-            return .none
-        }
-
-        return currentStatsData.first(where: { $0.0 == date })?.1.chartData
-    }
     
     func observeDateRangeSelectionRepresentations(changed: @escaping ([String]) -> ()) {
         expenseModelController.expensesYearsMonths { [weak self] expenses, dates in
@@ -83,8 +72,8 @@ class CategoriesStatisticsViewModel {
             self.currentStatsData = dates.map { date in
                 return (date, self.data(from: expenses, for: date))
             }
-            
-            self.categoriesListViewModel.updateList(with: self.currentStatsData.map { ($0, $1.categories) })
+                        
+            self.categoriesListViewModel.updateList(with: self.currentStatsData)
             
             // If there's nothing selected it means that we're loading data initially
             // Pre select the last item
@@ -98,14 +87,12 @@ class CategoriesStatisticsViewModel {
         }
     }
     
-    private func data(from expenses: [ExpenseEntry], for date: Date) -> StatsData {
+    private func data(from expenses: [ExpenseEntry], for date: Date) -> [ExpenseCategoryStatsDTO] {
         let expensesInDate = expenseModelController.filter(expenses: expenses, by: date)
         let expensesByCategoryInDate = expensesByCategory(expenses: expensesInDate)
         
         let statsDTOs = expenseCategoryStatsDTOs(from: expensesByCategoryInDate)
-        
-        let pieChartData = constructPieChartData(from: statsDTOs)
-        return (statsDTOs, pieChartData)
+        return statsDTOs
     }
     
     private func expensesByCategory(expenses: [ExpenseEntry]) ->  [ExpenseCategory: [ExpenseEntry]] {
@@ -126,9 +113,12 @@ class CategoriesStatisticsViewModel {
             return
         }
 
-        let chartData = self.chartDataForSelectedCategory(at: currentSelectedIndex)
-        
-        self.selectedCategoryChartData?(chartData)
+        guard let date = currentExpenseCreationDates[safe: currentSelectedIndex],
+            let categoryDTOs = currentStatsData.first(where: { $0.0 == date })?.1 else {
+            return
+        }
+
+        categoriesChartsViewModel.update(for: date, categoryStatsDTOs: categoryDTOs)
     }
 
 }
@@ -178,34 +168,6 @@ extension CategoriesStatisticsViewModel {
         }.sorted { $0.amountSpentDouble > $1.amountSpentDouble }
 
         return categoryStatsDTOs
-    }
-    
-    private func constructPieChartData(from dtos: [ExpenseCategoryStatsDTO]) -> PieChartData {
-        let dataEntries = dtos.map {
-            PieChartDataEntry.init(value: $0.amountSpentDouble, label: $0.categoryTitle)
-        }
-
-        let dataSet = PieChartDataSet(entries: dataEntries, label: nil)
-        dataSet.colors = dtos.compactMap { $0.color }
-        dataSet.automaticallyDisableSliceSpacing = true
-        dataSet.yValuePosition = .outsideSlice
-        dataSet.xValuePosition = .outsideSlice
-        dataSet.valueLineColor = .label
-        dataSet.drawValuesEnabled = true
-        dataSet.valueFormatter = Formatter()
-        dataSet.entryLabelColor = .label
-        dataSet.sliceSpace = 3
-        let data = PieChartData(dataSet: dataSet)
-        data.setValueTextColor(.label)
-        
-        return data
-    }
-    
-}
-
-private class Formatter: IValueFormatter {
-    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        return "\(Int(round(value)))%"
     }
     
 }
