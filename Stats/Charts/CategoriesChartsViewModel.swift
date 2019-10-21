@@ -31,16 +31,14 @@ class CategoriesChartsViewModel {
         let set1 = LineChartDataSet.init(entries: chartEntries, label: nil)
         set1.drawIconsEnabled = false
         
-//        set1.lineDashLengths = [5, 2.5]
-//        set1.highlightLineDashLengths = [5, 2.5]
-        set1.setColor(.black)
+        set1.setColor(.green)
+        
         set1.lineWidth = 1
         set1.valueFont = .systemFont(ofSize: 9)
-//        set1.formLineDashLengths = [5, 2.5]
         set1.formLineWidth = 1
         set1.formSize = 15
         set1.mode = .horizontalBezier
-        set1.drawCirclesEnabled = false
+        set1.drawCirclesEnabled = true
         
         
 //        let gradientColors = [ChartColorTemplates.colorFromString("#00ff0000").cgColor,
