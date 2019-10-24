@@ -27,7 +27,11 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         lineChart.rightAxis.drawLabelsEnabled = false
         lineChart.rightAxis.drawGridLinesEnabled = false
 
-        lineChart.minOffset = 10
+        lineChart.minOffset = 20
+        lineChart.extraTopOffset = 20
+        lineChart.clipsToBounds = false
+        lineChart.clipDataToContentEnabled = false
+
         lineChart.backgroundColor = UIColor.init(named: "background")
         
         return lineChart

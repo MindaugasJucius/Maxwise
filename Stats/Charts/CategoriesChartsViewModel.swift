@@ -2,9 +2,28 @@ import Foundation
 import Charts
 import ExpenseKit
 
+struct FormattedLineChartEntry {
+    let monthDayRepresentation: String
+    let totalAmountSpent: String
+}
+
 class CategoriesChartsViewModel {
     
     private let expenseEntryModelController = ExpenseEntryModelController()
+    
+    private lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateFormat = "MMM d"
+        return formatter
+    }()
+    
+    private lazy var currencyFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        return formatter
+    }()
     
     var chartDataChanged: (([ChartData]) -> ())?
     
@@ -19,34 +38,68 @@ class CategoriesChartsViewModel {
         return expenseEntryModelController.filter(expenses: allExpenses, by: date)
     }
     
-    private func constructLineChartData(from expenseEntries: [ExpenseEntry]) -> LineChartData {
-        var expenseAmountInDays = [Int: Double]()
+    private func lineChartEntries(from expenseEntries: [ExpenseEntry]) -> [ChartDataEntry] {
+        var expenseAmountInDateDayMonth = [Date: Double]()
+        
         expenseEntries.forEach { entry in
-            guard let day = Calendar.current.dateComponents([.day], from: entry.creationDate).day else {
+            let dateComponents = Calendar.current.dateComponents([.day, .month], from: entry.creationDate)
+            guard let date = Calendar.current.date(from: dateComponents) else {
                 return
             }
-            let currentAmountInDay = expenseAmountInDays[day] ?? 0.0
-            expenseAmountInDays[day] = currentAmountInDay + entry.amount
+
+            let currentAmountInDay = expenseAmountInDateDayMonth[date] ?? 0
+            expenseAmountInDateDayMonth[date] = currentAmountInDay + entry.amount
         }
         
-        let chartEntries = expenseAmountInDays.map { (day, amount) in
-            return ChartDataEntry(x: Double(day), y: amount)
+        let sortedExpenseAmountInDayMonth = expenseAmountInDateDayMonth.sorted { (keyValuePair1, keyValuePair2) -> Bool in
+            return keyValuePair1.key < keyValuePair2.key
         }
+        
+        var totalCurrentAmount: Double = 0
+        
+        let chartEntries = sortedExpenseAmountInDayMonth.compactMap { (date, amount) -> ChartDataEntry? in
+            let dayComponent = Calendar.current.dateComponents([.day], from: date)
+            guard let day = dayComponent.day else {
+                return nil
+            }
 
-        let set1 = LineChartDataSet(entries: chartEntries.sorted { $0.x < $1.x }, label: nil)
-        set1.drawIconsEnabled = false
+            guard let formattedAmount = currencyFormatter.string(from: NSNumber(value: amount)) else {
+                return nil
+            }
+            
+            let formattedEntry = FormattedLineChartEntry.init(
+                monthDayRepresentation: dateFormatter.string(from: date),
+                totalAmountSpent: formattedAmount
+            )
+            
+            totalCurrentAmount += amount
+            
+            return ChartDataEntry(x: Double(day), y: totalCurrentAmount, data: formattedEntry)
+        }
+        
+        return chartEntries
+    }
 
-        set1.lineWidth = 3
-        set1.drawValuesEnabled = false
-        set1.mode = .linear
-        set1.drawCirclesEnabled = true
-        set1.drawFilledEnabled = true
-        set1.fillAlpha = 1
-        set1.circleHoleRadius = 3
-        set1.circleRadius = 6
+    private func constructLineChartData(from expenseEntries: [ExpenseEntry]) -> LineChartData {
+        let chartEntries = lineChartEntries(from: expenseEntries)
 
-        setColor(for: set1)
-        return LineChartData(dataSet: set1)
+        let dataSet = LineChartDataSet(entries: chartEntries.sorted { $0.x < $1.x }, label: nil)
+        dataSet.drawIconsEnabled = false
+
+        dataSet.lineWidth = 3
+        dataSet.drawValuesEnabled = false
+        dataSet.mode = .linear
+        dataSet.drawCirclesEnabled = true
+        dataSet.drawFilledEnabled = true
+        dataSet.fillAlpha = 1
+        dataSet.circleHoleRadius = 3
+        dataSet.circleRadius = 6
+
+        dataSet.drawVerticalHighlightIndicatorEnabled = false
+        dataSet.drawHorizontalHighlightIndicatorEnabled = false
+        
+        setColor(for: dataSet)
+        return LineChartData(dataSet: dataSet)
     }
 
     private func setColor(for dataSet: LineChartDataSet) {
@@ -70,7 +123,6 @@ class CategoriesChartsViewModel {
                                      locations: [0.8, 1]) {
             dataSet.fill = Fill(linearGradient: gradient, angle: -90)
         }
-        dataSet.drawVerticalHighlightIndicatorEnabled = false
     }
     
     private func constructPieChartData(from dtos: [ExpenseCategoryStatsDTO]) -> PieChartData {
