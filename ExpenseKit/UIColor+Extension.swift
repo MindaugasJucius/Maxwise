@@ -108,7 +108,7 @@ extension UIColor {
     static let flatAmethyst     = UIColor(hex: 0x9B59B6)
     static let flatWisteria     = UIColor(hex: 0x8E44AD)
     // Dark blue
-    static let flatWetAsphalt   = UIColor(hex: 0x34495E)
+    static let flatWetAsphalt = UIColor(hex: 0x34495E)
     static let flatMidnightBlue = UIColor(hex: 0x2C3E50)
     // Yellow
     static let flatSunFlower   = UIColor(hex: 0xF1C40F)

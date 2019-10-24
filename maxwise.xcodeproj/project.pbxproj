@@ -105,6 +105,9 @@
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
 		B685B79A0FC3283C33E7E112 /* Pods_ExpenseKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2CA953CEB6826F7E039748 /* Pods_ExpenseKitTests.framework */; };
 		CC54C85265F7F163F7B2471A /* Pods_maxwiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF6C5E4A26C62F0B443A44 /* Pods_maxwiseTests.framework */; };
+		F412211123619C900062DD5D /* LineChartMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F412211023619C900062DD5D /* LineChartMarkerView.swift */; };
+		F412211323619D410062DD5D /* LineChartMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F412211223619D410062DD5D /* LineChartMarkerView.xib */; };
+		F41AF8C7235F556000055F99 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AF8C6235F556000055F99 /* UIColor+Extension.swift */; };
 		F45D67CE22A3D96B00DB1AE1 /* VibrantContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */; };
 		F4A984772349EAAD00A69F79 /* CategoriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A984752349EAAD00A69F79 /* CategoriesListViewController.swift */; };
 		F4A984782349EAAD00A69F79 /* CategoriesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A984762349EAAD00A69F79 /* CategoriesListViewController.xib */; };
@@ -310,7 +313,10 @@
 		B854ACC99C602D72975C059C /* Pods-ExpenseKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExpenseKit/Pods-ExpenseKit.release.xcconfig"; sourceTree = "<group>"; };
 		BFE3CBB719654DA4B77BCD30 /* Pods-maxwiseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-maxwiseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-maxwiseTests/Pods-maxwiseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA1C0C0C4A8FAC6A0B1B4D5E /* Pods-ExpenseKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExpenseKit/Pods-ExpenseKit.debug.xcconfig"; sourceTree = "<group>"; };
+		F412211023619C900062DD5D /* LineChartMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartMarkerView.swift; sourceTree = "<group>"; };
+		F412211223619D410062DD5D /* LineChartMarkerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LineChartMarkerView.xib; sourceTree = "<group>"; };
 		F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		F41AF8C6235F556000055F99 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrantContentView.swift; sourceTree = "<group>"; };
 		F4A984752349EAAD00A69F79 /* CategoriesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListViewController.swift; sourceTree = "<group>"; };
 		F4A984762349EAAD00A69F79 /* CategoriesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesListViewController.xib; sourceTree = "<group>"; };
@@ -542,6 +548,7 @@
 				5FA3DBB422C8C531009FD189 /* UIViewController+Extensions.swift */,
 				5F41C4252341096700126E5C /* Array+Extensions.swift */,
 				F4D3B22A23523FB400836FB0 /* UICollectionView+Extensions.swift */,
+				F41AF8C6235F556000055F99 /* UIColor+Extension.swift */,
 			);
 			path = maxwise;
 			sourceTree = "<group>";
@@ -671,6 +678,8 @@
 				F4C29AC32358487F00C32529 /* PieChartCollectionViewCell.xib */,
 				F4C29AC62358489000C32529 /* LineChartCollectionViewCell.swift */,
 				F4C29AC72358489000C32529 /* LineChartCollectionViewCell.xib */,
+				F412211023619C900062DD5D /* LineChartMarkerView.swift */,
+				F412211223619D410062DD5D /* LineChartMarkerView.xib */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -866,6 +875,7 @@
 				F4A984842349FC2C00A69F79 /* CategoryRepresentationView.xib in Resources */,
 				5F0FC86C231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib in Resources */,
 				5FC9298622F8A02200CB23DC /* ExpenseCreationInputView.xib in Resources */,
+				F412211323619D410062DD5D /* LineChartMarkerView.xib in Resources */,
 				5FB59213227DE303005D5208 /* NavigationView.xib in Resources */,
 				5F56B99E2313C78E005AF4AF /* ExpenseCategoryTableViewCell.xib in Resources */,
 				5F20E0B9221034F300BAECF6 /* ExpensesViewController.xib in Resources */,
@@ -1085,6 +1095,7 @@
 				5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */,
 				F4C29AB6235645A000C32529 /* CategoriesChartsViewController.swift in Sources */,
 				5F20E0BD2210352F00BAECF6 /* ExpenseTableViewCell.swift in Sources */,
+				F41AF8C7235F556000055F99 /* UIColor+Extension.swift in Sources */,
 				F4C29AC42358487F00C32529 /* PieChartCollectionViewCell.swift in Sources */,
 				5F41C4262341096700126E5C /* Array+Extensions.swift in Sources */,
 				5F65C345222A6DAF00E10F92 /* VenueCollectionViewCell.swift in Sources */,
@@ -1123,6 +1134,7 @@
 				F4C29AC82358489000C32529 /* LineChartCollectionViewCell.swift in Sources */,
 				5F2D4BD7229B266000884FA9 /* ModalBlurTransitionController.swift in Sources */,
 				5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */,
+				F412211123619C900062DD5D /* LineChartMarkerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

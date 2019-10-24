@@ -20,38 +20,59 @@ class CategoriesChartsViewModel {
     }
     
     private func constructLineChartData(from expenseEntries: [ExpenseEntry]) -> LineChartData {
-        let chartEntries = expenseEntries.compactMap { entry -> ChartDataEntry? in
+        var expenseAmountInDays = [Int: Double]()
+        expenseEntries.forEach { entry in
             guard let day = Calendar.current.dateComponents([.day], from: entry.creationDate).day else {
-                return nil
+                return
             }
-
-            return ChartDataEntry.init(x: Double(day), y: entry.amount)
+            let currentAmountInDay = expenseAmountInDays[day] ?? 0.0
+            expenseAmountInDays[day] = currentAmountInDay + entry.amount
         }
         
-        let set1 = LineChartDataSet.init(entries: chartEntries, label: nil)
+        let chartEntries = expenseAmountInDays.map { (day, amount) in
+            return ChartDataEntry(x: Double(day), y: amount)
+        }
+
+        let set1 = LineChartDataSet(entries: chartEntries.sorted { $0.x < $1.x }, label: nil)
         set1.drawIconsEnabled = false
-        
-        set1.setColor(.green)
-        
-        set1.lineWidth = 1
-        set1.valueFont = .systemFont(ofSize: 9)
-        set1.formLineWidth = 1
-        set1.formSize = 15
-        set1.mode = .horizontalBezier
+
+        set1.lineWidth = 3
+        set1.drawValuesEnabled = false
+        set1.mode = .linear
         set1.drawCirclesEnabled = true
-        
-        
-//        let gradientColors = [ChartColorTemplates.colorFromString("#00ff0000").cgColor,
-//                              ChartColorTemplates.colorFromString("#ffff0000").cgColor]
-//        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
-//
-        set1.fillAlpha = 1
-        //set1.fill = Fill(linearGradient: gradient, angle: 90) //.linearGradient(gradient, angle: 90)
         set1.drawFilledEnabled = true
-        
+        set1.fillAlpha = 1
+        set1.circleHoleRadius = 3
+        set1.circleRadius = 6
+
+        setColor(for: set1)
         return LineChartData(dataSet: set1)
     }
+
+    private func setColor(for dataSet: LineChartDataSet) {
+        guard let tintColor = UIColor.tintColor else {
+            return
+        }
         
+        let backgroundColor = UIColor.init(named: "background")
+        
+        dataSet.setCircleColor(tintColor)
+        dataSet.setColor(tintColor)
+        
+        dataSet.circleHoleColor = backgroundColor
+        
+        let gradientColors = [tintColor.withAlphaComponent(0.2).cgColor,
+                              backgroundColor?.withAlphaComponent(0.2).cgColor]
+
+        
+        if let gradient = CGGradient(colorsSpace: nil,
+                                     colors: gradientColors as CFArray,
+                                     locations: [0.8, 1]) {
+            dataSet.fill = Fill(linearGradient: gradient, angle: -90)
+        }
+        dataSet.drawVerticalHighlightIndicatorEnabled = false
+    }
+    
     private func constructPieChartData(from dtos: [ExpenseCategoryStatsDTO]) -> PieChartData {
         let dataEntries = dtos.map {
             PieChartDataEntry.init(value: $0.amountSpentDouble, label: $0.categoryTitle)
