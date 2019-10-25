@@ -20,9 +20,41 @@ public class ExpenseEntryModelController {
         
     }
     
-    public func create(expenseDTO: ExpenseDTO,
-                       completion: (Result<ExpenseEntry, CreationIssue>) -> ()) {
+    public func createRandomExpenses(amount: ClosedRange<Int>, monthRange: ClosedRange<Int>, dayRange: ClosedRange<Int>) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MM dd"
         
+        let creationString = "2019 %d %d"
+
+        let userModelController = UserModelController()
+        let categoryModelController = ExpenseCategoryModelController()
+        let storedCategories = categoryModelController.storedCategories()
+        
+        for month in monthRange {
+            for day in dayRange {
+                guard let randomCategory = storedCategories.randomElement(),
+                    let randomAmount = amount.randomElement() else {
+                    fatalError()
+                }
+                let expenseEntry = expense(
+                    from: .init(title: "random \(month) \(day)",
+                                category: randomCategory,
+                                user: try! userModelController.currentUserOrCreate(),
+                                place: nil,
+                                amount: Double(randomAmount),
+                                shareAmount: .full)
+                )
+                let formattedCreationDate = String.init(format: creationString, month, day)
+                expenseEntry.creationDate = dateFormatter.date(from: formattedCreationDate)!
+                persist(expenseEntry: expenseEntry) { _ in
+                    
+                }
+            }
+        }
+    }
+    
+
+    private func expense(from expenseDTO: ExpenseDTO) -> ExpenseEntry {
         let expenseEntry = ExpenseEntry.init()
         expenseEntry.amount = expenseDTO.amount
         expenseEntry.category = expenseDTO.category
@@ -30,11 +62,24 @@ public class ExpenseEntryModelController {
         expenseEntry.place = expenseDTO.place
         expenseEntry.id = UUID.init().uuidString
         expenseEntry.sharePercentage = expenseDTO.shareAmount.rawValue
+        return expenseEntry
+    }
+    
+    public func create(expenseDTO: ExpenseDTO,
+                       completion: (Result<ExpenseEntry, CreationIssue>) -> ()) {
+        let expenseEntry = expense(from: expenseDTO)
+        persist(expenseEntry: expenseEntry, completion: completion)
+    }
+    
+    private func persist(expenseEntry: ExpenseEntry,
+                         completion: (Result<ExpenseEntry, CreationIssue>) -> ()) {
         do {
             let realm = try Realm.groupRealm()
             try realm.write {
                 realm.add(expenseEntry)
-                expenseDTO.user.entries.append(expenseEntry)
+                expenseEntry.owners.forEach {
+                    $0.entries.append(expenseEntry)
+                }
             }
             donateCreateExpense(expense: expenseEntry)
             completion(.success(expenseEntry))
@@ -91,8 +136,7 @@ public class ExpenseEntryModelController {
             updated((entries, dates))
         }
     }
-    
-    
+
     /// Returns expenses created in date matching .year, .month components
     /// - Parameter date: filtering happends based on this value
     public func filter(expenses: [ExpenseEntry], by date: Date) -> [ExpenseEntry] {
