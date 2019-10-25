@@ -6,6 +6,8 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
     private lazy var lineChart: LineChartView = {
         let lineChart = LineChartView()
         lineChart.pinchZoomEnabled = false
+        lineChart.scaleXEnabled = false
+        lineChart.scaleYEnabled = false
         lineChart.drawGridBackgroundEnabled = true
         lineChart.gridBackgroundColor = UIColor(named: "background")!
         
@@ -14,12 +16,21 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         lineChart.dragYEnabled = false
         lineChart.dragXEnabled = true
         lineChart.legend.enabled = false
+        lineChart.xAxis.yOffset = 0
         
-        lineChart.xAxis.drawGridLinesEnabled = false
-        lineChart.xAxis.drawAxisLineEnabled = false
+        lineChart.xAxis.drawGridLinesEnabled = true
+        lineChart.xAxis.gridColor = .quaternaryLabel
+        lineChart.xAxis.gridLineDashLengths = [2,6]
+        lineChart.xAxis.gridLineCap = .round
+        
+        lineChart.xAxis.drawAxisLineEnabled = true
+        lineChart.xAxis.axisLineColor = .quaternaryLabel
         lineChart.xAxis.labelPosition = .bottom
+        
         lineChart.xAxis.labelCount = 4 // 4 weeks
         lineChart.xAxis.decimals = 0
+        lineChart.xAxis.labelFont = .systemFont(ofSize: 10, weight: .regular)
+        lineChart.xAxis.labelTextColor = .quaternaryLabel
         
         lineChart.leftAxis.drawGridLinesEnabled = false
         lineChart.leftAxis.drawAxisLineEnabled = false
@@ -31,7 +42,6 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
 
         lineChart.minOffset = 20
         lineChart.extraTopOffset = 20
-        lineChart.clipsToBounds = false
         lineChart.clipDataToContentEnabled = false
         
         return lineChart
