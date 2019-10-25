@@ -55,6 +55,8 @@ class CategoriesChartsViewModel {
             return keyValuePair1.key < keyValuePair2.key
         }
         
+        
+        // Chart should show ever increasing amount (each step is: previous days + current)
         var totalCurrentAmount: Double = 0
         
         let chartEntries = sortedExpenseAmountInDayMonth.compactMap { (date, amount) -> ChartDataEntry? in
@@ -115,12 +117,13 @@ class CategoriesChartsViewModel {
         dataSet.circleHoleColor = backgroundColor
         
         let gradientColors = [tintColor.withAlphaComponent(0.2).cgColor,
-                              backgroundColor?.withAlphaComponent(0.2).cgColor]
+                              tintColor.withAlphaComponent(0.1).cgColor,
+                              tintColor.withAlphaComponent(0.01).cgColor]
 
         
         if let gradient = CGGradient(colorsSpace: nil,
                                      colors: gradientColors as CFArray,
-                                     locations: [0.8, 1]) {
+                                     locations: [0.6, 0.8, 1]) {
             dataSet.fill = Fill(linearGradient: gradient, angle: -90)
         }
     }

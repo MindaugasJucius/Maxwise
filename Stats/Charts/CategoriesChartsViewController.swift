@@ -31,9 +31,9 @@ class CategoriesChartsViewController: UIViewController {
     }()
     
     enum Charts: Int, CaseIterable {
-        case pie
         case line
-        
+        case pie
+
         var cellType: UICollectionViewCell.Type {
             switch self {
             case .line:

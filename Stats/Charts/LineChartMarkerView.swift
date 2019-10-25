@@ -25,12 +25,12 @@ class LineChartMarkerView: MarkerView {
         amountLabel.font = .systemFont(ofSize: 12, weight: .medium)
         dateLabel.textColor = .secondaryLabel
         amountLabel.textColor = .label
-        backgroundColor = .white
+        backgroundColor = .secondarySystemBackground
         
-        let accentColor = UIColor.systemGray.withAlphaComponent(0.2)
+        let shadowColor = UIColor.systemGray.withAlphaComponent(0.3)
         
-        separatorView.backgroundColor = accentColor
-        layer.applyShadow(color: accentColor)
+        separatorView.backgroundColor = UIColor.systemGray.withAlphaComponent(0.1)
+        layer.applyShadow(color: shadowColor)
         layer.applyBorder()
         layer.borderColor = UIColor.clear.cgColor
         

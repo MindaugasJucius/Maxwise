@@ -7,10 +7,12 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         let lineChart = LineChartView()
         lineChart.pinchZoomEnabled = false
         lineChart.drawGridBackgroundEnabled = true
+        lineChart.gridBackgroundColor = UIColor(named: "background")!
+        
         lineChart.drawBordersEnabled = false
         lineChart.doubleTapToZoomEnabled = false
         lineChart.dragYEnabled = false
-        lineChart.dragXEnabled = false
+        lineChart.dragXEnabled = true
         lineChart.legend.enabled = false
         
         lineChart.xAxis.drawGridLinesEnabled = false
@@ -31,21 +33,28 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         lineChart.extraTopOffset = 20
         lineChart.clipsToBounds = false
         lineChart.clipDataToContentEnabled = false
-
-        lineChart.backgroundColor = UIColor.init(named: "background")
         
         return lineChart
     }()
     
-    let marker: LineChartMarkerView? = {
-        return LineChartMarkerView.viewFromXib()
-    }()
+    var marker: LineChartMarkerView? {
+        let marker = LineChartMarkerView.viewFromXib()
+        marker?.chartView = lineChart
+        return marker
+    }
+        
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if previousTraitCollection?.hasDifferentColorAppearance(comparedTo: traitCollection) == true {
+            lineChart.marker = marker
+        }
+        
+        super.traitCollectionDidChange(previousTraitCollection)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         lineChart.translatesAutoresizingMaskIntoConstraints = false
         
-        marker?.chartView = lineChart
         lineChart.marker = marker
         
         addSubview(lineChart)
