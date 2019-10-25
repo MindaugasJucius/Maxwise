@@ -3,6 +3,17 @@ import Charts
 
 class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell {
 
+    private let xAxisLabelCount = 4 // number of weeks in month
+    
+    private lazy var currencyFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        formatter.alwaysShowsDecimalSeparator = false
+        formatter.maximumFractionDigits = 0
+        return formatter
+    }()
+    
     private lazy var lineChart: LineChartView = {
         let lineChart = LineChartView()
         lineChart.pinchZoomEnabled = false
@@ -16,25 +27,27 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         lineChart.dragYEnabled = false
         lineChart.dragXEnabled = true
         lineChart.legend.enabled = false
-        lineChart.xAxis.yOffset = 0
-        
-        lineChart.xAxis.drawGridLinesEnabled = true
-        lineChart.xAxis.gridColor = .quaternaryLabel
-        lineChart.xAxis.gridLineDashLengths = [2,6]
-        lineChart.xAxis.gridLineCap = .round
-        
-        lineChart.xAxis.drawAxisLineEnabled = true
-        lineChart.xAxis.axisLineColor = .quaternaryLabel
+
+        lineChart.xAxis.drawAxisLineEnabled = false
         lineChart.xAxis.labelPosition = .bottom
-        
-        lineChart.xAxis.labelCount = 4 // 4 weeks
+        lineChart.xAxis.drawGridLinesEnabled = false
         lineChart.xAxis.decimals = 0
         lineChart.xAxis.labelFont = .systemFont(ofSize: 10, weight: .regular)
         lineChart.xAxis.labelTextColor = .quaternaryLabel
+
+        lineChart.leftAxis.drawGridLinesEnabled = true
+        lineChart.leftAxis.gridColor = .quaternaryLabel
+        lineChart.leftAxis.gridLineDashLengths = [3,6]
+        lineChart.leftAxis.gridLineCap = .round
         
-        lineChart.leftAxis.drawGridLinesEnabled = false
         lineChart.leftAxis.drawAxisLineEnabled = false
-        lineChart.leftAxis.drawLabelsEnabled = false
+        lineChart.leftAxis.labelFont = .systemFont(ofSize: 10, weight: .regular)
+        lineChart.leftAxis.labelTextColor = .quaternaryLabel
+        lineChart.leftAxis.drawLabelsEnabled = true
+        lineChart.leftAxis.labelPosition = .outsideChart
+
+        lineChart.leftAxis.valueFormatter = self
+        lineChart.leftAxis.setLabelCount(3, force: true)
         
         lineChart.rightAxis.drawAxisLineEnabled = false
         lineChart.rightAxis.drawLabelsEnabled = false
@@ -43,6 +56,7 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         lineChart.minOffset = 20
         lineChart.extraTopOffset = 20
         lineChart.clipDataToContentEnabled = false
+        lineChart.layer.masksToBounds = false
         
         return lineChart
     }()
@@ -64,7 +78,6 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
     override func awakeFromNib() {
         super.awakeFromNib()
         lineChart.translatesAutoresizingMaskIntoConstraints = false
-        
         lineChart.marker = marker
         
         addSubview(lineChart)
@@ -72,7 +85,28 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
     }
 
     func update(data: ChartData) {
+        if data.entryCount < xAxisLabelCount {
+            lineChart.xAxis.setLabelCount(data.entryCount, force: true)
+        } else {
+            lineChart.xAxis.setLabelCount(xAxisLabelCount, force: true)
+        }
+
+        lineChart.leftAxis.axisMaximum = data.getYMax() * 1.25
+        lineChart.leftAxis.axisMinimum = 0
+        lineChart.animate(yAxisDuration: 0.3, easingOption: .easeInOutQuad)
         lineChart.data = data
+    }
+    
+}
+
+extension LineChartCollectionViewCell: IAxisValueFormatter {
+
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        let axisValue = NSNumber(value: round(value))
+        guard let formattedAmount = currencyFormatter.string(from: axisValue) else {
+            return ""
+        }
+        return formattedAmount
     }
     
 }
