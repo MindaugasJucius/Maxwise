@@ -5,8 +5,8 @@ class LineChartMarkerView: MarkerView {
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var amountLabelWidthConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var separatorView: UIView!
+
     private let yOffset: CGFloat = 10
     
     override var offset: CGPoint {
@@ -27,8 +27,10 @@ class LineChartMarkerView: MarkerView {
         amountLabel.textColor = .label
         backgroundColor = .white
         
-        let shadowColor = UIColor.black.withAlphaComponent(0.4)
-        layer.applyShadow(color: shadowColor)
+        let accentColor = UIColor.systemGray.withAlphaComponent(0.2)
+        
+        separatorView.backgroundColor = accentColor
+        layer.applyShadow(color: accentColor)
         layer.applyBorder()
         layer.borderColor = UIColor.clear.cgColor
         
@@ -42,18 +44,16 @@ class LineChartMarkerView: MarkerView {
     }
     
     override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
-        amountLabelWidthConstraint.constant = widthForAmountLabel()
-        layoutIfNeeded()
-    }
-    
-    func widthForAmountLabel() -> CGFloat {
-        guard let text = amountLabel.text as NSString? else {
-            return .zero
+        print(highlight.dataIndex)
+//        chartView?.data?.dataSets.first?.entryCount
+        guard let formattedEntry = entry.data as? FormattedLineChartEntry else {
+            return
         }
-        
-        return text.size(
-            withAttributes: [.font : amountLabel.font as Any]
-        ).width
+        dateLabel.text = formattedEntry.monthDayRepresentation
+        amountLabel.text = formattedEntry.totalAmountSpent
+
+        setNeedsLayout()
+        layoutIfNeeded()
     }
     
 }
