@@ -76,10 +76,12 @@ class CategoriesStatisticsViewModel {
             // If there's nothing selected it means that we're loading data initially
             // Pre select the last item
             if self.currentSelectedIndex == nil {
-                let preselectionIndex = dates.count - 1
+                // When there are no expenses dates array is empty
+                let preselectionIndex = max(dates.count - 1, 0)
                 self.currentSelectedIndex = preselectionIndex
-                self.updateDateRangeSelection?(preselectionIndex)
             }
+            
+            self.updateDateRangeSelection?(self.currentSelectedIndex!)
             
             self.categoriesListViewModel.updateList(
                 with: self.currentStatsData,
