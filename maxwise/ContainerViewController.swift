@@ -12,7 +12,6 @@ protocol PresentationViewControllerDelegate: class {
 class ContainerViewController: UITabBarController {
 
     private lazy var expensesViewController = ExpensesParentViewController(presentationDelegate: self)
-    private lazy var expenseCreationParentViewController = ExpenseCreationParentViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +48,11 @@ extension ContainerViewController: PresentationViewControllerDelegate {
     func show(screen: Screen) {
         switch screen {
         case .expenseCreation:
-            let vc = expenseCreationParentViewController.expenseCreation()
-            present(vc, animated: true, completion: nil)
+            let viewModel = ExpenseCreationViewModel()
+
+            let expenseCreationViewController = ExpenseCreationViewController(viewModel: viewModel)
+
+            present(expenseCreationViewController, animated: true, completion: nil)
         }
     }
     

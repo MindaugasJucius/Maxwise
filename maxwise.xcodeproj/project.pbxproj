@@ -97,7 +97,6 @@
 		5FD3D866233F8A7C009042D1 /* FoursquareVenueSearchParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEC22222AD4200F087E4 /* FoursquareVenueSearchParseTests.swift */; };
 		5FD3D867233F8A7C009042D1 /* UserModelControllerObservationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38D2219BF88008CCB94 /* UserModelControllerObservationTests.swift */; };
 		5FD95D8922D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */; };
-		5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */; };
 		5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */; };
 		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
@@ -296,7 +295,6 @@
 		5FD3D85F233BE8C7009042D1 /* TextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCollectionViewCell.swift; sourceTree = "<group>"; };
 		5FD3D860233BE8C7009042D1 /* TextCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCollectionViewCell.xib; sourceTree = "<group>"; };
 		5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationIntentHandler.swift; sourceTree = "<group>"; };
-		5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationParentViewController.swift; sourceTree = "<group>"; };
 		5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		5FFACEC02221889A00F087E4 /* NearbyPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlace.swift; sourceTree = "<group>"; };
 		5FFACEC22222AD4200F087E4 /* FoursquareVenueSearchParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareVenueSearchParseTests.swift; sourceTree = "<group>"; };
@@ -574,7 +572,6 @@
 				5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */,
 				5F65C343222A6DAF00E10F92 /* VenueCollectionViewCell.swift */,
 				5F65C344222A6DAF00E10F92 /* VenueCollectionViewCell.xib */,
-				5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */,
 				5F56B99323101C9B005AF4AF /* ExpenseSelectedCategoryViewController.swift */,
 				5F56B99423101C9B005AF4AF /* ExpenseSelectedCategoryViewController.xib */,
 				5F56B9972313C50B005AF4AF /* ExpenseCategorySelectionViewController.swift */,
@@ -1086,7 +1083,6 @@
 				5F41C4262341096700126E5C /* Array+Extensions.swift in Sources */,
 				5F65C345222A6DAF00E10F92 /* VenueCollectionViewCell.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
-				5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */,
 				5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */,
 				5F0FC872231C2A9C0083EBA9 /* NoExpensesView.swift in Sources */,
 				5FC9298422F89FFF00CB23DC /* ExpenseCreationInputView.swift in Sources */,

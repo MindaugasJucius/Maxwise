@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Vaziuojam</string>
+	<string>Camera access is used for digit recognition </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Nes reikia</string>
 	<key>NSPhotoLibraryUsageDescription</key>

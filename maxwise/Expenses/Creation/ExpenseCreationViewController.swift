@@ -86,7 +86,7 @@ class ExpenseCreationViewController: UIViewController {
     @IBOutlet private weak var currencyPlaceholderLabel: UILabel!
     @IBOutlet private weak var expenseInfoContainerView: UIView!
     @IBOutlet private weak var amountTextField: UITextField!
-    @IBOutlet private weak var expenseTitle: UITextField!
+    @IBOutlet private weak var expenseTitleTextField: UITextField!
     private weak var lastResponder: UIResponder?
     
     @IBOutlet weak var categorySelectionContainerView: UIView!
@@ -145,7 +145,7 @@ class ExpenseCreationViewController: UIViewController {
         let creationButtonTitle: String
         
         if let expenseToEdit = expenseToEdit {
-            expenseTitle.text = expenseToEdit.title
+            expenseTitleTextField.text = expenseToEdit.title
             amountTextField.text = viewModel.currencyFormatterNoSymbol.string(
                 from: NSNumber.init(value: expenseToEdit.amount)
             )
@@ -154,10 +154,10 @@ class ExpenseCreationViewController: UIViewController {
             creationButtonTitle = "Add expense"
         }
         
-        expenseTitle.placeholder = "Enter a description"
-        expenseTitle.backgroundColor = .systemBackground
-        expenseTitle.textColor = .label
-        expenseTitle.delegate = self
+        expenseTitleTextField.placeholder = "Enter a description"
+        expenseTitleTextField.backgroundColor = .systemBackground
+        expenseTitleTextField.textColor = .label
+        expenseTitleTextField.delegate = self
         
         expenseInfoContainerView.layer.applyShadow(color: .tertiaryLabel)
         expenseInfoContainerView.layer.cornerRadius = 6
@@ -236,7 +236,7 @@ class ExpenseCreationViewController: UIViewController {
     
     private func handleCategorySelection(category: ExpenseCategory) {
         ExpenseCategoryModelController.preselectedCategoryID = category.id
-        expenseTitle.placeholder = category.title.capitalized
+        expenseTitleTextField.placeholder = category.title.capitalized
         selectedCategory = category
         guard let color = category.color?.uiColor else {
             return
@@ -246,7 +246,7 @@ class ExpenseCreationViewController: UIViewController {
 
     private func tryToCreateExpense() {
         viewModel.performModelCreation(editedExpenseID: expenseToEdit?.id,
-                                       title: expenseTitle.text,
+                                       title: expenseTitleTextField.text,
                                        amount: amountTextField?.text,
                                        selectedPlace: nil,
                                        categoryID: selectedCategory?.id) { [weak self] result in
@@ -281,15 +281,11 @@ class ExpenseCreationViewController: UIViewController {
     
     private func observeResponderChanges() {
         amountTextField.addTarget(self, action: #selector(handleObserverChange(responder:)), for: .editingDidBegin)
-        expenseTitle.addTarget(self, action: #selector(handleObserverChange(responder:)), for: .editingDidBegin)
+        expenseTitleTextField.addTarget(self, action: #selector(handleObserverChange(responder:)), for: .editingDidBegin)
     }
     
     @objc private func handleObserverChange(responder: UIResponder) {
         self.lastResponder = responder
-        // Tapped on text field while camera is shown
-        if expandedCameraHeightConstraint.isActive {
-            collapseCamera()
-        }
     }
     
     private func configureDismissalView() {
@@ -335,7 +331,6 @@ class ExpenseCreationViewController: UIViewController {
         amountTextFieldContainerView.layer.borderColor = UIColor.clear.cgColor
         currencyPlaceholderLabel.text = viewModel.currencySymbol
     }
-    
     
     private func configureSegmentedControl() {
         segmentedControl.removeAllSegments()
@@ -475,7 +470,7 @@ extension ExpenseCreationViewController: UITextFieldDelegate {
             return checkAmountLength(additionString: string)
         }
         
-        if textField == expenseTitle {
+        if textField == expenseTitleTextField {
             return checkTitleLength(additionString: string)
         }
         
@@ -487,7 +482,7 @@ extension ExpenseCreationViewController: UITextFieldDelegate {
     }
     
     private func checkTitleLength(additionString: String) -> Bool {
-        return check(textField: expenseTitle, maxLength: 25, additionString: additionString)
+        return check(textField: expenseTitleTextField, maxLength: 25, additionString: additionString)
     }
     
     private func check(textField: UITextField, maxLength: Int, additionString: String) -> Bool {
