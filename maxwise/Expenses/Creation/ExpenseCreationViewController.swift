@@ -194,11 +194,12 @@ class ExpenseCreationViewController: UIViewController {
         
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        let defaultYOffset: CGFloat = 16
         
         if notification.name == UIResponder.keyboardWillHideNotification {
-            safeAreaBottomConstraint.constant = 16
+            safeAreaBottomConstraint.constant = defaultYOffset
         } else {
-            safeAreaBottomConstraint.constant = keyboardViewEndFrame.height
+            safeAreaBottomConstraint.constant = defaultYOffset + keyboardViewEndFrame.height
         }
     }
     
