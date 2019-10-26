@@ -34,7 +34,6 @@ class ExpenseSelectedCategoryViewController: UIViewController {
     
     @objc private func tap() {
         let selectionVC = ExpenseCategorySelectionViewController(categories: categories) { [weak self] selectedCategory in
-            self?.dismiss(animated: true, completion: nil)
             self?.configure(for: selectedCategory)
             self?.selectedCategory(selectedCategory)
         }

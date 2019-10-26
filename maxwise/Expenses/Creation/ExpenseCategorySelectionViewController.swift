@@ -69,6 +69,7 @@ extension ExpenseCategorySelectionViewController: UITableViewDelegate {
         let selectedCategory = categories[indexPath.row]
         categorySelected(selectedCategory)
         selectionFeedback.selectionChanged()
+        dismiss(animated: true, completion: nil)
     }
     
 }
