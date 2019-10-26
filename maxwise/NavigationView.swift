@@ -4,7 +4,7 @@ class NavigationView: UIView {
     
     @IBOutlet private weak var centeredButton: UIButton!
 
-    var buttonTapped: EmptyCallback?
+    var buttonTapped: (() -> ())?
     
     init() {
         super.init(frame: .zero)

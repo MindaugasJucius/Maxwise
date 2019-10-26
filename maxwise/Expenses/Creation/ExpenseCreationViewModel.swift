@@ -36,17 +36,12 @@ class ExpenseCreationViewModel {
         return formatter
     }()
     
-    let nearbyPlaces: [NearbyPlace]
-    
     var categories: [ExpenseCategory] {
         return expenseCategoryModelController.storedCategories()
     }
     
     var percentages: [ExpenseDTO.SharePercentage] = [.full, .half]
-    
-    init(nearbyPlaces: [NearbyPlace]) {
-        self.nearbyPlaces = nearbyPlaces
-    }
+
     
     func formatRecognized(input: String) -> String? {
         guard let number = inputToDoubleFormatter.number(from: input),
@@ -60,14 +55,13 @@ class ExpenseCreationViewModel {
                               amount: String?,
                               selectedPlace: NearbyPlace?,
                               categoryID: String?,
-                              sharePercentage: ExpenseDTO.SharePercentage,
                               result: (ValidationResult<Void>) -> ()) {
     
         let validationResult = validate(title: title,
                                         amount: amount,
                                         selectedPlace: selectedPlace,
                                         categoryID: categoryID,
-                                        sharePercentage: sharePercentage)
+                                        sharePercentage: .full)
         
         switch validationResult {
         case .failure(let issues):

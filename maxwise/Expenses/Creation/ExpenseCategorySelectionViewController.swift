@@ -42,7 +42,7 @@ class ExpenseCategorySelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Categories"
+        title = "Select a category"
         view.backgroundColor = UIColor.init(named: "background")
         
         dataSource.defaultRowAnimation = .fade

@@ -103,7 +103,6 @@ class ExpenseCreationViewController: UIViewController {
     private var selectedCategory: ExpenseCategory?
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
-    private let nearbyPlaces: [NearbyPlace]
     private let viewModel: ExpenseCreationViewModel
     private let transitionDelegate = ModalBlurTransitionController()
     
@@ -114,7 +113,6 @@ class ExpenseCreationViewController: UIViewController {
     }
 
     init(viewModel: ExpenseCreationViewModel) {
-        self.nearbyPlaces = viewModel.nearbyPlaces
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overCurrentContext
@@ -215,13 +213,11 @@ class ExpenseCreationViewController: UIViewController {
     }
 
     private func tryToCreateExpense() {
-        let selectedShare = viewModel.percentages[segmentedControl.selectedSegmentIndex]
 
         viewModel.performModelCreation(title: expenseTitle.text,
                                        amount: amountTextField?.text,
                                        selectedPlace: nil,
-                                       categoryID: selectedCategory?.id,
-                                       sharePercentage: selectedShare) { [weak self] result in
+                                       categoryID: selectedCategory?.id) { [weak self] result in
             switch result {
             case .success(_):
                 notificationFeedback.notificationOccurred(.success)

@@ -10,7 +10,6 @@ target 'maxwise' do
   use_frameworks!
 
   pod 'TesseractOCRiOS'
-  pod 'FoursquareAPIClient'
   pod 'Charts'
   pod 'UPCarouselFlowLayout'
   shared_pods

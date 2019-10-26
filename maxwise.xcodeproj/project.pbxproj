@@ -80,7 +80,6 @@
 		5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F86C57122108C9B005CFF9E /* ExpensesViewModel.swift */; };
 		5F9DE37E2218A135008CCB94 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9DE37D2218A135008CCB94 /* CameraViewController.xib */; };
 		5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38122195D7A008CCB94 /* ExpensesParentViewController.swift */; };
-		5F9E13C5222C33F100805878 /* LocationAccessNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C4222C33F100805878 /* LocationAccessNotifier.swift */; };
 		5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */; };
 		5FA3DBB522C8C531009FD189 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA3DBB422C8C531009FD189 /* UIViewController+Extensions.swift */; };
 		5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */; };
@@ -100,7 +99,6 @@
 		5FD95D8922D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */; };
 		5FF9E8CE227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */; };
 		5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */; };
-		5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */; };
 		5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C1C2207330B00DDFBE5 /* CoreImage.framework */; };
 		5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFD2C202207353B00DDFBE5 /* libc++.tbd */; };
 		B685B79A0FC3283C33E7E112 /* Pods_ExpenseKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2CA953CEB6826F7E039748 /* Pods_ExpenseKitTests.framework */; };
@@ -285,7 +283,6 @@
 		5F9DE38122195D7A008CCB94 /* ExpensesParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesParentViewController.swift; sourceTree = "<group>"; };
 		5F9DE38D2219BF88008CCB94 /* UserModelControllerObservationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelControllerObservationTests.swift; sourceTree = "<group>"; };
 		5F9DE38F2219C282008CCB94 /* TestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
-		5F9E13C4222C33F100805878 /* LocationAccessNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAccessNotifier.swift; sourceTree = "<group>"; };
 		5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationViewModel.swift; sourceTree = "<group>"; };
 		5FA3DBB422C8C531009FD189 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		5FAB19E0229F080500930A7F /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
@@ -301,7 +298,6 @@
 		5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationIntentHandler.swift; sourceTree = "<group>"; };
 		5FF9E8CD227F3BBB00AD4F3E /* ExpenseCreationParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationParentViewController.swift; sourceTree = "<group>"; };
 		5FFACEB92219D07A00F087E4 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlacesProvider.swift; sourceTree = "<group>"; };
 		5FFACEC02221889A00F087E4 /* NearbyPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPlace.swift; sourceTree = "<group>"; };
 		5FFACEC22222AD4200F087E4 /* FoursquareVenueSearchParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareVenueSearchParseTests.swift; sourceTree = "<group>"; };
 		5FFD2C182207321800DDFBE5 /* TesseractOCR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TesseractOCR.framework; path = Carthage/Build/iOS/Static/TesseractOCR.framework; sourceTree = "<group>"; };
@@ -534,7 +530,6 @@
 				5F20E0AF2210239400BAECF6 /* Model */,
 				5FFACEB82219CF8500F087E4 /* Camera */,
 				5F470BDB220C6715002CD12D /* Text Picking */,
-				5FFACEBF2221888500F087E4 /* Nearby Places */,
 				5F20E0BA2210350000BAECF6 /* Expenses */,
 				5F0FC866231BC5020083EBA9 /* Categories */,
 				5F6878762207425400F4FE7C /* tessdata */,
@@ -598,15 +593,6 @@
 				5F9DE37D2218A135008CCB94 /* CameraViewController.xib */,
 			);
 			path = Camera;
-			sourceTree = "<group>";
-		};
-		5FFACEBF2221888500F087E4 /* Nearby Places */ = {
-			isa = PBXGroup;
-			children = (
-				5FFACEBD221DD7C100F087E4 /* NearbyPlacesProvider.swift */,
-				5F9E13C4222C33F100805878 /* LocationAccessNotifier.swift */,
-			);
-			path = "Nearby Places";
 			sourceTree = "<group>";
 		};
 		5FFD2C172207321700DDFBE5 /* Frameworks */ = {
@@ -1121,11 +1107,9 @@
 				5F0FC8762322EEFA0083EBA9 /* BeautifulButton.swift in Sources */,
 				5FD95D8922D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift in Sources */,
 				5FB59211227DE2EF005D5208 /* NavigationView.swift in Sources */,
-				5FFACEBE221DD7C100F087E4 /* NearbyPlacesProvider.swift in Sources */,
 				F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */,
 				5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */,
 				5F240CA1222721A3009A41AE /* ExpenseCreationViewController.swift in Sources */,
-				5F9E13C5222C33F100805878 /* LocationAccessNotifier.swift in Sources */,
 				F4C29ABE2356491F00C32529 /* CategoriesChartsViewModel.swift in Sources */,
 				5F169BDB232CD4BB007666E9 /* ColorCollectionViewCell.swift in Sources */,
 				5F0FC868231BC55B0083EBA9 /* CategoriesParentViewController.swift in Sources */,
