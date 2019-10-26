@@ -245,7 +245,8 @@ class ExpenseCreationViewController: UIViewController {
     }
 
     private func tryToCreateExpense() {
-        viewModel.performModelCreation(title: expenseTitle.text,
+        viewModel.performModelCreation(editedExpenseID: expenseToEdit?.id,
+                                       title: expenseTitle.text,
                                        amount: amountTextField?.text,
                                        selectedPlace: nil,
                                        categoryID: selectedCategory?.id) { [weak self] result in

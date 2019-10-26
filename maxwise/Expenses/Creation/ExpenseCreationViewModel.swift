@@ -61,7 +61,8 @@ class ExpenseCreationViewModel {
         return string
     }
     
-    func performModelCreation(title: String?,
+    func performModelCreation(editedExpenseID: String?,
+                              title: String?,
                               amount: String?,
                               selectedPlace: NearbyPlace?,
                               categoryID: String?,
@@ -77,13 +78,22 @@ class ExpenseCreationViewModel {
         case .failure(let issues):
             result(.failure(issues))
         case .success(let dto):
-            expenseEntryModelController.create(expenseDTO: dto) { creationResult in
+            let completionHandler: (Result<ExpenseEntry, CreationIssue>) -> () = { creationResult in
                 switch creationResult {
                 case .failure(let error):
                     result(.failure([error]))
                 case .success(_):
                     result(.success(()))
                 }
+            }
+            
+            if let editedExpenseID = editedExpenseID {
+                expenseEntryModelController.edit(expenseEntryID: editedExpenseID,
+                                                 expenseDTO: dto,
+                                                 completion: completionHandler)
+            } else {
+                expenseEntryModelController.create(expenseDTO: dto,
+                                                   completion: completionHandler)
             }
         }
     }

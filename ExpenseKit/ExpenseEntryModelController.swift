@@ -68,7 +68,29 @@ public class ExpenseEntryModelController {
         expenseEntry.sharePercentage = expenseDTO.shareAmount.rawValue
         return expenseEntry
     }
-    
+
+    public func edit(expenseEntryID: String,
+                      expenseDTO: ExpenseDTO,
+                      completion: (Result<ExpenseEntry, CreationIssue>) -> ()) {
+        guard let expenseEntry = expenseEntry(fromID: expenseEntryID) else {
+            completion(.failure(.alert("Failed to find expense to edit")))
+            return
+        }
+        
+        do {
+            let realm = try Realm.groupRealm()
+            try realm.write {
+                expenseEntry.amount = expenseDTO.amount
+                expenseEntry.category = expenseDTO.category
+                expenseEntry.title = expenseDTO.title
+                realm.add(expenseEntry, update: .all)
+            }
+            completion(.success(expenseEntry))
+        } catch let error {
+            completion(.failure(.alert(error.localizedDescription)))
+        }
+    }
+
     public func create(expenseDTO: ExpenseDTO,
                        completion: (Result<ExpenseEntry, CreationIssue>) -> ()) {
         let expenseEntry = expense(from: expenseDTO)
