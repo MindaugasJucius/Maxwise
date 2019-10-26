@@ -139,6 +139,8 @@ class CategoriesChartsViewModel {
         dataSet.yValuePosition = .outsideSlice
         dataSet.xValuePosition = .outsideSlice
         dataSet.valueLineColor = .label
+        dataSet.valueLineWidth = 1.5
+        dataSet.valueFont = .systemFont(ofSize: 12, weight: .medium)
         dataSet.drawValuesEnabled = true
         dataSet.valueFormatter = Formatter()
         dataSet.entryLabelColor = .label

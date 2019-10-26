@@ -3,6 +3,8 @@ import Charts
 
 class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell {
 
+    private let selectionFeedback = UISelectionFeedbackGenerator()
+    
     private let xAxisLabelCount = 4 // number of weeks in month
     
     private lazy var currencyFormatter: NumberFormatter = {
@@ -62,6 +64,7 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         lineChart.extraTopOffset = 20
         lineChart.clipDataToContentEnabled = false
         lineChart.layer.masksToBounds = false
+        lineChart.delegate = self
         
         return lineChart
     }()
@@ -111,6 +114,14 @@ extension LineChartCollectionViewCell: IAxisValueFormatter {
             return ""
         }
         return formattedAmount
+    }
+    
+}
+
+extension LineChartCollectionViewCell: ChartViewDelegate {
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        selectionFeedback.selectionChanged()
     }
     
 }

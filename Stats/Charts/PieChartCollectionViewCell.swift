@@ -24,7 +24,7 @@ class PieChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell 
     }
 
     func update(data: ChartData) {
-        pieChartView.animate(xAxisDuration: 0.3, easingOption: .easeInElastic)
         pieChartView.data = data
+        pieChartView.animate(yAxisDuration: 0.3, easingOption: .easeInSine)
     }
 }
