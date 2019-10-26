@@ -89,12 +89,22 @@ class CategoriesListViewController: UIViewController {
         collectionView.isPagingEnabled = true
         collectionView.allowsSelection = true
 
-        viewModel.updateToSnapshot = { [weak self] snapshot in
+        viewModel.shouldScrollToSection = { [weak self] index in
+            self?.scroll(to: index, animated: true)
+        }
+        
+        viewModel.updateToSnapshot = { [weak self] snapshot, index in
             guard let self = self else {
                 return
             }
+            let firstTimeApplyingSnapshot = self.currentSnapshot == nil
             self.currentSnapshot = snapshot
-            self.dataSource.apply(snapshot)
+            self.dataSource.apply(snapshot, animatingDifferences: !firstTimeApplyingSnapshot) { [weak self] in
+                if let newSelectionIndex = index {
+                    self?.scroll(to: newSelectionIndex, animated: false)
+                }
+            }
+
         }
     }
     
@@ -114,13 +124,13 @@ class CategoriesListViewController: UIViewController {
         animator.startAnimation(afterDelay: 0.2)
     }
     
-    func scroll(to section: Int) {
+    private func scroll(to section: Int, animated: Bool) {
         let xOffset = collectionView.bounds.width * CGFloat(section)
         let visibleRect = CGRect.init(x: xOffset,
                     y: 0,
                     width: collectionView.bounds.width,
                     height: collectionView.bounds.height)
-        collectionView.scrollRectToVisible(visibleRect, animated: true)
+        collectionView.scrollRectToVisible(visibleRect, animated: animated)
         performAnimation()
     }
     

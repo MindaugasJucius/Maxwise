@@ -46,7 +46,7 @@ class CategoriesStatisticsViewModel {
             }
             self?.currentSelectedIndex = selectedSectionIndex
             self?.invokeChartDataChangeForSelectionIndex()
-            self?.shouldUpdateSelection?(selectedSectionIndex)
+            self?.updateDateRangeSelection?(selectedSectionIndex)
         }
     )
 
@@ -57,7 +57,7 @@ class CategoriesStatisticsViewModel {
 
     private var currentStatsData = [(Date, [ExpenseCategoryStatsDTO])]()
     
-    var shouldUpdateSelection: ((Int) -> ())?
+    var updateDateRangeSelection: ((Int) -> ())?
     
     func observeDateRangeSelectionRepresentations(changed: @escaping ([String]) -> ()) {
         expenseModelController.expensesYearsMonths { [weak self] expenses, dates in
@@ -72,17 +72,20 @@ class CategoriesStatisticsViewModel {
             self.currentStatsData = dates.map { date in
                 return (date, self.data(from: expenses, for: date))
             }
-                        
-            self.categoriesListViewModel.updateList(with: self.currentStatsData)
-            
+                                    
             // If there's nothing selected it means that we're loading data initially
             // Pre select the last item
             if self.currentSelectedIndex == nil {
                 let preselectionIndex = dates.count - 1
                 self.currentSelectedIndex = preselectionIndex
-                self.shouldUpdateSelection?(preselectionIndex)
+                self.updateDateRangeSelection?(preselectionIndex)
             }
-
+            
+            self.categoriesListViewModel.updateList(
+                with: self.currentStatsData,
+                changeSelectionToIndex: self.currentSelectedIndex
+            )
+            
             self.invokeChartDataChangeForSelectionIndex()
         }
     }
@@ -106,6 +109,12 @@ class CategoriesStatisticsViewModel {
             categoryExpensesInDate[category] = expenses
         }
         return categoryExpensesInDate
+    }
+
+    // Cia kai date range pascrollini o nori atnaujint chartus :)
+    func invokeChartDataChange(for selectionIndex: Int) {
+        currentSelectedIndex = selectionIndex
+        invokeChartDataChangeForSelectionIndex()
     }
     
     private func invokeChartDataChangeForSelectionIndex() {

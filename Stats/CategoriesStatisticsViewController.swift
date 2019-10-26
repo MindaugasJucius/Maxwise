@@ -49,7 +49,7 @@ class CategoriesStatisticsViewController: UIViewController {
         categoriesListViewController.view.translatesAutoresizingMaskIntoConstraints = false
         categoriesListViewController.view.fillInSuperview()
 
-        viewModel.shouldUpdateSelection = { [weak self] indexToSelect in
+        viewModel.updateDateRangeSelection = { [weak self] indexToSelect in
             self?.dateRangeSelectionView.selectItem(at: indexToSelect)
         }
         
@@ -57,16 +57,9 @@ class CategoriesStatisticsViewController: UIViewController {
             self?.dateRangeSelectionView.items = representations
         }
                 
-//        viewModel.selectedCategoryChartData = { [weak self] data in
-//            self?.chartsViewController.animateChart(to: data)
-//        }
-        
         dateRangeSelectionView.hasChangedSelectionToItemAtIndex = { [weak self] index in
-//            guard let chartData = self?.viewModel.chartDataForSelectedCategory(at: index) else {
-//                return
-//            }
-//            self?.chartsViewController.animateChart(to: chartData)
-            self?.categoriesListViewController.scroll(to: index)
+            self?.viewModel.invokeChartDataChange(for: index)
+            self?.viewModel.categoriesListViewModel.shouldScrollToSection?(index)
         }
     }
         

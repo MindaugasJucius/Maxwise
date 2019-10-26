@@ -60,16 +60,10 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         
         return lineChart
     }()
-    
-    var marker: LineChartMarkerView? {
-        let marker = LineChartMarkerView.viewFromXib()
-        marker?.chartView = lineChart
-        return marker
-    }
         
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if previousTraitCollection?.hasDifferentColorAppearance(comparedTo: traitCollection) == true {
-            lineChart.marker = marker
+            lineChart.marker = createMarker()
         }
         
         super.traitCollectionDidChange(previousTraitCollection)
@@ -78,9 +72,8 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
     override func awakeFromNib() {
         super.awakeFromNib()
         lineChart.translatesAutoresizingMaskIntoConstraints = false
-        lineChart.marker = marker
-        
         addSubview(lineChart)
+        lineChart.marker = createMarker()
         lineChart.fillInSuperview()
     }
 
@@ -90,11 +83,17 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         } else {
             lineChart.xAxis.setLabelCount(xAxisLabelCount, force: true)
         }
-
+        lineChart.highlightValue(nil, callDelegate: false)
         lineChart.leftAxis.axisMaximum = data.getYMax() * 1.25
         lineChart.leftAxis.axisMinimum = 0
         lineChart.animate(yAxisDuration: 0.3, easingOption: .easeInOutQuad)
         lineChart.data = data
+    }
+
+    private func createMarker() -> LineChartMarkerView? {
+        let marker = LineChartMarkerView.viewFromXib()
+        marker?.chartView = lineChart
+        return marker
     }
     
 }
