@@ -23,6 +23,13 @@ class ExpenseCreationViewModel {
     }
     
     lazy var currencySymbol = currencyFormatter.currencySymbol
+
+    lazy var currencyFormatterNoSymbol: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = ""
+        return formatter
+    }()
     
     private lazy var currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -42,6 +49,10 @@ class ExpenseCreationViewModel {
     
     var percentages: [ExpenseDTO.SharePercentage] = [.full, .half]
 
+    func entry(from id: String) -> ExpenseEntry? {
+        return expenseEntryModelController.expenseEntry(fromID: id)
+    }
+    
     func formatRecognized(input: String) -> String? {
         guard let number = inputToDoubleFormatter.number(from: input),
             let string = inputToDoubleFormatter.string(from: number) else {

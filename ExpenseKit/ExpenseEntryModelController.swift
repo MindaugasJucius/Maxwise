@@ -20,6 +20,10 @@ public class ExpenseEntryModelController {
         
     }
     
+    /// Create multiple expenses for debugging purpose
+    /// - Parameter amount: range of created expense amount
+    /// - Parameter monthRange: expense creation date month range
+    /// - Parameter dayRange: expense creation date day range
     public func createRandomExpenses(amount: ClosedRange<Int>, monthRange: ClosedRange<Int>, dayRange: ClosedRange<Int>) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy MM dd"
@@ -76,7 +80,7 @@ public class ExpenseEntryModelController {
         do {
             let realm = try Realm.groupRealm()
             try realm.write {
-                realm.add(expenseEntry)
+                realm.add(expenseEntry, update: .all)
                 expenseEntry.owners.forEach {
                     $0.entries.append(expenseEntry)
                 }
@@ -85,6 +89,15 @@ public class ExpenseEntryModelController {
             completion(.success(expenseEntry))
         } catch let error {
             completion(.failure(.alert(error.localizedDescription)))
+        }
+    }
+    
+    public func expenseEntry(fromID id: String) -> ExpenseEntry? {
+        do {
+            let realm = try Realm.groupRealm()
+            return realm.object(ofType: ExpenseEntry.self, forPrimaryKey: id)
+        } catch {
+            return nil
         }
     }
     

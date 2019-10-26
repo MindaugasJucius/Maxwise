@@ -8,21 +8,8 @@ class ExpenseCreationInputView: UIInputView {
         button.updateAppearances(backgroundColor: .confirmationGreen, textColor: .confirmationGreen)
         let font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.titleLabel?.font = font
-        button.setTitle("Add expense", for: .normal)
         button.tintColor = .white
-        
-        let image = UIImage(systemName: "checkmark.circle.fill",
-                            withConfiguration: UIImage.SymbolConfiguration(font: font))
-        
-        button.setImage(image, for: .normal)
-        button.adjustsImageWhenHighlighted = false
-        
         button.addTarget(self, action: #selector(createAction), for: .touchUpInside)
-
-        button.imageEdgeInsets = UIEdgeInsets(top: 0,
-                                              left: 0,
-                                              bottom: 0,
-                                              right: 8)
         return button
     }()
 
@@ -31,13 +18,16 @@ class ExpenseCreationInputView: UIInputView {
     private var closeButtonAction: (() -> ())?
     private var createButtonAction: (() -> ())?
     
-    static func create(closeButton: @escaping () -> (),
+    static func create(title: String,
+                       closeButton: @escaping () -> (),
                        createButton: @escaping () -> ()) -> ExpenseCreationInputView? {
         let nibName = String(describing: ExpenseCreationInputView.self)
         let nib = Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)
         let inputView = nib?.first as? ExpenseCreationInputView
         inputView?.createButtonAction = createButton
         inputView?.closeButtonAction = closeButton
+        inputView?.createButton.setTitle(title, for: .normal)
+        
         return inputView
     }
     

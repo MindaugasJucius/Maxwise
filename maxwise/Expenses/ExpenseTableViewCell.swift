@@ -23,7 +23,7 @@ class ExpenseTableViewCell: UITableViewCell {
         amountLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         amountLabel.textColor = .tertiaryLabel
         
-        selectionStyle = .none
+        selectionStyle = .blue
         accessoryType = .disclosureIndicator
         separatorInset = .zero
     }

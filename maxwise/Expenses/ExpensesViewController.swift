@@ -81,6 +81,7 @@ class ExpensesViewController: UIViewController {
         tableView.dataSource = dataSource
         dataSource.defaultRowAnimation = .fade
 
+        tableView.allowsSelection = true
         tableView.delegate = self
         tableView.estimatedRowHeight = 67
         tableView.estimatedSectionHeaderHeight = 60
@@ -127,5 +128,21 @@ extension ExpensesViewController: UITableViewDelegate {
         }
         action.image = UIImage.init(systemName: "trash")
         return UISwipeActionsConfiguration.init(actions: [action])
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let expenseCreationViewModel = ExpenseCreationViewModel()
+        
+        guard let expenseDTO = dataSource.itemIdentifier(for: indexPath),
+            let expenseToEdit = expenseCreationViewModel.entry(from: expenseDTO.id) else {
+            return
+        }
+
+        let expenseCreationViewController = ExpenseCreationViewController.init(
+            viewModel: expenseCreationViewModel,
+            expenseToEdit: expenseToEdit
+        )
+        
+        present(expenseCreationViewController, animated: true, completion: nil)
     }
 }

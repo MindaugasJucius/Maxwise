@@ -31,17 +31,7 @@ class ExpenseCreationViewController: UIViewController {
     }()
     @IBOutlet private weak var resetToCameraButtonContainer: VibrantContentView!
     
-    lazy var creationInputView: ExpenseCreationInputView? = {
-        let inputView = ExpenseCreationInputView.create(
-            closeButton: { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
-            },
-            createButton: { [weak self] in
-                self?.tryToCreateExpense()
-            }
-        )
-        return inputView
-    }()
+    private var creationInputView: ExpenseCreationInputView?
     
     private lazy var cameraContainerBlurView: UIView! = {
         let blurView = BlurView()
@@ -108,6 +98,7 @@ class ExpenseCreationViewController: UIViewController {
     
     private lazy var cameraViewController = CameraViewController(captureDelegate: self)
     
+    private var expenseToEdit: ExpenseEntry?
     private var categorySelectedController: ExpenseSelectedCategoryViewController?
     
     init(viewModel: ExpenseCreationViewModel) {
@@ -127,6 +118,7 @@ class ExpenseCreationViewController: UIViewController {
     
     convenience init(viewModel: ExpenseCreationViewModel, expenseToEdit: ExpenseEntry) {
         self.init(viewModel: viewModel)
+        self.expenseToEdit = expenseToEdit
         // Can't save an expense without a category
         categorySelectedController = createCategorySelectionController(
             preselectedCategory: expenseToEdit.category!
@@ -150,6 +142,18 @@ class ExpenseCreationViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
+        let creationButtonTitle: String
+        
+        if let expenseToEdit = expenseToEdit {
+            expenseTitle.text = expenseToEdit.title
+            amountTextField.text = viewModel.currencyFormatterNoSymbol.string(
+                from: NSNumber.init(value: expenseToEdit.amount)
+            )
+            creationButtonTitle = "Edit expense"
+        } else {
+            creationButtonTitle = "Add expense"
+        }
+        
         expenseTitle.placeholder = "Enter a description"
         expenseTitle.backgroundColor = .systemBackground
         expenseTitle.textColor = .label
@@ -161,10 +165,7 @@ class ExpenseCreationViewController: UIViewController {
         expenseInfoContainerView.backgroundColor = .systemBackground
         expenseInfoContainerView.isUserInteractionEnabled = true
         
-        createInputViewContainer.addSubview(creationInputView!)
-        creationInputView?.translatesAutoresizingMaskIntoConstraints = false
-        creationInputView?.fillInSuperview()
-
+        configureInputView(title: creationButtonTitle)
         configureAmountTextField()
         configureCameraContainerLayer()
         configureSegmentedControl()
@@ -244,7 +245,6 @@ class ExpenseCreationViewController: UIViewController {
     }
 
     private func tryToCreateExpense() {
-
         viewModel.performModelCreation(title: expenseTitle.text,
                                        amount: amountTextField?.text,
                                        selectedPlace: nil,
@@ -298,6 +298,27 @@ class ExpenseCreationViewController: UIViewController {
     
     @objc private func dismissVC() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func configureInputView(title: String) {
+        let maybeInputView = ExpenseCreationInputView.create(
+            title: title,
+            closeButton: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            },
+            createButton: { [weak self] in
+                self?.tryToCreateExpense()
+            }
+        )
+        
+        guard let inputView = maybeInputView else {
+            return
+        }
+        
+        createInputViewContainer.addSubview(inputView)
+        inputView.translatesAutoresizingMaskIntoConstraints = false
+        inputView.fillInSuperview()
+        creationInputView = inputView
     }
     
     private func configureAmountTextField() {
