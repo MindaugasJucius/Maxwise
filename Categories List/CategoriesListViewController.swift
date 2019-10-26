@@ -11,6 +11,7 @@ class CategoriesListViewController: UIViewController {
     
     private let choseToDeleteCategory: (String) -> ()
     private let choseToEditCategory: (String) -> ()
+    private let choseToViewExpensesForCategory: (ExpenseCategoryStatsDTO, Date) -> ()
 
     private var currentSnapshot: CategoriesListViewModel.CategoryListSnapshot?
     
@@ -66,9 +67,11 @@ class CategoriesListViewController: UIViewController {
     )
     
     init(viewModel: CategoriesListViewModel,
+         choseToViewExpensesForCategory: @escaping (ExpenseCategoryStatsDTO, Date) -> (),
          choseToEditCategory: @escaping (String) -> (),
          choseToDeleteCategory: @escaping (String) -> ()) {
         self.viewModel = viewModel
+        self.choseToViewExpensesForCategory = choseToViewExpensesForCategory
         self.choseToDeleteCategory = choseToDeleteCategory
         self.choseToEditCategory = choseToEditCategory
         super.init(nibName: nil, bundle: nil)
@@ -143,12 +146,8 @@ extension CategoriesListViewController: UICollectionViewDelegate {
             let sectionIdentifier = currentSnapshot?.sectionIdentifier(containingItem: categoryStatsDTO) else {
             return
         }
-        
-        let viewModel = HardcodedExpensesViewModel.init(categoryID: categoryStatsDTO.categoryID,
-                                                        date: sectionIdentifier)
-        let expensesVC = ExpensesViewController(viewModel: viewModel)
-        expensesVC.title = categoryStatsDTO.categoryTitle
-        show(expensesVC, sender: self)
+                
+        choseToViewExpensesForCategory(categoryStatsDTO, sectionIdentifier)
     }
     
     

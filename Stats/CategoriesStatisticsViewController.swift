@@ -6,26 +6,25 @@ class CategoriesStatisticsViewController: UIViewController {
     @IBOutlet private weak var chartsControllerContainer: UIView!
     @IBOutlet private weak var dateRangeSelectionView: CenteredTextSelectionView!
     @IBOutlet private weak var categoriesListContainer: UIView!
-
-    private let choseToDeleteCategory: (String) -> ()
-    private let choseToEditCategory: (String) -> ()
-
-    private lazy var categoriesListViewController = CategoriesListViewController.init(
-        viewModel: viewModel.categoriesListViewModel,
-        choseToEditCategory: choseToEditCategory,
-        choseToDeleteCategory: choseToDeleteCategory
-    )
-
+    
+    private let categoriesListViewController: CategoriesListViewController
+    
     private lazy var chartsViewController = CategoriesChartsViewController(
         viewModel: viewModel.categoriesChartsViewModel
     )
     
-    private let viewModel = CategoriesStatisticsViewModel()
+    private let viewModel: CategoriesStatisticsViewModel
         
-    init(choseToEditCategory: @escaping (String) -> (),
+    init(choseToViewExpensesForCategory: @escaping (ExpenseCategoryStatsDTO, Date) -> (),
+         choseToEditCategory: @escaping (String) -> (),
          choseToDeleteCategory: @escaping (String) -> ()) {
-        self.choseToDeleteCategory = choseToDeleteCategory
-        self.choseToEditCategory = choseToEditCategory
+        self.viewModel = CategoriesStatisticsViewModel()
+        self.categoriesListViewController = CategoriesListViewController(
+            viewModel: self.viewModel.categoriesListViewModel,
+            choseToViewExpensesForCategory: choseToViewExpensesForCategory,
+            choseToEditCategory: choseToEditCategory,
+            choseToDeleteCategory: choseToDeleteCategory
+        )
         super.init(nibName: nil, bundle: nil)
     }
     
