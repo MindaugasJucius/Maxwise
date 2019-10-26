@@ -19,7 +19,7 @@
                 <outlet property="dismissalView" destination="asV-Py-hZe" id="Tnq-zH-iR0"/>
                 <outlet property="expandedCameraHeightConstraint" destination="5JY-rw-nNn" id="Fof-uC-Zhp"/>
                 <outlet property="expenseInfoContainerView" destination="a5I-kZ-cgF" id="V1I-Cf-zJC"/>
-                <outlet property="expenseTitle" destination="GBs-TY-1Co" id="szP-1W-UIx"/>
+                <outlet property="expenseTitleTextField" destination="GBs-TY-1Co" id="szP-1W-UIx"/>
                 <outlet property="initialCameraHeightConstraint" destination="dfx-br-WUA" id="fEz-IU-aTD"/>
                 <outlet property="resetToCameraButtonContainer" destination="G8e-iZ-hv0" id="6qk-cc-wSS"/>
                 <outlet property="safeAreaBottomConstraint" destination="YY0-QI-Dz9" id="s2s-ge-eRu"/>

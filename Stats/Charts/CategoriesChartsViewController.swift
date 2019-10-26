@@ -10,6 +10,8 @@ class CategoriesChartsViewController: UIViewController {
     private var currentlyVisibleChart: ChartViewBase?
     private var chartDatum: [ChartData] = []
 
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    
     private lazy var layout: UICollectionViewCompositionalLayout = {
         let layout = UICollectionViewCompositionalLayout { (section, environment) -> NSCollectionLayoutSection? in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
@@ -34,6 +36,15 @@ class CategoriesChartsViewController: UIViewController {
         case line
         case pie
 
+        var segmentTitle: String {
+            switch self {
+            case .line:
+                return "Line Chart"
+            case .pie:
+                return "Pie Chart"
+            }
+        }
+        
         var cellType: UICollectionViewCell.Type {
             switch self {
             case .line:
@@ -56,6 +67,8 @@ class CategoriesChartsViewController: UIViewController {
     @IBOutlet weak var chartsCollectionView: UICollectionView!
     
     private let viewModel: CategoriesChartsViewModel
+    
+    private let chartModel: [Charts] = [.line, .pie]
     
     init(viewModel: CategoriesChartsViewModel) {
         self.viewModel = viewModel
@@ -80,6 +93,13 @@ class CategoriesChartsViewController: UIViewController {
             self?.chartDatum = chartDatum
             self?.chartsCollectionView.reloadData()
         }
+        
+        segmentedControl.removeAllSegments()
+        chartModel.enumerated().forEach { index, chartType in
+            segmentedControl.insertSegment(withTitle: chartType.segmentTitle, at: index, animated: true)
+        }
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
+        segmentedControl.selectedSegmentIndex = 0
     }
     
     private func register(cellType: UICollectionViewCell.Type) {
@@ -87,6 +107,14 @@ class CategoriesChartsViewController: UIViewController {
         chartsCollectionView.register(
             nib,
             forCellWithReuseIdentifier: cellType.nibName
+        )
+    }
+    
+    @objc private func segmentedControlValueChanged() {
+        chartsCollectionView.scrollToItem(
+            at: .init(item: segmentedControl.selectedSegmentIndex, section: 0),
+            at: .centeredHorizontally,
+            animated: true
         )
     }
 
@@ -99,13 +127,11 @@ extension CategoriesChartsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Charts.allCases.count
+        return chartModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let chartType = Charts.init(rawValue: indexPath.row) else {
-            return UICollectionViewCell()
-        }
+        let chartType = chartModel[indexPath.row]
 
         guard let chartCell = collectionView.dequeueReusableCell(withReuseIdentifier: chartType.cellType.nibName,
                                                                  for: indexPath) as? ChartCollectionViewCell else {
