@@ -108,15 +108,29 @@ class ExpenseCreationViewController: UIViewController {
     
     private lazy var cameraViewController = CameraViewController(captureDelegate: self)
     
-    private lazy var categorySelectedController = ExpenseSelectedCategoryViewController(categories: viewModel.categories) { [weak self] selectedCategory in
-        self?.handleCategorySelection(category: selectedCategory)
-    }
-
+    private var categorySelectedController: ExpenseSelectedCategoryViewController?
+    
     init(viewModel: ExpenseCreationViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overCurrentContext
         transitioningDelegate = transitionDelegate
+        
+        guard let preselectedCategoryID = ExpenseCategoryModelController.preselectedCategoryID,
+            let category = viewModel.categories.filter ({ $0.id == preselectedCategoryID }).first else {
+                print("failed to find preselected category")
+                return
+        }
+        
+        categorySelectedController = createCategorySelectionController(preselectedCategory: category)
+    }
+    
+    convenience init(viewModel: ExpenseCreationViewModel, expenseToEdit: ExpenseEntry) {
+        self.init(viewModel: viewModel)
+        // Can't save an expense without a category
+        categorySelectedController = createCategorySelectionController(
+            preselectedCategory: expenseToEdit.category!
+        )
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -187,7 +201,23 @@ class ExpenseCreationViewController: UIViewController {
         }
     }
     
+    private func createCategorySelectionController(preselectedCategory: ExpenseCategory) -> ExpenseSelectedCategoryViewController {
+        
+        let categorySelectedController = ExpenseSelectedCategoryViewController(
+            categories: viewModel.categories,
+            categoryToPreselect: preselectedCategory,
+            hasChangedSelectedCategory: { [weak self] selectedCategory in
+            self?.handleCategorySelection(category: selectedCategory)
+        })
+
+        return categorySelectedController
+    }
+    
     private func addCategorySelectionController() {
+        guard let categorySelectedController = categorySelectedController else {
+            return
+        }
+        
         addChild(categorySelectedController)
         categorySelectionContainerView.addSubview(categorySelectedController.view)
         categorySelectedController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -204,6 +234,7 @@ class ExpenseCreationViewController: UIViewController {
     }
     
     private func handleCategorySelection(category: ExpenseCategory) {
+        ExpenseCategoryModelController.preselectedCategoryID = category.id
         expenseTitle.placeholder = category.title.capitalized
         selectedCategory = category
         guard let color = category.color?.uiColor else {
@@ -236,7 +267,7 @@ class ExpenseCreationViewController: UIViewController {
             case .noAmount:
                 amountTextFieldContainerView.layer.borderColor = UIColor.red.cgColor
             case .noCategory:
-                categorySelectedController.categoryRepresentationView.update(for: .red)
+                categorySelectedController?.categoryRepresentationView.update(for: .red)
             case .alert(let message):
                 showAlert(for: message)
             }

@@ -42,7 +42,6 @@ class ExpenseCreationViewModel {
     
     var percentages: [ExpenseDTO.SharePercentage] = [.full, .half]
 
-    
     func formatRecognized(input: String) -> String? {
         guard let number = inputToDoubleFormatter.number(from: input),
             let string = inputToDoubleFormatter.string(from: number) else {

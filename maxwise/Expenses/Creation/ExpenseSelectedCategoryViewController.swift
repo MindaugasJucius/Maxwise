@@ -5,12 +5,16 @@ class ExpenseSelectedCategoryViewController: UIViewController {
     
     private let categories: [ExpenseCategory]
     private let selectedCategory: (ExpenseCategory) -> ()
+    private let preselectedCategory: ExpenseCategory
     
     @IBOutlet weak var categoryRepresentationView: CategoryRepresentationView!
     
-    init(categories: [ExpenseCategory], selectedCategory: @escaping (ExpenseCategory) -> ()) {
+    init(categories: [ExpenseCategory],
+         categoryToPreselect: ExpenseCategory,
+         hasChangedSelectedCategory: @escaping (ExpenseCategory) -> ()) {
         self.categories = categories
-        self.selectedCategory = selectedCategory
+        self.preselectedCategory = categoryToPreselect
+        self.selectedCategory = hasChangedSelectedCategory
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -24,13 +28,8 @@ class ExpenseSelectedCategoryViewController: UIViewController {
         categoryRepresentationView.addGestureRecognizer(tapGesture)
         categoryRepresentationView.emojiTextField.isEnabled = false
         
-        guard let preselectedCategoryID = ExpenseCategoryModelController.preselectedCategoryID,
-            let category = categories.filter ({ $0.id == preselectedCategoryID }).first else {
-                print("failed to find preselected category")
-                return
-        }
-        configure(for: category)
-        selectedCategory(category)
+        configure(for: preselectedCategory)
+        selectedCategory(preselectedCategory)
     }
     
     @objc private func tap() {
@@ -38,7 +37,6 @@ class ExpenseSelectedCategoryViewController: UIViewController {
             self?.dismiss(animated: true, completion: nil)
             self?.configure(for: selectedCategory)
             self?.selectedCategory(selectedCategory)
-            ExpenseCategoryModelController.preselectedCategoryID = selectedCategory.id
         }
         
         let navigationController = UINavigationController(rootViewController: selectionVC)
