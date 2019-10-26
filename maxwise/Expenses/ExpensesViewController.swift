@@ -144,5 +144,6 @@ extension ExpensesViewController: UITableViewDelegate {
         )
         
         present(expenseCreationViewController, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

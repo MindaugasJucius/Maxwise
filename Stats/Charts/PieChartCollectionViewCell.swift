@@ -5,7 +5,7 @@ class PieChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell 
 
     private lazy var pieChartView: PieChartView = {
         let pieChart = PieChartView()
-        pieChart.noDataText = "Add expenses to see analytics"
+        pieChart.noDataText = "Add expenses to see pie chart"
         pieChart.noDataFont = .systemFont(ofSize: 20)
         pieChart.noDataTextColor = .secondaryLabel
         pieChart.holeColor = UIColor.init(named: "background")

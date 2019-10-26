@@ -16,6 +16,11 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
     
     private lazy var lineChart: LineChartView = {
         let lineChart = LineChartView()
+        
+        lineChart.noDataText = "Add expenses to see line chart"
+        lineChart.noDataFont = .systemFont(ofSize: 20)
+        lineChart.noDataTextColor = .secondaryLabel
+        
         lineChart.pinchZoomEnabled = false
         lineChart.scaleXEnabled = false
         lineChart.scaleYEnabled = false
