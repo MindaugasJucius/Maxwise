@@ -104,7 +104,7 @@ class ExpenseCreationViewController: UIViewController {
     init(viewModel: ExpenseCreationViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        modalPresentationStyle = .overCurrentContext
+        modalPresentationStyle = .overFullScreen
         transitioningDelegate = transitionDelegate
         
         guard let preselectedCategoryID = ExpenseCategoryModelController.preselectedCategoryID,
@@ -194,7 +194,7 @@ class ExpenseCreationViewController: UIViewController {
         
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-        let defaultYOffset: CGFloat = 16
+        let defaultYOffset: CGFloat = 24
         
         if notification.name == UIResponder.keyboardWillHideNotification {
             safeAreaBottomConstraint.constant = defaultYOffset

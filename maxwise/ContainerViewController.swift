@@ -15,7 +15,6 @@ class ContainerViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        definesPresentationContext = true
 
         let categoriesViewController = CategoriesParentViewController()
 
