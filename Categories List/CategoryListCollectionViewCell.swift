@@ -18,6 +18,7 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
     private var representedDTO: ExpenseCategoryStatsDTO?
     private var newWidth: CGFloat = 0
     
+    private var isCurrentlyAnimating = false
     var shouldSetWidthImmediatelly = true
     
     override func awakeFromNib() {
@@ -69,6 +70,10 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
     }
     
     func highlightCell() {
+        guard !isCurrentlyAnimating else {
+            return
+        }
+        
         let animator = UIViewPropertyAnimator.init(duration: 0.3, curve: .easeInOut)
         animator.addAnimations {
             self.contentView.transform = CGAffineTransform.init(scaleX: 1.05, y: 1.05)
@@ -86,10 +91,13 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
                     self.contentView.transform = CGAffineTransform.identity
                     self.cellBackgroundView.backgroundColor = .secondarySystemGroupedBackground
                 },
-                completion: nil
+                completion: { _ in
+                    self.isCurrentlyAnimating = false
+                }
             )
         }
         animator.startAnimation()
+        isCurrentlyAnimating = true
     }
 
     func roundTop() {

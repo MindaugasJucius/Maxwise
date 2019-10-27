@@ -6,7 +6,6 @@ class PieChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell 
     private let selectionFeedback = UISelectionFeedbackGenerator()
 
     var selectedToHightlightCategory: ((String) -> ())?
-    var nothingSelected: (() -> ())?
     
     private lazy var pieChartView: PieChartView = {
         let pieChart = PieChartView()
@@ -44,10 +43,6 @@ extension PieChartCollectionViewCell: ChartViewDelegate {
         }
         selectionFeedback.selectionChanged()
         selectedToHightlightCategory?(formattedEntry.categoryID)
-    }
-
-    func chartValueNothingSelected(_ chartView: ChartViewBase) {
-        nothingSelected?()
     }
     
 }

@@ -71,6 +71,8 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         
         return lineChart
     }()
+    
+    private var timer: Timer?
         
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if previousTraitCollection?.hasDifferentColorAppearance(comparedTo: traitCollection) == true {
@@ -129,7 +131,15 @@ extension LineChartCollectionViewCell: ChartViewDelegate {
             return
         }
         selectionFeedback.selectionChanged()
-        selectedToFilterByDate?(formattedEntry.fullEntryDate)
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(
+            withTimeInterval: 0.25,
+            repeats: false,
+            block: { [weak self] _ in
+                self?.selectedToFilterByDate?(formattedEntry.fullEntryDate)
+                print("selected")
+            }
+        )
     }
 
     func chartValueNothingSelected(_ chartView: ChartViewBase) {
