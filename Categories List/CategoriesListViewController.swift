@@ -90,6 +90,10 @@ class CategoriesListViewController: UIViewController {
         collectionView.isPagingEnabled = true
         collectionView.allowsSelection = true
 
+        viewModel.shouldHighlightCell = { [weak self] dto in
+            self?.highlight(cellDTO: dto)
+        }
+        
         viewModel.shouldScrollToSection = { [weak self] index in
             self?.scroll(to: index, animated: true)
         }
@@ -109,6 +113,27 @@ class CategoriesListViewController: UIViewController {
         }
     }
     
+    private func highlight(cellDTO: ExpenseCategoryStatsDTO) {
+        guard let indexPath = dataSource.indexPath(for: cellDTO) else {
+            return
+        }
+        
+        UIView.animate(
+            withDuration: 0.25,
+            delay: 0,
+            options: .curveEaseInOut,
+            animations: {
+                self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
+            },
+            completion: { _ in
+                guard let categoryListCell = self.collectionView.cellForItem(at: indexPath) as? CategoryListCollectionViewCell else {
+                    return
+                }
+                categoryListCell.highlightCell()
+            }
+        )
+    }
+        
     private func performAnimation() {
         let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut)
 

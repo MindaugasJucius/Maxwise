@@ -56,6 +56,16 @@ class CategoriesStatisticsViewModel {
         },
         choseToResetFilter: { [weak self] in
             self?.resetListViewModelFilter()
+        },
+        choseToHighlightCategory: { [weak self] categoryID in
+            guard let selectedIndex = self?.currentSelectedIndex else {
+                return
+            }
+
+            self?.categoriesListViewModel.highlight(
+                currentSelectedSection: selectedIndex,
+                categoryID: categoryID
+            )
         }
     )
     

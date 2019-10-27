@@ -67,6 +67,30 @@ class CategoryListCollectionViewCell: UICollectionViewCell {
         representedDTO = category
         percentageAmountSpentView.backgroundColor = category.color.withAlphaComponent(0.3)
     }
+    
+    func highlightCell() {
+        let animator = UIViewPropertyAnimator.init(duration: 0.3, curve: .easeInOut)
+        animator.addAnimations {
+            self.contentView.transform = CGAffineTransform.init(scaleX: 1.05, y: 1.05)
+            self.cellBackgroundView.backgroundColor = self.representedDTO?.color
+        }
+        animator.addCompletion { position in
+            guard position == .end else {
+                return
+            }
+            UIViewPropertyAnimator.runningPropertyAnimator(
+                withDuration: 0.3,
+                delay: 0,
+                options: .curveEaseInOut,
+                animations: {
+                    self.contentView.transform = CGAffineTransform.identity
+                    self.cellBackgroundView.backgroundColor = .secondarySystemGroupedBackground
+                },
+                completion: nil
+            )
+        }
+        animator.startAnimation()
+    }
 
     func roundTop() {
         layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]

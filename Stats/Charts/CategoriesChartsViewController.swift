@@ -116,6 +116,7 @@ class CategoriesChartsViewController: UIViewController {
             at: .centeredHorizontally,
             animated: true
         )
+        viewModel.choseToResetFilter()
     }
 
 }
@@ -152,6 +153,8 @@ extension CategoriesChartsViewController: UICollectionViewDataSource {
         if let lineChartCell = chartCell as? LineChartCollectionViewCell {
             lineChartCell.selectedToFilterByDate = viewModel.choseToFilterByDate
             lineChartCell.nothingSelected = viewModel.choseToResetFilter
+        } else if let pieChartCell = chartCell as? PieChartCollectionViewCell {
+            pieChartCell.selectedToHightlightCategory = viewModel.choseToHighlightCategory
         }
         
         return chartCell

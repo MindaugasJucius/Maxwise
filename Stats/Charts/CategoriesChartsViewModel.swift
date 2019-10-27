@@ -8,6 +8,10 @@ struct FormattedLineChartEntry {
     let fullEntryDate: Date
 }
 
+struct FormattedPieChartEntry {
+    let categoryID: String
+}
+
 class CategoriesChartsViewModel {
     
     private let expenseEntryModelController = ExpenseEntryModelController()
@@ -30,11 +34,15 @@ class CategoriesChartsViewModel {
     
     let choseToFilterByDate: (Date) -> ()
     let choseToResetFilter: () -> ()
+
+    let choseToHighlightCategory: (String) -> ()
     
     init(choseToFilterByDate: @escaping (Date) -> (),
-         choseToResetFilter: @escaping () -> ()) {
+         choseToResetFilter: @escaping () -> (),
+         choseToHighlightCategory: @escaping (String) -> ()) {
         self.choseToFilterByDate = choseToFilterByDate
         self.choseToResetFilter = choseToResetFilter
+        self.choseToHighlightCategory = choseToHighlightCategory
     }
     
     func update(for date: Date, categoryStatsDTOs: [ExpenseCategoryStatsDTO]) {
@@ -135,8 +143,9 @@ class CategoriesChartsViewModel {
     }
     
     private func constructPieChartData(from dtos: [ExpenseCategoryStatsDTO]) -> PieChartData {
-        let dataEntries = dtos.map {
-            PieChartDataEntry.init(value: $0.amountSpentDouble, label: $0.categoryTitle)
+        let dataEntries = dtos.map { dto -> PieChartDataEntry in
+            let pieChartEntryData = FormattedPieChartEntry(categoryID: dto.categoryID)
+            return PieChartDataEntry.init(value: dto.amountSpentDouble, label: dto.categoryTitle, data: pieChartEntryData)
         }
 
         let dataSet = PieChartDataSet(entries: dataEntries, label: nil)

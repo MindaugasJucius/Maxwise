@@ -3,6 +3,11 @@ import Charts
 
 class PieChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell {
 
+    private let selectionFeedback = UISelectionFeedbackGenerator()
+
+    var selectedToHightlightCategory: ((String) -> ())?
+    var nothingSelected: (() -> ())?
+    
     private lazy var pieChartView: PieChartView = {
         let pieChart = PieChartView()
         pieChart.noDataText = "Add expenses to see pie chart"
@@ -13,6 +18,7 @@ class PieChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell 
         pieChart.drawEntryLabelsEnabled = false
         pieChart.usePercentValuesEnabled = true
         pieChart.legend.enabled = false
+        pieChart.delegate = self
         return pieChart
     }()
     
@@ -24,7 +30,25 @@ class PieChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell 
     }
 
     func update(data: ChartData) {
+        pieChartView.highlightValue(nil, callDelegate: false)
         pieChartView.data = data
         pieChartView.animate(yAxisDuration: 0.3, easingOption: .easeInSine)
     }
 }
+
+extension PieChartCollectionViewCell: ChartViewDelegate {
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        guard let formattedEntry = entry.data as? FormattedPieChartEntry else {
+            return
+        }
+        selectionFeedback.selectionChanged()
+        selectedToHightlightCategory?(formattedEntry.categoryID)
+    }
+
+    func chartValueNothingSelected(_ chartView: ChartViewBase) {
+        nothingSelected?()
+    }
+    
+}
+
