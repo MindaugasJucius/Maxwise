@@ -98,8 +98,25 @@ class CategoriesChartsViewModel {
 
     private func constructLineChartData(from expenseEntries: [ExpenseEntry]) -> LineChartData {
         let chartEntries = lineChartEntries(from: expenseEntries)
+        
+        let mainDataSet = constructDataSet(from: chartEntries)
 
-        let dataSet = LineChartDataSet(entries: chartEntries.sorted { $0.x < $1.x }, label: nil)
+        let chartData = LineChartData(dataSet: mainDataSet)
+        
+        // To workaround showing one circle lets add a placeholder data set
+        if chartEntries.count == 1 {
+            var emptyDataEntry = [ChartDataEntry.init(x: 0, y: 0, data: nil)]
+            emptyDataEntry.append(contentsOf: chartEntries)
+            let placeholderDataSet = constructDataSet(from: emptyDataEntry)
+            placeholderDataSet.drawCirclesEnabled = false
+            chartData.addDataSet(placeholderDataSet)
+        }
+
+        return chartData
+    }
+
+    private func constructDataSet(from entries: [ChartDataEntry]) -> LineChartDataSet {
+        let dataSet = LineChartDataSet(entries: entries.sorted { $0.x < $1.x }, label: nil)
         dataSet.drawIconsEnabled = false
 
         dataSet.lineWidth = 3
@@ -115,9 +132,9 @@ class CategoriesChartsViewModel {
         dataSet.drawHorizontalHighlightIndicatorEnabled = false
         
         setColor(for: dataSet)
-        return LineChartData(dataSet: dataSet)
+        return dataSet
     }
-
+    
     private func setColor(for dataSet: LineChartDataSet) {
         guard let tintColor = UIColor.tintColor else {
             return

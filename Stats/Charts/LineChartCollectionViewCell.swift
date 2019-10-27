@@ -137,7 +137,6 @@ extension LineChartCollectionViewCell: ChartViewDelegate {
             repeats: false,
             block: { [weak self] _ in
                 self?.selectedToFilterByDate?(formattedEntry.fullEntryDate)
-                print("selected")
             }
         )
     }
