@@ -171,23 +171,31 @@ public class ExpenseEntryModelController {
             updated((entries, dates))
         }
     }
+    
+    public func expenses(in date: Date, with dateComponents: Set<Calendar.Component>? = nil) -> [ExpenseEntry] {
+        let allExpenses = retrieveAllExpenseEntries()
+        return filter(expenses: allExpenses, by: date, with: dateComponents)
+    }
 
     /// Returns expenses created in date matching .year, .month components
     /// - Parameter date: filtering happends based on this value
-    public func filter(expenses: [ExpenseEntry], by date: Date) -> [ExpenseEntry] {
-        let filterYearMonth = Calendar.current.dateComponents(componentsToParseFromDate, from: date)
-        guard let filterMonthIndex = filterYearMonth.month,
-            let filterYear = filterYearMonth.year else {
-            return []
+    public func filter(expenses: [ExpenseEntry], by date: Date, with dateComponents: Set<Calendar.Component>? = nil) -> [ExpenseEntry] {
+        let components = dateComponents ?? componentsToParseFromDate
+        
+        let dateComponentsToFilterBy = Calendar.current.dateComponents(components, from: date)
+
+        var filterComponents: [Calendar.Component: Int?] = [:]
+        components.forEach { component in
+            filterComponents[component] = dateComponentsToFilterBy.value(for: component)
         }
         
         let expensesInDate = expenses.filter { entry in
-            let expenseYearMonth = Calendar.current.dateComponents(componentsToParseFromDate, from: entry.creationDate)
-            guard let expenseMonthIndex = expenseYearMonth.month,
-                let expenseYear = expenseYearMonth.year else {
-                return false
+            let expenseDateWithNecessaryComponents = Calendar.current.dateComponents(components, from: entry.creationDate)
+            
+            let matchingComponents = components.filter { (component) -> Bool in
+                filterComponents[component] == expenseDateWithNecessaryComponents.value(for: component)
             }
-            return expenseMonthIndex == filterMonthIndex && expenseYear == filterYear
+            return matchingComponents.count == components.count
         }
         
         return expensesInDate

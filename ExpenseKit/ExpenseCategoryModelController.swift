@@ -8,6 +8,7 @@ public class ExpenseCategoryModelController {
     private let colorModelController = ColorModelController()
 
     private var expenseCategoryObservationToken: NotificationToken?
+    private var specificExpenseCategoryObservationToken: NotificationToken?
     
     private let defaultCategoriesCreatedKey = "defaultCategoriesCreated"
     private let defaultPreselectedCategoryName = "Food"
@@ -119,13 +120,31 @@ public class ExpenseCategoryModelController {
             }
     }
     
+    public func observeChangesToCategory(with id: String,
+                                         updated: @escaping (ExpenseCategory?) -> ()) {
+        let realm = try? Realm.groupRealm()
+        specificExpenseCategoryObservationToken = realm?.object(ofType: ExpenseCategory.self, forPrimaryKey: id)?
+            .observe { change in
+                switch change {
+                case .change(_):
+                    let updatedCategory = realm?.object(ofType: ExpenseCategory.self, forPrimaryKey: id)
+                    updated(updatedCategory)
+                case .error(let error):
+                    updated(nil)
+                case .deleted:
+                    updated(nil)
+                }
+            }
+    }
+    
     public func category(from intentCategory: IntentCategory) -> ExpenseCategory? {
         return storedCategories().filter { $0.id == intentCategory.identifier }.first
     }
 
-    public func removeCategory(with id: String) {
+    public func removeCategory(with id: String, completion: (Bool) -> ()) {
         guard let expenseCategory = category(from: id) else {
             print("failed to delete category")
+            completion(false)
             return
         }
         let realm = try? Realm.groupRealm()
@@ -138,6 +157,7 @@ public class ExpenseCategoryModelController {
         if id == ExpenseCategoryModelController.preselectedCategoryID {
             ExpenseCategoryModelController.preselectedCategoryID = realm?.objects(ExpenseCategory.self).first?.id
         }
+        completion(true)
     }
     
     public func category(from id: String) -> ExpenseCategory? {
