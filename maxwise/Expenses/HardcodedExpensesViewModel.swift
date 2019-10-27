@@ -9,11 +9,25 @@ class HardcodedExpensesViewModel: ExpensesViewModel {
     let categoryID: String
     let date: Date
 
+    var categoryTitleChanged: ((String) -> ())?
+    
     private var changeOccured: ((GroupedExpenses) -> Void)?
     
     init(categoryID: String, date: Date) {
         self.categoryID = categoryID
         self.date = date
+        super.init()
+        observeCategoryChanges()
+    }
+    
+    private func observeCategoryChanges() {
+        expenseCategoryModelController.observeChangesToCategory(with: categoryID) { [weak self] updatedCategory in
+            guard let category = updatedCategory else {
+                return
+            }
+            self?.fetchAndInvokeChangeHandler()
+            self?.categoryTitleChanged?(category.title)
+        }
     }
     
     override func observeExpenseEntries(changeOccured: @escaping (GroupedExpenses) -> Void) {

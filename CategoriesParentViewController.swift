@@ -8,9 +8,11 @@ class CategoriesParentViewController: UINavigationController {
     private lazy var createCategoryButton: UIButton = {
         let button = UIButton.init(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(presentCreationVC), for: .touchUpInside)
+        button.addTarget(self, action: #selector(performBarButtonAction), for: .touchUpInside)
         return button
     }()
+    
+    private var currentlyViewingExpensesForStatsDTO: ExpenseCategoryStatsDTO?
     
     lazy var statisticsViewController = CategoriesStatisticsViewController.init(
         choseToViewExpensesForCategory: { [weak self] (categoryStatsDTO, sectionIdentifier) in
@@ -18,14 +20,16 @@ class CategoriesParentViewController: UINavigationController {
                                                             date: sectionIdentifier)
             let expensesVC = ExpensesViewController(viewModel: viewModel)
             expensesVC.title = categoryStatsDTO.categoryTitle
+            
+            viewModel.categoryTitleChanged = { categoryTitle in
+                expensesVC.title = categoryTitle
+            }
+
+            self?.currentlyViewingExpensesForStatsDTO = categoryStatsDTO
             self?.pushViewController(expensesVC, animated: true)
         },
         choseToEditCategory: { [weak self] categoryID in
-            guard let category = self?.expenseCategoryModelController.category(from: categoryID) else {
-                print("no category fetched when trying to edit category")
-                return
-            }
-            self?.presentCategoryCreation(for: category)
+            self?.presentCategoryEditing(categoryID: categoryID)
         },
         choseToDeleteCategory: { [weak self] categoryID in
             self?.presentAreYouSure(categoryID: categoryID)
@@ -47,21 +51,61 @@ class CategoriesParentViewController: UINavigationController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    @objc private func presentCreationVC() {
-        presentCategoryCreation(for: ExpenseCategory.init())
-    }
-    
     private func presentCategoryCreation(for category: ExpenseCategory) {
         let creationVC = CategoryCreationViewController(category: category)
         present(creationVC, animated: true, completion: nil)
     }
+    
+    @objc private func performBarButtonAction() {
+        if topViewController is CategoriesStatisticsViewController {
+            presentCategoryCreation(for: ExpenseCategory.init())
+        } else if topViewController is ExpensesViewController {
+            presentCategoryEditActions()
+        }
+    }
+    
+    private func presentCategoryEditActions() {
+        guard let categoryStatsDTO = currentlyViewingExpensesForStatsDTO else {
+            return
+        }
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let editAction = UIAlertAction.init(title: "Edit category", style: .default) { [weak self] action in
+            self?.presentCategoryEditing(categoryID: categoryStatsDTO.categoryID)
+        }
+        
+        let deleteAction = UIAlertAction.init(title: "Remove category", style: .destructive) { [weak self] action in
+            self?.presentAreYouSure(categoryID: categoryStatsDTO.categoryID)
+        }
+        
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(editAction)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
 
+    private func presentCategoryEditing(categoryID: String) {
+        guard let category = expenseCategoryModelController.category(from: categoryID) else {
+            print("no category fetched when trying to edit category")
+            return
+        }
+        
+        presentCategoryCreation(for: category)
+    }
+    
     private func presentAreYouSure(categoryID: String) {
         showAlert(
             title: "Are you sure?",
             message: "Deleting this category will delete it's expenses.",
             ok: { [weak self] _ in
-                self?.expenseCategoryModelController.removeCategory(with: categoryID)
+                self?.expenseCategoryModelController.removeCategory(
+                    with: categoryID,
+                    completion: { deleted in
+                        self?.popToRootViewController(animated: true)
+                    }
+                )
             },
             cancel: { _ in }
         )
