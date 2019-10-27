@@ -3,6 +3,7 @@ import Charts
 
 protocol ChartCollectionViewCell: UICollectionViewCell {
     func update(data: ChartData)
+    func removeSelection()
 }
 
 class CategoriesChartsViewController: UIViewController {
@@ -79,7 +80,6 @@ class CategoriesChartsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         chartsCollectionView.setCollectionViewLayout(layout, animated: false)
@@ -111,6 +111,10 @@ class CategoriesChartsViewController: UIViewController {
     }
     
     @objc private func segmentedControlValueChanged() {
+        chartsCollectionView.visibleCells.forEach {
+            ($0 as? ChartCollectionViewCell)?.removeSelection()
+        }
+        
         chartsCollectionView.scrollToItem(
             at: .init(item: segmentedControl.selectedSegmentIndex, section: 0),
             at: .centeredHorizontally,

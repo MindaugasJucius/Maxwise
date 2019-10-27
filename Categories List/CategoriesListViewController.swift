@@ -117,21 +117,13 @@ class CategoriesListViewController: UIViewController {
         guard let indexPath = dataSource.indexPath(for: cellDTO) else {
             return
         }
-        
-        UIView.animate(
-            withDuration: 0.25,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
-            },
-            completion: { _ in
-                guard let categoryListCell = self.collectionView.cellForItem(at: indexPath) as? CategoryListCollectionViewCell else {
-                    return
-                }
-                categoryListCell.highlightCell()
-            }
-        )
+
+        self.collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
+
+        guard let categoryListCell = self.collectionView.cellForItem(at: indexPath) as? CategoryListCollectionViewCell else {
+            return
+        }
+        categoryListCell.highlightCell()
     }
         
     private func performAnimation() {

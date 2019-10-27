@@ -28,8 +28,12 @@ class PieChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell 
         pieChartView.fillInSuperview()
     }
 
-    func update(data: ChartData) {
+    func removeSelection() {
         pieChartView.highlightValue(nil, callDelegate: false)
+    }
+    
+    func update(data: ChartData) {
+        removeSelection()
         pieChartView.data = data
         pieChartView.animate(yAxisDuration: 0.3, easingOption: .easeInSine)
     }

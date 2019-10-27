@@ -89,6 +89,10 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         lineChart.marker = createMarker()
         lineChart.fillInSuperview()
     }
+    
+    func removeSelection() {
+        lineChart.highlightValue(nil, callDelegate: false)
+    }
 
     func update(data: ChartData) {
         if data.entryCount < xAxisLabelCount {
@@ -96,7 +100,6 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         } else {
             lineChart.xAxis.setLabelCount(xAxisLabelCount, force: true)
         }
-        lineChart.highlightValue(nil, callDelegate: false)
         nothingSelected?()
         lineChart.leftAxis.axisMaximum = data.getYMax() * 1.25
         lineChart.leftAxis.axisMinimum = 0
