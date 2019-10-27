@@ -5,6 +5,7 @@ import ExpenseKit
 struct FormattedLineChartEntry {
     let monthDayRepresentation: String
     let totalAmountSpent: String
+    let fullEntryDate: Date
 }
 
 class CategoriesChartsViewModel {
@@ -27,22 +28,26 @@ class CategoriesChartsViewModel {
     
     var chartDataChanged: (([ChartData]) -> ())?
     
+    let choseToFilterByDate: (Date) -> ()
+    let choseToResetFilter: () -> ()
+    
+    init(choseToFilterByDate: @escaping (Date) -> (),
+         choseToResetFilter: @escaping () -> ()) {
+        self.choseToFilterByDate = choseToFilterByDate
+        self.choseToResetFilter = choseToResetFilter
+    }
+    
     func update(for date: Date, categoryStatsDTOs: [ExpenseCategoryStatsDTO]) {
         let pieChartData = constructPieChartData(from: categoryStatsDTOs)
-        let lineChartData = constructLineChartData(from: expenses(in: date))
+        let lineChartData = constructLineChartData(from: expenseEntryModelController.expenses(in: date))
         chartDataChanged?([pieChartData, lineChartData])
     }
-    
-    private func expenses(in date: Date) -> [ExpenseEntry] {
-        let allExpenses = expenseEntryModelController.retrieveAllExpenseEntries()
-        return expenseEntryModelController.filter(expenses: allExpenses, by: date)
-    }
-    
+        
     private func lineChartEntries(from expenseEntries: [ExpenseEntry]) -> [ChartDataEntry] {
         var expenseAmountInDateDayMonth = [Date: Double]()
         
         expenseEntries.forEach { entry in
-            let dateComponents = Calendar.current.dateComponents([.day, .month], from: entry.creationDate)
+            let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: entry.creationDate)
             guard let date = Calendar.current.date(from: dateComponents) else {
                 return
             }
@@ -71,7 +76,8 @@ class CategoriesChartsViewModel {
             
             let formattedEntry = FormattedLineChartEntry.init(
                 monthDayRepresentation: dateFormatter.string(from: date),
-                totalAmountSpent: formattedAmount
+                totalAmountSpent: formattedAmount,
+                fullEntryDate: date
             )
             
             totalCurrentAmount += amount

@@ -7,6 +7,9 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
     
     private let xAxisLabelCount = 4 // number of weeks in month
     
+    var selectedToFilterByDate: ((Date) -> ())?
+    var nothingSelected: (() -> ())?
+    
     private lazy var currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.locale = Locale.current
@@ -92,6 +95,7 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
             lineChart.xAxis.setLabelCount(xAxisLabelCount, force: true)
         }
         lineChart.highlightValue(nil, callDelegate: false)
+        nothingSelected?()
         lineChart.leftAxis.axisMaximum = data.getYMax() * 1.25
         lineChart.leftAxis.axisMinimum = 0
         lineChart.animate(yAxisDuration: 0.3, easingOption: .easeInOutQuad)
@@ -121,7 +125,15 @@ extension LineChartCollectionViewCell: IAxisValueFormatter {
 extension LineChartCollectionViewCell: ChartViewDelegate {
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        guard let formattedEntry = entry.data as? FormattedLineChartEntry else {
+            return
+        }
         selectionFeedback.selectionChanged()
+        selectedToFilterByDate?(formattedEntry.fullEntryDate)
+    }
+
+    func chartValueNothingSelected(_ chartView: ChartViewBase) {
+        nothingSelected?()
     }
     
 }

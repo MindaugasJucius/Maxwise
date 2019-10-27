@@ -50,7 +50,14 @@ class CategoriesStatisticsViewModel {
         }
     )
 
-    lazy var categoriesChartsViewModel = CategoriesChartsViewModel()
+    lazy var categoriesChartsViewModel = CategoriesChartsViewModel(
+        choseToFilterByDate: { [weak self] date in
+            self?.filterListViewModel(by: date)
+        },
+        choseToResetFilter: { [weak self] in
+            self?.resetListViewModelFilter()
+        }
+    )
     
     private var currentExpenseCreationDates: [Date] = []
     private var currentSelectedIndex: Int?
@@ -90,6 +97,19 @@ class CategoriesStatisticsViewModel {
             
             self.invokeChartDataChangeForSelectionIndex()
         }
+    }
+    
+    private func filterListViewModel(by date: Date) {
+        guard let selectedIndex = currentSelectedIndex else {
+            return
+        }
+        let expenses = expenseModelController.expenses(in: date, with: [.day, .month, .year])
+        let statsDTOFromDate = data(from: expenses, for: date)
+        categoriesListViewModel.reload(currentSelectedSection: selectedIndex, with: statsDTOFromDate)
+    }
+    
+    private func resetListViewModelFilter() {
+        categoriesListViewModel.updateList(with: currentStatsData)
     }
     
     private func data(from expenses: [ExpenseEntry], for date: Date) -> [ExpenseCategoryStatsDTO] {

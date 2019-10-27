@@ -12,8 +12,6 @@ class CategoriesListViewController: UIViewController {
     private let choseToDeleteCategory: (String) -> ()
     private let choseToEditCategory: (String) -> ()
     private let choseToViewExpensesForCategory: (ExpenseCategoryStatsDTO, Date) -> ()
-
-    private var currentSnapshot: CategoriesListViewModel.CategoryListSnapshot?
     
     private lazy var layout: UICollectionViewCompositionalLayout = {
         let layout = UICollectionViewCompositionalLayout { (section, environment) -> NSCollectionLayoutSection? in
@@ -48,8 +46,8 @@ class CategoriesListViewController: UIViewController {
             }
             categoryListCell.update(for: categoryDTO)
             
-            guard let sectionIdentifier = self?.currentSnapshot?.sectionIdentifiers[indexPath.section],
-                let itemsInSection = self?.currentSnapshot?.numberOfItems(inSection: sectionIdentifier) else {
+            guard let sectionIdentifier = self?.viewModel.currentSnapshot?.sectionIdentifiers[indexPath.section],
+                let itemsInSection = self?.viewModel.currentSnapshot?.numberOfItems(inSection: sectionIdentifier) else {
                 return categoryListCell
             }
                 
@@ -100,8 +98,8 @@ class CategoriesListViewController: UIViewController {
             guard let self = self else {
                 return
             }
-            let firstTimeApplyingSnapshot = self.currentSnapshot == nil
-            self.currentSnapshot = snapshot
+            let firstTimeApplyingSnapshot = self.viewModel.currentSnapshot == nil
+            self.viewModel.currentSnapshot = snapshot
             self.dataSource.apply(snapshot, animatingDifferences: !firstTimeApplyingSnapshot) { [weak self] in
                 if let newSelectionIndex = index {
                     self?.scroll(to: newSelectionIndex, animated: false)
@@ -143,7 +141,7 @@ extension CategoriesListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let categoryStatsDTO = dataSource.itemIdentifier(for: indexPath),
-            let sectionIdentifier = currentSnapshot?.sectionIdentifier(containingItem: categoryStatsDTO) else {
+            let sectionIdentifier = viewModel.currentSnapshot?.sectionIdentifier(containingItem: categoryStatsDTO) else {
             return
         }
                 

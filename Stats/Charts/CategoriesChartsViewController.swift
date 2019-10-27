@@ -148,6 +148,11 @@ extension CategoriesChartsViewController: UICollectionViewDataSource {
         }
         
         chartCell.update(data: matchingData)
+
+        if let lineChartCell = chartCell as? LineChartCollectionViewCell {
+            lineChartCell.selectedToFilterByDate = viewModel.choseToFilterByDate
+            lineChartCell.nothingSelected = viewModel.choseToResetFilter
+        }
         
         return chartCell
     }
