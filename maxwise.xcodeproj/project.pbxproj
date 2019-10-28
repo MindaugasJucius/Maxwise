@@ -243,7 +243,7 @@
 		5F470BD7220C62E0002CD12D /* TextPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPickViewController.swift; sourceTree = "<group>"; };
 		5F470BD8220C62E0002CD12D /* TextPickViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPickViewController.xib; sourceTree = "<group>"; };
 		5F470BDE220CA765002CD12D /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		5F4A3B68220720870016BCC9 /* maxwise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = maxwise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F4A3B68220720870016BCC9 /* Budgy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budgy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4A3B6B220720870016BCC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F4A3B6D220720870016BCC9 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		5F4A3B72220720880016BCC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -507,7 +507,7 @@
 		5F4A3B69220720870016BCC9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5F4A3B68220720870016BCC9 /* maxwise.app */,
+				5F4A3B68220720870016BCC9 /* Budgy.app */,
 				5F4A3B7C220720880016BCC9 /* maxwiseTests.xctest */,
 				5F65CD5022D27C050040C218 /* CreatingExpenses.appex */,
 				5F353A5022DB48C400F96D3D /* ExpenseKit.framework */,
@@ -741,7 +741,7 @@
 			);
 			name = maxwise;
 			productName = maxwise;
-			productReference = 5F4A3B68220720870016BCC9 /* maxwise.app */;
+			productReference = 5F4A3B68220720870016BCC9 /* Budgy.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5F4A3B7B220720880016BCC9 /* maxwiseTests */ = {
@@ -1422,7 +1422,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Budgy;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1448,7 +1448,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Budgy;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
