@@ -155,14 +155,14 @@ class ExpenseCreationViewController: UIViewController {
         }
         
         expenseTitleTextField.placeholder = "Enter a description"
-        expenseTitleTextField.backgroundColor = .systemBackground
+        expenseTitleTextField.backgroundColor = .tertiarySystemBackground
         expenseTitleTextField.textColor = .label
         expenseTitleTextField.delegate = self
         
         expenseInfoContainerView.layer.applyShadow(color: .tertiaryLabel)
         expenseInfoContainerView.layer.cornerRadius = 6
         expenseInfoContainerView.layer.cornerCurve = .continuous
-        expenseInfoContainerView.backgroundColor = .systemBackground
+        adjustBackgroundColor(for: traitCollection)
         expenseInfoContainerView.isUserInteractionEnabled = true
         
         configureInputView(title: creationButtonTitle)
@@ -178,7 +178,22 @@ class ExpenseCreationViewController: UIViewController {
                                                name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            expenseInfoContainerView.layer.applyShadow(color: .tertiaryLabel)
+            adjustBackgroundColor(for: traitCollection)
+        }
+    }
 
+    private func adjustBackgroundColor(for traitCollection: UITraitCollection) {
+        if traitCollection.userInterfaceStyle == .dark {
+            expenseInfoContainerView.backgroundColor = .secondarySystemBackground
+        } else {
+            expenseInfoContainerView.backgroundColor = .systemBackground
+        }
+    }
+    
     @objc private func applicationDidBecomeActive(notification: NSNotification) {
         lastResponder?.becomeFirstResponder()
     }
@@ -221,6 +236,7 @@ class ExpenseCreationViewController: UIViewController {
         }
         
         addChild(categorySelectedController)
+        categorySelectionContainerView.backgroundColor = .clear
         categorySelectionContainerView.addSubview(categorySelectedController.view)
         categorySelectedController.view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -243,6 +259,8 @@ class ExpenseCreationViewController: UIViewController {
             return
         }
         creationInputView?.update(for: color)
+        expenseTitleTextField.tintColor = color
+        amountTextField.tintColor = color
     }
 
     private func tryToCreateExpense() {
@@ -323,13 +341,14 @@ class ExpenseCreationViewController: UIViewController {
         amountTextField.delegate = self
         amountTextField.keyboardType = .decimalPad
         amountTextField.placeholder = viewModel.amountPlaceholder
-        amountTextField.backgroundColor = .systemBackground
         amountTextField.textColor = .label
         amountTextField.becomeFirstResponder()
         amountTextField.borderStyle = .none
+
         amountTextField.addTarget(self, action: #selector(resetErrorStates), for: .editingChanged)
         amountTextFieldContainerView.layer.applyBorder()
         amountTextFieldContainerView.layer.borderColor = UIColor.clear.cgColor
+        amountTextFieldContainerView.backgroundColor = .tertiarySystemBackground
         currencyPlaceholderLabel.text = viewModel.currencySymbol
     }
     

@@ -24,6 +24,7 @@ class ExpenseSelectedCategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .clear
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
         categoryRepresentationView.addGestureRecognizer(tapGesture)
         categoryRepresentationView.emojiTextField.isEnabled = false

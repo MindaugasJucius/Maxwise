@@ -38,6 +38,12 @@ class CategoryCreationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            layer.applyShadow(color: .tertiaryLabel)
+        }
+    }
+    
     private func configure(expenseCategory: ExpenseCategory) {
         // cia tas ka paloadinam is nibo hehe
         subviews.first?.layer.cornerCurve = .continuous
@@ -47,7 +53,7 @@ class CategoryCreationView: UIView {
         layer.masksToBounds = true
         layer.applyShadow(color: .tertiaryLabel)
         
-        titleTextField.backgroundColor = .systemBackground
+        titleTextField.backgroundColor = .tertiarySystemBackground
         titleTextField.layer.applyBorder()
         titleTextField.layer.borderColor = UIColor.clear.cgColor
         titleTextField.textColor = .label
