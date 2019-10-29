@@ -83,9 +83,8 @@ class ExpensesViewController: UIViewController {
 
         tableView.allowsSelection = true
         tableView.delegate = self
-        tableView.estimatedRowHeight = 67
         tableView.estimatedSectionHeaderHeight = 60
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.rowHeight = 70
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.backgroundColor = .clear
     }
