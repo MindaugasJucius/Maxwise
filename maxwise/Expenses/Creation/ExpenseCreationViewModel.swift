@@ -9,6 +9,8 @@ enum ValidationResult<T> {
 
 class ExpenseCreationViewModel {
     
+    private let maxAmount = 1000000.00
+    
     private let expenseEntryModelController = ExpenseEntryModelController()
     private let userModelController = UserModelController()
     private let expenseCategoryModelController = ExpenseCategoryModelController()
@@ -23,13 +25,6 @@ class ExpenseCreationViewModel {
     }
     
     lazy var currencySymbol = currencyFormatter.currencySymbol
-
-    lazy var currencyFormatterNoSymbol: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencySymbol = ""
-        return formatter
-    }()
     
     private lazy var currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -42,6 +37,16 @@ class ExpenseCreationViewModel {
         formatter.numberStyle = .decimal
         return formatter
     }()
+
+    private lazy var inputToDoubleFormatterNoGrouping: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = ""
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
+    
     
     var categories: [ExpenseCategory] {
         return expenseCategoryModelController.storedCategories()
@@ -58,6 +63,15 @@ class ExpenseCreationViewModel {
             let string = inputToDoubleFormatter.string(from: number) else {
             return nil
         }
+        return string
+    }
+
+    func formatExisting(input: Double) -> String? {
+        let number = NSNumber.init(value: input)
+        guard let string = inputToDoubleFormatterNoGrouping.string(from: number) else {
+            return nil
+        }
+        
         return string
     }
     
@@ -118,6 +132,7 @@ class ExpenseCreationViewModel {
         }
         
         guard let formattedInput = inputToDoubleFormatter.number(from: expenseAmount), formattedInput.doubleValue > 0,
+            formattedInput.doubleValue < maxAmount,
             currencyFormatter.string(from: formattedInput) != nil else {
             // Failed to format to a currency string - must be an invalid input
             issues.append(.noAmount)

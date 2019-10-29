@@ -146,9 +146,7 @@ class ExpenseCreationViewController: UIViewController {
         
         if let expenseToEdit = expenseToEdit {
             expenseTitleTextField.text = expenseToEdit.title
-            amountTextField.text = viewModel.currencyFormatterNoSymbol.string(
-                from: NSNumber.init(value: expenseToEdit.amount)
-            )
+            amountTextField.text = viewModel.formatExisting(input: expenseToEdit.amount)
             creationButtonTitle = "Edit expense"
         } else {
             creationButtonTitle = "Add expense"
@@ -498,7 +496,7 @@ extension ExpenseCreationViewController: UITextFieldDelegate {
     }
 
     private func checkAmountLength(additionString: String) -> Bool {
-        check(textField: amountTextField, maxLength: 8, additionString: additionString)
+        check(textField: amountTextField, maxLength: 10, additionString: additionString)
     }
     
     private func checkTitleLength(additionString: String) -> Bool {
