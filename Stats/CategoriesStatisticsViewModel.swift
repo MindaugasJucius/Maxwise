@@ -156,6 +156,8 @@ class CategoriesStatisticsViewModel {
 
         guard let date = currentExpenseCreationDates[safe: currentSelectedIndex],
             let categoryDTOs = currentStatsData.first(where: { $0.0 == date })?.1 else {
+            // there's no stats data.
+            categoriesChartsViewModel.clearCharts()
             return
         }
 

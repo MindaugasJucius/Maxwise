@@ -3,13 +3,14 @@ import Charts
 
 protocol ChartCollectionViewCell: UICollectionViewCell {
     func update(data: ChartData)
+    func clearData()
     func removeSelection()
 }
 
 class CategoriesChartsViewController: UIViewController {
 
     private var currentlyVisibleChart: ChartViewBase?
-    private var chartDatum: [ChartData] = []
+    private var chartDatum: [ChartData]?
 
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
@@ -93,7 +94,7 @@ class CategoriesChartsViewController: UIViewController {
             self?.chartDatum = chartDatum
             self?.chartsCollectionView.reloadData()
         }
-        
+            
         segmentedControl.removeAllSegments()
         chartModel.enumerated().forEach { index, chartType in
             segmentedControl.insertSegment(withTitle: chartType.segmentTitle, at: index, animated: true)
@@ -142,6 +143,11 @@ extension CategoriesChartsViewController: UICollectionViewDataSource {
                                                                  for: indexPath) as? ChartCollectionViewCell else {
             return UICollectionViewCell()
         }
+                
+        guard let chartDatum = chartDatum else {
+            chartCell.clearData()
+            return chartCell
+        }
         
         let data = chartDatum.filter { data in
             let chartDataType = type(of: data)
@@ -152,14 +158,14 @@ extension CategoriesChartsViewController: UICollectionViewDataSource {
             return chartCell
         }
         
-        chartCell.update(data: matchingData)
-
         if let lineChartCell = chartCell as? LineChartCollectionViewCell {
             lineChartCell.selectedToFilterByDate = viewModel.choseToFilterByDate
             lineChartCell.nothingSelected = viewModel.choseToResetFilter
         } else if let pieChartCell = chartCell as? PieChartCollectionViewCell {
             pieChartCell.selectedToHightlightCategory = viewModel.choseToHighlightCategory
         }
+        
+        chartCell.update(data: matchingData)
         
         return chartCell
     }

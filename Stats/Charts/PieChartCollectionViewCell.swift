@@ -37,6 +37,10 @@ class PieChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell 
         pieChartView.data = data
         pieChartView.animate(yAxisDuration: 0.3, easingOption: .easeInSine)
     }
+    
+    func clearData() {
+        pieChartView.data = nil
+    }
 }
 
 extension PieChartCollectionViewCell: ChartViewDelegate {

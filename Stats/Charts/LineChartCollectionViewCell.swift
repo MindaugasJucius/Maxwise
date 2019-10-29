@@ -106,6 +106,10 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         lineChart.animate(yAxisDuration: 0.3, easingOption: .easeInOutQuad)
         lineChart.data = data
     }
+    
+    func clearData() {
+        lineChart.data = nil
+    }
 
     private func createMarker() -> LineChartMarkerView? {
         let marker = LineChartMarkerView.viewFromXib()

@@ -30,7 +30,7 @@ class CategoriesChartsViewModel {
         return formatter
     }()
     
-    var chartDataChanged: (([ChartData]) -> ())?
+    var chartDataChanged: (([ChartData]?) -> ())?
     
     let choseToFilterByDate: (Date) -> ()
     let choseToResetFilter: () -> ()
@@ -43,6 +43,10 @@ class CategoriesChartsViewModel {
         self.choseToFilterByDate = choseToFilterByDate
         self.choseToResetFilter = choseToResetFilter
         self.choseToHighlightCategory = choseToHighlightCategory
+    }
+    
+    func clearCharts() {
+        chartDataChanged?(nil)
     }
     
     func update(for date: Date, categoryStatsDTOs: [ExpenseCategoryStatsDTO]) {
@@ -109,6 +113,7 @@ class CategoriesChartsViewModel {
             emptyDataEntry.append(contentsOf: chartEntries)
             let placeholderDataSet = constructDataSet(from: emptyDataEntry)
             placeholderDataSet.drawCirclesEnabled = false
+            
             chartData.addDataSet(placeholderDataSet)
         }
 
