@@ -70,8 +70,8 @@ public class ExpenseEntryModelController {
     }
 
     public func edit(expenseEntryID: String,
-                      expenseDTO: ExpenseDTO,
-                      completion: (Result<ExpenseEntry, CreationIssue>) -> ()) {
+                     expenseDTO: ExpenseDTO,
+                     completion: (Result<ExpenseEntry, CreationIssue>) -> ()) {
         guard let expenseEntry = expenseEntry(fromID: expenseEntryID) else {
             completion(.failure(.alert("Failed to find expense to edit")))
             return

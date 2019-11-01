@@ -67,8 +67,11 @@ class CameraViewController: UIViewController {
         self.cameraLayer = cameraLayer
         view.layer.insertSublayer(cameraLayer, at: 0)
         
-        cameraController.captureSession.startRunning()
         cameraController.delegate = self
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.cameraController.captureSession.startRunning()
+        }
     }
     
     override func viewDidLayoutSubviews() {

@@ -169,6 +169,9 @@ class ExpenseCreationViewController: UIViewController {
         configureSegmentedControl()
         configureDismissalView()
         addCategorySelectionController()
+        
+        // Creating camera session in viewDidLoad on the main queue lags a bit
+        addCameraController()
 
         observeResponderChanges()
         NotificationCenter.default.addObserver(self,
@@ -194,12 +197,6 @@ class ExpenseCreationViewController: UIViewController {
     
     @objc private func applicationDidBecomeActive(notification: NSNotification) {
         lastResponder?.becomeFirstResponder()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // Creating camera session in viewDidLoad on the main queue lags a bit
-        addCameraController()
     }
     
     @objc private func adjustForKeyboard(notification: Notification) {
