@@ -40,16 +40,20 @@ public class ExpenseEntryModelController {
                     let randomAmount = amount.randomElement() else {
                     fatalError()
                 }
+                
+                let formattedCreationDate = String.init(format: creationString, month, day)
+                let customCreationDate = dateFormatter.date(from: formattedCreationDate)
+                
                 let expenseEntry = expense(
                     from: .init(title: "random \(month) \(day)",
                                 category: randomCategory,
                                 user: try! userModelController.currentUserOrCreate(),
                                 place: nil,
                                 amount: Double(randomAmount),
-                                shareAmount: .full)
+                                shareAmount: .full),
+                    creationDate: customCreationDate!
                 )
-                let formattedCreationDate = String.init(format: creationString, month, day)
-                expenseEntry.creationDate = dateFormatter.date(from: formattedCreationDate)!
+
                 persist(expenseEntry: expenseEntry) { _ in
                     
                 }
@@ -57,16 +61,23 @@ public class ExpenseEntryModelController {
         }
     }
     
-
-    private func expense(from expenseDTO: ExpenseDTO) -> ExpenseEntry {
+    private func expense(from expenseDTO: ExpenseDTO, creationDate: Date = Date()) -> ExpenseEntry {
         let expenseEntry = ExpenseEntry.init()
-        expenseEntry.creationDate = Date()
+        
+        expenseEntry.creationDate = creationDate
         expenseEntry.amount = expenseDTO.amount
         expenseEntry.category = expenseDTO.category
         expenseEntry.title = expenseDTO.title
         expenseEntry.place = expenseDTO.place
         expenseEntry.id = UUID.init().uuidString
         expenseEntry.sharePercentage = expenseDTO.shareAmount.rawValue
+
+        let creationDateComponentsToStore = Set<Calendar.Component>(arrayLiteral: .year, .month, .day)
+        let components = Calendar.current.dateComponents(creationDateComponentsToStore, from: creationDate)
+        expenseEntry.month.value = components.month
+        expenseEntry.day.value = components.day
+        expenseEntry.year.value = components.year
+        
         return expenseEntry
     }
 
@@ -142,10 +153,21 @@ public class ExpenseEntryModelController {
 
     // Can only observe on a thread with a run loop (main loop).
     // Adding run loops to custom threads: https://academy.realm.io/posts/realm-notifications-on-background-threads-with-swift/
-    public func observeExpenseEntries(updated: @escaping ([ExpenseEntry]) -> ()) {
+    public func observeExpenseEntries(filterPredicate: NSPredicate?, updated: @escaping ([ExpenseEntry]) -> ()) {
         let realm = try? Realm.groupRealm()
-        let expenseEntries = realm?.objects(ExpenseEntry.self)
+        
+        let results: Results<ExpenseEntry>?
+        
+        if let predicate = filterPredicate {
+            results = realm?.objects(ExpenseEntry.self)
+                            .filter(predicate)
+        } else {
+            results = realm?.objects(ExpenseEntry.self)
+        }
+        
+        let expenseEntries = results?
             .sorted(byKeyPath: "creationDate", ascending: false)
+        
         let observationToken = expenseEntries?.observe { change in
             switch change {
             case .initial(let value):
@@ -163,7 +185,7 @@ public class ExpenseEntryModelController {
     
     /// Returns distinct expense creation [Date]s that consist only of year and month.
     public func expensesYearsMonths(updated: @escaping (([ExpenseEntry], [Date])) -> ()) {
-        observeExpenseEntries { entries in
+        observeExpenseEntries(filterPredicate: nil) { entries in
             let yearMonthExpenseDates = entries
                 .map { $0.creationDate }
                 .map { Calendar.current.dateComponents(self.componentsToParseFromDate, from: $0) }
@@ -183,12 +205,7 @@ public class ExpenseEntryModelController {
     public func filter(expenses: [ExpenseEntry], by date: Date, with dateComponents: Set<Calendar.Component>? = nil) -> [ExpenseEntry] {
         let components = dateComponents ?? componentsToParseFromDate
         
-        let dateComponentsToFilterBy = Calendar.current.dateComponents(components, from: date)
-
-        var filterComponents: [Calendar.Component: Int?] = [:]
-        components.forEach { component in
-            filterComponents[component] = dateComponentsToFilterBy.value(for: component)
-        }
+        let filterComponents = Calendar.dictionary(of: components, from: date)
         
         let expensesInDate = expenses.filter { entry in
             let expenseDateWithNecessaryComponents = Calendar.current.dateComponents(components, from: entry.creationDate)
@@ -202,7 +219,7 @@ public class ExpenseEntryModelController {
         return expensesInDate
     }
     
-    public func retrieveAllExpenseEntries() -> [ExpenseEntry] {
+    private func retrieveAllExpenseEntries() -> [ExpenseEntry] {
         guard let realm = try? Realm.groupRealm() else {
             return []
         }
@@ -225,4 +242,19 @@ public class ExpenseEntryModelController {
         }
     }
 
+}
+
+public extension Calendar {
+    
+    static func dictionary(of components: Set<Component>, from date: Date) -> [Component: Int?] {
+        let dateComponentsToFilterBy = current.dateComponents(components, from: date)
+
+        var filterComponents: [Component: Int?] = [:]
+        components.forEach { component in
+            filterComponents[component] = dateComponentsToFilterBy.value(for: component)
+        }
+        
+        return filterComponents
+    }
+    
 }

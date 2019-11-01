@@ -25,7 +25,7 @@ class CategoriesListViewModel {
     }
     
     func highlight(currentSelectedSection: Int, categoryID: String) {
-        guard var snapshot = currentSnapshot else {
+        guard let snapshot = currentSnapshot else {
             return
         }
 

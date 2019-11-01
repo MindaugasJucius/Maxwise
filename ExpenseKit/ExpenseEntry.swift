@@ -78,6 +78,10 @@ public class ExpenseEntry: Object {
     @objc public dynamic var place: NearbyPlace?
     @objc public dynamic var category: ExpenseCategory?
     
+    public let day = RealmOptional<Int>()
+    public let month = RealmOptional<Int>()
+    public let year = RealmOptional<Int>()
+    
     public let owners = LinkingObjects(fromType: User.self, property: "entries")
     
     override public static func primaryKey() -> String? {
