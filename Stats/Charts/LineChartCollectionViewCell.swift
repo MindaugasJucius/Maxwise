@@ -19,8 +19,8 @@ class LineChartCollectionViewCell: UICollectionViewCell, ChartCollectionViewCell
         return formatter
     }()
     
-    private lazy var lineChart: LineChartView = {
-        let lineChart = LineChartView()
+    private lazy var lineChart: TapableLineChartView = {
+        let lineChart = TapableLineChartView()
         
         lineChart.noDataText = "Add expenses to see line chart"
         lineChart.noDataFont = .systemFont(ofSize: 20)

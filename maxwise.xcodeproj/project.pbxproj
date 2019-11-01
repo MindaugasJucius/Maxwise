@@ -88,6 +88,7 @@
 		5FC9298222DB83F000CB23DC /* Realm+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9298122DB83F000CB23DC /* Realm+Extensions.swift */; };
 		5FC9298422F89FFF00CB23DC /* ExpenseCreationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9298322F89FFF00CB23DC /* ExpenseCreationInputView.swift */; };
 		5FC9298622F8A02200CB23DC /* ExpenseCreationInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FC9298522F8A02200CB23DC /* ExpenseCreationInputView.xib */; };
+		5FD24AE02368CBDA00B3C755 /* TapableLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD24ADF2368CBDA00B3C755 /* TapableLineChartView.swift */; };
 		5FD3D85E233BE2F9009042D1 /* CenteredTextSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3D85D233BE2F9009042D1 /* CenteredTextSelectionView.swift */; };
 		5FD3D861233BE8C7009042D1 /* TextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3D85F233BE8C7009042D1 /* TextCollectionViewCell.swift */; };
 		5FD3D862233BE8C7009042D1 /* TextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FD3D860233BE8C7009042D1 /* TextCollectionViewCell.xib */; };
@@ -291,6 +292,7 @@
 		5FC9298122DB83F000CB23DC /* Realm+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extensions.swift"; sourceTree = "<group>"; };
 		5FC9298322F89FFF00CB23DC /* ExpenseCreationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationInputView.swift; sourceTree = "<group>"; };
 		5FC9298522F8A02200CB23DC /* ExpenseCreationInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseCreationInputView.xib; sourceTree = "<group>"; };
+		5FD24ADF2368CBDA00B3C755 /* TapableLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapableLineChartView.swift; sourceTree = "<group>"; };
 		5FD3D85D233BE2F9009042D1 /* CenteredTextSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredTextSelectionView.swift; sourceTree = "<group>"; };
 		5FD3D85F233BE8C7009042D1 /* TextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCollectionViewCell.swift; sourceTree = "<group>"; };
 		5FD3D860233BE8C7009042D1 /* TextCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -663,6 +665,7 @@
 				F4C29AC72358489000C32529 /* LineChartCollectionViewCell.xib */,
 				F412211023619C900062DD5D /* LineChartMarkerView.swift */,
 				F412211223619D410062DD5D /* LineChartMarkerView.xib */,
+				5FD24ADF2368CBDA00B3C755 /* TapableLineChartView.swift */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -1106,6 +1109,7 @@
 				F4F0C5F42213FFCE00407493 /* UIView+Extensions.swift in Sources */,
 				5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */,
 				5F240CA1222721A3009A41AE /* ExpenseCreationViewController.swift in Sources */,
+				5FD24AE02368CBDA00B3C755 /* TapableLineChartView.swift in Sources */,
 				F4C29ABE2356491F00C32529 /* CategoriesChartsViewModel.swift in Sources */,
 				5F169BDB232CD4BB007666E9 /* ColorCollectionViewCell.swift in Sources */,
 				5F0FC868231BC55B0083EBA9 /* CategoriesParentViewController.swift in Sources */,
@@ -1421,7 +1425,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise;
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.beleka.maxwise;
 				PRODUCT_NAME = Budgy;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1447,7 +1451,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise;
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.beleka.maxwise;
 				PRODUCT_NAME = Budgy;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1512,7 +1516,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise.CreatingExpenses;
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.beleka.maxwise.CreatingExpenses;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1534,7 +1538,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.appsai.maxwise.CreatingExpenses;
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.beleka.maxwise.CreatingExpenses;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

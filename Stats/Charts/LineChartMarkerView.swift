@@ -6,7 +6,8 @@ class LineChartMarkerView: MarkerView {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!
-
+    @IBOutlet weak var xMarkImageView: UIImageView!
+    
     private let yOffset: CGFloat = 10
     private let additionalOffsetWhenOutOfBounds: CGFloat = 10
 
@@ -17,6 +18,9 @@ class LineChartMarkerView: MarkerView {
         dateLabel.textColor = .secondaryLabel
         amountLabel.textColor = .label
         backgroundColor = .secondarySystemBackground
+        
+        xMarkImageView.preferredSymbolConfiguration =         UIImage.SymbolConfiguration(weight: .medium)
+        xMarkImageView.tintColor = .secondaryLabel
         
         let shadowColor = UIColor.systemGray.withAlphaComponent(0.3)
         
