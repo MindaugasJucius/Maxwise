@@ -11,7 +11,7 @@ extension CALayer {
     
     func applyBorder() {
         cornerCurve = .continuous
-        borderWidth = 0.5
+        borderWidth = 1
         cornerRadius = 6
     }
 }

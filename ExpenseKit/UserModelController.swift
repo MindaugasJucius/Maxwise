@@ -15,15 +15,17 @@ public class UserModelController {
     }
     
     public func currentUserOrCreate() throws -> User {
-        guard let realm = try? Realm.groupRealm() else {
-            throw UserModelError.failedToCreateRealm
+        do {
+            let realm = try Realm.groupRealm()
+
+            guard let user = realm.objects(User.self).first else {
+                return try createUser(realm: realm)
+            }
+            
+            return user
+        } catch let error {
+           throw error
         }
-        
-        guard let user = realm.objects(User.self).first else {
-            return createUser(realm: realm)
-        }
-        
-        return user
     }
     
     public func observeAmountSpent(forUser user: User, amountChanged: @escaping (Double) -> ()) {
@@ -58,14 +60,18 @@ public class UserModelController {
         }
     }
     
-    private func createUser(realm: Realm) -> User {
+    private func createUser(realm: Realm) throws -> User {
         let user = User()
         user.id = UUID.init().uuidString
         user.name = UIDevice.current.name
-        try? realm.write {
-           realm.add(user)
+        do {
+            try realm.write {
+               realm.add(user)
+            }
+            return user
+        } catch let error {
+            throw error
         }
-        return user
     }
     
 }

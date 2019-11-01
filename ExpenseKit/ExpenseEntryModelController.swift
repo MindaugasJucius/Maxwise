@@ -60,6 +60,7 @@ public class ExpenseEntryModelController {
 
     private func expense(from expenseDTO: ExpenseDTO) -> ExpenseEntry {
         let expenseEntry = ExpenseEntry.init()
+        expenseEntry.creationDate = Date()
         expenseEntry.amount = expenseDTO.amount
         expenseEntry.category = expenseDTO.category
         expenseEntry.title = expenseDTO.title
