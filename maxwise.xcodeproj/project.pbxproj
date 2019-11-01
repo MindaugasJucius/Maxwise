@@ -114,7 +114,7 @@
 		F4A984802349FAF000A69F79 /* CategoryListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */; };
 		F4A984822349FC0F00A69F79 /* CategoryRepresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A984812349FC0F00A69F79 /* CategoryRepresentationView.swift */; };
 		F4A984842349FC2C00A69F79 /* CategoryRepresentationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A984832349FC2C00A69F79 /* CategoryRepresentationView.xib */; };
-		F4B5CC0123538B4300787791 /* HardcodedExpensesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5CC0023538B4300787791 /* HardcodedExpensesViewModel.swift */; };
+		F4B5CC0123538B4300787791 /* FilteredExpensesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B5CC0023538B4300787791 /* FilteredExpensesViewModel.swift */; };
 		F4C29AB6235645A000C32529 /* CategoriesChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C29AB4235645A000C32529 /* CategoriesChartsViewController.swift */; };
 		F4C29AB7235645A000C32529 /* CategoriesChartsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C29AB5235645A000C32529 /* CategoriesChartsViewController.xib */; };
 		F4C29ABE2356491F00C32529 /* CategoriesChartsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C29ABD2356491F00C32529 /* CategoriesChartsViewModel.swift */; };
@@ -321,7 +321,7 @@
 		F4A9847E2349FAF000A69F79 /* CategoryListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryListCollectionViewCell.xib; sourceTree = "<group>"; };
 		F4A984812349FC0F00A69F79 /* CategoryRepresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepresentationView.swift; sourceTree = "<group>"; };
 		F4A984832349FC2C00A69F79 /* CategoryRepresentationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryRepresentationView.xib; sourceTree = "<group>"; };
-		F4B5CC0023538B4300787791 /* HardcodedExpensesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardcodedExpensesViewModel.swift; sourceTree = "<group>"; };
+		F4B5CC0023538B4300787791 /* FilteredExpensesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredExpensesViewModel.swift; sourceTree = "<group>"; };
 		F4C29AB4235645A000C32529 /* CategoriesChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesChartsViewController.swift; sourceTree = "<group>"; };
 		F4C29AB5235645A000C32529 /* CategoriesChartsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesChartsViewController.xib; sourceTree = "<group>"; };
 		F4C29ABD2356491F00C32529 /* CategoriesChartsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesChartsViewModel.swift; sourceTree = "<group>"; };
@@ -427,7 +427,7 @@
 		5F20E0BA2210350000BAECF6 /* Expenses */ = {
 			isa = PBXGroup;
 			children = (
-				F4B5CC0023538B4300787791 /* HardcodedExpensesViewModel.swift */,
+				F4B5CC0023538B4300787791 /* FilteredExpensesViewModel.swift */,
 				5F9DE38122195D7A008CCB94 /* ExpensesParentViewController.swift */,
 				5F20E0B6221034F300BAECF6 /* ExpensesViewController.swift */,
 				5F20E0B7221034F300BAECF6 /* ExpensesViewController.xib */,
@@ -1094,7 +1094,7 @@
 				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 				5F56B99023049E1C005AF4AF /* ExpensesSectionHeaderView.swift in Sources */,
 				F4A9847A2349F6F600A69F79 /* SectionBackgroundDecorationView.swift in Sources */,
-				F4B5CC0123538B4300787791 /* HardcodedExpensesViewModel.swift in Sources */,
+				F4B5CC0123538B4300787791 /* FilteredExpensesViewModel.swift in Sources */,
 				5FD3D861233BE8C7009042D1 /* TextCollectionViewCell.swift in Sources */,
 				5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */,
 				5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */,

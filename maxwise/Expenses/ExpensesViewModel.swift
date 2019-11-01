@@ -48,7 +48,7 @@ class ExpensesViewModel {
     var toggleNoExpensesView: ((Bool) -> ())?
     
     func observeExpenseEntries(changeOccured: @escaping (GroupedExpenses) -> Void) {
-        modelController.observeExpenseEntries { [weak self] expenseEntries in
+        modelController.observeExpenseEntries(filterPredicate: nil) { [weak self] expenseEntries in
             guard let self = self else {
                 return
             }

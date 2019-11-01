@@ -3,6 +3,7 @@ import ExpenseKit
 import Charts
 
 struct ExpenseCategoryStatsDTO: Hashable {
+    
     let amountSpentFormatted: String
     let amountSpentDouble: Double
     let percentageOfAmountInDateRange: Double
@@ -10,6 +11,9 @@ struct ExpenseCategoryStatsDTO: Hashable {
     let categoryID: String
     let emojiValue: String
     let color: UIColor
+    /// The most granular expense entry creation date component that this DTO is based upon
+    let representationGranularity: Calendar.Component
+    let representationDate: Date
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(categoryID)
@@ -114,19 +118,32 @@ class CategoriesStatisticsViewModel {
             return
         }
         let expenses = expenseModelController.expenses(in: date, with: [.day, .month, .year])
-        let statsDTOFromDate = data(from: expenses, for: date)
-        categoriesListViewModel.reload(currentSelectedSection: selectedIndex, with: statsDTOFromDate)
+        let expensesByCategoryInDate = expensesByCategory(expenses: expenses)
+        
+        let statsDTOs = expenseCategoryStatsDTOs(
+            from: expensesByCategoryInDate,
+            date: date,
+            representationGranularity: .day
+        )
+        
+        categoriesListViewModel.reload(currentSelectedSection: selectedIndex, with: statsDTOs)
     }
     
     private func resetListViewModelFilter() {
         categoriesListViewModel.updateList(with: currentStatsData)
     }
     
-    private func data(from expenses: [ExpenseEntry], for date: Date) -> [ExpenseCategoryStatsDTO] {
+    private func data(from expenses: [ExpenseEntry],
+                      for date: Date) -> [ExpenseCategoryStatsDTO] {
         let expensesInDate = expenseModelController.filter(expenses: expenses, by: date)
         let expensesByCategoryInDate = expensesByCategory(expenses: expensesInDate)
         
-        let statsDTOs = expenseCategoryStatsDTOs(from: expensesByCategoryInDate)
+        let statsDTOs = expenseCategoryStatsDTOs(
+            from: expensesByCategoryInDate,
+            date: date,
+            representationGranularity: .month
+        )
+        
         return statsDTOs
     }
     
@@ -183,7 +200,9 @@ extension CategoriesStatisticsViewModel {
         return representations
     }
     
-    private func expenseCategoryStatsDTOs(from categoriesExpenses: [ExpenseCategory: [ExpenseEntry]]) -> [ExpenseCategoryStatsDTO] {
+    private func expenseCategoryStatsDTOs(from categoriesExpenses: [ExpenseCategory: [ExpenseEntry]],
+                                          date: Date,
+                                          representationGranularity: Calendar.Component) -> [ExpenseCategoryStatsDTO] {
         let categoriesAndAmounts = categoriesExpenses.map { categoryWithExpenses -> (ExpenseCategory, Double) in
             let totalAmountSpentInCategory = categoryWithExpenses.value.reduce(0.0) { result, entry in
                 result + entry.amount
@@ -207,7 +226,9 @@ extension CategoriesStatisticsViewModel {
                                            categoryTitle: category.title,
                                            categoryID: category.id,
                                            emojiValue: category.emojiValue,
-                                           color: color)
+                                           color: color,
+                                           representationGranularity: representationGranularity,
+                                           representationDate: date)
         }.sorted { $0.amountSpentDouble > $1.amountSpentDouble }
 
         return categoryStatsDTOs

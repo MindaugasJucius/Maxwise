@@ -30,10 +30,12 @@ class ContainerViewController: UITabBarController {
         
         
         ExpenseCategoryModelController().addDefaultCategoriesIfNeeded()
-        
+
+        #if DEBUG
 //        ExpenseEntryModelController().createRandomExpenses(amount: 4...100,
-//                                                           monthRange: 2...11,
+//                                                           monthRange: 2...10,
 //                                                           dayRange: 10...28)
+        #endif
         
         ColorModelController().savePaletteColors {
             print("Completed persisting color palette")

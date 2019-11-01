@@ -16,8 +16,8 @@ class CategoriesParentViewController: UINavigationController {
     
     lazy var statisticsViewController = CategoriesStatisticsViewController.init(
         choseToViewExpensesForCategory: { [weak self] (categoryStatsDTO, sectionIdentifier) in
-            let viewModel = HardcodedExpensesViewModel.init(categoryID: categoryStatsDTO.categoryID,
-                                                            date: sectionIdentifier)
+            
+            let viewModel = FilteredExpensesViewModel.init(expenseCategoryStatsDTO: categoryStatsDTO)
             let expensesVC = ExpensesViewController(viewModel: viewModel)
             expensesVC.title = categoryStatsDTO.categoryTitle
             
