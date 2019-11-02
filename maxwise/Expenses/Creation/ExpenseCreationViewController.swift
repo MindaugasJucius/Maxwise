@@ -88,6 +88,8 @@ class ExpenseCreationViewController: UIViewController {
     private var expenseToEdit: ExpenseEntry?
     private var categorySelectedController: ExpenseSelectedCategoryViewController?
     
+    private lazy var visionVC = VisionViewController(nibName: nil, bundle: nil)
+    
     init(viewModel: ExpenseCreationViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -172,11 +174,10 @@ class ExpenseCreationViewController: UIViewController {
     }
     
     private func addVisionController() {
-        let visionVC = VisionViewController(nibName: nil, bundle: nil)
         addChild(visionVC)
         cameraContainerView.insertSubview(
             visionVC.view,
-            aboveSubview: cameraContainerBlurView
+            belowSubview: cameraContainerBlurView
         )
         visionVC.view.fillInSuperview()
         visionVC.didMove(toParent: self)
@@ -395,6 +396,14 @@ class ExpenseCreationViewController: UIViewController {
                 self.collapseButtonContainer.alpha = 0
             }
         }
+        
+        animator.addCompletion { [weak self] position in
+            guard position == .end else {
+                return
+            }
+            self?.visionVC.shouldPerformRecognitionRequests = isCameraContainerHidden
+        }
+        
         animator.startAnimation()
     }
     

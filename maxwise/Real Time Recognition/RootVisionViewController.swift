@@ -57,7 +57,7 @@ class RootVisionViewController: UIViewController {
         previewView.videoPreviewLayer.videoGravity = .resizeAspectFill
 		
 		// Set up cutout view.
-		cutoutView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+		cutoutView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
 		maskLayer.backgroundColor = UIColor.clear.cgColor
 		maskLayer.fillRule = .evenOdd
 		cutoutView.layer.mask = maskLayer

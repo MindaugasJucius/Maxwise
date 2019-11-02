@@ -13,6 +13,9 @@ import AVFoundation
 import Vision
 
 class VisionViewController: RootVisionViewController {
+    
+    var shouldPerformRecognitionRequests = false
+    
 	var request: VNRecognizeTextRequest!
 	// Temporal string tracker
 	let numberTracker = StringTracker()
@@ -76,6 +79,10 @@ class VisionViewController: RootVisionViewController {
 	}
 	
 	override func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard shouldPerformRecognitionRequests else {
+            return
+        }
+        
 		if let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) {
 			// Configure for running in real-time.
 			request.recognitionLevel = .fast
