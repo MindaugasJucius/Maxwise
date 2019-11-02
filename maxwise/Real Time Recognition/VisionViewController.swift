@@ -61,8 +61,8 @@ class VisionViewController: RootVisionViewController {
 		show(boxGroups: [(color: UIColor.red.cgColor, boxes: redBoxes), (color: UIColor.green.cgColor, boxes: greenBoxes)])
 		
 		// Check if we have any temporally stable numbers.
-		if let sureNumber = numberTracker.getStableString() {
-			showString(string: sureNumber)
+        if let sureNumber = numberTracker.getStableString() {
+            showString(string: sureNumber)
 			numberTracker.reset(string: sureNumber)
 		}
 	}

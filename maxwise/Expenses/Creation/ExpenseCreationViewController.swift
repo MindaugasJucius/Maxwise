@@ -10,6 +10,18 @@ class ExpenseCreationViewController: UIViewController {
     @IBOutlet private weak var safeAreaBottomConstraint: NSLayoutConstraint!
 
     
+    private var infoLabelYConstraint: NSLayoutConstraint?
+    private lazy var infoLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.text = "Point to digits for recognition".uppercased()
+        label.textAlignment = .center
+        label.textColor = .label
+        label.backgroundColor = .systemBackground
+        return label
+    }()
+    
     @IBOutlet private weak var collapseButtonContainer: VibrantContentView!
     private lazy var collapseCameraButton: UIButton = {
         let button = UIButton()

@@ -42,7 +42,7 @@ class ExpenseCreationViewModel {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.groupingSeparator = ""
-        formatter.minimumFractionDigits = 2
+        formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 2
         return formatter
     }()
@@ -56,14 +56,6 @@ class ExpenseCreationViewModel {
 
     func entry(from id: String) -> ExpenseEntry? {
         return expenseEntryModelController.expenseEntry(fromID: id)
-    }
-    
-    func formatRecognized(input: String) -> String? {
-        guard let number = inputToDoubleFormatter.number(from: input),
-            let string = inputToDoubleFormatter.string(from: number) else {
-            return nil
-        }
-        return string
     }
 
     func formatExisting(input: Double) -> String? {

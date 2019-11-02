@@ -13,7 +13,38 @@ class RootVisionViewController: UIViewController {
 	// MARK: - UI objects
 	@IBOutlet weak var previewView: PreviewView!
 	@IBOutlet weak var cutoutView: UIView!
-	@IBOutlet weak var numberView: UILabel!
+    
+    private var infoLabelContainerViewYConstraint: NSLayoutConstraint?
+    private lazy var infoLabelContainerView = VibrantContentView()
+    
+    private lazy var infoLabel: UILabel = {
+        let label = InsetLabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.text = "to recognize point to digits".uppercased()
+        label.textAlignment = .center
+        label.textColor = .label
+        label.backgroundColor = .systemBackground
+        label.textInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
+        return label
+    }()
+    
+    private var retryButtonContainerViewYConstraint: NSLayoutConstraint?
+    private lazy var retryButtonContainerView = VibrantContentView()
+    
+    private lazy var retryButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "arrow.2.circlepath"), for: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0.5,
+                                              left: 0.5,
+                                              bottom: 0,
+                                              right: 0)
+        button.addTarget(self, action: #selector(resumeCameraSession), for: .touchUpInside)
+        return button
+    }()
+    
+    var didReceiveStableString: ((String) -> ())?
+    
 	var maskLayer = CAShapeLayer()
 	// Device orientation. Updated whenever the orientation changes to a
 	// different supported orientation.
@@ -21,12 +52,12 @@ class RootVisionViewController: UIViewController {
 	
 	// MARK: - Capture related objects
 	private let captureSession = AVCaptureSession()
-    let captureSessionQueue = DispatchQueue(label: "com.example.apple-samplecode.CaptureSessionQueue")
+    let captureSessionQueue = DispatchQueue(label: "com.maxwise.CaptureSessionQueue")
     
 	var captureDevice: AVCaptureDevice?
     
 	var videoDataOutput = AVCaptureVideoDataOutput()
-    let videoDataOutputQueue = DispatchQueue(label: "com.example.apple-samplecode.VideoDataOutputQueue")
+    let videoDataOutputQueue = DispatchQueue(label: "com.maxwise.VideoDataOutputQueue")
     
 	// MARK: - Region of interest (ROI) and text orientation
 	// Region of video data output buffer that recognition should be run on.
@@ -56,7 +87,7 @@ class RootVisionViewController: UIViewController {
 		previewView.session = captureSession
         previewView.videoPreviewLayer.videoGravity = .resizeAspectFill
 		
-        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleTap(_:)))
+        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(resumeCameraSession))
         view.addGestureRecognizer(tapGesture)
         
 		// Set up cutout view.
@@ -64,7 +95,11 @@ class RootVisionViewController: UIViewController {
 		maskLayer.backgroundColor = UIColor.clear.cgColor
 		maskLayer.fillRule = .evenOdd
 		cutoutView.layer.mask = maskLayer
-		
+        
+        configureInfoContainerView()
+        retryButtonContainerView.isHidden = true
+        configureRetryButton()
+        
         // Starting the capture session is a blocking call. Perform setup using
         // a dedicated serial dispatch queue to prevent blocking the main thread.
         captureSessionQueue.async {
@@ -77,34 +112,61 @@ class RootVisionViewController: UIViewController {
             }
         }
 	}
-	
-	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-		super.viewWillTransition(to: size, with: coordinator)
-
-		// Only change the current orientation if the new one is landscape or
-		// portrait. You can't really do anything about flat or unknown.
-		let deviceOrientation = UIDevice.current.orientation
-		if deviceOrientation.isPortrait || deviceOrientation.isLandscape {
-			currentOrientation = deviceOrientation
-		}
-		
-		// Handle device orientation in the preview layer.
-		if let videoPreviewLayerConnection = previewView.videoPreviewLayer.connection {
-			if let newVideoOrientation = AVCaptureVideoOrientation(deviceOrientation: deviceOrientation) {
-				videoPreviewLayerConnection.videoOrientation = newVideoOrientation
-			}
-		}
-		
-		// Orientation changed: figure out new region of interest (ROI).
-		calculateRegionOfInterest()
-	}
-	
+    
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
-		updateCutout()
+		updateCutoutToRegionOfInterest()
 	}
+    
+    // MARK: - Setup
 	
-	// MARK: - Setup
+    private func configureRetryButton() {
+        cutoutView.addSubview(retryButtonContainerView)
+        retryButtonContainerView.configuration = VibrantContentView.Configuration(
+            cornerStyle: .circular,
+            blurEffectStyle: .prominent
+        )
+        
+        retryButtonContainerView.contentView?.addSubview(retryButton)
+        retryButton.fillInSuperview()
+        
+        let retryContainerYConstraint = retryButtonContainerView.centerYAnchor.constraint(equalTo: cutoutView.centerYAnchor)
+        let containerConstraints = [
+            retryButtonContainerView.centerXAnchor.constraint(equalTo: cutoutView.centerXAnchor),
+            retryButtonContainerView.widthAnchor.constraint(equalToConstant: 40),
+            retryButtonContainerView.heightAnchor.constraint(equalTo: retryButtonContainerView.widthAnchor,
+                                                             multiplier: 1),
+            retryContainerYConstraint
+        ]
+
+        self.retryButtonContainerViewYConstraint = retryContainerYConstraint
+        
+        NSLayoutConstraint.activate(containerConstraints)
+    }
+    
+    private func configureInfoContainerView() {
+        cutoutView.addSubview(infoLabelContainerView)
+
+        infoLabelContainerView.configuration = VibrantContentView.Configuration(
+            cornerStyle: .rounded,
+            blurEffectStyle: .prominent
+        )
+        
+        infoLabelContainerView.contentView?.addSubview(infoLabel)
+        infoLabel.fillInSuperview()
+        
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let infoContainerYConstraint = infoLabelContainerView.centerYAnchor.constraint(equalTo: cutoutView.centerYAnchor)
+        let containerConstraints = [
+            infoLabelContainerView.centerXAnchor.constraint(equalTo: cutoutView.centerXAnchor),
+            infoContainerYConstraint
+        ]
+
+        self.infoLabelContainerViewYConstraint = infoContainerYConstraint
+        
+        NSLayoutConstraint.activate(containerConstraints)
+    }
 	
 	func calculateRegionOfInterest() {
 		// In landscape orientation the desired ROI is specified as the ratio of
@@ -133,25 +195,27 @@ class RootVisionViewController: UIViewController {
 		DispatchQueue.main.async {
 			// Wait for the next run cycle before updating the cutout. This
 			// ensures that the preview layer already has its new orientation.
-			self.updateCutout()
+			self.updateCutoutToRegionOfInterest()
 		}
 	}
 	
-	func updateCutout() {
+	private func updateCutoutToRegionOfInterest() {
 		// Figure out where the cutout ends up in layer coordinates.
 		let roiRectTransform = bottomToTopTransform.concatenating(uiRotationTransform)
 		let cutout = previewView.videoPreviewLayer.layerRectConverted(fromMetadataOutputRect: regionOfInterest.applying(roiRectTransform))
 		
-		// Create the mask.
-		let path = UIBezierPath(rect: cutoutView.frame)
-		path.append(UIBezierPath(rect: cutout))
-		maskLayer.path = path.cgPath
-		
-		// Move the number view down to under cutout.
-		var numFrame = cutout
-		numFrame.origin.y += numFrame.size.height
-		numberView.frame = numFrame
+        updateCutout(to: cutout)
 	}
+    
+    private func updateCutout(to frame: CGRect) {
+        // Create the mask.
+        let path = UIBezierPath(rect: cutoutView.frame)
+        path.append(UIBezierPath.init(roundedRect: frame, cornerRadius: 6))
+        maskLayer.path = path.cgPath
+        
+        infoLabelContainerViewYConstraint?.constant = -frame.size.height
+        retryButtonContainerViewYConstraint?.constant = frame.size.height
+    }
 	
 	func setupOrientationAndTransform() {
 		// Recalculate the affine transform between Vision coordinates and AVF coordinates.
@@ -242,26 +306,26 @@ class RootVisionViewController: UIViewController {
 	
 	// MARK: - UI drawing and interaction
 	
-	func showString(string: String) {
+    func showString(string: String) {
 		// Found a definite number.
 		// Stop the camera synchronously to ensure that no further buffers are
 		// received. Then update the number view asynchronously.
 		captureSessionQueue.sync {
 			self.captureSession.stopRunning()
             DispatchQueue.main.async {
-                self.numberView.text = string
-                self.numberView.isHidden = false
+                self.retryButtonContainerView.isHidden = false
+                self.didReceiveStableString?(string)
             }
 		}
 	}
 	
-	@objc private func handleTap(_ sender: UITapGestureRecognizer) {
+	@objc func resumeCameraSession() {
         captureSessionQueue.async {
             if !self.captureSession.isRunning {
                 self.captureSession.startRunning()
             }
             DispatchQueue.main.async {
-                self.numberView.isHidden = true
+                self.retryButtonContainerView.isHidden = true
             }
         }
 	}

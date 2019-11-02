@@ -49,6 +49,7 @@
 		5F353A7922DB4ACA00F96D3D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4187C4322A578C9002DEBB0 /* UIColor+Extension.swift */; };
 		5F353A7A22DB4BB100F96D3D /* ExpenseCreation.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */; };
 		5F353A8F22DB5A8E00F96D3D /* ExpenseCreationIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */; };
+		5F4046BA236DE948003DCA92 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4046B9236DE948003DCA92 /* InsetLabel.swift */; };
 		5F41C4262341096700126E5C /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F41C4252341096700126E5C /* Array+Extensions.swift */; };
 		5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD5220C6011002CD12D /* TextDetectionController.swift */; };
 		5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD7220C62E0002CD12D /* TextPickViewController.swift */; };
@@ -244,6 +245,7 @@
 		5F353A6122DB48C500F96D3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F4021CD22905DE600B0C60C /* ExpenseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategory.swift; sourceTree = "<group>"; };
 		5F4021CF22912CD100B0C60C /* ExpenseCategoryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategoryModelController.swift; sourceTree = "<group>"; };
+		5F4046B9236DE948003DCA92 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		5F41C4252341096700126E5C /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		5F470BD5220C6011002CD12D /* TextDetectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetectionController.swift; sourceTree = "<group>"; };
 		5F470BD7220C62E0002CD12D /* TextPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPickViewController.swift; sourceTree = "<group>"; };
@@ -659,6 +661,7 @@
 				5F2D4BD6229B266000884FA9 /* ModalBlurTransitionController.swift */,
 				F45D67CD22A3D96B00DB1AE1 /* VibrantContentView.swift */,
 				5F0FC8752322EEFA0083EBA9 /* BeautifulButton.swift */,
+				5F4046B9236DE948003DCA92 /* InsetLabel.swift */,
 			);
 			path = "Custom subclasses";
 			sourceTree = "<group>";
@@ -1096,6 +1099,7 @@
 				5F65CD4B22D2621B0040C218 /* ExpenseCreation.intentdefinition in Sources */,
 				5FA3DBB522C8C531009FD189 /* UIViewController+Extensions.swift in Sources */,
 				5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */,
+				5F4046BA236DE948003DCA92 /* InsetLabel.swift in Sources */,
 				5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */,
 				5FD24AE8236D7BA500B3C755 /* RootVisionViewController.swift in Sources */,
 				5FD24AE7236D7BA500B3C755 /* PreviewView.swift in Sources */,

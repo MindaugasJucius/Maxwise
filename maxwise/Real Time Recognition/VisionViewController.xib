@@ -10,7 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VisionViewController" customModule="Budgy" customModuleProvider="target">
             <connections>
                 <outlet property="cutoutView" destination="zIB-V1-a7m" id="fMm-h0-y3Y"/>
-                <outlet property="numberView" destination="wWl-XW-ZKl" id="Y6l-fD-Ezn"/>
                 <outlet property="previewView" destination="ScD-u2-0jE" id="I3Y-r8-O5Y"/>
                 <outlet property="view" destination="iN0-l3-epB" id="S8A-LB-JGP"/>
             </connections>
@@ -25,20 +24,6 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWl-XW-ZKl">
-                    <rect key="frame" x="116.5" y="430.5" width="181" height="35"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <attributedString key="attributedText">
-                        <fragment content="0001112222">
-                            <attributes>
-                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <font key="NSFont" size="30" name="Menlo-Regular"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIB-V1-a7m" userLabel="Cutout View">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,8 +34,6 @@
             <constraints>
                 <constraint firstItem="zIB-V1-a7m" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Dd4-nF-D9a"/>
                 <constraint firstItem="ScD-u2-0jE" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="EUs-X6-9pk"/>
-                <constraint firstItem="wWl-XW-ZKl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Lt1-Md-p5w"/>
-                <constraint firstItem="wWl-XW-ZKl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="MZP-Z2-ejG"/>
                 <constraint firstItem="ScD-u2-0jE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TKS-nF-qC5"/>
                 <constraint firstAttribute="bottom" secondItem="zIB-V1-a7m" secondAttribute="bottom" id="V7w-e4-4g7"/>
                 <constraint firstItem="ScD-u2-0jE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dXf-pk-dDS"/>
