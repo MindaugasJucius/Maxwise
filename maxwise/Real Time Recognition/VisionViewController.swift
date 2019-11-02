@@ -46,25 +46,14 @@ class VisionViewController: RootVisionViewController {
 			guard let candidate = visionResult.topCandidates(maximumCandidates).first else { continue }
 			
 			// Draw red boxes around any detected text, and green boxes around
-			// any detected phone numbers. The phone number may be a substring
-			// of the visionResult. If a substring, draw a green box around the
-			// number and a red box around the full string. If the number covers
-			// the full result only draw the green box.
-			var numberIsSubstring = true
+			// any detected numbers.
 			
-			if let result = candidate.string.extractPhoneNumber() {
-				let (range, number) = result
-				// Number may not cover full visionResult. Extract bounding box
-				// of substring.
-				if let box = try? candidate.boundingBox(for: range)?.boundingBox {
-					numbers.append(number)
-					greenBoxes.append(box)
-					numberIsSubstring = !(range.lowerBound == candidate.string.startIndex && range.upperBound == candidate.string.endIndex)
-				}
-			}
-			if numberIsSubstring {
-				redBoxes.append(visionResult.boundingBox)
-			}
+            if let result = candidate.string.extractNumber() {
+                numbers.append(result)
+                greenBoxes.append(visionResult.boundingBox)
+            } else {
+                redBoxes.append(visionResult.boundingBox)
+            }
 		}
 		
 		// Log any found numbers.
