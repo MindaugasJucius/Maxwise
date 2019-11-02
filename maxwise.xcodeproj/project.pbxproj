@@ -14,8 +14,8 @@
 		5F0FC86C231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */; };
 		5F0FC86F231C284C0083EBA9 /* CategoryCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC86D231C284C0083EBA9 /* CategoryCreationViewController.swift */; };
 		5F0FC870231C284C0083EBA9 /* CategoryCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0FC86E231C284C0083EBA9 /* CategoryCreationViewController.xib */; };
-		5F0FC872231C2A9C0083EBA9 /* NoExpensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC871231C2A9C0083EBA9 /* NoExpensesView.swift */; };
-		5F0FC874231C2ABA0083EBA9 /* NoExpensesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0FC873231C2ABA0083EBA9 /* NoExpensesView.xib */; };
+		5F0FC872231C2A9C0083EBA9 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC871231C2A9C0083EBA9 /* EmptyStateView.swift */; };
+		5F0FC874231C2ABA0083EBA9 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0FC873231C2ABA0083EBA9 /* EmptyStateView.xib */; };
 		5F0FC8762322EEFA0083EBA9 /* BeautifulButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC8752322EEFA0083EBA9 /* BeautifulButton.swift */; };
 		5F0FC87823255E660083EBA9 /* CategoryCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC87723255E660083EBA9 /* CategoryCreationView.swift */; };
 		5F0FC87A23255E7E0083EBA9 /* CategoryCreationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0FC87923255E7E0083EBA9 /* CategoryCreationView.xib */; };
@@ -209,8 +209,8 @@
 		5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesStatisticsViewController.xib; sourceTree = "<group>"; };
 		5F0FC86D231C284C0083EBA9 /* CategoryCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCreationViewController.swift; sourceTree = "<group>"; };
 		5F0FC86E231C284C0083EBA9 /* CategoryCreationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCreationViewController.xib; sourceTree = "<group>"; };
-		5F0FC871231C2A9C0083EBA9 /* NoExpensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExpensesView.swift; sourceTree = "<group>"; };
-		5F0FC873231C2ABA0083EBA9 /* NoExpensesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoExpensesView.xib; sourceTree = "<group>"; };
+		5F0FC871231C2A9C0083EBA9 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		5F0FC873231C2ABA0083EBA9 /* EmptyStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
 		5F0FC8752322EEFA0083EBA9 /* BeautifulButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeautifulButton.swift; sourceTree = "<group>"; };
 		5F0FC87723255E660083EBA9 /* CategoryCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCreationView.swift; sourceTree = "<group>"; };
 		5F0FC87923255E7E0083EBA9 /* CategoryCreationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCreationView.xib; sourceTree = "<group>"; };
@@ -436,8 +436,8 @@
 				5F20E0BC2210352F00BAECF6 /* ExpenseTableViewCell.xib */,
 				5FC9298322F89FFF00CB23DC /* ExpenseCreationInputView.swift */,
 				5FC9298522F8A02200CB23DC /* ExpenseCreationInputView.xib */,
-				5F0FC871231C2A9C0083EBA9 /* NoExpensesView.swift */,
-				5F0FC873231C2ABA0083EBA9 /* NoExpensesView.xib */,
+				5F0FC871231C2A9C0083EBA9 /* EmptyStateView.swift */,
+				5F0FC873231C2ABA0083EBA9 /* EmptyStateView.xib */,
 				5F9E13C8222C44DC00805878 /* Creation */,
 				5F56B98F23049E1C005AF4AF /* ExpensesSectionHeaderView.swift */,
 				5F56B99123049E2B005AF4AF /* ExpensesSectionHeaderView.xib */,
@@ -874,7 +874,7 @@
 				F4C29AC52358487F00C32529 /* PieChartCollectionViewCell.xib in Resources */,
 				5F56B99223049E2B005AF4AF /* ExpensesSectionHeaderView.xib in Resources */,
 				5F56B99623101C9B005AF4AF /* ExpenseSelectedCategoryViewController.xib in Resources */,
-				5F0FC874231C2ABA0083EBA9 /* NoExpensesView.xib in Resources */,
+				5F0FC874231C2ABA0083EBA9 /* EmptyStateView.xib in Resources */,
 				5F6878772207425400F4FE7C /* tessdata in Resources */,
 				5F0FC87A23255E7E0083EBA9 /* CategoryCreationView.xib in Resources */,
 				F4A984802349FAF000A69F79 /* CategoryListCollectionViewCell.xib in Resources */,
@@ -1087,7 +1087,7 @@
 				5F65C345222A6DAF00E10F92 /* VenueCollectionViewCell.swift in Sources */,
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
 				5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */,
-				5F0FC872231C2A9C0083EBA9 /* NoExpensesView.swift in Sources */,
+				5F0FC872231C2A9C0083EBA9 /* EmptyStateView.swift in Sources */,
 				5FC9298422F89FFF00CB23DC /* ExpenseCreationInputView.swift in Sources */,
 				F4A9847F2349FAF000A69F79 /* CategoryListCollectionViewCell.swift in Sources */,
 				F4D3B2282352009200836FB0 /* CategoriesListViewModel.swift in Sources */,

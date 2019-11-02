@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptyStateView" customModule="Budgy" customModuleProvider="target">
+            <connections>
+                <outlet property="bottomLabel" destination="3rD-tf-Th8" id="gvf-jq-fUm"/>
+                <outlet property="imageView" destination="6ev-3o-EEp" id="tug-Qv-evs"/>
+                <outlet property="topLabel" destination="wDs-7L-IWN" id="V3a-yS-CZe"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bZu-iF-5We">
+                    <rect key="frame" x="186" y="115" width="42" height="74"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDs-7L-IWN">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rD-tf-Th8">
+                            <rect key="frame" x="0.0" y="24.5" width="42" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.down.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6ev-3o-EEp">
+                            <rect key="frame" x="8.5" y="49.5" width="25" height="24.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="C1U-Cj-eTz"/>
+                                <constraint firstAttribute="width" secondItem="6ev-3o-EEp" secondAttribute="height" multiplier="1:1" id="wGx-c6-ciO"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bZu-iF-5We" secondAttribute="trailing" constant="15" id="1H6-bM-5c3"/>
+                <constraint firstItem="bZu-iF-5We" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4cO-nK-sL8"/>
+                <constraint firstItem="bZu-iF-5We" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="HOb-cp-p0L"/>
+                <constraint firstItem="bZu-iF-5We" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="mRV-Pn-tnq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="131.8840579710145" y="154.6875"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.down.circle.fill" catalog="system" width="64" height="62"/>
+    </resources>
+</document>

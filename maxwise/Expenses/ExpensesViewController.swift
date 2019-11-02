@@ -29,7 +29,7 @@ class ExpensesViewController: UIViewController {
         }
     }()
     
-    lazy var noExpensesView = NoExpensesView()
+    lazy var noExpensesView = EmptyStateView()
     
     @IBOutlet private weak var tableView: UITableView!
 
@@ -47,8 +47,8 @@ class ExpensesViewController: UIViewController {
         configureTableView()
         view.backgroundColor = UIColor.init(named: "background")
         
-        viewModel.toggleNoExpensesView = { [weak self] show in
-            self?.toggleNoExpensesView(show: show)
+        viewModel.updateEmptyStateView = { [weak self] state in
+            self?.handleEmptyView(state: state)
         }
         
         viewModel.observeExpenseEntries { [weak self] groupedExpenses in
@@ -67,8 +67,14 @@ class ExpensesViewController: UIViewController {
         noExpensesView.fillInSuperview()
     }
     
-    private func toggleNoExpensesView(show: Bool) {
-        noExpensesView.alpha = show ? 1 : 0
+    private func handleEmptyView(state: EmptyViewState) {
+        switch state {
+        case .shown(let configuration):
+            noExpensesView.configure(with: configuration)
+            noExpensesView.alpha = 1
+        case .hidden:
+            noExpensesView.alpha = 0
+        }
     }
     
     private func configureTableView() {

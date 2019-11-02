@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 import ExpenseKit
 
 class FilteredExpensesViewModel: ExpensesViewModel {
@@ -26,8 +27,10 @@ class FilteredExpensesViewModel: ExpensesViewModel {
             }
 
             let showNoExpensesView = expenseEntries.count == 0
-            self.toggleNoExpensesView?(showNoExpensesView)
-            
+            self.updateEmptyStateView?(
+                showNoExpensesView ? .shown(self.emptyViewConfiguration()) : .hidden
+            )
+
             changeOccured(self.groupedByDay(expenses: expenseEntries))
         }
     }
@@ -73,6 +76,18 @@ class FilteredExpensesViewModel: ExpensesViewModel {
             }
             self?.categoryTitleChanged?(category.title)
         }
+    }
+    
+}
+
+extension FilteredExpensesViewModel {
+    
+    private func emptyViewConfiguration() -> EmptyViewConfiguration {
+        return EmptyViewConfiguration(
+            topString: "No expenses in category for this month.",
+            bottomString: "Great job!",
+            image: UIImage.init(systemName: "hand.thumbsup.fill")
+        )
     }
     
 }

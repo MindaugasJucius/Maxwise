@@ -45,7 +45,7 @@ class ExpensesViewModel {
         return formatter
     }()
 
-    var toggleNoExpensesView: ((Bool) -> ())?
+    var updateEmptyStateView: ((EmptyViewState) -> ())?
     
     func observeExpenseEntries(changeOccured: @escaping (GroupedExpenses) -> Void) {
         modelController.observeExpenseEntries(filterPredicate: nil) { [weak self] expenseEntries in
@@ -54,7 +54,9 @@ class ExpensesViewModel {
             }
 
             let showNoExpensesView = expenseEntries.count == 0
-            self.toggleNoExpensesView?(showNoExpensesView)
+            self.updateEmptyStateView?(
+                showNoExpensesView ? .shown(self.emptyViewConfiguration()) : .hidden
+            )
             
             changeOccured(self.groupedByDay(expenses: expenseEntries))
         }
@@ -126,6 +128,18 @@ class ExpensesViewModel {
         let amountNumber = NSNumber(value: amount)
         let formattedAmount = currencyFormatter.string(from: amountNumber) ?? "😬"
         return formattedAmount
+    }
+    
+}
+
+extension ExpensesViewModel {
+    
+    private func emptyViewConfiguration() -> EmptyViewConfiguration {
+        return EmptyViewConfiguration(
+            topString: "There's nothing added!",
+            bottomString: "Start by tapping below",
+            image: UIImage.init(systemName: "arrow.down.circle.fill")
+        )
     }
     
 }
