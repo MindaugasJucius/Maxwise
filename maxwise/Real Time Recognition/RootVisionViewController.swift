@@ -56,6 +56,9 @@ class RootVisionViewController: UIViewController {
 		previewView.session = captureSession
         previewView.videoPreviewLayer.videoGravity = .resizeAspectFill
 		
+        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleTap(_:)))
+        view.addGestureRecognizer(tapGesture)
+        
 		// Set up cutout view.
 		cutoutView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
 		maskLayer.backgroundColor = UIColor.clear.cgColor
@@ -252,7 +255,7 @@ class RootVisionViewController: UIViewController {
 		}
 	}
 	
-	@IBAction func handleTap(_ sender: UITapGestureRecognizer) {
+	@objc private func handleTap(_ sender: UITapGestureRecognizer) {
         captureSessionQueue.async {
             if !self.captureSession.isRunning {
                 self.captureSession.startRunning()

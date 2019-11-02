@@ -11,7 +11,7 @@ class ExpenseCreationViewController: UIViewController {
     
     private lazy var collapseCameraButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "arrow.down.circle.fill"), for: .normal)
+        button.setImage(UIImage(systemName: "arrow.down.right.and.arrow.up.left"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 0.5,
                                               left: 0.5,
                                               bottom: 0,
@@ -65,7 +65,7 @@ class ExpenseCreationViewController: UIViewController {
     
     private lazy var cameraPresentTapRecognizer = UITapGestureRecognizer(
         target: self,
-        action: #selector(toggleCameraPresentation)
+        action: #selector(presentCamera)
     )
     
     @IBOutlet private var initialCameraHeightConstraint: NSLayoutConstraint!
@@ -89,6 +89,8 @@ class ExpenseCreationViewController: UIViewController {
     private var categorySelectedController: ExpenseSelectedCategoryViewController?
     
     private lazy var visionVC = VisionViewController(nibName: nil, bundle: nil)
+    
+    private var hasAppeared = false
     
     init(viewModel: ExpenseCreationViewModel) {
         self.viewModel = viewModel
@@ -127,6 +129,7 @@ class ExpenseCreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
@@ -164,6 +167,11 @@ class ExpenseCreationViewController: UIViewController {
                                                selector: #selector(applicationDidBecomeActive),
                                                name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        hasAppeared = true
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -296,6 +304,9 @@ class ExpenseCreationViewController: UIViewController {
     
     @objc private func handleObserverChange(responder: UIResponder) {
         self.lastResponder = responder
+        if hasAppeared {
+            toggleCameraPresentation(present: false)
+        }
     }
     
     private func configureDismissalView() {
@@ -379,16 +390,18 @@ class ExpenseCreationViewController: UIViewController {
         )
     }
     
-    @objc private func toggleCameraPresentation() {
+    @objc private func presentCamera() {
         lastResponder?.resignFirstResponder()
-        
-        let isCameraContainerHidden = initialCameraHeightConstraint.isActive
-        cameraPresentTapRecognizer.isEnabled = !isCameraContainerHidden
-        expandedCameraHeightConstraint.isActive = isCameraContainerHidden
-        initialCameraHeightConstraint.isActive = !isCameraContainerHidden
+        toggleCameraPresentation(present: true)
+    }
+
+    private func toggleCameraPresentation(present: Bool) {
+        cameraPresentTapRecognizer.isEnabled = !present
+        expandedCameraHeightConstraint.isActive = present
+        initialCameraHeightConstraint.isActive = !present
         let animator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 0.82) {
             self.view.layoutIfNeeded()
-            if isCameraContainerHidden {
+            if present {
                 self.cameraContainerBlurView.alpha = 0
                 self.collapseButtonContainer.alpha = 1
             } else {
@@ -401,14 +414,14 @@ class ExpenseCreationViewController: UIViewController {
             guard position == .end else {
                 return
             }
-            self?.visionVC.shouldPerformRecognitionRequests = isCameraContainerHidden
+            self?.visionVC.shouldPerformRecognitionRequests = present
         }
         
         animator.startAnimation()
     }
     
     @objc private func collapseCamera() {
-        toggleCameraPresentation()
+        toggleCameraPresentation(present: false)
         lastResponder?.becomeFirstResponder()
     }
 }
