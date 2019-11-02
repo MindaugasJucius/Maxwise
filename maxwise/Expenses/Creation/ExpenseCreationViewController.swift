@@ -8,7 +8,9 @@ class ExpenseCreationViewController: UIViewController {
     @IBOutlet private weak var dismissalView: UIView!
     @IBOutlet private weak var cameraContainerView: UIView!
     @IBOutlet private weak var safeAreaBottomConstraint: NSLayoutConstraint!
+
     
+    @IBOutlet private weak var collapseButtonContainer: VibrantContentView!
     private lazy var collapseCameraButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "arrow.down.right.and.arrow.up.left"), for: .normal)
@@ -18,8 +20,7 @@ class ExpenseCreationViewController: UIViewController {
                                               right: 0)
         return button
     }()
-    @IBOutlet private weak var collapseButtonContainer: VibrantContentView!
-    
+
     private var creationInputView: ExpenseCreationInputView?
     
     private lazy var cameraContainerBlurView: UIView! = {
@@ -32,7 +33,9 @@ class ExpenseCreationViewController: UIViewController {
         let cameraImageContainerView = VibrantContentView()
         cameraImageContainerView.configuration = VibrantContentView.Configuration(cornerStyle: .circular,
                                                                                   blurEffectStyle: .prominent)
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "camera"))
+        
+        let image = UIImage(systemName: "camera.on.rectangle")
+        let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         cameraImageContainerView.contentView?.addSubview(imageView)
@@ -189,6 +192,9 @@ class ExpenseCreationViewController: UIViewController {
         )
         visionVC.view.fillInSuperview()
         visionVC.didMove(toParent: self)
+        visionVC.didReceiveStableString = { [weak self] stableString in
+            self?.amountTextField.text = stableString
+        }
     }
 
     private func adjustBackgroundColor(for traitCollection: UITraitCollection) {
@@ -396,6 +402,10 @@ class ExpenseCreationViewController: UIViewController {
     }
 
     private func toggleCameraPresentation(present: Bool) {
+        if !present {
+            visionVC.resumeCameraSession()
+        }
+        
         cameraPresentTapRecognizer.isEnabled = !present
         expandedCameraHeightConstraint.isActive = present
         initialCameraHeightConstraint.isActive = !present
