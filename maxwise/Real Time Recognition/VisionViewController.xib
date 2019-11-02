@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VisionViewController" customModule="Budgy" customModuleProvider="target">
+            <connections>
+                <outlet property="cutoutView" destination="zIB-V1-a7m" id="fMm-h0-y3Y"/>
+                <outlet property="numberView" destination="wWl-XW-ZKl" id="Y6l-fD-Ezn"/>
+                <outlet property="previewView" destination="ScD-u2-0jE" id="I3Y-r8-O5Y"/>
+                <outlet property="view" destination="iN0-l3-epB" id="S8A-LB-JGP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScD-u2-0jE" customClass="PreviewView" customModule="Budgy" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWl-XW-ZKl">
+                    <rect key="frame" x="116.5" y="430.5" width="181" height="35"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <attributedString key="attributedText">
+                        <fragment content="0001112222">
+                            <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <font key="NSFont" size="30" name="Menlo-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIB-V1-a7m" userLabel="Cutout View">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="zIB-V1-a7m" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Dd4-nF-D9a"/>
+                <constraint firstItem="ScD-u2-0jE" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="EUs-X6-9pk"/>
+                <constraint firstItem="wWl-XW-ZKl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Lt1-Md-p5w"/>
+                <constraint firstItem="wWl-XW-ZKl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="MZP-Z2-ejG"/>
+                <constraint firstItem="ScD-u2-0jE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TKS-nF-qC5"/>
+                <constraint firstAttribute="bottom" secondItem="zIB-V1-a7m" secondAttribute="bottom" id="V7w-e4-4g7"/>
+                <constraint firstItem="ScD-u2-0jE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dXf-pk-dDS"/>
+                <constraint firstItem="zIB-V1-a7m" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dbX-XB-SCJ"/>
+                <constraint firstAttribute="bottom" secondItem="ScD-u2-0jE" secondAttribute="bottom" id="fLa-ld-Wmz"/>
+                <constraint firstItem="zIB-V1-a7m" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="oFC-YT-iBW"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="139" y="141"/>
+        </view>
+    </objects>
+</document>

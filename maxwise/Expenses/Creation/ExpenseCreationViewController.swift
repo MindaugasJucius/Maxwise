@@ -156,7 +156,7 @@ class ExpenseCreationViewController: UIViewController {
         configureSegmentedControl()
         configureDismissalView()
         addCategorySelectionController()
-
+        addVisionController()
         observeResponderChanges()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(applicationDidBecomeActive),
@@ -169,6 +169,17 @@ class ExpenseCreationViewController: UIViewController {
             expenseInfoContainerView.layer.applyShadow(color: .tertiaryLabel)
             adjustBackgroundColor(for: traitCollection)
         }
+    }
+    
+    private func addVisionController() {
+        let visionVC = VisionViewController(nibName: nil, bundle: nil)
+        addChild(visionVC)
+        cameraContainerView.insertSubview(
+            visionVC.view,
+            aboveSubview: cameraContainerBlurView
+        )
+        visionVC.view.fillInSuperview()
+        visionVC.didMove(toParent: self)
     }
 
     private func adjustBackgroundColor(for traitCollection: UITraitCollection) {
@@ -227,7 +238,7 @@ class ExpenseCreationViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
         
-        categorySelectedController.didMove(toParent: nil)
+        categorySelectedController.didMove(toParent: self)
     }
     
     private func handleCategorySelection(category: ExpenseCategory) {

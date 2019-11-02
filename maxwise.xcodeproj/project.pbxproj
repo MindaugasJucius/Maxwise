@@ -89,6 +89,11 @@
 		5FC9298422F89FFF00CB23DC /* ExpenseCreationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC9298322F89FFF00CB23DC /* ExpenseCreationInputView.swift */; };
 		5FC9298622F8A02200CB23DC /* ExpenseCreationInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FC9298522F8A02200CB23DC /* ExpenseCreationInputView.xib */; };
 		5FD24AE02368CBDA00B3C755 /* TapableLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD24ADF2368CBDA00B3C755 /* TapableLineChartView.swift */; };
+		5FD24AE7236D7BA500B3C755 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD24AE3236D7BA400B3C755 /* PreviewView.swift */; };
+		5FD24AE8236D7BA500B3C755 /* RootVisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD24AE4236D7BA400B3C755 /* RootVisionViewController.swift */; };
+		5FD24AE9236D7BA500B3C755 /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD24AE5236D7BA400B3C755 /* VisionViewController.swift */; };
+		5FD24AEA236D7BA500B3C755 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD24AE6236D7BA400B3C755 /* StringUtils.swift */; };
+		5FD24AEC236D7C4F00B3C755 /* VisionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FD24AEB236D7C4F00B3C755 /* VisionViewController.xib */; };
 		5FD3D85E233BE2F9009042D1 /* CenteredTextSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3D85D233BE2F9009042D1 /* CenteredTextSelectionView.swift */; };
 		5FD3D861233BE8C7009042D1 /* TextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD3D85F233BE8C7009042D1 /* TextCollectionViewCell.swift */; };
 		5FD3D862233BE8C7009042D1 /* TextCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FD3D860233BE8C7009042D1 /* TextCollectionViewCell.xib */; };
@@ -293,6 +298,11 @@
 		5FC9298322F89FFF00CB23DC /* ExpenseCreationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCreationInputView.swift; sourceTree = "<group>"; };
 		5FC9298522F8A02200CB23DC /* ExpenseCreationInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseCreationInputView.xib; sourceTree = "<group>"; };
 		5FD24ADF2368CBDA00B3C755 /* TapableLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapableLineChartView.swift; sourceTree = "<group>"; };
+		5FD24AE3236D7BA400B3C755 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		5FD24AE4236D7BA400B3C755 /* RootVisionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVisionViewController.swift; sourceTree = "<group>"; };
+		5FD24AE5236D7BA400B3C755 /* VisionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
+		5FD24AE6236D7BA400B3C755 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		5FD24AEB236D7C4F00B3C755 /* VisionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisionViewController.xib; sourceTree = "<group>"; };
 		5FD3D85D233BE2F9009042D1 /* CenteredTextSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredTextSelectionView.swift; sourceTree = "<group>"; };
 		5FD3D85F233BE8C7009042D1 /* TextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCollectionViewCell.swift; sourceTree = "<group>"; };
 		5FD3D860233BE8C7009042D1 /* TextCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -521,6 +531,7 @@
 		5F4A3B6A220720870016BCC9 /* maxwise */ = {
 			isa = PBXGroup;
 			children = (
+				5FD24AE2236D7ADD00B3C755 /* Real Time Recognition */,
 				5F65CD7222D27E190040C218 /* maxwise.entitlements */,
 				5FB59210227DE2EF005D5208 /* NavigationView.swift */,
 				5FB59212227DE303005D5208 /* NavigationView.xib */,
@@ -582,6 +593,18 @@
 				5F56B99C2313C78E005AF4AF /* ExpenseCategoryTableViewCell.xib */,
 			);
 			path = Creation;
+			sourceTree = "<group>";
+		};
+		5FD24AE2236D7ADD00B3C755 /* Real Time Recognition */ = {
+			isa = PBXGroup;
+			children = (
+				5FD24AE3236D7BA400B3C755 /* PreviewView.swift */,
+				5FD24AE6236D7BA400B3C755 /* StringUtils.swift */,
+				5FD24AE4236D7BA400B3C755 /* RootVisionViewController.swift */,
+				5FD24AE5236D7BA400B3C755 /* VisionViewController.swift */,
+				5FD24AEB236D7C4F00B3C755 /* VisionViewController.xib */,
+			);
+			path = "Real Time Recognition";
 			sourceTree = "<group>";
 		};
 		5FFACEB82219CF8500F087E4 /* Camera */ = {
@@ -861,6 +884,7 @@
 				F4A984842349FC2C00A69F79 /* CategoryRepresentationView.xib in Resources */,
 				5F0FC86C231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib in Resources */,
 				5FC9298622F8A02200CB23DC /* ExpenseCreationInputView.xib in Resources */,
+				5FD24AEC236D7C4F00B3C755 /* VisionViewController.xib in Resources */,
 				F412211323619D410062DD5D /* LineChartMarkerView.xib in Resources */,
 				5FB59213227DE303005D5208 /* NavigationView.xib in Resources */,
 				5F56B99E2313C78E005AF4AF /* ExpenseCategoryTableViewCell.xib in Resources */,
@@ -1073,12 +1097,15 @@
 				5FA3DBB522C8C531009FD189 /* UIViewController+Extensions.swift in Sources */,
 				5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */,
 				5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */,
+				5FD24AE8236D7BA500B3C755 /* RootVisionViewController.swift in Sources */,
+				5FD24AE7236D7BA500B3C755 /* PreviewView.swift in Sources */,
 				5F169BD42325799A007666E9 /* InsetTextField.swift in Sources */,
 				5F0FC87823255E660083EBA9 /* CategoryCreationView.swift in Sources */,
 				F4A984772349EAAD00A69F79 /* CategoriesListViewController.swift in Sources */,
 				5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */,
 				5F56B99D2313C78E005AF4AF /* ExpenseCategoryTableViewCell.swift in Sources */,
 				5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */,
+				5FD24AEA236D7BA500B3C755 /* StringUtils.swift in Sources */,
 				F4C29AB6235645A000C32529 /* CategoriesChartsViewController.swift in Sources */,
 				5F20E0BD2210352F00BAECF6 /* ExpenseTableViewCell.swift in Sources */,
 				F41AF8C7235F556000055F99 /* UIColor+Extension.swift in Sources */,
@@ -1088,6 +1115,7 @@
 				5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */,
 				5FAB19E1229F080500930A7F /* CALayer+Extensions.swift in Sources */,
 				5F0FC872231C2A9C0083EBA9 /* EmptyStateView.swift in Sources */,
+				5FD24AE9236D7BA500B3C755 /* VisionViewController.swift in Sources */,
 				5FC9298422F89FFF00CB23DC /* ExpenseCreationInputView.swift in Sources */,
 				F4A9847F2349FAF000A69F79 /* CategoryListCollectionViewCell.swift in Sources */,
 				F4D3B2282352009200836FB0 /* CategoriesListViewModel.swift in Sources */,
