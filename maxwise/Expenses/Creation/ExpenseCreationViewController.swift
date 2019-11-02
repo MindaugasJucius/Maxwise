@@ -20,17 +20,6 @@ class ExpenseCreationViewController: UIViewController {
     }()
     @IBOutlet private weak var collapseButtonContainer: VibrantContentView!
     
-    private lazy var resetToCameraButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0.5,
-                                              left: 0.5,
-                                              bottom: 0,
-                                              right: 0)
-        return button
-    }()
-    @IBOutlet private weak var resetToCameraButtonContainer: VibrantContentView!
-    
     private var creationInputView: ExpenseCreationInputView?
     
     private lazy var cameraContainerBlurView: UIView! = {
@@ -95,9 +84,7 @@ class ExpenseCreationViewController: UIViewController {
     
     private let viewModel: ExpenseCreationViewModel
     private let transitionDelegate = ModalBlurTransitionController()
-    
-    private lazy var cameraViewController = CameraViewController(captureDelegate: self)
-    
+        
     private var expenseToEdit: ExpenseEntry?
     private var categorySelectedController: ExpenseSelectedCategoryViewController?
     
@@ -169,9 +156,6 @@ class ExpenseCreationViewController: UIViewController {
         configureSegmentedControl()
         configureDismissalView()
         addCategorySelectionController()
-        
-        // Creating camera session in viewDidLoad on the main queue lags a bit
-        addCameraController()
 
         observeResponderChanges()
         NotificationCenter.default.addObserver(self,
@@ -381,20 +365,6 @@ class ExpenseCreationViewController: UIViewController {
             action: #selector(collapseCamera),
             for: .touchUpInside
         )
-        
-        //Add reset to camera button
-        resetToCameraButtonContainer.configuration = VibrantContentView.Configuration(cornerStyle: .circular,
-                                                                                      blurEffectStyle: .prominent)
-        resetToCameraButtonContainer.contentView?.addSubview(resetToCameraButton)
-        resetToCameraButton.fillInSuperview()
-        
-        resetToCameraButtonContainer.alpha = 0
-        
-        resetToCameraButton.addTarget(
-            self,
-            action: #selector(removeRecognitionController),
-            for: .touchUpInside
-        )
     }
     
     @objc private func toggleCameraPresentation() {
@@ -405,7 +375,6 @@ class ExpenseCreationViewController: UIViewController {
         expandedCameraHeightConstraint.isActive = isCameraContainerHidden
         initialCameraHeightConstraint.isActive = !isCameraContainerHidden
         let animator = UIViewPropertyAnimator(duration: 0.3, dampingRatio: 0.82) {
-            self.cameraViewController.view.setNeedsLayout()
             self.view.layoutIfNeeded()
             if isCameraContainerHidden {
                 self.cameraContainerBlurView.alpha = 0
@@ -420,60 +389,8 @@ class ExpenseCreationViewController: UIViewController {
     
     @objc private func collapseCamera() {
         toggleCameraPresentation()
-        removeRecognitionController()
         lastResponder?.becomeFirstResponder()
     }
-    
-    @objc private func removeRecognitionController() {
-        guard children.last is TextPickViewController else {
-            return
-        }
-        children.last?.view.removeFromSuperview()
-        children.last?.removeFromParent()
-        resetToCameraButtonContainer.alpha = 0
-    }
-    
-    private func addCameraController() {
-        addChild(cameraViewController)
-        cameraContainerView.insertSubview(cameraViewController.view,
-                                          belowSubview: cameraContainerBlurView)
-        cameraViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        cameraViewController.view.fill(in: cameraContainerView)
-        cameraViewController.didMove(toParent: nil)
-    }
-    
-    private func addRecognitionController(cgImage: CGImage,
-                                          orientation: CGImagePropertyOrientation,
-                                          tapLocation: CGPoint) {
-        let recognitionOccured: (String) -> Void = { [weak self] value in
-            if let formattedRecognized = self?.viewModel.formatRecognized(input: value) {
-                self?.amountTextField.text = formattedRecognized
-            } else {
-                self?.handle(issues: [.noAmount])
-            }
-        }
-        
-        let recognitionController = TextPickViewController(cgImage: cgImage,
-                                                           orientation: orientation,
-                                                           tapLocation: tapLocation,
-                                                           recognitionOccured: recognitionOccured)
-        addChild(recognitionController)
-        cameraContainerView.insertSubview(recognitionController.view,
-                                          belowSubview: cameraContainerBlurView)
-        recognitionController.view.translatesAutoresizingMaskIntoConstraints = false
-        recognitionController.view.fill(in: cameraContainerView)
-        recognitionController.didMove(toParent: nil)
-    }
-
-}
-
-extension ExpenseCreationViewController: CameraCaptureDelegate {
-    
-    func captured(image: CGImage, orientation: CGImagePropertyOrientation, tapLocation: CGPoint) {
-        resetToCameraButtonContainer.alpha = 1
-        addRecognitionController(cgImage: image, orientation: orientation, tapLocation: tapLocation)
-    }
-    
 }
 
 extension ExpenseCreationViewController: UITextFieldDelegate {
