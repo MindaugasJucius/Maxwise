@@ -119,14 +119,14 @@ class ExpenseCreationViewController: UIViewController {
                 return
         }
         
-        categorySelectedController = createCategorySelectionController(preselectedCategory: category)
+        categorySelectedController = selectedCategoryController(preselectedCategory: category)
     }
     
     convenience init(viewModel: ExpenseCreationViewModel, expenseToEdit: ExpenseEntry) {
         self.init(viewModel: viewModel)
         self.expenseToEdit = expenseToEdit
         // Can't save an expense without a category
-        categorySelectedController = createCategorySelectionController(
+        categorySelectedController = selectedCategoryController(
             preselectedCategory: expenseToEdit.category!
         )
     }
@@ -235,7 +235,7 @@ class ExpenseCreationViewController: UIViewController {
         }
     }
     
-    private func createCategorySelectionController(preselectedCategory: ExpenseCategory) -> ExpenseSelectedCategoryViewController {
+    private func selectedCategoryController(preselectedCategory: ExpenseCategory) -> ExpenseSelectedCategoryViewController {
         
         let categorySelectedController = ExpenseSelectedCategoryViewController(
             categories: viewModel.categories,

@@ -21,7 +21,7 @@ class RootVisionViewController: UIViewController {
         let label = InsetLabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        label.text = "to recognize point to digits".uppercased()
+        label.text = "Fill amount by pointing to digits".uppercased()
         label.textAlignment = .center
         label.textColor = .label
         label.backgroundColor = .systemBackground
@@ -52,7 +52,8 @@ class RootVisionViewController: UIViewController {
 	
 	// MARK: - Capture related objects
 	private let captureSession = AVCaptureSession()
-    let captureSessionQueue = DispatchQueue(label: "com.maxwise.CaptureSessionQueue")
+
+    let captureSessionQueue = DispatchQueue(label: "com.maxwise.CaptureSessionQueue", qos: .userInitiated)
     
 	var captureDevice: AVCaptureDevice?
     
@@ -82,7 +83,7 @@ class RootVisionViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		// Set up preview view.
 		previewView.session = captureSession
         previewView.videoPreviewLayer.videoGravity = .resizeAspectFill
