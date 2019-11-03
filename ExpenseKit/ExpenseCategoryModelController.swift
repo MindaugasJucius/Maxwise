@@ -8,6 +8,7 @@ public class ExpenseCategoryModelController {
     private let colorModelController = ColorModelController()
 
     private var expenseCategoryObservationToken: NotificationToken?
+    private var storedExpenseCategoriesObservationToken: NotificationToken?
     private var specificExpenseCategoryObservationToken: NotificationToken?
     
     private let defaultCategoriesCreatedKey = "defaultCategoriesCreated"
@@ -99,6 +100,21 @@ public class ExpenseCategoryModelController {
             return []
         }
         return Array(realm.objects(ExpenseCategory.self))
+    }
+    
+    public func observeStoredExpenseCategories(changed: @escaping ([ExpenseCategory]) -> ()) {
+        let realm = try? Realm.groupRealm()
+        storedExpenseCategoriesObservationToken = realm?.objects(ExpenseCategory.self)
+            .observe { change in
+                switch change {
+                case .initial(let value):
+                    changed(Array(value))
+                case .update(let value, deletions: _, insertions: _, modifications: _):
+                    changed(Array(value))
+                default:
+                    print("huh")
+                }
+            }
     }
     
     /// Observe changes to expense categories entries.

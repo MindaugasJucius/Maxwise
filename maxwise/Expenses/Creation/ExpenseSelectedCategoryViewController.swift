@@ -3,16 +3,13 @@ import ExpenseKit
 
 class ExpenseSelectedCategoryViewController: UIViewController {
     
-    private let categories: [ExpenseCategory]
     private let selectedCategory: (ExpenseCategory) -> ()
     private let preselectedCategory: ExpenseCategory
     
     @IBOutlet weak var categoryRepresentationView: CategoryRepresentationView!
     
-    init(categories: [ExpenseCategory],
-         categoryToPreselect: ExpenseCategory,
+    init(categoryToPreselect: ExpenseCategory,
          hasChangedSelectedCategory: @escaping (ExpenseCategory) -> ()) {
-        self.categories = categories
         self.preselectedCategory = categoryToPreselect
         self.selectedCategory = hasChangedSelectedCategory
         super.init(nibName: nil, bundle: nil)
@@ -34,7 +31,7 @@ class ExpenseSelectedCategoryViewController: UIViewController {
     }
     
     @objc private func tap() {
-        let selectionVC = ExpenseCategorySelectionViewController(categories: categories) { [weak self] selectedCategory in
+        let selectionVC = ExpenseCategorySelectionViewController { [weak self] selectedCategory in
             self?.configure(for: selectedCategory)
             self?.selectedCategory(selectedCategory)
         }

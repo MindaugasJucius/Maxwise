@@ -7,9 +7,10 @@ class ExpenseCategorySelectionViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let categories: [ExpenseCategory]
-    private let categoriesSnapshot: NSDiffableDataSourceSnapshot<String, ExpenseCategory>
     private let categorySelected: (ExpenseCategory) -> ()
+    
+    private var currentCategories: [ExpenseCategory] = []
+    private let categoryModelController = ExpenseCategoryModelController()
     
     private lazy var dataSource: UITableViewDiffableDataSource<String, ExpenseCategory> = {
         return UITableViewDiffableDataSource(tableView: tableView) { [weak self] (tableView, indexPath, category) -> UITableViewCell? in
@@ -21,18 +22,13 @@ class ExpenseCategorySelectionViewController: UIViewController {
             guard let expenseCategoryCell = cell as? ExpenseCategoryTableViewCell else {
                 return cell
             }
-            expenseCategoryCell.configure(category: self.categories[indexPath.row])
+            expenseCategoryCell.configure(category: self.currentCategories[indexPath.row])
             return expenseCategoryCell
         }
     }()
     
-    init(categories: [ExpenseCategory], categorySelected: @escaping (ExpenseCategory) -> ()) {
-        self.categories = categories
+    init(categorySelected: @escaping (ExpenseCategory) -> ()) {
         self.categorySelected = categorySelected
-        var snapshot = NSDiffableDataSourceSnapshot<String, ExpenseCategory>()
-        snapshot.appendSections([""])
-        snapshot.appendItems(categories)
-        self.categoriesSnapshot = snapshot
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -42,11 +38,21 @@ class ExpenseCategorySelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Select a category"
+        title = "Expense categories"
         view.backgroundColor = UIColor.init(named: "background")
-        
+        configureTableView()
         dataSource.defaultRowAnimation = .fade
         
+        categoryModelController.observeStoredExpenseCategories { [weak self] newStoredCategories in
+            self?.currentCategories = newStoredCategories
+            var snapshot = NSDiffableDataSourceSnapshot<String, ExpenseCategory>()
+            snapshot.appendSections([""])
+            snapshot.appendItems(newStoredCategories)
+            self?.dataSource.apply(snapshot)
+        }
+    }
+
+    func configureTableView() {
         let cellNib = UINib.init(nibName: ExpenseCategoryTableViewCell.nibName, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: ExpenseCategoryTableViewCell.nibName)
         tableView.rowHeight = 65
@@ -54,18 +60,13 @@ class ExpenseCategorySelectionViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.delegate = self
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        dataSource.apply(categoriesSnapshot)
-    }
 
 }
 
 extension ExpenseCategorySelectionViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCategory = categories[indexPath.row]
+        let selectedCategory = currentCategories[indexPath.row]
         categorySelected(selectedCategory)
         selectionFeedback.selectionChanged()
         dismiss(animated: true, completion: nil)

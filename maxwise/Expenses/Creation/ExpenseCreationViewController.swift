@@ -238,7 +238,6 @@ class ExpenseCreationViewController: UIViewController {
     private func selectedCategoryController(preselectedCategory: ExpenseCategory) -> ExpenseSelectedCategoryViewController {
         
         let categorySelectedController = ExpenseSelectedCategoryViewController(
-            categories: viewModel.categories,
             categoryToPreselect: preselectedCategory,
             hasChangedSelectedCategory: { [weak self] selectedCategory in
             self?.handleCategorySelection(category: selectedCategory)
