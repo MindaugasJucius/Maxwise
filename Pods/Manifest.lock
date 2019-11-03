@@ -1,16 +1,32 @@
 PODS:
-  - TesseractOCRiOS (5.0.1)
+  - Charts (3.3.0):
+    - Charts/Core (= 3.3.0)
+  - Charts/Core (3.3.0)
+  - Realm (3.18.0):
+    - Realm/Headers (= 3.18.0)
+  - Realm/Headers (3.18.0)
+  - RealmSwift (3.18.0):
+    - Realm (= 3.18.0)
+  - UPCarouselFlowLayout (1.1.2)
 
 DEPENDENCIES:
-  - TesseractOCRiOS
+  - Charts
+  - RealmSwift (= 3.18.0)
+  - UPCarouselFlowLayout
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - TesseractOCRiOS
+  https://github.com/CocoaPods/Specs.git:
+    - Charts
+    - Realm
+    - RealmSwift
+    - UPCarouselFlowLayout
 
 SPEC CHECKSUMS:
-  TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
+  Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
+  Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
+  RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
+  UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
 
-PODFILE CHECKSUM: da7c2276d12b8cae72e0fec3bae8147d35eb3672
+PODFILE CHECKSUM: 9e2183961a9428e805dd97bce3cbc039b3e7388f
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.3

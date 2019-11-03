@@ -27,7 +27,6 @@
 		5F169BDC232CD4BB007666E9 /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F169BDA232CD4BB007666E9 /* ColorCollectionViewCell.xib */; };
 		5F169BE0232EA672007666E9 /* CategoriesStatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F169BDF232EA672007666E9 /* CategoriesStatisticsViewModel.swift */; };
 		5F20E0AE220EF8A400BAECF6 /* Orientation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */; };
-		5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B42210281B00BAECF6 /* TextPickViewModel.swift */; };
 		5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0B6221034F300BAECF6 /* ExpensesViewController.swift */; };
 		5F20E0B9221034F300BAECF6 /* ExpensesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F20E0B7221034F300BAECF6 /* ExpensesViewController.xib */; };
 		5F20E0BD2210352F00BAECF6 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F20E0BB2210352F00BAECF6 /* ExpenseTableViewCell.swift */; };
@@ -51,12 +50,8 @@
 		5F353A8F22DB5A8E00F96D3D /* ExpenseCreationIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD95D8822D3CDC400DD3F8F /* ExpenseCreationIntentHandler.swift */; };
 		5F4046BA236DE948003DCA92 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4046B9236DE948003DCA92 /* InsetLabel.swift */; };
 		5F41C4262341096700126E5C /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F41C4252341096700126E5C /* Array+Extensions.swift */; };
-		5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD5220C6011002CD12D /* TextDetectionController.swift */; };
-		5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BD7220C62E0002CD12D /* TextPickViewController.swift */; };
-		5F470BDA220C62E0002CD12D /* TextPickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F470BD8220C62E0002CD12D /* TextPickViewController.xib */; };
 		5F470BDF220CA765002CD12D /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F470BDE220CA765002CD12D /* BlurView.swift */; };
 		5F4A3B6C220720870016BCC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B6B220720870016BCC9 /* AppDelegate.swift */; };
-		5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4A3B6D220720870016BCC9 /* CameraViewController.swift */; };
 		5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B72220720880016BCC9 /* Assets.xcassets */; };
 		5F4A3B76220720880016BCC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4A3B74220720880016BCC9 /* LaunchScreen.storyboard */; };
 		5F56B99023049E1C005AF4AF /* ExpensesSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F56B98F23049E1C005AF4AF /* ExpensesSectionHeaderView.swift */; };
@@ -73,13 +68,8 @@
 		5F65CD5322D27C050040C218 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD5222D27C050040C218 /* IntentHandler.swift */; };
 		5F65CD6822D27C050040C218 /* CreatingExpenses.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5F65CD5022D27C050040C218 /* CreatingExpenses.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5F65CD7022D27C2F0040C218 /* ExpenseCreation.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5F65CD4A22D2621B0040C218 /* ExpenseCreation.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
-		5F68787022073D8800F4FE7C /* TesseractOCR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F68786F22073D8800F4FE7C /* TesseractOCR.framework */; };
 		5F6878752207419600F4FE7C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6878742207419600F4FE7C /* libz.tbd */; };
-		5F6878772207425400F4FE7C /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 5F6878762207425400F4FE7C /* tessdata */; };
-		5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6878782207728C00F4FE7C /* DigitRecognizer.swift */; };
-		5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F68787A2207744D00F4FE7C /* CameraController.swift */; };
 		5F86C57222108C9B005CFF9E /* ExpensesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F86C57122108C9B005CFF9E /* ExpensesViewModel.swift */; };
-		5F9DE37E2218A135008CCB94 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9DE37D2218A135008CCB94 /* CameraViewController.xib */; };
 		5F9DE38222195D7A008CCB94 /* ExpensesParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9DE38122195D7A008CCB94 /* ExpensesParentViewController.swift */; };
 		5F9E13C7222C44CA00805878 /* ExpenseCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9E13C6222C44CA00805878 /* ExpenseCreationViewModel.swift */; };
 		5FA3DBB522C8C531009FD189 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA3DBB422C8C531009FD189 /* UIViewController+Extensions.swift */; };
@@ -230,7 +220,6 @@
 		5F20E0AD220EF8A400BAECF6 /* Orientation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Orientation+Extensions.swift"; sourceTree = "<group>"; };
 		5F20E0B02210247C00BAECF6 /* ExpenseEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
 		5F20E0B22210265200BAECF6 /* ExpenseEntryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryModelController.swift; sourceTree = "<group>"; };
-		5F20E0B42210281B00BAECF6 /* TextPickViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPickViewModel.swift; sourceTree = "<group>"; };
 		5F20E0B6221034F300BAECF6 /* ExpensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
 		5F20E0B7221034F300BAECF6 /* ExpensesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpensesViewController.xib; sourceTree = "<group>"; };
 		5F20E0BB2210352F00BAECF6 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
@@ -247,13 +236,9 @@
 		5F4021CF22912CD100B0C60C /* ExpenseCategoryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategoryModelController.swift; sourceTree = "<group>"; };
 		5F4046B9236DE948003DCA92 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		5F41C4252341096700126E5C /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
-		5F470BD5220C6011002CD12D /* TextDetectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetectionController.swift; sourceTree = "<group>"; };
-		5F470BD7220C62E0002CD12D /* TextPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPickViewController.swift; sourceTree = "<group>"; };
-		5F470BD8220C62E0002CD12D /* TextPickViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPickViewController.xib; sourceTree = "<group>"; };
 		5F470BDE220CA765002CD12D /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		5F4A3B68220720870016BCC9 /* Budgy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budgy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F4A3B6B220720870016BCC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5F4A3B6D220720870016BCC9 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		5F4A3B72220720880016BCC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F4A3B75220720880016BCC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F4A3B77220720880016BCC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -279,14 +264,10 @@
 		5F65CD7322D27E3E0040C218 /* CreatingExpenses.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CreatingExpenses.entitlements; sourceTree = "<group>"; };
 		5F68786F22073D8800F4FE7C /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6878742207419600F4FE7C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		5F6878762207425400F4FE7C /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
-		5F6878782207728C00F4FE7C /* DigitRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitRecognizer.swift; sourceTree = "<group>"; };
-		5F68787A2207744D00F4FE7C /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		5F86C57122108C9B005CFF9E /* ExpensesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesViewModel.swift; sourceTree = "<group>"; };
 		5F9DE3772217FF0E008CCB94 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5F9DE37922188984008CCB94 /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
 		5F9DE37B22189582008CCB94 /* ExpenseEntryModelControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryModelControllerTests.swift; sourceTree = "<group>"; };
-		5F9DE37D2218A135008CCB94 /* CameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
 		5F9DE38122195D7A008CCB94 /* ExpensesParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesParentViewController.swift; sourceTree = "<group>"; };
 		5F9DE38D2219BF88008CCB94 /* UserModelControllerObservationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelControllerObservationTests.swift; sourceTree = "<group>"; };
 		5F9DE38F2219C282008CCB94 /* TestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
@@ -371,7 +352,6 @@
 			files = (
 				5F353A6522DB48C500F96D3D /* ExpenseKit.framework in Frameworks */,
 				5F6878752207419600F4FE7C /* libz.tbd in Frameworks */,
-				5F68787022073D8800F4FE7C /* TesseractOCR.framework in Frameworks */,
 				5FFD2C212207353B00DDFBE5 /* libc++.tbd in Frameworks */,
 				5FFD2C1D2207330B00DDFBE5 /* CoreImage.framework in Frameworks */,
 				24128F3758533D81B8C252A7 /* Pods_maxwise.framework in Frameworks */,
@@ -492,18 +472,6 @@
 			path = ExpenseKitTests;
 			sourceTree = "<group>";
 		};
-		5F470BDB220C6715002CD12D /* Text Picking */ = {
-			isa = PBXGroup;
-			children = (
-				5F6878782207728C00F4FE7C /* DigitRecognizer.swift */,
-				5F470BD5220C6011002CD12D /* TextDetectionController.swift */,
-				5F470BD7220C62E0002CD12D /* TextPickViewController.swift */,
-				5F20E0B42210281B00BAECF6 /* TextPickViewModel.swift */,
-				5F470BD8220C62E0002CD12D /* TextPickViewController.xib */,
-			);
-			path = "Text Picking";
-			sourceTree = "<group>";
-		};
 		5F4A3B5F220720870016BCC9 = {
 			isa = PBXGroup;
 			children = (
@@ -541,11 +509,8 @@
 				5F470BDE220CA765002CD12D /* BlurView.swift */,
 				F45D67CF22A3E0BB00DB1AE1 /* Custom subclasses */,
 				5F20E0AF2210239400BAECF6 /* Model */,
-				5FFACEB82219CF8500F087E4 /* Camera */,
-				5F470BDB220C6715002CD12D /* Text Picking */,
 				5F20E0BA2210350000BAECF6 /* Expenses */,
 				5F0FC866231BC5020083EBA9 /* Categories */,
-				5F6878762207425400F4FE7C /* tessdata */,
 				5F4A3B6B220720870016BCC9 /* AppDelegate.swift */,
 				5F4A3B72220720880016BCC9 /* Assets.xcassets */,
 				5F4A3B74220720880016BCC9 /* LaunchScreen.storyboard */,
@@ -607,16 +572,6 @@
 				5FD24AEB236D7C4F00B3C755 /* VisionViewController.xib */,
 			);
 			path = "Real Time Recognition";
-			sourceTree = "<group>";
-		};
-		5FFACEB82219CF8500F087E4 /* Camera */ = {
-			isa = PBXGroup;
-			children = (
-				5F4A3B6D220720870016BCC9 /* CameraViewController.swift */,
-				5F68787A2207744D00F4FE7C /* CameraController.swift */,
-				5F9DE37D2218A135008CCB94 /* CameraViewController.xib */,
-			);
-			path = Camera;
 			sourceTree = "<group>";
 		};
 		5FFD2C172207321700DDFBE5 /* Frameworks */ = {
@@ -896,19 +851,16 @@
 				5FD3D862233BE8C7009042D1 /* TextCollectionViewCell.xib in Resources */,
 				5F240CA2222721A3009A41AE /* ExpenseCreationViewController.xib in Resources */,
 				F4C29AC92358489000C32529 /* LineChartCollectionViewCell.xib in Resources */,
-				5F9DE37E2218A135008CCB94 /* CameraViewController.xib in Resources */,
 				F4A984782349EAAD00A69F79 /* CategoriesListViewController.xib in Resources */,
 				F4C29AC52358487F00C32529 /* PieChartCollectionViewCell.xib in Resources */,
 				5F56B99223049E2B005AF4AF /* ExpensesSectionHeaderView.xib in Resources */,
 				5F56B99623101C9B005AF4AF /* ExpenseSelectedCategoryViewController.xib in Resources */,
 				5F0FC874231C2ABA0083EBA9 /* EmptyStateView.xib in Resources */,
-				5F6878772207425400F4FE7C /* tessdata in Resources */,
 				5F0FC87A23255E7E0083EBA9 /* CategoryCreationView.xib in Resources */,
 				F4A984802349FAF000A69F79 /* CategoryListCollectionViewCell.xib in Resources */,
 				5F65C346222A6DAF00E10F92 /* VenueCollectionViewCell.xib in Resources */,
 				5F20E0BE2210352F00BAECF6 /* ExpenseTableViewCell.xib in Resources */,
 				5F4A3B73220720880016BCC9 /* Assets.xcassets in Resources */,
-				5F470BDA220C62E0002CD12D /* TextPickViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1089,7 +1041,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F470BD6220C6011002CD12D /* TextDetectionController.swift in Sources */,
 				5F470BDF220CA765002CD12D /* BlurView.swift in Sources */,
 				5FD3D85E233BE2F9009042D1 /* CenteredTextSelectionView.swift in Sources */,
 				5F56B99523101C9B005AF4AF /* ExpenseSelectedCategoryViewController.swift in Sources */,
@@ -1098,15 +1049,12 @@
 				5FFACEBA2219D07A00F087E4 /* ContainerViewController.swift in Sources */,
 				5F65CD4B22D2621B0040C218 /* ExpenseCreation.intentdefinition in Sources */,
 				5FA3DBB522C8C531009FD189 /* UIViewController+Extensions.swift in Sources */,
-				5F6878792207728C00F4FE7C /* DigitRecognizer.swift in Sources */,
 				5F4046BA236DE948003DCA92 /* InsetLabel.swift in Sources */,
-				5F4A3B6E220720870016BCC9 /* CameraViewController.swift in Sources */,
 				5FD24AE8236D7BA500B3C755 /* RootVisionViewController.swift in Sources */,
 				5FD24AE7236D7BA500B3C755 /* PreviewView.swift in Sources */,
 				5F169BD42325799A007666E9 /* InsetTextField.swift in Sources */,
 				5F0FC87823255E660083EBA9 /* CategoryCreationView.swift in Sources */,
 				F4A984772349EAAD00A69F79 /* CategoriesListViewController.swift in Sources */,
-				5F470BD9220C62E0002CD12D /* TextPickViewController.swift in Sources */,
 				5F56B99D2313C78E005AF4AF /* ExpenseCategoryTableViewCell.swift in Sources */,
 				5F20E0B8221034F300BAECF6 /* ExpensesViewController.swift in Sources */,
 				5FD24AEA236D7BA500B3C755 /* StringUtils.swift in Sources */,
@@ -1123,7 +1071,6 @@
 				5FC9298422F89FFF00CB23DC /* ExpenseCreationInputView.swift in Sources */,
 				F4A9847F2349FAF000A69F79 /* CategoryListCollectionViewCell.swift in Sources */,
 				F4D3B2282352009200836FB0 /* CategoriesListViewModel.swift in Sources */,
-				5F68787B2207744D00F4FE7C /* CameraController.swift in Sources */,
 				5F56B99023049E1C005AF4AF /* ExpensesSectionHeaderView.swift in Sources */,
 				F4A9847A2349F6F600A69F79 /* SectionBackgroundDecorationView.swift in Sources */,
 				F4B5CC0123538B4300787791 /* FilteredExpensesViewModel.swift in Sources */,
@@ -1149,7 +1096,6 @@
 				5F56B9992313C50C005AF4AF /* ExpenseCategorySelectionViewController.swift in Sources */,
 				F4C29AC82358489000C32529 /* LineChartCollectionViewCell.swift in Sources */,
 				5F2D4BD7229B266000884FA9 /* ModalBlurTransitionController.swift in Sources */,
-				5F20E0B52210281B00BAECF6 /* TextPickViewModel.swift in Sources */,
 				F412211123619C900062DD5D /* LineChartMarkerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
