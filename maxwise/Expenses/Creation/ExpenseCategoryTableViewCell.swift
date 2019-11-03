@@ -14,6 +14,7 @@ class ExpenseCategoryTableViewCell: UITableViewCell {
         categoryRepresentationView.emojiTextField.isEnabled = false
         categoryTitleLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         categoryTitleLabel.textColor = .label
+        separatorInset = .zero
     }
     
     func configure(category: ExpenseCategory) {
