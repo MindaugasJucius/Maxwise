@@ -2,31 +2,32 @@ PODS:
   - Charts (3.3.0):
     - Charts/Core (= 3.3.0)
   - Charts/Core (3.3.0)
-  - Realm (3.18.0):
-    - Realm/Headers (= 3.18.0)
-  - Realm/Headers (3.18.0)
-  - RealmSwift (3.18.0):
-    - Realm (= 3.18.0)
+  - Realm (3.21.0):
+    - Realm/Headers (= 3.21.0)
+  - Realm/Headers (3.21.0)
+  - RealmSwift (3.21.0):
+    - Realm (= 3.21.0)
   - UPCarouselFlowLayout (1.1.2)
 
 DEPENDENCIES:
   - Charts
-  - RealmSwift (= 3.18.0)
+  - RealmSwift (= 3.21.0)
   - UPCarouselFlowLayout
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Charts
+    - UPCarouselFlowLayout
+  trunk:
     - Realm
     - RealmSwift
-    - UPCarouselFlowLayout
 
 SPEC CHECKSUMS:
   Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
-  Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
-  RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
+  Realm: 38e9dcb19104b58407167d99f70d4995f7c16023
+  RealmSwift: 3183cc1ad48378fbcd634311b22c0e6c44021152
   UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
 
-PODFILE CHECKSUM: 9e2183961a9428e805dd97bce3cbc039b3e7388f
+PODFILE CHECKSUM: 67103b6f198444dc2bb7d7756dcec4ecbd8e3bb2
 
 COCOAPODS: 1.8.3

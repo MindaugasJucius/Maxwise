@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		24128F3758533D81B8C252A7 /* Pods_maxwise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D895C0839495FDDC4C5431B /* Pods_maxwise.framework */; };
 		2596A9BB6F90D9A30A6D3A83 /* Pods_ExpenseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D7441A592E5DAB8FC20E57 /* Pods_ExpenseKit.framework */; };
+		5F0E399A236F418300E09EE9 /* BudgyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E3999236F418300E09EE9 /* BudgyUITests.swift */; };
+		5F0E39A2236F428300E09EE9 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0E39A1236F428300E09EE9 /* SnapshotHelper.swift */; };
 		5F0FC868231BC55B0083EBA9 /* CategoriesParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC867231BC55B0083EBA9 /* CategoriesParentViewController.swift */; };
 		5F0FC86B231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0FC869231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift */; };
 		5F0FC86C231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */; };
@@ -124,6 +126,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5F0E399C236F418300E09EE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5F4A3B60220720870016BCC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F4A3B67220720870016BCC9;
+			remoteInfo = maxwise;
+		};
 		5F353A5A22DB48C500F96D3D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5F4A3B60220720870016BCC9 /* Project object */;
@@ -200,6 +209,10 @@
 		4B84E0E14758B25BF8CD0F5B /* Pods-ExpenseKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExpenseKitTests/Pods-ExpenseKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		51D7441A592E5DAB8FC20E57 /* Pods_ExpenseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpenseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CF9C018FD6CBB8E2E57D6B2 /* Pods-ExpenseKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpenseKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExpenseKitTests/Pods-ExpenseKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		5F0E3997236F418300E09EE9 /* BudgyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F0E3999236F418300E09EE9 /* BudgyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgyUITests.swift; sourceTree = "<group>"; };
+		5F0E399B236F418300E09EE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F0E39A1236F428300E09EE9 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		5F0FC867231BC55B0083EBA9 /* CategoriesParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesParentViewController.swift; sourceTree = "<group>"; };
 		5F0FC869231BC5A00083EBA9 /* CategoriesStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesStatisticsViewController.swift; sourceTree = "<group>"; };
 		5F0FC86A231BC5A00083EBA9 /* CategoriesStatisticsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesStatisticsViewController.xib; sourceTree = "<group>"; };
@@ -329,6 +342,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5F0E3994236F418300E09EE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F353A4D22DB48C400F96D3D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -376,6 +396,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F0E3998236F418300E09EE9 /* BudgyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5F0E39A1236F428300E09EE9 /* SnapshotHelper.swift */,
+				5F0E3999236F418300E09EE9 /* BudgyUITests.swift */,
+				5F0E399B236F418300E09EE9 /* Info.plist */,
+			);
+			path = BudgyUITests;
+			sourceTree = "<group>";
+		};
 		5F0FC866231BC5020083EBA9 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +510,7 @@
 				5F65CD5122D27C050040C218 /* CreatingExpenses */,
 				5F353A5E22DB48C500F96D3D /* ExpenseKitTests */,
 				5F353A5122DB48C400F96D3D /* ExpenseKit */,
+				5F0E3998236F418300E09EE9 /* BudgyUITests */,
 				5F4A3B69220720870016BCC9 /* Products */,
 				5FFD2C172207321700DDFBE5 /* Frameworks */,
 				82867976399200E00ACBCD6C /* Pods */,
@@ -494,6 +525,7 @@
 				5F65CD5022D27C050040C218 /* CreatingExpenses.appex */,
 				5F353A5022DB48C400F96D3D /* ExpenseKit.framework */,
 				5F353A5822DB48C500F96D3D /* ExpenseKitTests.xctest */,
+				5F0E3997236F418300E09EE9 /* BudgyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -665,6 +697,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		5F0E3996236F418300E09EE9 /* BudgyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F0E39A0236F418300E09EE9 /* Build configuration list for PBXNativeTarget "BudgyUITests" */;
+			buildPhases = (
+				5F0E3993236F418300E09EE9 /* Sources */,
+				5F0E3994236F418300E09EE9 /* Frameworks */,
+				5F0E3995236F418300E09EE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F0E399D236F418300E09EE9 /* PBXTargetDependency */,
+			);
+			name = BudgyUITests;
+			productName = BudgyUITests;
+			productReference = 5F0E3997236F418300E09EE9 /* BudgyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		5F353A4F22DB48C400F96D3D /* ExpenseKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F353A6722DB48C500F96D3D /* Build configuration list for PBXNativeTarget "ExpenseKit" */;
@@ -775,6 +825,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Mindaugas Jucius";
 				TargetAttributes = {
+					5F0E3996236F418300E09EE9 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 5F4A3B67220720870016BCC9;
+					};
 					5F353A4F22DB48C400F96D3D = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -812,11 +866,19 @@
 				5F65CD4F22D27C050040C218 /* CreatingExpenses */,
 				5F353A4F22DB48C400F96D3D /* ExpenseKit */,
 				5F353A5722DB48C500F96D3D /* ExpenseKitTests */,
+				5F0E3996236F418300E09EE9 /* BudgyUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5F0E3995236F418300E09EE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F353A4E22DB48C400F96D3D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1006,6 +1068,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5F0E3993236F418300E09EE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F0E399A236F418300E09EE9 /* BudgyUITests.swift in Sources */,
+				5F0E39A2236F428300E09EE9 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F353A4C22DB48C400F96D3D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1120,6 +1191,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5F0E399D236F418300E09EE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F4A3B67220720870016BCC9 /* maxwise */;
+			targetProxy = 5F0E399C236F418300E09EE9 /* PBXContainerItemProxy */;
+		};
 		5F353A5B22DB48C500F96D3D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5F353A4F22DB48C400F96D3D /* ExpenseKit */;
@@ -1164,6 +1240,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5F0E399E236F418300E09EE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				INFOPLIST_FILE = BudgyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojam.BudgyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = maxwise;
+			};
+			name = Debug;
+		};
+		5F0E399F236F418300E09EE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PDR4VQLAH4;
+				INFOPLIST_FILE = BudgyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mindaugas.vaziuojam.BudgyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = maxwise;
+			};
+			name = Release;
+		};
 		5F353A6822DB48C500F96D3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA1C0C0C4A8FAC6A0B1B4D5E /* Pods-ExpenseKit.debug.xcconfig */;
@@ -1391,7 +1505,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = maxwise/maxwise.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PDR4VQLAH4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1403,8 +1519,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.beleka.maxwise;
 				PRODUCT_NAME = Budgy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1417,7 +1535,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = maxwise/maxwise.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = PDR4VQLAH4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1429,8 +1549,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = mindaugo.beleka.maxwise;
 				PRODUCT_NAME = Budgy;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1527,6 +1649,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5F0E39A0236F418300E09EE9 /* Build configuration list for PBXNativeTarget "BudgyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F0E399E236F418300E09EE9 /* Debug */,
+				5F0E399F236F418300E09EE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5F353A6722DB48C500F96D3D /* Build configuration list for PBXNativeTarget "ExpenseKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
