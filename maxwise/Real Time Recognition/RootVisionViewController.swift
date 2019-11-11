@@ -24,7 +24,6 @@ class RootVisionViewController: UIViewController {
         label.text = "Fill amount by pointing to digits".uppercased()
         label.textAlignment = .center
         label.textColor = .label
-        label.backgroundColor = .systemBackground
         label.textInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
         return label
     }()
