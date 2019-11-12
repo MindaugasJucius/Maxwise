@@ -176,7 +176,12 @@ class ExpenseCreationViewController: UIViewController {
         configureSegmentedControl()
         configureDismissalView()
         addCategorySelectionController()
-        addVisionController()
+        #if targetEnvironment(simulator)
+
+        #else
+            addVisionController()
+        #endif
+
         observeResponderChanges()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(applicationDidBecomeActive),
